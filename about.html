@@ -1,0 +1,204 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Routes - About Us</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/about.css">
+</head>
+<body>
+    <header class="navbar">
+        <a class="logo" href="index.html" aria-label="Open Routes Home">
+            <img src="img/logo-openroutes.png" alt="Open Routes">
+        </a>
+
+        <nav class="nav-links" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="index.html#destinations">Destinations</a>
+            <a href="accesibility.html">Accessibility</a>
+            <a href="about.html" class="active">About Us</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="accessibility-dropdown">
+            <button class="btn-accessible-mode" id="btnDropdownToggle" aria-expanded="false" aria-haspopup="true">
+                <i class="fa-solid fa-universal-access"></i>
+                Accessible Mode
+                <i class="fa-solid fa-chevron-down chevron"></i>
+            </button>
+
+            <div class="dropdown-menu" id="accessibilityMenu">
+                <label class="menu-item">
+                    <span><i class="fa-solid fa-volume-high"></i> Audio Guide</span>
+                    <input type="checkbox" id="chkVoiceReader">
+                    <span class="slider"></span>
+                </label>
+                <label class="menu-item">
+                    <span><i class="fa-solid fa-circle-half-stroke"></i> High Contrast</span>
+                    <input type="checkbox" id="chkContrast">
+                    <span class="slider"></span>
+                </label>
+                <label class="menu-item">
+                    <span><i class="fa-solid fa-text-height"></i> Bigger Text</span>
+                    <input type="checkbox" id="chkTextSize">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" aria-label="About Open Routes">
+            <div class="hero-content">
+                <span class="eyebrow">About Open Routes</span>
+                <h1>Accessible tourism for <span>every traveler.</span></h1>
+                <p>We help people discover El Salvador through inclusive routes, reliable information and travel experiences designed with accessibility in mind.</p>
+                <div class="hero-buttons">
+                    <a href="index.html#destinations" class="btn btn-green">Explore Routes <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="accesibility.html" class="btn btn-yellow">Our Tools <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <aside class="access-card" data-read="Open Routes creates accessible travel experiences for everyone in El Salvador.">
+                <div class="access-icon"><i class="fa-solid fa-route"></i></div>
+                <div>
+                    <h2>Travel without barriers.</h2>
+                    <p>Inclusive routes, clear guidance and freedom to explore.</p>
+                </div>
+            </aside>
+        </section>
+
+        <section class="about-section" id="about-story">
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1400&auto=format&fit=crop" alt="Open Routes team collaborating">
+            </div>
+            <div class="about-content" data-read="At Open Routes, we believe every person deserves the opportunity to explore El Salvador.">
+                <span class="eyebrow">Our Story</span>
+                <h2>Making tourism accessible for everyone</h2>
+                <p>At Open Routes, we believe every person deserves the opportunity to explore El Salvador. Our mission is to reduce barriers and share travel information that helps visitors move with confidence.</p>
+                <p>We combine destination research, accessibility tools and community insight so more people can enjoy beaches, towns, lakes and mountains without feeling left out.</p>
+            </div>
+        </section>
+
+        <section class="mission-vision" aria-label="Mission and vision">
+            <article class="info-card" data-read="Mission. Promote accessible tourism through inclusive routes and reliable travel information.">
+                <div class="card-icon"><i class="fa-solid fa-bullseye"></i></div>
+                <h3>Mission</h3>
+                <p>Promote accessible tourism through inclusive routes and reliable travel information.</p>
+            </article>
+
+            <article class="info-card" data-read="Vision. Become a leading platform for accessible tourism in El Salvador.">
+                <div class="card-icon"><i class="fa-solid fa-earth-americas"></i></div>
+                <h3>Vision</h3>
+                <p>Become a leading platform for accessible tourism in El Salvador.</p>
+            </article>
+
+            <article class="info-card" data-read="Values. Inclusion, trust, independence and respect guide every route we share.">
+                <div class="card-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
+                <h3>Values</h3>
+                <p>Inclusion, trust, independence and respect guide every route we share.</p>
+            </article>
+        </section>
+
+        <section class="team-section">
+            <h2 class="section-title">Meet <span>Our Team</span></h2>
+            <div class="title-line" aria-hidden="true"></div>
+
+            <div class="team-grid">
+                <article class="member" data-read="Maria Lopez, Project Coordinator.">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=500&auto=format&fit=crop" alt="Maria Lopez">
+                    <h3>Maria Lopez</h3>
+                    <p>Project Coordinator</p>
+                </article>
+
+                <article class="member" data-read="Juan Perez, UX Designer.">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=500&auto=format&fit=crop" alt="Juan Perez">
+                    <h3>Juan Perez</h3>
+                    <p>UX Designer</p>
+                </article>
+
+                <article class="member" data-read="Sofia Cruz, Research Lead.">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=500&auto=format&fit=crop" alt="Sofia Cruz">
+                    <h3>Sofia Cruz</h3>
+                    <p>Research Lead</p>
+                </article>
+
+                <article class="member" data-read="Carlos Ramos, Developer.">
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=500&auto=format&fit=crop" alt="Carlos Ramos">
+                    <h3>Carlos Ramos</h3>
+                    <p>Developer</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="stats" aria-label="Open Routes statistics">
+            <div>
+                <h2>25+</h2>
+                <p>Accessible Routes</p>
+            </div>
+            <div>
+                <h2>100+</h2>
+                <p>Travelers Helped</p>
+            </div>
+            <div>
+                <h2>15+</h2>
+                <p>Destinations</p>
+            </div>
+            <div>
+                <h2>100%</h2>
+                <p>Inclusive Commitment</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" id="contact">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="img/logo-openroutes-white.png" alt="Open Routes" class="footer-logo-img">
+                <p>Travel without limits, explore with freedom.</p>
+            </div>
+
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#destinations">Destinations</a></li>
+                    <li><a href="accesibility.html">Accessibility</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fa-solid fa-envelope"></i> info@openroutes.sv</p>
+                <p><i class="fa-solid fa-phone"></i> +503 1234 5678</p>
+            </div>
+
+            <div class="newsletter">
+                <h3>Newsletter</h3>
+                <p>Subscribe to receive travel tips and accessible updates.</p>
+                <form>
+                    <input type="email" placeholder="Your email" aria-label="Your email">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <p class="copy">© 2024 Open Routes. All rights reserved.</p>
+    </footer>
+
+    <script src="js/about.js"></script>
+</body>
+</html>
