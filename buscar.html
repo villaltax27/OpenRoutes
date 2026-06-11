@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open Routes</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f3f3f3;
+}
+
+/* NAVBAR */
+
+header{
+    background:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 30px;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+.logo{
+    font-size:22px;
+    font-weight:bold;
+    color:#103d6d;
+}
+
+.logo span{
+    color:#7ab648;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:30px;
+}
+
+nav a{
+    text-decoration:none;
+    color:#103d6d;
+    font-size:14px;
+}
+
+.access-btn{
+    background:#5ba548;
+    color:white;
+    border:none;
+    padding:10px 18px;
+    border-radius:20px;
+    cursor:pointer;
+}
+
+/* HERO */
+
+.hero{
+    position:relative;
+    height:260px;
+    background:url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e")
+    center/cover no-repeat;
+}
+
+.hero-overlay{
+    position:absolute;
+    top:20px;
+    left:50%;
+    transform:translateX(-50%);
+    width:70%;
+    background:rgba(255,255,255,.45);
+    padding:25px;
+    border-radius:10px;
+    text-align:center;
+    backdrop-filter:blur(2px);
+}
+
+.hero h1{
+    color:#0e4a78;
+    font-size:42px;
+    line-height:1.1;
+}
+
+.hero h1 span{
+    color:#4caf50;
+}
+
+.hero p{
+    margin-top:12px;
+    color:#19496d;
+}
+
+/* FEATURED DESTINATIONS */
+
+.section-title{
+    text-align:center;
+    color:#19496d;
+    margin:15px 0;
+    font-weight:bold;
+}
+
+.destinations{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+    padding:0 20px;
+}
+
+.card{
+    width:170px;
+    background:white;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 2px 8px rgba(0,0,0,.12);
+}
+
+.card img{
+    width:100%;
+    height:95px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:10px;
+}
+
+.card-content h4{
+    font-size:12px;
+    margin-bottom:5px;
+}
+
+.card-content p{
+    font-size:10px;
+    color:#666;
+}
+
+.card-content a{
+    display:block;
+    margin-top:8px;
+    text-decoration:none;
+    color:#4caf50;
+    font-size:11px;
+    font-weight:bold;
+}
+
+/* ACCESSIBILITY */
+
+.tools{
+    background:white;
+    margin:20px 10px;
+    border-radius:10px;
+    padding:20px;
+}
+
+.tools-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:20px;
+}
+
+.tool{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.icon{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    background:#4f66b5;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:22px;
+}
+
+.tool h4{
+    font-size:12px;
+    color:#103d6d;
+}
+
+.tool p{
+    font-size:10px;
+    color:#666;
+}
+
+/* FOOTER */
+
+footer{
+    background:#103d6d;
+    color:white;
+    padding:25px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:20px;
+}
+
+.footer-logo{
+    font-size:28px;
+    font-style:italic;
+    margin-bottom:10px;
+}
+
+footer h4{
+    margin-bottom:10px;
+}
+
+footer p{
+    font-size:12px;
+    margin-bottom:8px;
+}
+
+@media(max-width:900px){
+
+    nav ul{
+        display:none;
+    }
+
+    .hero h1{
+        font-size:28px;
+    }
+
+    .tools-grid{
+        grid-template-columns:1fr;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero-overlay{
+        width:90%;
+    }
+
+}
+
+</style>
+</head>
+<body>
+
+<header>
+
+    <div class="logo">
+        Open <span>Routes</span>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Destinations</a></li>
+            <li><a href="#">Accessibility</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <button class="access-btn">
+        Accessible mode
+    </button>
+
+</header>
+
+<section class="hero">
+
+    <div class="hero-overlay">
+
+        <h1>
+            Explore El Salvador
+            <br>
+            <span>Without barriers</span>
+        </h1>
+
+        <p>
+            Accessible tourism for everyone. Discover amazing places,
+            live unique experiences and travel with freedom.
+        </p>
+
+    </div>
+
+</section>
+
+<h3 class="section-title">Featured Destinations</h3>
+
+<div class="destinations">
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077">
+        <div class="card-content">
+            <h4>Santa Ana volcano</h4>
+            <p>Enjoy the views and accessible trails.</p>
+            <a href="#">View more →</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077">
+        <div class="card-content">
+            <h4>Santa Ana volcano</h4>
+            <p>Enjoy the views and accessible trails.</p>
+            <a href="#">View more →</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077">
+        <div class="card-content">
+            <h4>Santa Ana volcano</h4>
+            <p>Enjoy the views and accessible trails.</p>
+            <a href="#">View more →</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077">
+        <div class="card-content">
+            <h4>Santa Ana volcano</h4>
+            <p>Enjoy the views and accessible trails.</p>
+            <a href="#">View more →</a>
+        </div>
+    </div>
+
+</div>
+
+<section class="tools">
+
+    <div class="tools-grid">
+
+        <div class="tool">
+            <div class="icon">🔊</div>
+            <div>
+                <h4>Audio guide</h4>
+                <p>Listen to content.</p>
+            </div>
+        </div>
+
+        <div class="tool">
+            <div class="icon">A</div>
+            <div>
+                <h4>Bigger text</h4>
+                <p>Adjust size easily.</p>
+            </div>
+        </div>
+
+        <div class="tool">
+            <div class="icon">◐</div>
+            <div>
+                <h4>High contrast</h4>
+                <p>Improve visibility.</p>
+            </div>
+        </div>
+
+        <div class="tool">
+            <div class="icon">A+</div>
+            <div>
+                <h4>Bigger text</h4>
+                <p>Adjust size easily.</p>
+            </div>
+        </div>
+
+        <div class="tool">
+            <div class="icon">🦽</div>
+            <div>
+                <h4>Accessibility</h4>
+                <p>Inclusive experience.</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+
+    <div class="footer-grid">
+
+        <div>
+            <div class="footer-logo">Open Routes</div>
+            <p>
+                As we focus on your success,
+                creativity and fun.
+            </p>
+        </div>
+
+        <div>
+            <h4>Links</h4>
+            <p>Destiny</p>
+            <p>Activities</p>
+            <p>Routes</p>
+        </div>
+
+        <div>
+            <h4>Information</h4>
+            <p>About us</p>
+            <p>Terms and conditions</p>
+            <p>Policy</p>
+            <p>Questions</p>
+        </div>
+
+        <div>
+            <h4>Contact</h4>
+            <p>+1234 - 5678</p>
+            <p>openroutes.sv</p>
+            <p>openroutesSV</p>
+        </div>
+
+    </div>
+
+</footer>
+
+</body>
+</html>
