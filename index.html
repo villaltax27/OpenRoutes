@@ -1,261 +1,188 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Open Routes</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/index.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Routes - Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/index.css">
 </head>
-
 <body>
+    <header class="navbar">
+        <a class="logo" href="index.html" aria-label="Open Routes Home">
+            <img src="img/logo-openroutes.png" alt="Open Routes">
+        </a>
 
-<!-- NAVBAR -->
+        <nav class="nav-links" aria-label="Main navigation">
+            <a href="index.html" class="active">Home</a>
+            <a href="#destinations">Destinations</a>
+            <a href="accesibility.html">Accessibility</a>
+            <a href="#about">About Us</a>
+            <a href="#contact">Contact</a>
+        </nav>
 
-<header>
+        <div class="accessibility-dropdown">
+            <button class="btn-accessible-mode" id="btnDropdownToggle" aria-expanded="false" aria-haspopup="true">
+                <i class="fa-solid fa-universal-access"></i>
+                Accessible Mode
+                <i class="fa-solid fa-chevron-down chevron"></i>
+            </button>
 
-    <div class="logo">
-        <img src="img/logo-openroutes.png" alt="Open Routes">
-    </div>
-
-    <nav>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Destinations</a></li>
-            <li><a href="#">Accessibility</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </nav>
-
-   <div class="accessibility-menu">
-
-    <button class="access-btn" onclick="toggleAccessibilityMenu()">
-        Accessibility ▼
-    </button>
-
-   <div class="dropdown-menu" id="accessMenu">
-
-    <label>
-        <input type="checkbox" id="highContrast">
-        High Contrast
-    </label>
-
-    <label>
-        <input type="checkbox" id="largeText">
-        Bigger Text
-    </label>
-
-    <label>
-        <input type="checkbox" id="audioGuide">
-        Audio Guide
-    </label>
-
-    <label>
-        <input type="checkbox" id="dyslexiaFont">
-        Dyslexia Font
-    </label>
-
-</div>
-
-</header>
-
-<!-- HERO -->
-
-<section class="hero">
-
-    <div class="hero-content">
-
-        <h1>
-            Explore El Salvador
-            <span>Without</span> Limits
-        </h1>
-
-        <p>
-            Accessible tourism for everyone.
-            Discover amazing places, live unique experiences
-            and travel with freedom.
-        </p>
-
-        <div class="hero-buttons">
-            <button class="btn green">Explore Now</button>
-            <button class="btn yellow">Learn More</button>
-        </div>
-
-    </div>
-
-    <div class="access-card">
-        <h3>We are committed to accessibility.</h3>
-        <p>
-            Our tools help everyone enjoy the journey.
-        </p>
-    </div>
-
-</section>
-
-<!-- DESTINATIONS -->
-
-<section class="section">
-
-    <h2 class="section-title">
-        Featured <span>Destinations</span>
-    </h2>
-
-    <div class="cards">
-
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1589308078059-be1415eab4c3?q=80&w=1200&auto=format&fit=crop">
-            <div class="card-content">
-                <h3>Santa Ana Volcano</h3>
-                <p>Enjoy breathtaking views and accessible trails.</p>
-                <a href="#">View More →</a>
+            <div class="dropdown-menu" id="accessibilityMenu">
+                <label class="menu-item">
+                    <span><i class="fa-solid fa-volume-high"></i> Audio Guide</span>
+                    <input type="checkbox" id="chkVoiceReader">
+                    <span class="slider"></span>
+                </label>
+                <label class="menu-item">
+                    <span><i class="fa-solid fa-circle-half-stroke"></i> High Contrast</span>
+                    <input type="checkbox" id="chkContrast">
+                    <span class="slider"></span>
+                </label>
+                <label class="menu-item">
+                    <span><i class="fa-solid fa-text-height"></i> Bigger Text</span>
+                    <input type="checkbox" id="chkTextSize">
+                    <span class="slider"></span>
+                </label>
             </div>
         </div>
+    </header>
 
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop">
-            <div class="card-content">
-                <h3>Lake Coatepeque</h3>
-                <p>A beautiful lake perfect for relaxation and nature.</p>
-                <a href="#">View More →</a>
+    <main>
+        <section class="hero" aria-label="Explore El Salvador without limits">
+            <div class="hero-content">
+                <h1>Explore El Salvador <span>Without</span> Limits</h1>
+                <p>Accessible tourism for everyone. Discover amazing places, live unique experiences and travel with freedom.</p>
+                <div class="hero-buttons">
+                    <a href="#destinations" class="btn btn-green">Explore Now <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="accesibility.html" class="btn btn-yellow">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <aside class="access-card" data-read="We are committed to accessibility. Our tools help everyone enjoy the journey.">
+                <div class="access-icon"><i class="fa-solid fa-universal-access"></i></div>
+                <div>
+                    <h2>We are committed to accessibility.</h2>
+                    <p>Our tools help everyone enjoy the journey.</p>
+                </div>
+            </aside>
+        </section>
+
+        <section class="destinations-section" id="destinations">
+            <h2 class="section-title">Featured <span>Destinations</span></h2>
+            <div class="title-line" aria-hidden="true"></div>
+
+            <div class="destination-grid">
+                <article class="destination-card" data-read="Santa Ana Volcano. Enjoy breathtaking views and accessible trails for everyone.">
+                    <img src="https://images.unsplash.com/photo-1589308078059-be1415eab4c3?q=80&w=1200&auto=format&fit=crop" alt="Santa Ana Volcano landscape">
+                    <div class="card-icon"><i class="fa-solid fa-mountain-sun"></i></div>
+                    <div class="card-body">
+                        <h3>Santa Ana Volcano</h3>
+                        <p>Enjoy breathtaking views and accessible trails for everyone.</p>
+                        <a href="#">View more <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="destination-card" data-read="Lake Coatepeque. A beautiful lake perfect for relaxation and nature.">
+                    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop" alt="Lake Coatepeque surrounded by green mountains">
+                    <div class="card-icon"><i class="fa-solid fa-water"></i></div>
+                    <div class="card-body">
+                        <h3>Lake Coatepeque</h3>
+                        <p>A beautiful lake perfect for relaxation and nature.</p>
+                        <a href="#">View more <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="destination-card" data-read="El Tunco Beach. Surf, sun and sea with accessible beach services.">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop" alt="El Tunco beach at sunset">
+                    <div class="card-icon"><i class="fa-solid fa-umbrella-beach"></i></div>
+                    <div class="card-body">
+                        <h3>El Tunco Beach</h3>
+                        <p>Surf, sun and sea with accessible beach services.</p>
+                        <a href="#">View more <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="destination-card" data-read="Suchitoto. Culture, art and history in an accessible town.">
+                    <img src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?q=80&w=1200&auto=format&fit=crop" alt="Historic town and church architecture">
+                    <div class="card-icon"><i class="fa-solid fa-city"></i></div>
+                    <div class="card-body">
+                        <h3>Suchitoto</h3>
+                        <p>Culture, art and history in an accessible town.</p>
+                        <a href="#">View more <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="tools-strip" id="about" aria-label="Accessibility tools">
+            <h2>Our Accessibility Tools</h2>
+            <div class="tool-item" data-read="Audio guide. Listen to content in voice.">
+                <span><i class="fa-solid fa-volume-high"></i></span>
+                <div><h3>Audio Guide</h3><p>Listen to content in voice.</p></div>
+            </div>
+            <div class="tool-item" data-read="Bigger text. Adjust text size easily.">
+                <span>AA</span>
+                <div><h3>Bigger Text</h3><p>Adjust text size easily.</p></div>
+            </div>
+            <div class="tool-item" data-read="High contrast. Improve visibility with one click.">
+                <span><i class="fa-solid fa-circle-half-stroke"></i></span>
+                <div><h3>High Contrast</h3><p>Improve visibility with one click.</p></div>
+            </div>
+            <div class="tool-item" data-read="Keyboard navigation. Navigate the site using your keyboard.">
+                <span><i class="fa-solid fa-keyboard"></i></span>
+                <div><h3>Keyboard Navigation</h3><p>Navigate the site using your keyboard.</p></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" id="contact">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="img/logo-openroutes-white.png" alt="Open Routes" class="footer-logo-img">
+                <p>Travel without limits, explore with freedom.</p>
+            </div>
+
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#destinations">Destinations</a></li>
+                    <li><a href="accesibility.html">Accessibility</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fa-solid fa-envelope"></i> info@openroutes.sv</p>
+                <p><i class="fa-solid fa-phone"></i> +503 1234 5678</p>
+            </div>
+
+            <div class="newsletter">
+                <h3>Newsletter</h3>
+                <p>Subscribe to receive travel tips and accessible updates.</p>
+                <form>
+                    <input type="email" placeholder="Your email" aria-label="Your email">
+                    <button type="submit">Subscribe</button>
+                </form>
             </div>
         </div>
+        <p class="copy">© 2024 Open Routes. All rights reserved.</p>
+    </footer>
 
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop">
-            <div class="card-content">
-                <h3>El Tunco Beach</h3>
-                <p>Surf, sun and sea with accessible beach services.</p>
-                <a href="#">View More →</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?q=80&w=1200&auto=format&fit=crop">
-            <div class="card-content">
-                <h3>Suchitoto</h3>
-                <p>Culture, art and history in an accessible town.</p>
-                <a href="#">View More →</a>
-            </div>
-        </div>
-
-    </div>
-
-
-    
-
-
-
-</section>
-
-
-<section class="why-openroutes">
-
-    <h2 class="section-title">
-        Why Choose <span>Open Routes</span>
-    </h2>
-
-    <div class="features">
-
-        <div class="feature-card">
-            <h3>♿ Verified Accessibility</h3>
-            <p>
-                Every destination is reviewed and verified
-                for accessibility.
-            </p>
-        </div>
-
-        <div class="feature-card">
-            <h3>🗺 Interactive Maps</h3>
-            <p>
-                Easily find accessible routes and services.
-            </p>
-        </div>
-
-        <div class="feature-card">
-            <h3>🏨 Accessible Services</h3>
-            <p>
-                Hotels, parking spaces and accessible restrooms.
-            </p>
-        </div>
-
-        <div class="feature-card">
-            <h3>⭐ Community Reviews</h3>
-            <p>
-                Learn from real experiences shared by travelers.
-            </p>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- FOOTER -->
-
-<footer>
-
-    <div class="footer-container">
-
-        <div>
-
-    <img
-        src="img/logo-openroutes-white.png"
-        alt="Open Routes"
-        class="footer-logo-img"
-    >
-
-    <p style="margin-top:20px;">
-        Travel without limits,
-        explore with freedom.
-    </p>
-
-</div>
-
-        <div class="footer-links">
-            <h3>Quick Links</h3>
-
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Destinations</a></li>
-                <li><a href="#">Accessibility</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </div>
-
-        <div>
-            <h3>Contact Us</h3>
-
-            <p style="margin-top:15px;">info@openroutes.sv</p>
-            <p style="margin-top:10px;">+503 1234 5678</p>
-        </div>
-
-        <div class="newsletter">
-            <h3>Newsletter</h3>
-
-            <p style="margin-top:15px;">
-                Subscribe to receive travel tips
-                and accessibility updates.
-            </p>
-
-            <input type="email" placeholder="Your email">
-
-            <button>Subscribe</button>
-        </div>
-
-    </div>
-
-    <div class="copy">
-        © 2024 Open Routes. All rights reserved.
-    </div>
-
-</footer>
-
-<script src="js/index.js"></script>
-
-
+    <script src="js/index.js"></script>
 </body>
 </html>

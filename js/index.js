@@ -1,43 +1,62 @@
-document.addEventListener("DOMContentLoaded", () => {
+﻿document.addEventListener("DOMContentLoaded", () => {
+    const btnDropdownToggle = document.getElementById("btnDropdownToggle");
+    const accessibilityMenu = document.getElementById("accessibilityMenu");
+    const chkVoiceReader = document.getElementById("chkVoiceReader");
+    const chkContrast = document.getElementById("chkContrast");
+    const chkTextSize = document.getElementById("chkTextSize");
+    const readableItems = document.querySelectorAll("[data-read]");
+    const synth = window.speechSynthesis;
 
-    const menu = document.getElementById("accessMenu");
-    const accessBtn = document.querySelector(".access-btn");
+    function speakText(text) {
+        if (!chkVoiceReader.checked || !text || !synth) return;
+        synth.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = "en-US";
+        utterance.rate = 1;
+        synth.speak(utterance);
+    }
 
-    const highContrast = document.getElementById("highContrast");
-    const largeText = document.getElementById("largeText");
+    function stopSpeaking() {
+        if (synth) synth.cancel();
+    }
 
-    // ================= MENU =================
-
-    accessBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        menu.classList.toggle("show-menu");
+    btnDropdownToggle.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const isOpen = accessibilityMenu.classList.toggle("show");
+        btnDropdownToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
     });
 
-    document.addEventListener("click", (e) => {
-        if (
-            !menu.contains(e.target) &&
-            !accessBtn.contains(e.target)
-        ) {
-            menu.classList.remove("show-menu");
+    document.addEventListener("click", (event) => {
+        if (!accessibilityMenu.contains(event.target) && !btnDropdownToggle.contains(event.target)) {
+            accessibilityMenu.classList.remove("show");
+            btnDropdownToggle.setAttribute("aria-expanded", "false");
         }
     });
 
-    // ================= HIGH CONTRAST =================
-
-    highContrast.addEventListener("change", () => {
-        document.body.classList.toggle(
-            "contrast-mode",
-            highContrast.checked
-        );
+    chkContrast.addEventListener("change", () => {
+        document.body.classList.toggle("high-contrast", chkContrast.checked);
+        speakText(chkContrast.checked ? "High contrast activated" : "High contrast deactivated");
     });
 
-    // ================= BIGGER TEXT =================
-
-    largeText.addEventListener("change", () => {
-        document.body.classList.toggle(
-            "large-text",
-            largeText.checked
-        );
+    chkTextSize.addEventListener("change", () => {
+        document.body.classList.toggle("large-text", chkTextSize.checked);
+        speakText(chkTextSize.checked ? "Bigger text activated" : "Text size returned to normal");
     });
 
+    chkVoiceReader.addEventListener("change", () => {
+        if (chkVoiceReader.checked) {
+            speakText("Audio guide enabled");
+        } else {
+            stopSpeaking();
+        }
+    });
+
+    readableItems.forEach((item) => {
+        item.setAttribute("tabindex", "0");
+        const text = item.getAttribute("data-read");
+        item.addEventListener("mouseenter", () => speakText(text));
+        item.addEventListener("mouseleave", stopSpeaking);
+        item.addEventListener("focus", () => speakText(text));
+        item.addEventListener("blur", stopSpeaking);
+    });
 });
