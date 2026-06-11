@@ -1,29 +1,33 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Open Routes - Accessibility Features</title>
+    <title>Open Routes - Accessibility</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/accesibility.css">
 </head>
 <body>
-
     <header class="navbar">
-        <div class="logo">
-            <span class="logo-text">Open<span class="routes-blue">Routes</span></span>
-        </div>
-        <nav class="nav-links">
-            <a href="#">Home</a>
-            <a href="#">Destinations</a>
-            <a href="#" class="active">Accessibility</a>
-            <a href="#">About us</a>
-            <a href="#">Contact</a>
+        <a class="logo" href="index.html" aria-label="Open Routes Home">
+            <img src="img/logo-openroutes.png" alt="Open Routes">
+        </a>
+
+        <nav class="nav-links" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="index.html#destinations">Destinations</a>
+            <a href="accesibility.html" class="active">Accessibility</a>
+            <a href="index.html#about">About Us</a>
+            <a href="#contact">Contact</a>
         </nav>
-        
+
         <div class="accessibility-dropdown">
             <button class="btn-accessible-mode" id="btnDropdownToggle" aria-expanded="false" aria-haspopup="true">
-                Accessible mode <i class="fa-solid fa-chevron-down" style="margin-left: 5px; font-size: 0.8rem;"></i>
+                <i class="fa-solid fa-universal-access"></i>
+                Accessible Mode
+                <i class="fa-solid fa-chevron-down chevron"></i>
             </button>
             <div class="dropdown-menu" id="accessibilityMenu">
                 <label class="menu-item">
@@ -37,7 +41,7 @@
                     <span class="slider"></span>
                 </label>
                 <label class="menu-item">
-                    <span><i class="fa-solid fa-text-height"></i> Large Text</span>
+                    <span><i class="fa-solid fa-text-height"></i> Bigger Text</span>
                     <input type="checkbox" id="chkTextSize">
                     <span class="slider"></span>
                 </label>
@@ -45,110 +49,148 @@
         </div>
     </header>
 
-    <section class="hero">
-        <div class="hero-overlay">
+    <main>
+        <section class="hero" aria-label="Accessibility features hero">
             <div class="hero-content">
-                <h1>Travel for everyone, <br><span class="highlight-green">Without Limits.</span></h1>
-            </div>
-        </div>
-    </section>
-
-    <main class="container">
-        <h2 class="section-title">Our <span class="highlight-green">Accessibility</span> Features</h2>
-        <div class="red-dot"></div>
-
-        <div class="features-grid">
-            <div class="card speaker-card" tabindex="0" data-text="Audio Guide. Listen to information about destinations, services and directions with our integrated audio guide.">
-                <div class="icon-wrapper">
-                    <i class="fa-solid fa-volume-high icon-style"></i>
+                <span class="eyebrow">Accessible Travel</span>
+                <h1>Travel for everyone, <span>Without Limits.</span></h1>
+                <p>Open Routes includes tools that help every traveler explore destinations, routes and services with more confidence.</p>
+                <div class="hero-buttons">
+                    <a href="#features" class="btn btn-green">View Tools <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="index.html" class="btn btn-yellow">Back Home <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
-                <h3>Audio Guide</h3>
-                <p>Listen to information about destinations, services and directions with our integrated audio guide.</p>
-                <a href="#" class="learn-more">Learn more <span class="arrow">&rarr;</span></a>
             </div>
 
-            <div class="card text-card" id="cardTextSize" tabindex="0" data-text="Text Size. Increase the font size to read descriptions, routes, and travel tips comfortably.">
-                <div class="icon-wrapper">
-                    <span class="text-icon">AA</span>
+            <aside class="access-card" data-text="Accessibility mode includes voice reader, bigger text and high contrast tools.">
+                <div class="access-icon"><i class="fa-solid fa-universal-access"></i></div>
+                <div>
+                    <h2>Accessibility built in.</h2>
+                    <p>Voice, contrast and text tools are ready from the menu.</p>
                 </div>
-                <h3>Text Size</h3>
-                <p>Increase the font size to read descriptions, routes, and travel tips comfortably without straining your eyes.</p>
-                <a href="#" class="learn-more">Learn more <span class="arrow">&rarr;</span></a>
-            </div>
+            </aside>
+        </section>
 
-            <div class="card contrast-card" id="cardContrast" tabindex="0" data-text="High Contrast. Switch to a high-contrast visual interface designed to improve visibility.">
-                <div class="icon-wrapper">
-                    <div class="contrast-icon"></div>
-                </div>
-                <h3>High Contrast</h3>
-                <p>Switch to a high-contrast visual interface designed to improve visibility for low vision users.</p>
-                <a href="#" class="learn-more">Learn more <span class="arrow">&rarr;</span></a>
-            </div>
+        <section class="features-section" id="features">
+            <h2 class="section-title">Our <span>Accessibility</span> Features</h2>
+            <div class="title-line" aria-hidden="true"></div>
 
-            <div class="card keyboard-card" tabindex="0" data-text="Voice Commands. Navigate through the application and discover El Salvador using simple voice shortcuts.">
-                <div class="icon-wrapper">
-                    <i class="fa-solid fa-keyboard icon-style"></i>
-                </div>
-                <h3>Voice Commands</h3>
-                <p>Navigate through the application and discover El Salvador using simple voice shortcuts.</p>
-                <a href="#" class="learn-more">Learn more <span class="arrow">&rarr;</span></a>
-            </div>
+            <div class="features-grid">
+                <article class="card speaker-card" tabindex="0" data-text="Audio Guide. Listen to information about destinations, services and directions with our integrated audio guide.">
+                    <div class="icon-wrapper">
+                        <i class="fa-solid fa-volume-high icon-style"></i>
+                    </div>
+                    <h3>Audio Guide</h3>
+                    <p>Listen to information about destinations, services and directions with our integrated audio guide.</p>
+                    <a href="#" class="learn-more">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+                </article>
 
-            <div class="card cc-card" tabindex="0" data-text="Closed Captions. Access full text descriptions and subtitles for all our video and audio guides.">
-                <div class="icon-wrapper">
-                    <span class="cc-icon">OC</span>
-                </div>
-                <h3>Closed Captions</h3>
-                <p>Access full text descriptions and subtitles for all our video and audio guides.</p>
-                <a href="#" class="learn-more">Learn more <span class="arrow">&rarr;</span></a>
-            </div>
+                <article class="card text-card" id="cardTextSize" tabindex="0" data-text="Text Size. Increase the font size to read descriptions, routes, and travel tips comfortably.">
+                    <div class="icon-wrapper">
+                        <span class="text-icon">AA</span>
+                    </div>
+                    <h3>Bigger Text</h3>
+                    <p>Increase the font size to read descriptions, routes and travel tips comfortably.</p>
+                    <a href="#" class="learn-more">Try it <i class="fa-solid fa-arrow-right"></i></a>
+                </article>
 
-            <div class="card screen-reader-card" tabindex="0" data-text="Screen Reader. Fully optimized layout compatible with standard screen readers for seamless exploration.">
-                <div class="icon-wrapper">
-                    <i class="fa-solid fa-headset icon-style"></i>
-                </div>
-                <h3>Screen Reader</h3>
-                <p>Fully optimized layout compatible with standard screen readers for seamless exploration.</p>
-                <a href="#" class="learn-more">Learn more <span class="arrow">&rarr;</span></a>
+                <article class="card contrast-card" id="cardContrast" tabindex="0" data-text="High Contrast. Switch to a high-contrast visual interface designed to improve visibility.">
+                    <div class="icon-wrapper">
+                        <div class="contrast-icon"></div>
+                    </div>
+                    <h3>High Contrast</h3>
+                    <p>Switch to a high-contrast visual interface designed to improve visibility for low vision users.</p>
+                    <a href="#" class="learn-more">Try it <i class="fa-solid fa-arrow-right"></i></a>
+                </article>
+
+                <article class="card keyboard-card" tabindex="0" data-text="Keyboard Navigation. Move through the site using the keyboard and clear focus states.">
+                    <div class="icon-wrapper">
+                        <i class="fa-solid fa-keyboard icon-style"></i>
+                    </div>
+                    <h3>Keyboard Navigation</h3>
+                    <p>Move through the site using keyboard navigation and clear focus states.</p>
+                    <a href="#" class="learn-more">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+                </article>
+
+                <article class="card cc-card" tabindex="0" data-text="Closed Captions. Access text descriptions and subtitles for media content.">
+                    <div class="icon-wrapper">
+                        <span class="cc-icon">CC</span>
+                    </div>
+                    <h3>Closed Captions</h3>
+                    <p>Access text descriptions and subtitles for video and audio content.</p>
+                    <a href="#" class="learn-more">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+                </article>
+
+                <article class="card screen-reader-card" tabindex="0" data-text="Screen Reader. Layout and labels are prepared for screen reader support.">
+                    <div class="icon-wrapper">
+                        <i class="fa-solid fa-headset icon-style"></i>
+                    </div>
+                    <h3>Screen Reader</h3>
+                    <p>Use a layout with helpful labels prepared for screen reader support.</p>
+                    <a href="#" class="learn-more">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+                </article>
             </div>
-        </div>
+        </section>
+
+        <section class="tools-strip" aria-label="Accessibility tools summary">
+            <h2>Quick Accessibility Tools</h2>
+            <div class="tool-item">
+                <span><i class="fa-solid fa-volume-high"></i></span>
+                <div><h3>Audio Guide</h3><p>Listen to content in voice.</p></div>
+            </div>
+            <div class="tool-item">
+                <span>AA</span>
+                <div><h3>Bigger Text</h3><p>Adjust text size easily.</p></div>
+            </div>
+            <div class="tool-item">
+                <span><i class="fa-solid fa-circle-half-stroke"></i></span>
+                <div><h3>High Contrast</h3><p>Improve visibility with one click.</p></div>
+            </div>
+        </section>
     </main>
 
-    <footer class="footer">
+    <footer class="footer" id="contact">
         <div class="footer-container">
             <div class="footer-brand">
-                <h2 class="footer-logo">Open<span>Routes</span></h2>
-                <p class="footer-desc">A site web focus on your security, flexibility and fun.</p>
+                <img src="img/logo-openroutes-white.png" alt="Open Routes" class="footer-logo-img">
+                <p>Travel without limits, explore with freedom.</p>
             </div>
-            
-            <div class="footer-links-col">
-                <h4>Explore El Salvador</h4>
+
+            <div class="footer-links">
+                <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="#">Destiny</a></li>
-                    <li><a href="#">Activities</a></li>
-                    <li><a href="#">Routes</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#destinations">Destinations</a></li>
+                    <li><a href="accesibility.html">Accessibility</a></li>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
 
-            <div class="footer-links-col">
-                <h4>Information</h4>
-                <ul>
-                    <li><a href="#">About us</a></li>
-                    <li><a href="#">Terms and conditions</a></li>
-                    <li><a href="#">Policy</a></li>
-                    <li><a href="#">Questions</a></li>
-                </ul>
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                </div>
             </div>
 
-            <div class="footer-links-col">
-                <h4>Contact</h4>
-                <ul>
-                    <li><i class="fa-solid fa-phone"></i> + 1234 - 5678</li>
-                    <li><i class="fa-solid fa-globe"></i> openroutes.sv</li>
-                    <li><span class="email-mock">openroutessv</span></li>
-                </ul>
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fa-solid fa-envelope"></i> info@openroutes.sv</p>
+                <p><i class="fa-solid fa-phone"></i> +503 1234 5678</p>
+            </div>
+
+            <div class="newsletter">
+                <h3>Newsletter</h3>
+                <p>Subscribe to receive travel tips and accessible updates.</p>
+                <form>
+                    <input type="email" placeholder="Your email" aria-label="Your email">
+                    <button type="submit">Subscribe</button>
+                </form>
             </div>
         </div>
+        <p class="copy">© 2024 Open Routes. All rights reserved.</p>
     </footer>
 
     <script src="js/accesibility.js"></script>
