@@ -1,133 +1,84 @@
-document.addEventListener("DOMContentLoaded", () => {
-    
-    // Selectores del DOM
-    const btnDropdownToggle = document.getElementById('btnDropdownToggle');
-    const accessibilityMenu = document.getElementById('accessibilityMenu');
-    
-    const chkVoiceReader = document.getElementById('chkVoiceReader');
-    const chkContrast = document.getElementById('chkContrast');
-    const chkTextSize = document.getElementById('chkTextSize');
-    
-    const cards = document.querySelectorAll('.card');
+﻿document.addEventListener("DOMContentLoaded", () => {
+    const btnDropdownToggle = document.getElementById("btnDropdownToggle");
+    const accessibilityMenu = document.getElementById("accessibilityMenu");
+    const chkVoiceReader = document.getElementById("chkVoiceReader");
+    const chkContrast = document.getElementById("chkContrast");
+    const chkTextSize = document.getElementById("chkTextSize");
+    const cards = document.querySelectorAll(".card, .access-card");
+    const synth = window.speechSynthesis;
 
-    // Inicialización del motor de síntesis de voz nativo
-    let synth = window.speechSynthesis;
-    let speechUtterance = null;
-    let audioUnlocked = false;
-
-    // Desbloqueo del motor por políticas de privacidad de los navegadores modernos
-    document.body.addEventListener('click', () => {
-        if (!audioUnlocked) {
-            audioUnlocked = true;
-            console.log("Audio Engine Ready.");
-        }
+    document.body.addEventListener("click", () => {
+        console.log("Audio Engine Ready.");
     }, { once: true });
 
-    // ==========================================
-    // CONTROL DEL DROPDOWN (MENÚ)
-    // ==========================================
-    btnDropdownToggle.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const isOpen = accessibilityMenu.classList.toggle('show');
-        btnDropdownToggle.setAttribute('aria-expanded', isOpen);
+    btnDropdownToggle.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const isOpen = accessibilityMenu.classList.toggle("show");
+        btnDropdownToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
     });
 
-    // Cierra el menú al hacer clic en zonas exteriores
-    document.addEventListener('click', (e) => {
-        if (!accessibilityMenu.contains(e.target) && e.target !== btnDropdownToggle) {
-            accessibilityMenu.classList.remove('show');
-            btnDropdownToggle.setAttribute('aria-expanded', 'false');
+    document.addEventListener("click", (event) => {
+        if (!accessibilityMenu.contains(event.target) && !btnDropdownToggle.contains(event.target)) {
+            accessibilityMenu.classList.remove("show");
+            btnDropdownToggle.setAttribute("aria-expanded", "false");
         }
     });
 
-    // ==========================================
-    // SISTEMA DE LOCUCIÓN (LECTOR DE VOZ)
-    // ==========================================
     function speakText(text) {
-        // Validación obligatoria: si el interruptor está apagado, no emite sonido
-        if (!chkVoiceReader.checked) return;
-
-        synth.cancel(); // Limpia lecturas en cola
-        
-        speechUtterance = new SpeechSynthesisUtterance(text);
-        speechUtterance.lang = 'en-US'; // Idioma configurado para el texto del sitio
-        speechUtterance.rate = 1.0;     // Velocidad normal de habla
-        
-        synth.speak(speechUtterance);
+        if (!chkVoiceReader.checked || !text || !synth) return;
+        synth.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = "en-US";
+        utterance.rate = 1;
+        synth.speak(utterance);
     }
 
     function stopSpeaking() {
-        synth.cancel();
+        if (synth) synth.cancel();
     }
 
-    // Vinculación de lectura automática a las tarjetas (Mouse y Teclado)
-    cards.forEach(card => {
-        const textToRead = card.getAttribute('data-text');
-
-        // Eventos de Mouse
-        card.addEventListener('mouseenter', () => speakText(textToRead));
-        card.addEventListener('mouseleave', () => stopSpeaking());
-
-        // Eventos de Accesibilidad por Teclado (Tecla TAB)
-        card.addEventListener('focus', () => speakText(textToRead));
-        card.addEventListener('blur', () => stopSpeaking());
+    cards.forEach((card) => {
+        const textToRead = card.getAttribute("data-text");
+        card.addEventListener("mouseenter", () => speakText(textToRead));
+        card.addEventListener("mouseleave", stopSpeaking);
+        card.addEventListener("focus", () => speakText(textToRead));
+        card.addEventListener("blur", stopSpeaking);
     });
 
-
-    // ==========================================
-    // PROGRAMACIÓN DE LOS INTERRUPTORES (SWITCHES)
-    // ==========================================
-
-    // Lógica: Alto Contraste
-    chkContrast.addEventListener('change', () => {
-        if (chkContrast.checked) {
-            document.body.classList.add('high-contrast');
-            speakText("High contrast activated");
-        } else {
-            document.body.classList.remove('high-contrast');
-            speakText("High contrast deactivated");
-        }
+    chkContrast.addEventListener("change", () => {
+        document.body.classList.toggle("high-contrast", chkContrast.checked);
+        speakText(chkContrast.checked ? "High contrast activated" : "High contrast deactivated");
     });
 
-    // Lógica: Texto Grande
-    chkTextSize.addEventListener('change', () => {
-        if (chkTextSize.checked) {
-            document.body.classList.add('large-text');
-            speakText("Large text size activated");
-        } else {
-            document.body.classList.remove('large-text');
-            speakText("Text size returned to normal");
-        }
+    chkTextSize.addEventListener("change", () => {
+        document.body.classList.toggle("large-text", chkTextSize.checked);
+        speakText(chkTextSize.checked ? "Large text size activated" : "Text size returned to normal");
     });
 
-    // Monitor de estado del Lector de Voz
-    chkVoiceReader.addEventListener('change', () => {
-        if (!chkVoiceReader.checked) {
-            stopSpeaking();
-        } else {
+    chkVoiceReader.addEventListener("change", () => {
+        if (chkVoiceReader.checked) {
             speakText("Voice reader enabled");
+        } else {
+            stopSpeaking();
         }
     });
 
-    // ==========================================
-    // ENLACE DIRECTO DESDE CLIC EN LAS TARJETAS 
-    // ==========================================
-    const cardTextSize = document.getElementById('cardTextSize');
-    const cardContrast = document.getElementById('cardContrast');
+    const cardTextSize = document.getElementById("cardTextSize");
+    const cardContrast = document.getElementById("cardContrast");
 
     if (cardTextSize) {
-        cardTextSize.addEventListener('click', (e) => {
-            e.stopPropagation();
+        cardTextSize.addEventListener("click", (event) => {
+            event.stopPropagation();
             chkTextSize.checked = !chkTextSize.checked;
-            chkTextSize.dispatchEvent(new Event('change')); // Sincroniza el menú
+            chkTextSize.dispatchEvent(new Event("change"));
         });
     }
 
     if (cardContrast) {
-        cardContrast.addEventListener('click', (e) => {
-            e.stopPropagation();
+        cardContrast.addEventListener("click", (event) => {
+            event.stopPropagation();
             chkContrast.checked = !chkContrast.checked;
-            chkContrast.dispatchEvent(new Event('change')); // Sincroniza el menú
+            chkContrast.dispatchEvent(new Event("change"));
         });
     }
 });
