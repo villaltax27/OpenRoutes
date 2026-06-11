@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Routes - Accessibility Features</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/accesibility.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            <span class="logo-text">Open<span class="routes-blue">Routes</span></span>
+        </div>
+        <nav class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Destinations</a>
+            <a href="#" class="active">Accessibility</a>
+            <a href="#">About us</a>
+            <a href="#">Contact</a>
+        </nav>
+        
+        <div class="accessibility-dropdown">
+            <button class="btn-accessible-mode" id="btnDropdownToggle" aria-expanded="false" aria-haspopup="true">
+                Accessible mode <i class="fa-solid fa-chevron-down" style="margin-left: 5px; font-size: 0.8rem;"></i>
+            </button>
+            <div class="dropdown-menu" id="accessibilityMenu">
+                <label class="menu-item">
+                    <span><i class="fa-solid fa-volume-high"></i> Voice Reader</span>
+                    <input type="checkbox" id="chkVoiceReader" checked>
+                    <span class="slider"></span>
+                </label>
+                <label class="menu-item">
+                    <span><i class="fa-solid fa-circle-half-stroke"></i> High Contrast</span>
+                    <input type="checkbox" id="chkContrast">
+                    <span class="slider"></span>
+                </label>
+                <label class="menu-item">
+                    <span><i class="fa-solid fa-text-height"></i> Large Text</span>
+                    <input type="checkbox" id="chkTextSize">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <h1>Travel for everyone, <br><span class="highlight-green">Without Limits.</span></h1>
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        <h2 class="section-title">Our <span class="highlight-green">Accessibility</span> Features</h2>
+        <div class="red-dot"></div>
+
+        <div class="features-grid">
+            <div class="card speaker-card" tabindex="0" data-text="Audio Guide. Listen to information about destinations, services and directions with our integrated audio guide.">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-volume-high icon-style"></i>
+                </div>
+                <h3>Audio Guide</h3>
+                <p>Listen to information about destinations, services and directions with our integrated audio guide.</p>
+                <a href="#" class="learn-more">Learn more <span class="arrow">&rarr;</span></a>
+            </div>
+
+            <div class="card text-card" id="cardTextSize" tabindex="0" data-text="Text Size. Increase the font size to read descriptions, routes, and travel tips comfortably.">
+                <div class="icon-wrapper">
+                    <span class="text-icon">AA</span>
+                </div>
+                <h3>Text Size</h3>
+                <p>Increase the font size to read descriptions, routes, and travel tips comfortably without straining your eyes.</p>
+                <a href="#" class="learn-more">Learn more <span class="arrow">&rarr;</span></a>
+            </div>
+
+            <div class="card contrast-card" id="cardContrast" tabindex="0" data-text="High Contrast. Switch to a high-contrast visual interface designed to improve visibility.">
+                <div class="icon-wrapper">
+                    <div class="contrast-icon"></div>
+                </div>
+                <h3>High Contrast</h3>
+                <p>Switch to a high-contrast visual interface designed to improve visibility for low vision users.</p>
+                <a href="#" class="learn-more">Learn more <span class="arrow">&rarr;</span></a>
+            </div>
+
+            <div class="card keyboard-card" tabindex="0" data-text="Voice Commands. Navigate through the application and discover El Salvador using simple voice shortcuts.">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-keyboard icon-style"></i>
+                </div>
+                <h3>Voice Commands</h3>
+                <p>Navigate through the application and discover El Salvador using simple voice shortcuts.</p>
+                <a href="#" class="learn-more">Learn more <span class="arrow">&rarr;</span></a>
+            </div>
+
+            <div class="card cc-card" tabindex="0" data-text="Closed Captions. Access full text descriptions and subtitles for all our video and audio guides.">
+                <div class="icon-wrapper">
+                    <span class="cc-icon">OC</span>
+                </div>
+                <h3>Closed Captions</h3>
+                <p>Access full text descriptions and subtitles for all our video and audio guides.</p>
+                <a href="#" class="learn-more">Learn more <span class="arrow">&rarr;</span></a>
+            </div>
+
+            <div class="card screen-reader-card" tabindex="0" data-text="Screen Reader. Fully optimized layout compatible with standard screen readers for seamless exploration.">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-headset icon-style"></i>
+                </div>
+                <h3>Screen Reader</h3>
+                <p>Fully optimized layout compatible with standard screen readers for seamless exploration.</p>
+                <a href="#" class="learn-more">Learn more <span class="arrow">&rarr;</span></a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h2 class="footer-logo">Open<span>Routes</span></h2>
+                <p class="footer-desc">A site web focus on your security, flexibility and fun.</p>
+            </div>
+            
+            <div class="footer-links-col">
+                <h4>Explore El Salvador</h4>
+                <ul>
+                    <li><a href="#">Destiny</a></li>
+                    <li><a href="#">Activities</a></li>
+                    <li><a href="#">Routes</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links-col">
+                <h4>Information</h4>
+                <ul>
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">Terms and conditions</a></li>
+                    <li><a href="#">Policy</a></li>
+                    <li><a href="#">Questions</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li><i class="fa-solid fa-phone"></i> + 1234 - 5678</li>
+                    <li><i class="fa-solid fa-globe"></i> openroutes.sv</li>
+                    <li><span class="email-mock">openroutessv</span></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/accesibility.js"></script>
+</body>
+</html>
