@@ -4,13 +4,13 @@
     const chkVoiceReader = document.getElementById("chkVoiceReader");
     const chkContrast = document.getElementById("chkContrast");
     const chkTextSize = document.getElementById("chkTextSize");
-    const readableItems = document.querySelectorAll("[data-read]");
     const filterButtons = document.querySelectorAll(".filter-btn");
     const destinationCards = document.querySelectorAll(".destination-card");
+    const readableItems = document.querySelectorAll("[data-read]");
     const synth = window.speechSynthesis;
 
     function speakText(text) {
-        if (!chkVoiceReader.checked || !text || !synth) return;
+        if (!chkVoiceReader || !chkVoiceReader.checked || !text || !synth) return;
         synth.cancel();
         const utterance = new SpeechSynthesisUtterance(text);
         utterance.lang = "en-US";
@@ -22,36 +22,41 @@
         if (synth) synth.cancel();
     }
 
-    btnDropdownToggle.addEventListener("click", (event) => {
-        event.stopPropagation();
-        const isOpen = accessibilityMenu.classList.toggle("show");
-        btnDropdownToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-    });
+    if (btnDropdownToggle && accessibilityMenu) {
+        btnDropdownToggle.addEventListener("click", (event) => {
+            event.stopPropagation();
+            const isOpen = accessibilityMenu.classList.toggle("show");
+            btnDropdownToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
 
-    document.addEventListener("click", (event) => {
-        if (!accessibilityMenu.contains(event.target) && !btnDropdownToggle.contains(event.target)) {
-            accessibilityMenu.classList.remove("show");
-            btnDropdownToggle.setAttribute("aria-expanded", "false");
-        }
-    });
+        document.addEventListener("click", (event) => {
+            if (!accessibilityMenu.contains(event.target) && !btnDropdownToggle.contains(event.target)) {
+                accessibilityMenu.classList.remove("show");
+                btnDropdownToggle.setAttribute("aria-expanded", "false");
+            }
+        });
+    }
 
-    chkContrast.addEventListener("change", () => {
-        document.body.classList.toggle("high-contrast", chkContrast.checked);
-        speakText(chkContrast.checked ? "High contrast activated" : "High contrast deactivated");
-    });
+    if (chkContrast) {
+        chkContrast.addEventListener("change", () => {
+            document.body.classList.toggle("high-contrast", chkContrast.checked);
+            speakText(chkContrast.checked ? "High contrast activated" : "High contrast deactivated");
+        });
+    }
 
-    chkTextSize.addEventListener("change", () => {
-        document.body.classList.toggle("large-text", chkTextSize.checked);
-        speakText(chkTextSize.checked ? "Bigger text activated" : "Text size returned to normal");
-    });
+    if (chkTextSize) {
+        chkTextSize.addEventListener("change", () => {
+            document.body.classList.toggle("large-text", chkTextSize.checked);
+            speakText(chkTextSize.checked ? "Bigger text activated" : "Text size returned to normal");
+        });
+    }
 
-    chkVoiceReader.addEventListener("change", () => {
-        if (chkVoiceReader.checked) {
-            speakText("Audio guide enabled");
-        } else {
-            stopSpeaking();
-        }
-    });
+    if (chkVoiceReader) {
+        chkVoiceReader.addEventListener("change", () => {
+            if (chkVoiceReader.checked) speakText("Audio guide enabled");
+            else stopSpeaking();
+        });
+    }
 
     readableItems.forEach((item) => {
         item.setAttribute("tabindex", "0");
@@ -65,7 +70,6 @@
     filterButtons.forEach((button) => {
         button.addEventListener("click", () => {
             const filter = button.dataset.filter;
-
             filterButtons.forEach((item) => item.classList.remove("active"));
             button.classList.add("active");
 
