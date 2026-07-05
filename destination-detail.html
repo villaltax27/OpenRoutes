@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open Routes - Destination Detail</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="css/destination-detail.css">
+</head>
+<body>
+<header class="navbar">
+<a class="logo" href="index.html"><img src="img/logo-openroutes.png" alt="Open Routes"></a>
+<nav class="nav-links">
+<a href="index.html">Home</a><a href="destinations.html" class="active">Destinations</a><a href="accesibility.html">Accessibility</a><a href="about.html">About Us</a><a href="#contact">Contact</a>
+</nav>
+<div class="accessibility-dropdown">
+<button class="btn-accessible-mode" id="btnDropdownToggle"><i class="fa-solid fa-universal-access"></i> Accessible Mode <i class="fa-solid fa-chevron-down chevron"></i></button>
+<div class="dropdown-menu" id="accessibilityMenu">
+<label class="menu-item"><span><i class="fa-solid fa-volume-high"></i> Audio Guide</span><input type="checkbox" id="chkVoiceReader"><span class="slider"></span></label>
+<label class="menu-item"><span><i class="fa-solid fa-circle-half-stroke"></i> High Contrast</span><input type="checkbox" id="chkContrast"><span class="slider"></span></label>
+<label class="menu-item"><span><i class="fa-solid fa-text-height"></i> Bigger Text</span><input type="checkbox" id="chkTextSize"><span class="slider"></span></label>
+</div>
+</div>
+</header>
+<main>
+<section class="detail-hero">
+<div class="breadcrumb"><a href="index.html">Home</a><i class="fa-solid fa-chevron-right"></i><a href="destinations.html">Destinations</a><i class="fa-solid fa-chevron-right"></i><span id="crumb">Lake Coatepeque</span></div>
+<article class="hero-panel" data-read="Destination information">
+<h1 id="placeName">Lake Coatepeque</h1>
+<p class="location"><i class="fa-solid fa-location-dot"></i> <span id="placeLocation">Santa Ana, El Salvador</span></p>
+<p id="summary">Enjoy the breathtaking beauty of Lake Coatepeque, one of the most stunning lakes in El Salvador. Perfect for relaxation, nature and accessible experiences for everyone.</p>
+<div class="panel-actions"><button class="btn btn-green" id="favoriteBtn"><i class="fa-solid fa-heart"></i> Add to favorites</button><button class="btn btn-light" id="shareBtn"><i class="fa-solid fa-share-nodes"></i> Share</button></div>
+</article>
+</section>
+<section class="detail-layout">
+<div class="main-content">
+<div class="tabs">
+<button class="tab-btn active" data-tab="overview"><i class="fa-regular fa-rectangle-list"></i> Overview</button>
+<button class="tab-btn" data-tab="access"><i class="fa-solid fa-wheelchair"></i> Accessibility</button>
+<button class="tab-btn" data-tab="todo"><i class="fa-solid fa-camera"></i> Things to Do</button>
+<button class="tab-btn" data-tab="location"><i class="fa-solid fa-location-dot"></i> Location</button>
+<button class="tab-btn" data-tab="tips"><i class="fa-solid fa-circle-info"></i> Tips</button>
+</div>
+<section class="tab-panel active" id="overview"><p id="overviewText"></p><div class="highlights" id="highlights"></div><div class="gallery" id="gallery"></div></section>
+<section class="tab-panel" id="access"><h2>Accessibility Details</h2><p id="accessText"></p></section>
+<section class="tab-panel" id="todo"><h2>Things to Do</h2><div class="list" id="todoList"></div></section>
+<section class="tab-panel" id="location"><h2>Location</h2><p id="locationText"></p><div class="map-card"><i class="fa-solid fa-map-location-dot"></i><span id="mapLabel">Santa Ana, El Salvador</span></div></section>
+<section class="tab-panel" id="tips"><h2>Travel Tips</h2><div class="list" id="tipsList"></div></section>
+</div>
+<aside class="side-content">
+<section class="info-card"><div class="card-title"><span><i class="fa-solid fa-universal-access"></i></span><h2>Accessibility Information</h2></div><div class="access-list" id="accessList"></div></section>
+<section class="support-card"><h2><i class="fa-solid fa-headset"></i> Need Help?</h2><p>Contact us for more information about accessibility or to plan your visit.</p><a href="#contact" class="support-btn"><i class="fa-regular fa-envelope"></i> Contact Support</a></section>
+</aside>
+</section>
+</main>
+<footer class="footer" id="contact"><div class="footer-container"><div class="footer-brand"><img src="img/logo-openroutes-white.png" alt="Open Routes" class="footer-logo-img"><p>Travel without limits, explore with freedom.</p></div><div class="footer-links"><h3>Quick Links</h3><ul><li><a href="index.html">Home</a></li><li><a href="destinations.html">Destinations</a></li><li><a href="accesibility.html">Accessibility</a></li><li><a href="about.html">About Us</a></li><li><a href="#contact">Contact</a></li></ul></div><div class="footer-social"><h3>Follow Us</h3><div class="social-icons"><a href="#"><i class="fa-brands fa-facebook-f"></i></a><a href="#"><i class="fa-brands fa-instagram"></i></a><a href="#"><i class="fa-brands fa-youtube"></i></a></div></div><div class="footer-contact"><h3>Contact Us</h3><p><i class="fa-solid fa-envelope"></i> info@openroutes.sv</p><p><i class="fa-solid fa-phone"></i> +503 1234 5678</p></div><div class="newsletter"><h3>Newsletter</h3><p>Subscribe to receive travel tips and accessible updates.</p><form><input type="email" placeholder="Your email"><button type="submit">Subscribe</button></form></div></div><p class="copy">© 2024 Open Routes. All rights reserved.</p></footer>
+<script src="js/destination-detail.js"></script>
+</body>
+</html>
