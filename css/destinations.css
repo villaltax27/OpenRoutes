@@ -779,3 +779,40 @@ body.high-contrast .filter-btn.active {
         flex-direction: column;
     }
 }
+/* Shared compact navbar override */
+.navbar {
+    min-height: 64px !important;
+    padding: 6px 9% !important;
+    gap: 24px !important;
+}
+.logo img {
+    height: 42px !important;
+    width: auto !important;
+    object-fit: contain;
+}
+.nav-links {
+    gap: 30px !important;
+}
+.nav-links a {
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+    padding: 8px 0 !important;
+    border-bottom-width: 2px !important;
+}
+.btn-accessible-mode {
+    padding: 10px 18px !important;
+    font-size: 0.9rem !important;
+}
+@media (max-width: 1180px) {
+    .navbar {
+        padding: 8px 5% !important;
+    }
+    .nav-links {
+        gap: 20px !important;
+    }
+}
+@media (max-width: 760px) {
+    .logo img {
+        height: 38px !important;
+    }
+}

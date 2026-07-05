@@ -60,3 +60,35 @@
         item.addEventListener("blur", stopSpeaking);
     });
 });
+// script.js - Intersection Observer para animaciones al hacer scroll
+document.addEventListener('DOMContentLoaded', () => {
+    // Animación para las columnas principales (fade-up)
+    const fadeElements = document.querySelectorAll('.fade-up');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+    
+    fadeElements.forEach(el => observer.observe(el));
+    
+    // Animación para cada feature-item, trust-badge y start-engine
+    const itemsToAnimate = document.querySelectorAll('.feature-item, .trust-badge, .start-engine');
+    
+    const itemObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-item');
+                itemObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+    
+    itemsToAnimate.forEach(el => itemObserver.observe(el));
+});
+
+
