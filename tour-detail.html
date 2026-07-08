@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tour Package - Open Routes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/tour-detail.css">
+</head>
+<body>
+    <header class="navbar">
+        <a class="logo" href="index.html" aria-label="Open Routes Home">
+            <img src="img/logo-openroutes.png" alt="Open Routes">
+        </a>
+        <nav class="nav-links" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="destinations.html">Destinations</a>
+            <a href="mapa.html">Search</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <div class="accessibility-dropdown">
+            <button class="btn-accessible-mode" id="btnDropdownToggle" aria-expanded="false" aria-haspopup="true">
+                <i class="fa-solid fa-universal-access"></i>
+                Accessible Mode
+                <i class="fa-solid fa-chevron-down chevron"></i>
+            </button>
+            <div class="dropdown-menu" id="accessibilityMenu">
+                <label class="menu-item"><span><i class="fa-solid fa-volume-high"></i> Audio Guide</span><input type="checkbox" id="chkVoiceReader"><span class="slider"></span></label>
+                <label class="menu-item"><span><i class="fa-solid fa-circle-half-stroke"></i> High Contrast</span><input type="checkbox" id="chkContrast"><span class="slider"></span></label>
+                <label class="menu-item"><span><i class="fa-solid fa-text-height"></i> Bigger Text</span><input type="checkbox" id="chkTextSize"><span class="slider"></span></label>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="tour-hero" id="tourHero">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <i class="fa-solid fa-chevron-right"></i>
+                <a href="index.html#popularTours">Popular Tours</a>
+                <i class="fa-solid fa-chevron-right"></i>
+                <span id="crumb">Tour Package</span>
+            </div>
+
+            <div class="hero-panel">
+                <span class="tour-badge" id="tourBadge">Featured Tour</span>
+                <h1 id="tourName">Loading...</h1>
+                <p id="tourDescription">Loading package information...</p>
+                <div class="hero-actions">
+                    <a class="btn btn-green" href="#bookingBox">Book Trip <i class="fa-solid fa-arrow-right"></i></a>
+                    <a class="btn btn-light" href="index.html#popularTours">Back to tours</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="tour-layout">
+            <div class="tour-main">
+                <section class="info-section">
+                    <h2><i class="fa-solid fa-circle-info"></i> Package Overview</h2>
+                    <p id="tourOverview"></p>
+                    <div class="stats-grid">
+                        <div class="stat-item"><i class="fa-regular fa-clock"></i><span>Duration</span><strong id="tourDuration"></strong></div>
+                        <div class="stat-item"><i class="fa-solid fa-users"></i><span>Group Size</span><strong id="tourGroup"></strong></div>
+                        <div class="stat-item"><i class="fa-solid fa-location-dot"></i><span>Destination</span><strong id="tourLocation"></strong></div>
+                    </div>
+                </section>
+
+                <section class="info-section">
+                    <h2><i class="fa-solid fa-check-circle"></i> What's Included</h2>
+                    <div class="included-list" id="tourIncludes"></div>
+                </section>
+
+                <section class="info-section">
+                    <h2><i class="fa-solid fa-route"></i> Trip Plan</h2>
+                    <div class="itinerary-list" id="tourPlan"></div>
+                </section>
+            </div>
+
+            <aside class="booking-card" id="bookingBox">
+                <span>Starting From</span>
+                <h2 id="tourPrice"></h2>
+                <p>Reserve your spot and our team will contact you to confirm details.</p>
+                <form class="booking-form">
+                    <input type="text" placeholder="Full name" aria-label="Full name">
+                    <input type="email" placeholder="Email" aria-label="Email">
+                    <input type="date" aria-label="Trip date">
+                    <button type="submit">Book Trip</button>
+                </form>
+            </aside>
+        </section>
+    </main>
+
+    <footer class="footer" id="contact">
+        <div class="footer-container">
+            <div class="footer-brand"><img src="img/logo-openroutes-white.png" class="footer-logo-img" alt="Open Routes"><p>Travel without limits, explore with freedom.</p></div>
+            <div class="footer-links"><h3>Quick Links</h3><ul><li><a href="index.html">Home</a></li><li><a href="destinations.html">Destinations</a></li><li><a href="mapa.html">Search</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+            <div class="footer-social"><h3>Follow Us</h3><div class="social-icons"><a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a><a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a></div></div>
+            <div class="footer-contact"><h3>Contact Us</h3><p><i class="fa-solid fa-envelope"></i> info@openroutes.sv</p><p><i class="fa-solid fa-phone"></i> +503 1234 5678</p></div>
+            <div class="newsletter"><h3>Newsletter</h3><p>Subscribe to receive travel tips and accessible updates.</p><form><input type="email" placeholder="Your email" aria-label="Your email"><button type="submit">Subscribe</button></form></div>
+        </div>
+        <p class="copy">&copy; 2026 Open Routes. All rights reserved.</p>
+    </footer>
+
+    <script src="js/tour-detail.js"></script>
+</body>
+</html>
