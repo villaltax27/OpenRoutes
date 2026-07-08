@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steven Amaya - Open Routes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style-Steven.css">
+</head>
+<body>
+    <header class="navbar">
+        <a class="logo" href="index.html" aria-label="Open Routes Home"><img src="img/logo-openroutes.png" alt="Open Routes"></a>
+        <nav class="nav-links" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="destinations.html">Destinations</a>
+            <a href="mapa.html">Search</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <div class="accessibility-dropdown">
+            <button class="btn-accessible-mode" id="btnDropdownToggle" aria-expanded="false" aria-haspopup="true"><i class="fa-solid fa-universal-access"></i> Accessible Mode <i class="fa-solid fa-chevron-down chevron"></i></button>
+            <div class="dropdown-menu" id="accessibilityMenu">
+                <label class="menu-item"><span><i class="fa-solid fa-volume-high"></i> Audio Guide</span><input type="checkbox" id="chkVoiceReader"><span class="slider"></span></label>
+                <label class="menu-item"><span><i class="fa-solid fa-circle-half-stroke"></i> High Contrast</span><input type="checkbox" id="chkContrast"><span class="slider"></span></label>
+                <label class="menu-item"><span><i class="fa-solid fa-text-height"></i> Bigger Text</span><input type="checkbox" id="chkTextSize"><span class="slider"></span></label>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="profile-hero">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a><i class="fa-solid fa-chevron-right"></i>
+                <a href="destinations.html">Destinations</a><i class="fa-solid fa-chevron-right"></i>
+                <a href="interpreters.html">Guides and Interpreters</a><i class="fa-solid fa-chevron-right"></i>
+                <span>Steven Amaya</span>
+            </div>
+
+            <div class="profile-shell">
+                <article class="profile-card">
+                    <div class="profile-cover"></div>
+                    <img src="https://i.ibb.co/6cyD53rd/Gemini-Generated-Image-vgo8xuvgo8xuvgo8.png" alt="Steven Amaya" class="profile-img">
+                    <div class="profile-info">
+                        <span class="badge">Spanish / English</span>
+                        <h1>Steven Amaya</h1>
+                        <p>Professional bilingual interpreter and cultural guide for Open Routes travelers.</p>
+                        <div class="actions">
+                            <button class="fav-btn" type="button"><i class="fa-regular fa-heart"></i> Favorite</button>
+                            <button id="viewBtn" class="view-btn" type="button">Details</button>
+                            <a class="back-btn" href="interpreters.html">Back</a>
+                        </div>
+                    </div>
+                </article>
+
+                <section id="detailPanel" class="detail-panel">
+                    <div class="panel-header">
+                        <div class="header-left">
+                            <img src="https://i.ibb.co/6cyD53rd/Gemini-Generated-Image-vgo8xuvgo8xuvgo8.png" alt="Steven Amaya" class="avatar-mini">
+                            <div><h2>Full Profile</h2><p class="subtitle">Professional Bilingual Interpreter and Local Expert</p></div>
+                        </div>
+                        <button id="closeBtn" class="close-btn" type="button">Hide Details</button>
+                    </div>
+                    <div class="info-grid">
+                        <div class="grid-col"><h3>Personal Details</h3><p><strong>Full Name:</strong> Steven Xavier Amaya</p><p><strong>Age:</strong> 24 years old</p><p><strong>Location:</strong> San Salvador region</p></div>
+                        <div class="grid-col"><h3>Languages</h3><p><strong>Spanish:</strong> Native</p><p><strong>English:</strong> Fluent / native-level proficiency</p></div>
+                    </div>
+                    <div class="info-section"><h3>Core Role and Skills</h3><p>Professional bilingual interpreter and cultural guide with support for simultaneous and consecutive interpretation, technical translation and local visitor orientation.</p></div>
+                    <div class="info-section"><h3>Regional Service Availability</h3><p>Available for on-site services around Lake Ilopango, boat tours and meetings where international visitors need direct communication support.</p></div>
+                    <div class="info-section"><h3>Specialized Local Expertise</h3><p>Cultural assistant for Ruta de las Flores, including local crafts, coffee history, food experiences and route explanations for travelers.</p></div>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" id="contact">
+        <div class="footer-container">
+            <div class="footer-brand"><img src="img/logo-openroutes-white.png" class="footer-logo-img" alt="Open Routes"><p>Travel without limits, explore with freedom.</p></div>
+            <div class="footer-links"><h3>Quick Links</h3><ul><li><a href="index.html">Home</a></li><li><a href="destinations.html">Destinations</a></li><li><a href="mapa.html">Search</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+            <div class="footer-social"><h3>Follow Us</h3><div class="social-icons"><a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a><a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a></div></div>
+            <div class="footer-contact"><h3>Contact Us</h3><p><i class="fa-solid fa-envelope"></i> info@openroutes.sv</p><p><i class="fa-solid fa-phone"></i> +503 1234 5678</p></div>
+            <div class="newsletter"><h3>Newsletter</h3><p>Subscribe to receive travel tips and accessible updates.</p><form><input type="email" placeholder="Your email" aria-label="Your email"><button type="submit">Subscribe</button></form></div>
+        </div>
+        <p class="copy">&copy; 2026 Open Routes. All rights reserved.</p>
+    </footer>
+    <script src="js/script-Steven.js"></script>
+</body>
+</html>
+
