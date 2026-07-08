@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guides and Interpreters - Open Routes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/interpreters.css">
+</head>
+<body>
+    <header class="navbar">
+        <a class="logo" href="index.html" aria-label="Open Routes Home">
+            <img src="img/logo-openroutes.png" alt="Open Routes">
+        </a>
+        <nav class="nav-links" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="destinations.html">Destinations</a>
+            <a href="mapa.html">Search</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <div class="accessibility-dropdown">
+            <button class="btn-accessible-mode" id="btnDropdownToggle" aria-expanded="false" aria-haspopup="true">
+                <i class="fa-solid fa-universal-access"></i>
+                Accessible Mode
+                <i class="fa-solid fa-chevron-down chevron"></i>
+            </button>
+            <div class="dropdown-menu" id="accessibilityMenu">
+                <label class="menu-item"><span><i class="fa-solid fa-volume-high"></i> Audio Guide</span><input type="checkbox" id="chkVoiceReader"><span class="slider"></span></label>
+                <label class="menu-item"><span><i class="fa-solid fa-circle-half-stroke"></i> High Contrast</span><input type="checkbox" id="chkContrast"><span class="slider"></span></label>
+                <label class="menu-item"><span><i class="fa-solid fa-text-height"></i> Bigger Text</span><input type="checkbox" id="chkTextSize"><span class="slider"></span></label>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="interpreters-hero">
+            <div class="hero-content">
+                <span class="eyebrow">Guides and Interpreters</span>
+                <h1>Travel with local support</h1>
+                <p>Find bilingual interpreters and cultural guides who can help visitors enjoy Open Routes destinations with more confidence.</p>
+                <a class="hero-button" href="#interpretersList">Explore interpreters <i class="fa-solid fa-arrow-down"></i></a>
+            </div>
+            <div class="hero-note">
+                <i class="fa-solid fa-language"></i>
+                <div><strong>Language support</strong><span>Spanish, English and French options available.</span></div>
+            </div>
+        </section>
+
+        <section class="interpreter-tools" aria-label="Interpreter search tools">
+            <div>
+                <h2>Available interpreters</h2>
+                <p>Search by name or filter by language.</p>
+            </div>
+            <div class="tool-controls">
+                <label class="search-box" for="searchInput"><i class="fa-solid fa-magnifying-glass"></i><input id="searchInput" type="search" placeholder="Search interpreter"></label>
+                <select id="filterLang" aria-label="Filter by language">
+                    <option value="all">All languages</option>
+                    <option value="spanish">Spanish</option>
+                    <option value="english">English</option>
+                    <option value="french">French</option>
+                </select>
+            </div>
+        </section>
+
+        <section class="interpreters-section" id="interpretersList">
+            <div class="interpreter-grid">
+                <article class="interpreter-card" data-lang="spanish english" data-name="Steven Amaya">
+                    <img src="https://i.ibb.co/6cyD53rd/Gemini-Generated-Image-vgo8xuvgo8xuvgo8.png" alt="Steven Amaya">
+                    <div class="card-body">
+                        <span class="badge">Spanish / English</span>
+                        <h3>Steven Amaya</h3>
+                        <p>Bilingual interpreter and cultural guide for San Salvador, Lake Ilopango and Ruta de las Flores.</p>
+                        <div class="card-actions"><button class="fav" type="button" aria-label="Add Steven Amaya to favorites"><i class="fa-regular fa-heart"></i></button><a class="view" href="Steven_information.html">View profile</a></div>
+                    </div>
+                </article>
+                <article class="interpreter-card" data-lang="english french" data-name="Hazel Pena">
+                    <img src="https://i.ibb.co/d0fM4Xbz/Gemini-Generated-Image-gn64wtgn64wtgn64.png" alt="Hazel Pena">
+                    <div class="card-body"><span class="badge">English / French</span><h3>Hazel Pena</h3><p>Interpreter focused on visitor orientation, cultural support and friendly communication during tours.</p><div class="card-actions"><button class="fav" type="button"><i class="fa-regular fa-heart"></i></button><button class="view" type="button" data-modal="Hazel Pena">View</button></div></div>
+                </article>
+                <article class="interpreter-card" data-lang="spanish english" data-name="Krisia Torres">
+                    <img src="https://i.ibb.co/hRW9N2VQ/Gemini-Generated-Image-bvi2qtbvi2qtbvi2.png" alt="Krisia Torres">
+                    <div class="card-body"><span class="badge">Spanish / English</span><h3>Krisia Torres</h3><p>Tour support for accessible visits, restaurant stops and local experience coordination.</p><div class="card-actions"><button class="fav" type="button"><i class="fa-regular fa-heart"></i></button><button class="view" type="button" data-modal="Krisia Torres">View</button></div></div>
+                </article>
+                <article class="interpreter-card" data-lang="english spanish" data-name="Xavier Villalta">
+                    <img src="https://i.ibb.co/KctKF9Wb/Gemini-Generated-Image-ly4wl7ly4wl7ly4w.png" alt="Xavier Villalta">
+                    <div class="card-body"><span class="badge">English / Spanish</span><h3>Xavier Villalta</h3><p>Guide assistance for outdoor destinations, group visits and practical translation needs.</p><div class="card-actions"><button class="fav" type="button"><i class="fa-regular fa-heart"></i></button><button class="view" type="button" data-modal="Xavier Villalta">View</button></div></div>
+                </article>
+                <article class="interpreter-card" data-lang="spanish english" data-name="Gustavo Fuentes">
+                    <img src="https://i.ibb.co/N6Fm11n1/27cfccdc-9ab8-43b2-82fe-5260f565ecdf-jpg.jpg" alt="Gustavo Fuentes">
+                    <div class="card-body"><span class="badge">Spanish / English</span><h3>Gustavo Fuentes</h3><p>Local interpreter for destination visits, transport coordination and general visitor support.</p><div class="card-actions"><button class="fav" type="button"><i class="fa-regular fa-heart"></i></button><button class="view" type="button" data-modal="Gustavo Fuentes">View</button></div></div>
+                </article>
+                <article class="interpreter-card" data-lang="english spanish" data-name="Abner Quintanilla">
+                    <img src="https://i.ibb.co/9FvDGGm/Gemini-Generated-Image-bwbo4pbwbo4pbwbo.png" alt="Abner Quintanilla">
+                    <div class="card-body"><span class="badge">English / Spanish</span><h3>Abner Quintanilla</h3><p>Bilingual support for tour groups, quick questions and accessible travel planning.</p><div class="card-actions"><button class="fav" type="button"><i class="fa-regular fa-heart"></i></button><button class="view" type="button" data-modal="Abner Quintanilla">View</button></div></div>
+                </article>
+                <article class="interpreter-card" data-lang="spanish english" data-name="Rachel Arias">
+                    <img src="https://i.ibb.co/BVWbtMg2/Gemini-Generated-Image-oe7ascoe7ascoe7a.png" alt="Rachel Arias">
+                    <div class="card-body"><span class="badge">Spanish / English</span><h3>Rachel Arias</h3><p>Friendly interpretation for families, cultural activities and local destination details.</p><div class="card-actions"><button class="fav" type="button"><i class="fa-regular fa-heart"></i></button><button class="view" type="button" data-modal="Rachel Arias">View</button></div></div>
+                </article>
+                <article class="interpreter-card" data-lang="english spanish" data-name="Angela Aguilar">
+                    <img src="https://i.ibb.co/xSV6Gfn1/82614354-02aa-4d54-9b35-aa36bef49657.png" alt="Angela Aguilar">
+                    <div class="card-body"><span class="badge">English / Spanish</span><h3>Angela Aguilar</h3><p>Interpreter for city stops, visitor guidance and inclusive tourism communication.</p><div class="card-actions"><button class="fav" type="button"><i class="fa-regular fa-heart"></i></button><button class="view" type="button" data-modal="Angela Aguilar">View</button></div></div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal" id="infoModal" aria-hidden="true">
+        <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+            <button class="close-modal" type="button" id="closeModal" aria-label="Close modal"><i class="fa-solid fa-xmark"></i></button>
+            <i class="fa-solid fa-language modal-icon"></i>
+            <h2 id="modalTitle">Interpreter profile</h2>
+            <p id="modalText">More details will be available soon.</p>
+        </div>
+    </div>
+
+    <footer class="footer" id="contact">
+        <div class="footer-container">
+            <div class="footer-brand"><img src="img/logo-openroutes-white.png" class="footer-logo-img" alt="Open Routes"><p>Travel without limits, explore with freedom.</p></div>
+            <div class="footer-links"><h3>Quick Links</h3><ul><li><a href="index.html">Home</a></li><li><a href="destinations.html">Destinations</a></li><li><a href="mapa.html">Search</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+            <div class="footer-social"><h3>Follow Us</h3><div class="social-icons"><a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a><a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a></div></div>
+            <div class="footer-contact"><h3>Contact Us</h3><p><i class="fa-solid fa-envelope"></i> info@openroutes.sv</p><p><i class="fa-solid fa-phone"></i> +503 1234 5678</p></div>
+            <div class="newsletter"><h3>Newsletter</h3><p>Subscribe to receive travel tips and accessible updates.</p><form><input type="email" placeholder="Your email" aria-label="Your email"><button type="submit">Subscribe</button></form></div>
+        </div>
+        <p class="copy">&copy; 2026 Open Routes. All rights reserved.</p>
+    </footer>
+    <script src="js/interpreters.js"></script>
+</body>
+</html>
+
