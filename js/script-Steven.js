@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+﻿document.addEventListener('DOMContentLoaded', () => {
     const viewBtn = document.getElementById('viewBtn');
     const closeBtn = document.getElementById('closeBtn');
     const detailPanel = document.getElementById('detailPanel');
@@ -43,4 +43,25 @@ document.addEventListener('DOMContentLoaded', () => {
         window.speechSynthesis.cancel();
         window.speechSynthesis.speak(utterance);
     });
+});
+
+function saveStevenFavorite() {
+    const key = "openRoutesFavorites";
+    const item = {
+        id: "interpreter-steven-amaya",
+        type: "interpreter",
+        title: "Steven Amaya",
+        description: "Professional bilingual interpreter and cultural guide for Open Routes travelers.",
+        image: document.querySelector(".profile-img")?.src || "https://i.ibb.co/6cyD53rd/Gemini-Generated-Image-vgo8xuvgo8xuvgo8.png",
+        link: "Steven_information.html"
+    };
+    const favorites = JSON.parse(localStorage.getItem(key) || "[]");
+    const filtered = favorites.filter((favorite) => favorite.id !== item.id);
+    filtered.unshift(item);
+    localStorage.setItem(key, JSON.stringify(filtered));
+}
+
+document.querySelector(".fav-btn")?.addEventListener("click", () => {
+    saveStevenFavorite();
+    window.location.href = "favorites.html";
 });
