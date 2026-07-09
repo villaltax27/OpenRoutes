@@ -1,4 +1,4 @@
-const params = new URLSearchParams(window.location.search);
+﻿const params = new URLSearchParams(window.location.search);
 const place = params.get("place") || "coatepeque";
 
 const destinations = {
@@ -128,4 +128,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
   chkContrast?.addEventListener("change", () => document.body.classList.toggle("high-contrast", chkContrast.checked));
   chkTextSize?.addEventListener("change", () => document.body.classList.toggle("large-text", chkTextSize.checked));
+});
+
+const FAVORITES_KEY = "openRoutesFavorites";
+function saveFavoriteItem(item) {
+  const favorites = JSON.parse(localStorage.getItem(FAVORITES_KEY) || "[]");
+  const filtered = favorites.filter((favorite) => favorite.id !== item.id);
+  filtered.unshift(item);
+  localStorage.setItem(FAVORITES_KEY, JSON.stringify(filtered));
+}
+
+document.getElementById("addDestinationFavorite")?.addEventListener("click", () => {
+  if (!data) return;
+  saveFavoriteItem({
+    id: `destination-${place}`,
+    type: "destination",
+    title: data.name,
+    subtitle: data.location,
+    description: data.summary,
+    image: document.querySelector(".gallery img")?.src || "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
+    link: `destination-detail.html?place=${place}`
+  });
+  window.location.href = "favorites.html";
 });

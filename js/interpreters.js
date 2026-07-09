@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+﻿document.addEventListener('DOMContentLoaded', () => {
     const toggle = document.getElementById('btnDropdownToggle');
     const menu = document.getElementById('accessibilityMenu');
     const voice = document.getElementById('chkVoiceReader');
@@ -78,5 +78,25 @@ document.addEventListener('DOMContentLoaded', () => {
     closeModal?.addEventListener('click', hideModal);
     modal?.addEventListener('click', (event) => {
         if (event.target === modal) hideModal();
+    });
+});
+
+function saveInterpreterFavorite(card) {
+    const key = "openRoutesFavorites";
+    const name = card?.dataset.name || card?.querySelector("h3")?.textContent?.trim() || "Interpreter";
+    const image = card?.querySelector("img")?.src || "https://images.unsplash.com/photo-1529156069898-49953e39b3ac";
+    const description = card?.querySelector("p")?.textContent?.trim() || "Saved interpreter from Open Routes.";
+    const profileLink = card?.querySelector("a.view")?.getAttribute("href") || "interpreters.html";
+    const item = { id: `interpreter-${name.toLowerCase().replace(/\s+/g, "-")}`, type: "interpreter", title: name, description, image, link: profileLink };
+    const favorites = JSON.parse(localStorage.getItem(key) || "[]");
+    const filtered = favorites.filter((favorite) => favorite.id !== item.id);
+    filtered.unshift(item);
+    localStorage.setItem(key, JSON.stringify(filtered));
+}
+
+document.querySelectorAll(".interpreter-card .fav").forEach((button) => {
+    button.addEventListener("click", () => {
+        saveInterpreterFavorite(button.closest(".interpreter-card"));
+        window.location.href = "favorites.html";
     });
 });

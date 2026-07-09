@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Favorites - Open Routes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/favorites.css">
+</head>
+<body>
+    <header class="navbar">
+        <a class="logo" href="index.html" aria-label="Open Routes Home">
+            <img src="img/logo-openroutes.png" alt="Open Routes">
+        </a>
+        <nav class="nav-links" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="destinations.html">Destinations</a>
+            <a href="mapa.html">Search</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <div class="accessibility-dropdown">
+            <button class="btn-accessible-mode" id="btnDropdownToggle" aria-expanded="false" aria-haspopup="true">
+                <i class="fa-solid fa-universal-access"></i>
+                Accessible Mode
+                <i class="fa-solid fa-chevron-down chevron"></i>
+            </button>
+            <div class="dropdown-menu" id="accessibilityMenu">
+                <label class="menu-item"><span><i class="fa-solid fa-volume-high"></i> Audio Guide</span><input type="checkbox" id="chkVoiceReader"><span class="slider"></span></label>
+                <label class="menu-item"><span><i class="fa-solid fa-circle-half-stroke"></i> High Contrast</span><input type="checkbox" id="chkContrast"><span class="slider"></span></label>
+                <label class="menu-item"><span><i class="fa-solid fa-text-height"></i> Bigger Text</span><input type="checkbox" id="chkTextSize"><span class="slider"></span></label>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="favorites-hero">
+            <div class="hero-content">
+                <span class="eyebrow">Saved Places and Guides</span>
+                <h1>My Favorites</h1>
+                <p>Keep your favorite destinations, guides and interpreters in one place while planning your trip.</p>
+            </div>
+            <div class="hero-note">
+                <i class="fa-solid fa-heart"></i>
+                <div><strong id="favoriteCount">0 saved</strong><span>Items saved from Open Routes.</span></div>
+            </div>
+        </section>
+
+        <section class="favorites-toolbar">
+            <div>
+                <h2>Saved items</h2>
+                <p>Review, open or remove anything you saved.</p>
+            </div>
+            <div class="filter-tabs" aria-label="Favorite filters">
+                <button class="active" type="button" data-filter="all">All</button>
+                <button type="button" data-filter="destination">Destinations</button>
+                <button type="button" data-filter="interpreter">Guides</button>
+            </div>
+        </section>
+
+        <section class="favorites-section">
+            <div class="favorites-grid" id="favoritesGrid"></div>
+            <div class="empty-state" id="emptyState">
+                <i class="fa-regular fa-heart"></i>
+                <h2>No favorites yet</h2>
+                <p>Save destinations or interpreters to build your travel list.</p>
+                <div class="empty-actions">
+                    <a href="destinations.html">Explore destinations</a>
+                    <a href="interpreters.html">Find guides</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" id="contact">
+        <div class="footer-container">
+            <div class="footer-brand"><img src="img/logo-openroutes-white.png" class="footer-logo-img" alt="Open Routes"><p>Travel without limits, explore with freedom.</p></div>
+            <div class="footer-links"><h3>Quick Links</h3><ul><li><a href="index.html">Home</a></li><li><a href="destinations.html">Destinations</a></li><li><a href="mapa.html">Search</a></li><li><a href="favorites.html">Favorites</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+            <div class="footer-social"><h3>Follow Us</h3><div class="social-icons"><a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a><a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a></div></div>
+            <div class="footer-contact"><h3>Contact Us</h3><p><i class="fa-solid fa-envelope"></i> info@openroutes.sv</p><p><i class="fa-solid fa-phone"></i> +503 1234 5678</p></div>
+            <div class="newsletter"><h3>Newsletter</h3><p>Subscribe to receive travel tips and accessible updates.</p><form><input type="email" placeholder="Your email" aria-label="Your email"><button type="submit">Subscribe</button></form></div>
+        </div>
+        <p class="copy">&copy; 2026 Open Routes. All rights reserved.</p>
+    </footer>
+
+    <script src="js/favorites.js"></script>
+</body>
+</html>
