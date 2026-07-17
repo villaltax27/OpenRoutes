@@ -86,3 +86,4 @@ body.high-contrast .btn-accessible-mode, body.high-contrast .btn-green, body.hig
 
 @media (max-width: 1180px) { .navbar { padding: 8px 5%; flex-wrap: wrap; } .nav-links { order: 3; flex-basis: 100%; gap: 20px; flex-wrap: wrap; } .footer-container { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 760px) { .navbar { position: relative; justify-content: center; } .logo img { height: 38px; } .btn-accessible-mode, .accessibility-dropdown, .dropdown-menu { width: 100%; justify-content: center; } .search-row { grid-template-columns: 1fr; } .hero { padding: 58px 6% 90px; } .search-panel, .map-section { width: 88%; } #map { height: 450px; } .footer-container { grid-template-columns: 1fr; } .newsletter form { flex-direction: column; } }
+
