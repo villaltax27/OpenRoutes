@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+﻿document.addEventListener("DOMContentLoaded", () => {
 
     const loginForm = document.getElementById("loginForm");
     const email = document.getElementById("email");
@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         }
 
-        // Guardar sesión
+        // Guardar sesiÃ³n
 
         localStorage.setItem(
 
@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         );
 
-        // Recordar sesión
+        // Recordar sesiÃ³n
 
         if (rememberMe && rememberMe.checked) {
 
@@ -168,3 +168,41 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 });
+
+function initFloatingAccessibility() {
+    const toggle = document.getElementById("btnDropdownToggle");
+    const menu = document.getElementById("accessibilityMenu");
+    const contrast = document.getElementById("chkContrast");
+    const textSize = document.getElementById("chkTextSize");
+    const voice = document.getElementById("chkVoiceReader");
+
+    if (!toggle || !menu) return;
+
+    toggle.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const isOpen = menu.classList.toggle("show");
+        toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+
+    document.addEventListener("click", (event) => {
+        if (!event.target.closest(".accessibility-dropdown")) {
+            menu.classList.remove("show");
+            toggle.setAttribute("aria-expanded", "false");
+        }
+    });
+
+    contrast?.addEventListener("change", () => document.body.classList.toggle("high-contrast", contrast.checked));
+    textSize?.addEventListener("change", () => document.body.classList.toggle("large-text", textSize.checked));
+    voice?.addEventListener("change", () => {
+        if (!voice.checked || !("speechSynthesis" in window)) {
+            window.speechSynthesis?.cancel();
+            return;
+        }
+        const utterance = new SpeechSynthesisUtterance(document.querySelector("main")?.innerText || document.body.innerText);
+        utterance.lang = "en-US";
+        window.speechSynthesis.cancel();
+        window.speechSynthesis.speak(utterance);
+    });
+}
+
+document.addEventListener("DOMContentLoaded", initFloatingAccessibility);
