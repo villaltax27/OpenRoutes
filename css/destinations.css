@@ -816,3 +816,95 @@ body.high-contrast .filter-btn.active {
         height: 38px !important;
     }
 }
+
+/* Shared auth links and floating accessibility button */
+.auth-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    flex: 0 0 auto;
+}
+.auth-link {
+    min-height: 38px;
+    padding: 0 16px;
+    border-radius: 999px;
+    border: 1px solid #d9e7f6;
+    background: #fff;
+    color: var(--primary-blue, #0b4f9f) !important;
+    font-weight: 800;
+    font-size: 0.88rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none !important;
+    box-shadow: 0 8px 18px rgba(9,36,74,.07);
+    transition: transform .2s, background-color .2s, color .2s;
+}
+.auth-link:hover {
+    transform: translateY(-1px);
+    background: #eef6ff;
+}
+.auth-register {
+    background: var(--green, #69bf24);
+    border-color: var(--green, #69bf24);
+    color: #fff !important;
+    box-shadow: 0 8px 20px rgba(105,191,36,.24);
+}
+.auth-register:hover {
+    background: var(--green-dark, #4da414);
+}
+.floating-accessibility {
+    position: fixed !important;
+    right: 24px;
+    bottom: 24px;
+    z-index: 1500;
+}
+.floating-accessibility .btn-accessible-mode {
+    width: 56px !important;
+    height: 56px !important;
+    min-width: 56px !important;
+    padding: 0 !important;
+    border-radius: 50% !important;
+    display: grid !important;
+    place-items: center !important;
+    font-size: 1.35rem !important;
+    box-shadow: 0 14px 30px rgba(9,36,74,.24) !important;
+}
+.floating-accessibility .btn-accessible-mode .chevron {
+    display: none !important;
+}
+.floating-accessibility .dropdown-menu {
+    top: auto !important;
+    right: 0 !important;
+    bottom: calc(100% + 14px) !important;
+}
+body.high-contrast .auth-link,
+body.high-contrast .auth-register,
+body.high-contrast .floating-accessibility .btn-accessible-mode {
+    background: #ffff00 !important;
+    color: #000 !important;
+    border-color: #ffff00 !important;
+}
+@media (max-width: 760px) {
+    .auth-actions {
+        width: 100%;
+        justify-content: center;
+        order: 4;
+    }
+    .auth-link {
+        flex: 1;
+        max-width: 150px;
+    }
+    .floating-accessibility {
+        right: 18px;
+        bottom: 18px;
+    }
+    .floating-accessibility .btn-accessible-mode {
+        width: 52px !important;
+        height: 52px !important;
+        min-width: 52px !important;
+    }
+    .floating-accessibility .dropdown-menu {
+        width: min(270px, calc(100vw - 36px)) !important;
+    }
+}

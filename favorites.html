@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -21,19 +21,10 @@
             <a href="about.html">About Us</a>
             <a href="contact.html">Contact</a>
         </nav>
-        <div class="accessibility-dropdown">
-            <button class="btn-accessible-mode" id="btnDropdownToggle" aria-expanded="false" aria-haspopup="true">
-                <i class="fa-solid fa-universal-access"></i>
-                Accessible Mode
-                <i class="fa-solid fa-chevron-down chevron"></i>
-            </button>
-            <div class="dropdown-menu" id="accessibilityMenu">
-                <label class="menu-item"><span><i class="fa-solid fa-volume-high"></i> Audio Guide</span><input type="checkbox" id="chkVoiceReader"><span class="slider"></span></label>
-                <label class="menu-item"><span><i class="fa-solid fa-circle-half-stroke"></i> High Contrast</span><input type="checkbox" id="chkContrast"><span class="slider"></span></label>
-                <label class="menu-item"><span><i class="fa-solid fa-text-height"></i> Bigger Text</span><input type="checkbox" id="chkTextSize"><span class="slider"></span></label>
-            </div>
-        </div>
-    </header>
+        <div class="auth-actions">
+            <a class="auth-link" href="login.html">Login</a>
+            <a class="auth-link auth-register" href="registrer.html">Register</a>
+        </div>    </header>
 
     <main>
         <section class="favorites-hero">
@@ -73,8 +64,29 @@
             </div>
         </section>
     </main>
-
-    <footer class="footer" id="contact">
+    <div class="accessibility-dropdown floating-accessibility">
+        <button class="btn-accessible-mode" id="btnDropdownToggle" aria-expanded="false" aria-haspopup="true" aria-label="Accessible Mode" title="Accessible Mode">
+            <i class="fa-solid fa-universal-access"></i>
+        </button>
+        <div class="dropdown-menu" id="accessibilityMenu">
+            <label class="menu-item">
+                <span><i class="fa-solid fa-volume-high"></i> Audio Guide</span>
+                <input type="checkbox" id="chkVoiceReader">
+                <span class="slider"></span>
+            </label>
+            <label class="menu-item">
+                <span><i class="fa-solid fa-circle-half-stroke"></i> High Contrast</span>
+                <input type="checkbox" id="chkContrast">
+                <span class="slider"></span>
+            </label>
+            <label class="menu-item">
+                <span><i class="fa-solid fa-text-height"></i> Bigger Text</span>
+                <input type="checkbox" id="chkTextSize">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
+<footer class="footer" id="contact">
         <div class="footer-container">
             <div class="footer-brand"><img src="img/logo-openroutes-white.png" class="footer-logo-img" alt="Open Routes"><p>Travel without limits, explore with freedom.</p></div>
             <div class="footer-links"><h3>Quick Links</h3><ul><li><a href="index.html">Home</a></li><li><a href="destinations.html">Destinations</a></li><li><a href="mapa.html">Search</a></li><li><a href="favorites.html">Favorites</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
@@ -88,3 +100,4 @@
     <script src="js/favorites.js"></script>
 </body>
 </html>
+
