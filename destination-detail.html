@@ -8,13 +8,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
 <link rel="stylesheet" href="css/destination-detail.css">
 </head>
 
 <body>
-
-<!-- HEADER -->
 <header class="navbar">
     <a class="logo" href="index.html">
         <img src="img/logo-openroutes.png" alt="Open Routes">
@@ -23,150 +20,175 @@
     <nav class="nav-links">
         <a href="index.html">Home</a>
         <a href="destinations.html" class="active">Destinations</a>
-            <a href="mapa.html">Search</a>
+        <a href="mapa.html">Search</a>
         <a href="about.html">About Us</a>
         <a href="contact.html">Contact</a>
     </nav>
-        <div class="auth-actions">
-            <a class="auth-link" href="login.html">Login</a>
-            <a class="auth-link auth-register" href="registrer.html">Register</a>
-        </div>    </header>
 
-<!-- HERO -->
-<section class="detail-hero">
-
-    <div class="breadcrumb">
-        <a href="index.html">Home</a>
-        <i class="fa-solid fa-chevron-right"></i>
-        <a href="destinations.html">Destinations</a>
-        <span id="crumb">Destination</span>
+    <div class="auth-actions">
+        <a class="auth-link" href="login.html">Login</a>
+        <a class="auth-link auth-register" href="registrer.html">Register</a>
     </div>
+</header>
 
-    <article class="hero-panel">
+<section class="place-hero" id="placeHero">
+    <div class="hero-shade"></div>
+    <div class="place-hero-inner">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="index.html">Home</a>
+            <i class="fa-solid fa-chevron-right"></i>
+            <a href="destinations.html">Destinations</a>
+            <i class="fa-solid fa-chevron-right"></i>
+            <span id="crumb">Destination</span>
+        </nav>
 
-        <div class="hero-grid">
+        <article class="place-hero-card">
+            <h1 id="placeName">Loading...</h1>
+            <p class="location">
+                <i class="fa-solid fa-location-dot"></i>
+                <span id="placeLocation">Loading...</span>
+            </p>
+            <p id="summary">Loading destination info...</p>
 
-            <div class="hero-left">
-                <h1 id="placeName">Loading...</h1>
-
-                <p class="location">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <span id="placeLocation">Loading...</span>
-                </p>
+            <div class="panel-actions">
+                <button class="btn btn-green" id="addDestinationFavorite" type="button">
+                    <i class="fa-solid fa-heart"></i>
+                    Add to favorites
+                </button>
+                <button class="btn btn-light" id="shareDestination" type="button">
+                    <i class="fa-solid fa-share-nodes"></i>
+                    Share
+                </button>
             </div>
+        </article>
+    </div>
+</section>
 
-            <div class="hero-right">
-                <p id="summary">Loading destination info...</p>
-            </div>
-
-        </div>
-
-        <div class="panel-actions">
-            <button class="btn btn-green" id="addDestinationFavorite" type="button"><i class="fa-solid fa-heart"></i> Add to favorites</button>
-
-            <button class="btn btn-light">
-                <i class="fa-solid fa-share-nodes"></i> Share
+<main class="destination-page">
+    <section class="detail-content" aria-label="Destination information">
+        <div class="detail-tabs" role="tablist" aria-label="Destination sections">
+            <button class="tab-btn active" type="button" role="tab" aria-selected="true" data-tab="overview">
+                <i class="fa-regular fa-rectangle-list"></i>
+                Overview
+            </button>
+            <button class="tab-btn" type="button" role="tab" aria-selected="false" data-tab="accessibility">
+                <i class="fa-solid fa-wheelchair"></i>
+                Accessibility
+            </button>
+            <button class="tab-btn" type="button" role="tab" aria-selected="false" data-tab="things">
+                <i class="fa-solid fa-camera-retro"></i>
+                Things to Do
+            </button>
+            <button class="tab-btn" type="button" role="tab" aria-selected="false" data-tab="location">
+                <i class="fa-solid fa-location-dot"></i>
+                Location
+            </button>
+            <button class="tab-btn" type="button" role="tab" aria-selected="false" data-tab="guides">
+                <i class="fa-solid fa-language"></i>
+                Guides
+            </button>
+            <button class="tab-btn" type="button" role="tab" aria-selected="false" data-tab="tips">
+                <i class="fa-regular fa-circle-question"></i>
+                Tips
             </button>
         </div>
 
-    </article>
-</section>
+        <div class="content-grid">
+            <div class="tab-area">
+                <section class="tab-panel active" data-panel="overview">
+                    <p class="lead-text" id="overviewText"></p>
+                    <div class="feature-grid" id="highlights"></div>
+                    <div class="gallery" id="placeGallery" aria-label="Destination gallery"></div>
+                </section>
 
-<!-- MAIN -->
-<main class="detail-layout">
+                <section class="tab-panel" data-panel="accessibility">
+                    <h2>Accessibility Details</h2>
+                    <p class="lead-text">Review the main accessibility services before planning your visit.</p>
+                    <div class="stack-list" id="accessText"></div>
+                </section>
 
-    <div class="main-content">
+                <section class="tab-panel" data-panel="things">
+                    <h2>Things to Do</h2>
+                    <p class="lead-text">Activities and experiences recommended for this destination.</p>
+                    <div class="stack-list" id="todoList"></div>
+                </section>
 
-        <section class="info-section">
-            <h2><i class="fa-solid fa-book-open"></i> Overview</h2>
-            <p id="overviewText"></p>
-        </section>
+                <section class="tab-panel" data-panel="location">
+                    <h2>Location</h2>
+                    <p class="lead-text" id="locationText"></p>
+                    <a class="map-link" href="mapa.html">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                        Open Search Map
+                    </a>
+                </section>
 
-        <section class="info-section">
-            <h2><i class="fa-solid fa-star"></i> Highlights</h2>
-            <div id="highlights"></div>
-        </section>
+                <section class="tab-panel" data-panel="guides">
+                    <div class="guides-panel">
+                        <div>
+                            <span class="section-kicker">Guides and Interpreters</span>
+                            <h2>Travel with local support</h2>
+                            <p>Connect with interpreters and local guides who can help with language, accessibility support and route planning during your visit.</p>
+                        </div>
+                        <a class="interpreter-link-btn" href="interpreters.html">
+                            Find an interpreter
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </section>
 
-        <section class="info-section">
-            <h2><i class="fa-solid fa-person-hiking"></i> Things to Do</h2>
-            <div id="todoList"></div>
-        </section>
-
-        <section class="info-section">
-            <h2><i class="fa-solid fa-image"></i> Gallery</h2>
-
-            <div class="gallery">
-                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e">
-                <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21">
-                <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e">
-                <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470">
+                <section class="tab-panel" data-panel="tips">
+                    <h2>Travel Tips</h2>
+                    <p class="lead-text">Small details that can make your visit easier and more comfortable.</p>
+                    <div class="stack-list" id="tipsList"></div>
+                </section>
             </div>
-        </section>
 
-        <section class="info-section">
-            <h2><i class="fa-solid fa-lightbulb"></i> Travel Tips</h2>
-            <div id="tipsList"></div>
-        </section>
+            <aside class="info-rail" aria-label="Important trip notes">
+                <section class="side-card accessibility-card">
+                    <h2><span class="side-icon"><i class="fa-solid fa-universal-access"></i></span> Accessibility Information</h2>
+                    <div class="accessibility-summary" id="accessibilitySummary"></div>
+                </section>
 
-        <section class="info-section">
-            <h2><i class="fa-solid fa-location-dot"></i> Location</h2>
-            <p id="locationText"></p>
-
-            <div class="map-box">
-                <i class="fa-solid fa-map"></i>
-                <p>Interactive map coming soon</p>
-            </div>
-        </section>
-
-    </div>
-<aside class="side-content">
-
-        <div class="info-card">
-            <h2>Quick Info</h2>
-            <p>Perfect destination for travel, nature and relaxation.</p>
+                <section class="side-card help-card">
+                    <h2><i class="fa-solid fa-headset"></i> Need Help?</h2>
+                    <p>Contact us for more information about accessible routes, support and travel planning.</p>
+                    <a class="support-btn" href="contact.html">
+                        <i class="fa-regular fa-envelope"></i>
+                        Contact Support
+                    </a>
+                </section>
+            </aside>
         </div>
-
-        <div class="info-card">
-            <h2>Accessibility</h2>
-            <div id="accessText"></div>
-        </div>
-        <div class="info-card interpreter-link-card">
-            <h2><i class="fa-solid fa-language"></i> Guides and Interpreters</h2>
-            <p>Need bilingual support for your visit? Connect with local guides and interpreters before your trip.</p>
-            <a class="interpreter-link-btn" href="interpreters.html">Find an interpreter</a>
-        </div>
-    </aside>
-
+    </section>
 </main>
 
-<!-- FOOTER -->
-    <div class="accessibility-dropdown floating-accessibility">
-        <button class="btn-accessible-mode" id="btnDropdownToggle" aria-expanded="false" aria-haspopup="true" aria-label="Accessible Mode" title="Accessible Mode">
-            <i class="fa-solid fa-universal-access"></i>
-        </button>
-        <div class="dropdown-menu" id="accessibilityMenu">
-            <label class="menu-item">
-                <span><i class="fa-solid fa-volume-high"></i> Audio Guide</span>
-                <input type="checkbox" id="chkVoiceReader">
-                <span class="slider"></span>
-            </label>
-            <label class="menu-item">
-                <span><i class="fa-solid fa-circle-half-stroke"></i> High Contrast</span>
-                <input type="checkbox" id="chkContrast">
-                <span class="slider"></span>
-            </label>
-            <label class="menu-item">
-                <span><i class="fa-solid fa-text-height"></i> Bigger Text</span>
-                <input type="checkbox" id="chkTextSize">
-                <span class="slider"></span>
-            </label>
-        </div>
+<div class="accessibility-dropdown floating-accessibility">
+    <button class="btn-accessible-mode" id="btnDropdownToggle" aria-expanded="false" aria-haspopup="true" aria-label="Accessible Mode" title="Accessible Mode">
+        <i class="fa-solid fa-universal-access"></i>
+    </button>
+    <div class="dropdown-menu" id="accessibilityMenu">
+        <label class="menu-item">
+            <span><i class="fa-solid fa-volume-high"></i> Audio Guide</span>
+            <input type="checkbox" id="chkVoiceReader">
+            <span class="slider"></span>
+        </label>
+        <label class="menu-item">
+            <span><i class="fa-solid fa-circle-half-stroke"></i> High Contrast</span>
+            <input type="checkbox" id="chkContrast">
+            <span class="slider"></span>
+        </label>
+        <label class="menu-item">
+            <span><i class="fa-solid fa-text-height"></i> Bigger Text</span>
+            <input type="checkbox" id="chkTextSize">
+            <span class="slider"></span>
+        </label>
     </div>
+</div>
+
 <footer class="footer" id="contact">
     <div class="footer-container">
-
         <div class="footer-brand">
-            <img src="img/logo-openroutes-white.png" class="footer-logo-img">
+            <img src="img/logo-openroutes-white.png" class="footer-logo-img" alt="Open Routes">
             <p>Travel without limits, explore with freedom.</p>
         </div>
 
@@ -184,9 +206,9 @@
         <div class="footer-social">
             <h3>Follow Us</h3>
             <div class="social-icons">
-                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
             </div>
         </div>
 
@@ -199,26 +221,15 @@
         <div class="newsletter">
             <h3>Newsletter</h3>
             <form>
-                <input type="email" placeholder="Your email">
+                <input type="email" placeholder="Your email" aria-label="Your email">
                 <button type="submit">Subscribe</button>
             </form>
         </div>
-
     </div>
-
     <p class="copy">© 2026 Open Routes. All rights reserved.</p>
 </footer>
 
 <script src="js/destination-detail.js"></script>
-    <script src="js/auth-state.js"></script>
+<script src="js/auth-state.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
