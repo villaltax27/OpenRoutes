@@ -302,5 +302,68 @@ body.high-contrast .account-avatar {
         width: min(292px, calc(100vw - 36px));
     }
 }
-
-
+/* Adjustable text size control */
+.text-size-control {
+    display: grid !important;
+    gap: 10px !important;
+    align-items: stretch !important;
+    padding: 12px 4px !important;
+}
+.text-size-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    color: var(--dark-blue, #09244a);
+    font-weight: 700;
+}
+.text-size-header span {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+}
+.text-size-header i {
+    color: var(--primary-blue, #0b4f9f);
+}
+.text-size-header strong {
+    color: var(--primary-blue, #0b4f9f);
+    font-size: .86rem;
+}
+.text-size-actions {
+    display: grid;
+    grid-template-columns: 34px 1fr 34px;
+    align-items: center;
+    gap: 10px;
+}
+.text-size-actions button {
+    width: 34px;
+    height: 34px;
+    border: 0;
+    border-radius: 50%;
+    background: #eef6ff;
+    color: var(--primary-blue, #0b4f9f);
+    font-weight: 900;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+.text-size-actions button:hover {
+    background: var(--primary-blue, #0b4f9f);
+    color: #fff;
+}
+.text-size-control input[type="range"] {
+    display: block !important;
+    width: 100%;
+    accent-color: var(--green, #69bf24);
+    cursor: pointer;
+}
+.text-size-control input[hidden] {
+    display: none !important;
+}
+body.high-contrast .text-size-actions button,
+body.high-contrast .text-size-header strong {
+    background: #ffff00 !important;
+    color: #000 !important;
+}
+body.high-contrast .text-size-control input[type="range"] {
+    accent-color: #ffff00;
+}
