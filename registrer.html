@@ -104,7 +104,18 @@
         <div class="dropdown-menu" id="accessibilityMenu">
             <label class="menu-item"><span><i class="fa-solid fa-volume-high"></i> Audio Guide</span><input type="checkbox" id="chkVoiceReader"><span class="slider"></span></label>
             <label class="menu-item"><span><i class="fa-solid fa-circle-half-stroke"></i> High Contrast</span><input type="checkbox" id="chkContrast"><span class="slider"></span></label>
-            <label class="menu-item"><span><i class="fa-solid fa-text-height"></i> Bigger Text</span><input type="checkbox" id="chkTextSize"><span class="slider"></span></label>
+            <div class="menu-item text-size-control">
+                <div class="text-size-header">
+                    <span><i class="fa-solid fa-text-height"></i> Text Size</span>
+                    <strong id="textSizeValue">100%</strong>
+                </div>
+                <div class="text-size-actions">
+                    <button type="button" id="textSizeMinus" aria-label="Decrease text size">-</button>
+                    <input type="range" id="textSizeRange" min="90" max="130" step="5" value="100" aria-label="Text size">
+                    <button type="button" id="textSizePlus" aria-label="Increase text size">+</button>
+                </div>
+                <input type="checkbox" id="chkTextSize" hidden>
+            </div>
         </div>
     </div>
 <footer class="footer" id="contact">
@@ -119,6 +130,8 @@
     </footer>
 
     <script src="js/registrer.js"></script>
+    <script src="js/text-size-control.js"></script>
 </body>
 </html>
+
 
