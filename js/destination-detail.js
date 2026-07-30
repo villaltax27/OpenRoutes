@@ -193,20 +193,84 @@ function renderHighlights(items) {
   });
 }
 
-function renderGallery(images) {
+let galleryIndex = 0;
+let galleryImages = [];
+
+function updateGalleryCarousel() {
   if (!galleryEl) return;
-  galleryEl.innerHTML = "";
-  images.slice(0, 4).forEach((image, index) => {
-    const item = document.createElement("div");
-    item.className = "gallery-item";
-    item.innerHTML = `<img src="${image}" alt="${data.name} photo ${index + 1}">`;
-    if (index === 3) {
-      item.insertAdjacentHTML("beforeend", `<div class="more-photos"><div><strong>+8</strong><span>more photos</span></div></div>`);
-    }
-    galleryEl.appendChild(item);
+  const track = galleryEl.querySelector(".gallery-track");
+  const dots = galleryEl.querySelectorAll(".gallery-dot");
+
+  if (track) {
+    track.style.transform = `translateX(-${galleryIndex * 100}%)`;
+  }
+
+  dots.forEach((dot, index) => {
+    const isActive = index === galleryIndex;
+    dot.classList.toggle("active", isActive);
+    dot.setAttribute("aria-current", isActive ? "true" : "false");
   });
 }
 
+function setupGalleryCarousel() {
+  if (!galleryEl || galleryImages.length === 0) return;
+
+  const goToSlide = (index) => {
+    galleryIndex = (index + galleryImages.length) % galleryImages.length;
+    updateGalleryCarousel();
+  };
+
+  galleryEl.querySelector(".carousel-btn.prev")?.addEventListener("click", () => goToSlide(galleryIndex - 1));
+  galleryEl.querySelector(".carousel-btn.next")?.addEventListener("click", () => goToSlide(galleryIndex + 1));
+
+  galleryEl.querySelectorAll(".gallery-dot").forEach((dot) => {
+    dot.addEventListener("click", () => goToSlide(Number(dot.dataset.slide)));
+  });
+
+  galleryEl.querySelector(".gallery-carousel")?.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft") goToSlide(galleryIndex - 1);
+    if (event.key === "ArrowRight") goToSlide(galleryIndex + 1);
+  });
+
+  updateGalleryCarousel();
+}
+
+function renderGallery(images) {
+  if (!galleryEl) return;
+  galleryImages = images && images.length ? images : sharedGallery;
+  galleryIndex = 0;
+
+  galleryEl.innerHTML = `
+    <div class="gallery-carousel" tabindex="0" aria-roledescription="carousel" aria-label="Photos of ${data.name}">
+      <button class="carousel-btn prev" type="button" aria-label="Previous photo">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <div class="gallery-track">
+        ${galleryImages.map((image, index) => `
+          <article class="gallery-slide" aria-label="Photo ${index + 1} of ${galleryImages.length}">
+            <img src="${image}" alt="${data.name} photo ${index + 1}">
+            <div class="gallery-caption">
+              <div>
+                <strong>${data.name}</strong>
+                <span>Photo ${index + 1} of ${galleryImages.length}</span>
+              </div>
+            </div>
+          </article>
+        `).join("")}
+      </div>
+      <button class="carousel-btn next" type="button" aria-label="Next photo">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </div>
+    <div class="gallery-dots" aria-label="Choose a photo">
+      ${galleryImages.map((_, index) => `
+        <button class="gallery-dot" type="button" data-slide="${index}" aria-label="Show photo ${index + 1}"></button>
+      `).join("")}
+    </div>
+  `;
+
+  setupGalleryCarousel();
+}
 function renderAccessibilitySummary(items) {
   if (!accessSummaryEl || !accessEl) return;
   accessSummaryEl.innerHTML = "";
@@ -343,3 +407,4 @@ setupTabs();
 setupAccessibilityMenu();
 setupShareButton();
 setupFavoriteButton();
+
