@@ -13,14 +13,14 @@
 
 <body>
 <header class="navbar">
-    <a class="logo" href="index.html">
+    <a class="logo" href="index.html" aria-label="Open Routes Home">
         <img src="img/logo-openroutes.png" alt="Open Routes">
     </a>
 
-    <nav class="nav-links">
+    <nav class="nav-links" aria-label="Main navigation">
         <a href="index.html">Home</a>
         <a href="destinations.html" class="active">Destinations</a>
-<a href="about.html">About Us</a>
+        <a href="about.html">About Us</a>
         <a href="contact.html">Contact</a>
     </nav>
 
@@ -172,6 +172,11 @@
             <input type="checkbox" id="chkContrast">
             <span class="slider"></span>
         </label>
+            <label class="menu-item">
+                <span><i class="fa-solid fa-moon"></i> Dark Mode</span>
+                <input type="checkbox" id="chkDarkMode">
+                <span class="slider"></span>
+            </label>
         <div class="menu-item text-size-control">
                 <div class="text-size-header">
                     <span><i class="fa-solid fa-text-height"></i> Text Size</span>
@@ -190,7 +195,7 @@
 <footer class="footer" id="contact">
     <div class="footer-container">
         <div class="footer-brand">
-            <img src="img/logo-openroutes-white.png" class="footer-logo-img" alt="Open Routes">
+            <img src="img/logo-openroutes-white.png" alt="Open Routes" class="footer-logo-img">
             <p>Travel without limits, explore with freedom.</p>
         </div>
 
@@ -221,19 +226,23 @@
 
         <div class="newsletter">
             <h3>Newsletter</h3>
+            <p>Subscribe to receive travel tips and accessible updates.</p>
             <form>
                 <input type="email" placeholder="Your email" aria-label="Your email">
                 <button type="submit">Subscribe</button>
             </form>
         </div>
     </div>
-    <p class="copy">© 2026 Open Routes. All rights reserved.</p>
+    <p class="copy">&copy; 2026 Open Routes. All rights reserved.</p>
 </footer>
 
 <script src="js/destination-detail.js"></script>
     <script src="js/text-size-control.js"></script>
+    <script src="js/dark-mode.js"></script>
     <script src="js/auth-state.js"></script>
 </body>
 </html>
+
+
 
 
