@@ -90,5 +90,23 @@ document.addEventListener('DOMContentLoaded', () => {
     
     itemsToAnimate.forEach(el => itemObserver.observe(el));
 });
+function getOpenRoutesUser() {
+    try {
+        return JSON.parse(localStorage.getItem("loggedUser") || "null");
+    } catch (error) {
+        return null;
+    }
+}
 
+function protectTourBookingLinks() {
+    document.querySelectorAll(".tour-btn").forEach((button) => {
+        button.addEventListener("click", (event) => {
+            if (getOpenRoutesUser()) return;
+            event.preventDefault();
+            localStorage.setItem("openRoutesPendingBooking", button.getAttribute("href") || "tour-detail.html");
+            window.location.href = "login.html";
+        });
+    });
+}
 
+protectTourBookingLinks();
