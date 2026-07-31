@@ -1006,3 +1006,190 @@ body.dark-mode .badge {
     color: #7dcc43 !important;
     border-color: rgba(105, 191, 36, .30) !important;
 }
+/* OpenRoutes polish v5: Steven profile layout and dark mode */
+.profile-hero {
+    min-height: calc(100vh - 64px);
+}
+
+.breadcrumb,
+.profile-shell {
+    max-width: 1180px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.profile-shell {
+    grid-template-columns: minmax(300px, 380px) minmax(0, 1fr);
+}
+
+.profile-card,
+.detail-panel {
+    border-radius: 14px;
+}
+
+.profile-card {
+    position: sticky;
+    top: 86px;
+}
+
+.profile-cover {
+    min-height: 150px;
+}
+
+.profile-img,
+.avatar-mini {
+    background: #eef6ff;
+}
+
+.profile-info h1,
+.panel-header h2,
+.grid-col h3,
+.info-section h3 {
+    color: var(--dark-blue);
+}
+
+.actions a,
+.actions button {
+    text-decoration: none;
+}
+
+.fav-btn:hover,
+.back-btn:hover,
+.close-btn:hover {
+    background: #dceeff;
+    transform: translateY(-1px);
+}
+
+.view-btn:hover {
+    background: var(--green-dark);
+    transform: translateY(-1px);
+}
+
+body.dark-mode .profile-hero {
+    background:
+        linear-gradient(120deg, rgba(7, 18, 36, .96), rgba(11, 31, 55, .90)),
+        url("https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1600&q=80") !important;
+    background-size: cover !important;
+    background-position: center !important;
+}
+
+body.dark-mode .breadcrumb {
+    color: #b9c8dd !important;
+}
+
+body.dark-mode .breadcrumb a {
+    color: #7db7ff !important;
+}
+
+body.dark-mode .breadcrumb span {
+    color: #7dcc43 !important;
+}
+
+body.dark-mode .profile-card,
+body.dark-mode .detail-panel {
+    background: #111b2e !important;
+    border-color: rgba(148, 163, 184, .34) !important;
+    box-shadow: 0 18px 42px rgba(0, 0, 0, .34) !important;
+}
+
+body.dark-mode .profile-cover {
+    background: linear-gradient(135deg, #0b74ff, #17345c 58%, #69bf24) !important;
+}
+
+body.dark-mode .profile-img {
+    border-color: #111b2e !important;
+}
+
+body.dark-mode .profile-img,
+body.dark-mode .avatar-mini {
+    background: #0f1a2d !important;
+}
+
+body.dark-mode .profile-info h1,
+body.dark-mode .profile-info p,
+body.dark-mode .panel-header h2,
+body.dark-mode .subtitle,
+body.dark-mode .grid-col h3,
+body.dark-mode .grid-col p,
+body.dark-mode .info-section h3,
+body.dark-mode .info-section p,
+body.dark-mode .info-section strong,
+body.dark-mode .grid-col strong {
+    color: #eaf2ff !important;
+}
+
+body.dark-mode .profile-info p,
+body.dark-mode .subtitle,
+body.dark-mode .grid-col p,
+body.dark-mode .info-section p {
+    color: #c8d6ea !important;
+}
+
+body.dark-mode .badge {
+    background: #13233a !important;
+    color: #7dcc43 !important;
+    border: 1px solid rgba(105, 191, 36, .32) !important;
+}
+
+body.dark-mode .grid-col,
+body.dark-mode .info-section {
+    background: #0f1a2d !important;
+    border-color: #0b74ff !important;
+}
+
+body.dark-mode .panel-header {
+    border-bottom-color: rgba(148, 163, 184, .28) !important;
+}
+
+body.dark-mode .fav-btn,
+body.dark-mode .back-btn,
+body.dark-mode .close-btn {
+    background: #0f1a2d !important;
+    color: #eaf2ff !important;
+    border: 1px solid rgba(148, 163, 184, .42) !important;
+}
+
+body.dark-mode .fav-btn:hover,
+body.dark-mode .back-btn:hover,
+body.dark-mode .close-btn:hover {
+    background: #17345c !important;
+    color: #fff !important;
+    border-color: #2d609c !important;
+}
+
+body.dark-mode .fav-btn.active {
+    background: rgba(213, 22, 76, .16) !important;
+    color: #ff8a9e !important;
+    border-color: rgba(255, 138, 158, .40) !important;
+}
+
+body.dark-mode .view-btn {
+    background: #69bf24 !important;
+    color: #fff !important;
+}
+
+body.dark-mode .view-btn:hover {
+    background: #7dcc43 !important;
+    color: #09244a !important;
+}
+
+@media (max-width: 1180px) {
+    .profile-card {
+        position: static;
+    }
+}
+
+@media (max-width: 760px) {
+    .profile-shell {
+        grid-template-columns: 1fr !important;
+    }
+
+    .profile-info h1 {
+        font-size: 1.75rem;
+    }
+
+    .detail-panel {
+        padding: 22px;
+    }
+}
+
