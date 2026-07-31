@@ -1180,3 +1180,144 @@ body.dark-mode .badge {
     color: #7dcc43 !important;
     border-color: rgba(105, 191, 36, .30) !important;
 }
+/* OpenRoutes dark mode polish v4: auth pages and destination filters */
+body.dark-mode .auth-page {
+    background:
+        linear-gradient(120deg, rgba(7, 18, 36, .96), rgba(11, 31, 55, .92)),
+        url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=80") !important;
+    background-size: cover !important;
+    background-position: center !important;
+}
+
+body.dark-mode .auth-shell {
+    background: transparent !important;
+}
+
+body.dark-mode .auth-visual,
+body.dark-mode .auth-visual h1,
+body.dark-mode .auth-visual p,
+body.dark-mode .card-heading h2,
+body.dark-mode .card-heading p,
+body.dark-mode .field-group label,
+body.dark-mode .form-row,
+body.dark-mode .check-label,
+body.dark-mode .switch-auth,
+body.dark-mode .divider {
+    color: #eaf2ff !important;
+}
+
+body.dark-mode .auth-visual .eyebrow,
+body.dark-mode .switch-auth a,
+body.dark-mode .form-row a {
+    color: #7dcc43 !important;
+}
+
+body.dark-mode .auth-card {
+    background: rgba(17, 27, 46, .96) !important;
+    border-color: rgba(148, 163, 184, .38) !important;
+    box-shadow: 0 20px 48px rgba(0, 0, 0, .38) !important;
+}
+
+body.dark-mode .trust-list span,
+body.dark-mode .input-box,
+body.dark-mode .google-btn,
+body.dark-mode .divider span {
+    background: #0f1a2d !important;
+    color: #eaf2ff !important;
+    border-color: rgba(148, 163, 184, .42) !important;
+}
+
+body.dark-mode .input-box input {
+    color: #eaf2ff !important;
+    background: transparent !important;
+}
+
+body.dark-mode .input-box input::placeholder {
+    color: #9fb0c7 !important;
+}
+
+body.dark-mode .input-box > i,
+body.dark-mode .password-toggle,
+body.dark-mode .google-btn i,
+body.dark-mode .trust-list i {
+    color: #7db7ff !important;
+}
+
+body.dark-mode .input-box:focus-within {
+    border-color: #0b74ff !important;
+    box-shadow: 0 0 0 4px rgba(11, 116, 255, .20) !important;
+}
+
+body.dark-mode .google-btn:hover {
+    background: #17345c !important;
+    color: #fff !important;
+}
+
+body.dark-mode .auth-submit {
+    background: #69bf24 !important;
+    color: #fff !important;
+}
+
+body.dark-mode .auth-submit:hover {
+    background: #7dcc43 !important;
+    color: #09244a !important;
+}
+
+body.dark-mode .auth-navbar .auth-links a {
+    color: #dbeafe !important;
+}
+
+body.dark-mode .auth-navbar .auth-links a:hover {
+    color: #7dcc43 !important;
+    border-color: #7dcc43 !important;
+}
+
+body.dark-mode .auth-navbar .outline-link {
+    background: #0f1a2d !important;
+    color: #eaf2ff !important;
+    border-color: rgba(148, 163, 184, .42) !important;
+}
+
+body.dark-mode .auth-navbar .outline-link:hover {
+    background: #17345c !important;
+    color: #fff !important;
+}
+
+body.dark-mode .divider::before,
+body.dark-mode .divider::after {
+    background: rgba(148, 163, 184, .35) !important;
+}
+
+body.dark-mode .success {
+    color: #7dcc43 !important;
+}
+
+body.dark-mode .error {
+    color: #ff8a9e !important;
+}
+
+body.dark-mode .filters-section {
+    background: #111b2e !important;
+    border: 1px solid rgba(148, 163, 184, .34) !important;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, .28) !important;
+}
+
+body.dark-mode .filter-btn {
+    background: #0f1a2d !important;
+    color: #eaf2ff !important;
+    border: 1px solid rgba(148, 163, 184, .42) !important;
+}
+
+body.dark-mode .filter-btn:hover {
+    background: #17345c !important;
+    color: #fff !important;
+    border-color: #2d609c !important;
+}
+
+body.dark-mode .filter-btn.active {
+    background: #69bf24 !important;
+    color: #fff !important;
+    border-color: #69bf24 !important;
+    box-shadow: 0 10px 22px rgba(105, 191, 36, .22) !important;
+}
+
