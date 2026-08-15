@@ -3,6 +3,7 @@ const place = params.get("place") || "santa ana";
 
 const sharedGallery = [
   // Video de YouTube (reemplaza el ID por el tuyo)
+  // cambio video
   "https://www.youtube.com/watch?v=q6WZM7Mp-yk", 
   // Imágenes estáticas
   "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
