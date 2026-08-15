@@ -182,19 +182,18 @@ input:checked + .slider::before {
 }
 
 .hero {
-    min-height: 540px;
-    padding: 78px 9% 112px;
+    min-height: 610px;
+    padding: 78px 9% 115px;
     position: relative;
     display: flex;
     align-items: center;
     overflow: hidden;
     background:
-        linear-gradient(90deg, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.88) 30%, rgba(255,255,255,0.14) 60%),
-        url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1800&auto=format&fit=crop');
+        linear-gradient(90deg, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.87) 27%, rgba(255,255,255,0.12) 55%),
+        url('https://pueblosbonitos.net/wp-content/uploads/2023/08/Pueblos-en-El-Salvador-con-Playa-Pueblos-en-El-Salvador-con-Playa-para-el-Verano.jpg');
     background-size: cover;
     background-position: center;
 }
-
 .hero::after {
     content: "";
     position: absolute;
