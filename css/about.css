@@ -527,7 +527,7 @@ input:checked + .slider::before {
 
 .social-icons a {
     width: 38px;
-    height: 38px;
+    height: 42px;
     border-radius: 50%;
     background: var(--white);
     color: var(--primary-blue);
@@ -732,7 +732,7 @@ body.high-contrast .social-icons a {
     gap: 24px !important;
 }
 .logo img {
-    height: 42px !important;
+    height: 60px !important;
     width: auto !important;
     object-fit: contain;
 }
@@ -759,7 +759,7 @@ body.high-contrast .social-icons a {
 }
 @media (max-width: 760px) {
     .logo img {
-        height: 38px !important;
+        height: 44px !important;
     }
 }
 
@@ -771,7 +771,7 @@ body.high-contrast .social-icons a {
     flex: 0 0 auto;
 }
 .auth-link {
-    min-height: 38px;
+    min-height: 42px;
     padding: 0 16px;
     border-radius: 999px;
     border: 1px solid #d9e7f6;
@@ -806,14 +806,14 @@ body.high-contrast .social-icons a {
     z-index: 1500;
 }
 .floating-accessibility .btn-accessible-mode {
-    width: 56px !important;
-    height: 56px !important;
-    min-width: 56px !important;
+    width: 68px !important;
+    height: 68px !important;
+    min-width: 68px !important;
     padding: 0 !important;
     border-radius: 50% !important;
     display: grid !important;
     place-items: center !important;
-    font-size: 1.35rem !important;
+    font-size: 1.65rem !important;
     box-shadow: 0 14px 30px rgba(9,36,74,.24) !important;
 }
 .floating-accessibility .btn-accessible-mode .chevron {
@@ -846,9 +846,9 @@ body.high-contrast .floating-accessibility .btn-accessible-mode {
         bottom: 18px;
     }
     .floating-accessibility .btn-accessible-mode {
-        width: 52px !important;
-        height: 52px !important;
-        min-width: 52px !important;
+        width: 60px !important;
+        height: 60px !important;
+        min-width: 60px !important;
     }
     .floating-accessibility .dropdown-menu {
         width: min(270px, calc(100vw - 36px)) !important;
@@ -876,6 +876,7 @@ body.high-contrast .floating-accessibility .btn-accessible-mode {
 .account-avatar {
     width: 42px;
     height: 42px;
+    min-width: 42px;
     border-radius: 50%;
     overflow: hidden;
     background: linear-gradient(135deg, var(--primary-blue, #0b4f9f), var(--green, #69bf24));
@@ -978,4 +979,785 @@ body.high-contrast .account-avatar {
         transform: translateX(50%);
         width: min(292px, calc(100vw - 36px));
     }
+}
+/* Adjustable text size control */
+.text-size-control {
+    display: grid !important;
+    gap: 10px !important;
+    align-items: stretch !important;
+    padding: 12px 4px !important;
+}
+.text-size-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    color: var(--dark-blue, #09244a);
+    font-weight: 700;
+}
+.text-size-header span {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+}
+.text-size-header i {
+    color: var(--primary-blue, #0b4f9f);
+}
+.text-size-header strong {
+    color: var(--primary-blue, #0b4f9f);
+    font-size: .86rem;
+}
+.text-size-actions {
+    display: grid;
+    grid-template-columns: 34px 1fr 34px;
+    align-items: center;
+    gap: 10px;
+}
+.text-size-actions button {
+    width: 34px;
+    height: 34px;
+    border: 0;
+    border-radius: 50%;
+    background: #eef6ff;
+    color: var(--primary-blue, #0b4f9f);
+    font-weight: 900;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+.text-size-actions button:hover {
+    background: var(--primary-blue, #0b4f9f);
+    color: #fff;
+}
+.text-size-control input[type="range"] {
+    display: block !important;
+    width: 100%;
+    accent-color: var(--green, #69bf24);
+    cursor: pointer;
+}
+.text-size-control input[hidden] {
+    display: none !important;
+}
+body.high-contrast .text-size-actions button,
+body.high-contrast .text-size-header strong {
+    background: #ffff00 !important;
+    color: #000 !important;
+}
+body.high-contrast .text-size-control input[type="range"] {
+    accent-color: #ffff00;
+}
+
+
+/* OpenRoutes dark mode */
+body.dark-mode {
+    background: #0b1220 !important;
+    color: #eaf2ff !important;
+}
+
+body.dark-mode .navbar,
+body.dark-mode .auth-navbar,
+body.dark-mode .destination-page,
+body.dark-mode .about-section,
+body.dark-mode .mission-vision,
+body.dark-mode .team-section,
+body.dark-mode .stats,
+body.dark-mode .favorites-page,
+body.dark-mode .settings-page,
+body.dark-mode .contact-main,
+body.dark-mode .dropdown-menu,
+body.dark-mode .account-dropdown,
+body.dark-mode .side-card,
+body.dark-mode .info-section,
+body.dark-mode .booking-card,
+body.dark-mode .form-card,
+body.dark-mode .auth-card,
+body.dark-mode .member,
+body.dark-mode .info-card,
+body.dark-mode .destination-card,
+body.dark-mode .tour-card,
+body.dark-mode .interpreter-card,
+body.dark-mode .favorite-card,
+body.dark-mode .settings-card,
+body.dark-mode .stack-item,
+body.dark-mode .guides-panel,
+body.dark-mode .help-card,
+body.dark-mode .access-card,
+body.dark-mode .tools-strip,
+body.dark-mode .tool-item {
+    background-color: #111b2e !important;
+    color: #eaf2ff !important;
+    border-color: rgba(148, 163, 184, .35) !important;
+}
+
+body.dark-mode .hero,
+body.dark-mode .place-hero,
+body.dark-mode .tour-hero,
+body.dark-mode .auth-shell,
+body.dark-mode .premium-section,
+body.dark-mode .popular-tours-section,
+body.dark-mode main {
+    background-color: #0b1220 !important;
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode p,
+body.dark-mode a,
+body.dark-mode span,
+body.dark-mode label,
+body.dark-mode li,
+body.dark-mode strong,
+body.dark-mode button {
+    color: #eaf2ff !important;
+}
+
+body.dark-mode .section-title span,
+body.dark-mode .eyebrow,
+body.dark-mode .section-kicker,
+body.dark-mode .nav-links a.active,
+body.dark-mode .nav-links a:hover {
+    color: #7dcc43 !important;
+}
+
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+    background: #0f1a2d !important;
+    color: #eaf2ff !important;
+    border-color: rgba(148, 163, 184, .42) !important;
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+    color: #9fb0c7 !important;
+}
+
+body.dark-mode .btn-green,
+body.dark-mode .auth-register,
+body.dark-mode .btn-accessible-mode,
+body.dark-mode .support-btn,
+body.dark-mode .interpreter-link-btn,
+body.dark-mode .tour-btn,
+body.dark-mode .newsletter button {
+    background: #69bf24 !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .btn-yellow {
+    background: #ffc928 !important;
+    color: #09244a !important;
+}
+
+body.dark-mode .btn-light,
+body.dark-mode .auth-link,
+body.dark-mode .outline-link {
+    background: #0f1a2d !important;
+    color: #eaf2ff !important;
+    border-color: rgba(148, 163, 184, .42) !important;
+}
+
+body.dark-mode .footer {
+    background: linear-gradient(135deg, #061b35, #071528 58%, #030914) !important;
+}
+
+body.dark-mode .slider {
+    background: #526274 !important;
+}
+
+body.dark-mode input:checked + .slider {
+    background: #69bf24 !important;
+}
+
+body.dark-mode .title-line {
+    background: linear-gradient(90deg, #0b74ff, #69bf24) !important;
+}
+
+/* OpenRoutes dark mode polish v2 */
+html.dark-mode,
+body.dark-mode {
+    color-scheme: dark;
+    background: #0b1220 !important;
+    color: #eaf2ff !important;
+}
+
+body.dark-mode {
+    --white: #111b2e;
+    --panel: #111b2e;
+    --bg: #0b1220;
+    --text: #eaf2ff;
+    --dark-blue: #eaf2ff;
+    --muted: #a8b6ca;
+    --line: rgba(148, 163, 184, .34);
+    --soft-blue: #13233a;
+    --shadow: 0 18px 42px rgba(0, 0, 0, .34);
+}
+
+body.dark-mode .navbar,
+body.dark-mode .auth-navbar {
+    background: rgba(17, 27, 46, .96) !important;
+    border-bottom: 1px solid rgba(148, 163, 184, .22) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .28) !important;
+}
+
+body.dark-mode main,
+body.dark-mode .destination-page,
+body.dark-mode .favorites-page,
+body.dark-mode .settings-page,
+body.dark-mode .contact-main,
+body.dark-mode .popular-tours-section,
+body.dark-mode .premium-section,
+body.dark-mode .about-section,
+body.dark-mode .mission-vision,
+body.dark-mode .team-section {
+    background: #0b1220 !important;
+}
+
+body.dark-mode .hero,
+body.dark-mode .place-hero,
+body.dark-mode .tour-hero {
+    background-blend-mode: multiply !important;
+    box-shadow: inset 0 0 0 9999px rgba(7, 18, 36, .34) !important;
+}
+
+body.dark-mode .hero::after,
+body.dark-mode .tour-hero::after {
+    background: #0b1220 !important;
+    border-top-color: #0b74ff !important;
+}
+
+body.dark-mode .place-hero-card,
+body.dark-mode .access-card,
+body.dark-mode .destination-card,
+body.dark-mode .card-body,
+body.dark-mode .tour-card,
+body.dark-mode .tour-content,
+body.dark-mode .testimonial-card-premium,
+body.dark-mode .feature-item,
+body.dark-mode .tool-item,
+body.dark-mode .tools-strip,
+body.dark-mode .info-card,
+body.dark-mode .member,
+body.dark-mode .stats,
+body.dark-mode .stat-item,
+body.dark-mode .contact-card,
+body.dark-mode .contact-info,
+body.dark-mode .contact-form,
+body.dark-mode .form-card,
+body.dark-mode .auth-card,
+body.dark-mode .auth-panel,
+body.dark-mode .side-card,
+body.dark-mode .help-card,
+body.dark-mode .stack-item,
+body.dark-mode .guides-panel,
+body.dark-mode .gallery-carousel,
+body.dark-mode .booking-card,
+body.dark-mode .info-section,
+body.dark-mode .list-item,
+body.dark-mode .favorite-card,
+body.dark-mode .empty-state,
+body.dark-mode .favorites-toolbar,
+body.dark-mode .settings-card,
+body.dark-mode .settings-panel,
+body.dark-mode .profile-card,
+body.dark-mode .detail-panel,
+body.dark-mode .grid-col,
+body.dark-mode .info-section,
+body.dark-mode .interpreter-card,
+body.dark-mode .interpreter-profile,
+body.dark-mode .dropdown-menu,
+body.dark-mode .account-dropdown {
+    background: #111b2e !important;
+    color: #eaf2ff !important;
+    border-color: rgba(148, 163, 184, .34) !important;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, .30) !important;
+}
+
+body.dark-mode .premium-section,
+body.dark-mode .popular-tours-section,
+body.dark-mode .tour-card,
+body.dark-mode .destination-card,
+body.dark-mode .testimonial-card-premium,
+body.dark-mode .stats,
+body.dark-mode .tools-strip,
+body.dark-mode .guides-panel {
+    background-image: none !important;
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode p,
+body.dark-mode a,
+body.dark-mode span,
+body.dark-mode li,
+body.dark-mode label,
+body.dark-mode strong,
+body.dark-mode small,
+body.dark-mode button,
+body.dark-mode .lead-text,
+body.dark-mode .tour-desc,
+body.dark-mode .feature-description,
+body.dark-mode .testimonial-info-premium p,
+body.dark-mode .card-body p,
+body.dark-mode .tour-content p,
+body.dark-mode .info-card p,
+body.dark-mode .member p,
+body.dark-mode .stats p,
+body.dark-mode .stack-item,
+body.dark-mode .access-row p,
+body.dark-mode .help-card p,
+body.dark-mode .breadcrumb,
+body.dark-mode .location,
+body.dark-mode #summary {
+    color: #eaf2ff !important;
+}
+
+body.dark-mode .nav-links a,
+body.dark-mode .account-toggle,
+body.dark-mode .account-toggle i,
+body.dark-mode .menu-item,
+body.dark-mode .menu-item i,
+body.dark-mode .account-item,
+body.dark-mode .account-item i {
+    color: #dbeafe !important;
+}
+
+body.dark-mode .nav-links a.active,
+body.dark-mode .nav-links a:hover,
+body.dark-mode .section-title span,
+body.dark-mode .hero h1 span,
+body.dark-mode .eyebrow,
+body.dark-mode .section-kicker,
+body.dark-mode .card-body a,
+body.dark-mode .breadcrumb span,
+body.dark-mode .rating-premium,
+body.dark-mode .tour-price,
+body.dark-mode .feature-number {
+    color: #7dcc43 !important;
+}
+
+body.dark-mode .cat-name,
+body.dark-mode .tour-category,
+body.dark-mode .badge,
+body.dark-mode .tour-badge {
+    background: #13233a !important;
+    color: #dbeafe !important;
+}
+
+body.dark-mode .card-icon,
+body.dark-mode .access-icon,
+body.dark-mode .side-icon,
+body.dark-mode .tool-item > span,
+body.dark-mode .feature-icon {
+    background: #0b74ff !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .feature-icon i,
+body.dark-mode .card-icon i,
+body.dark-mode .access-icon i,
+body.dark-mode .side-icon i {
+    color: #ffffff !important;
+}
+
+body.dark-mode .btn-green,
+body.dark-mode .auth-register,
+body.dark-mode .btn-accessible-mode,
+body.dark-mode .support-btn,
+body.dark-mode .interpreter-link-btn,
+body.dark-mode .tour-btn,
+body.dark-mode .booking-form button,
+body.dark-mode .newsletter button {
+    background: #69bf24 !important;
+    color: #ffffff !important;
+    border-color: #69bf24 !important;
+}
+
+body.dark-mode .btn-yellow {
+    background: #ffc928 !important;
+    color: #09244a !important;
+}
+
+body.dark-mode .btn-light,
+body.dark-mode .auth-link,
+body.dark-mode .outline-link,
+body.dark-mode .carousel-btn,
+body.dark-mode .text-size-actions button {
+    background: #0f1a2d !important;
+    color: #eaf2ff !important;
+    border-color: rgba(148, 163, 184, .42) !important;
+}
+
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select,
+body.dark-mode .newsletter input,
+body.dark-mode .booking-form input {
+    background: #0f1a2d !important;
+    color: #eaf2ff !important;
+    border-color: rgba(148, 163, 184, .42) !important;
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+    color: #9fb0c7 !important;
+}
+
+body.dark-mode .slider {
+    background: #526274 !important;
+}
+
+body.dark-mode .slider::before {
+    background: #eaf2ff !important;
+}
+
+body.dark-mode input:checked + .slider {
+    background: #69bf24 !important;
+}
+
+body.dark-mode .footer {
+    background: linear-gradient(135deg, #061b35, #071528 58%, #030914) !important;
+}
+
+body.dark-mode .footer p,
+body.dark-mode .footer a,
+body.dark-mode .footer li,
+body.dark-mode .footer h3 {
+    color: rgba(234, 242, 255, .90) !important;
+}
+
+body.dark-mode .social-icons a {
+    background: #eaf2ff !important;
+    color: #0b4f9f !important;
+}
+
+body.dark-mode .social-icons a i {
+    color: #0b4f9f !important;
+}
+
+body.dark-mode .title-line {
+    background: linear-gradient(90deg, #0b74ff, #69bf24) !important;
+}
+
+body.dark-mode .gallery-caption,
+body.dark-mode .more-photos {
+    background: linear-gradient(180deg, rgba(9, 36, 74, 0), rgba(3, 9, 20, .86)) !important;
+}
+
+/* OpenRoutes dark mode polish v3: profile menu, favorites, settings and interpreter CTA */
+body.dark-mode .account-dropdown {
+    background: #0f1a2d !important;
+    border-color: rgba(148, 163, 184, .38) !important;
+}
+
+body.dark-mode .account-item {
+    background: transparent !important;
+    color: #eaf2ff !important;
+}
+
+body.dark-mode .account-item i {
+    color: #7db7ff !important;
+}
+
+body.dark-mode .account-item:hover,
+body.dark-mode .account-item:focus-visible {
+    background: #17345c !important;
+    color: #ffffff !important;
+    outline: none !important;
+}
+
+body.dark-mode .account-item:hover i,
+body.dark-mode .account-item:focus-visible i {
+    color: #69bf24 !important;
+}
+
+body.dark-mode .logout-item {
+    border-top-color: rgba(148, 163, 184, .30) !important;
+}
+
+body.dark-mode .interpreter-link-btn,
+body.dark-mode a.interpreter-link-btn,
+body.dark-mode .guides-panel .interpreter-link-btn {
+    background: #69bf24 !important;
+    color: #ffffff !important;
+    border: 1px solid #69bf24 !important;
+    box-shadow: 0 12px 24px rgba(105, 191, 36, .22) !important;
+}
+
+body.dark-mode .interpreter-link-btn i,
+body.dark-mode a.interpreter-link-btn i {
+    color: #ffffff !important;
+}
+
+body.dark-mode .interpreter-link-btn:hover,
+body.dark-mode a.interpreter-link-btn:hover {
+    background: #7dcc43 !important;
+    color: #09244a !important;
+    border-color: #7dcc43 !important;
+}
+
+body.dark-mode .interpreter-link-btn:hover i,
+body.dark-mode a.interpreter-link-btn:hover i {
+    color: #09244a !important;
+}
+
+body.dark-mode .favorites-hero,
+body.dark-mode .settings-hero,
+body.dark-mode .interpreters-hero {
+    background-color: #0b1220 !important;
+    background-blend-mode: multiply !important;
+    box-shadow: inset 0 0 0 9999px rgba(7, 18, 36, .30) !important;
+}
+
+body.dark-mode .hero-note,
+body.dark-mode .favorites-toolbar,
+body.dark-mode .empty-state,
+body.dark-mode .favorite-card,
+body.dark-mode .favorite-content,
+body.dark-mode .settings-shell,
+body.dark-mode .settings-nav,
+body.dark-mode .settings-content,
+body.dark-mode .settings-panel,
+body.dark-mode .setting-row,
+body.dark-mode .settings-actions,
+body.dark-mode .interpreter-tools,
+body.dark-mode .interpreter-card .card-body,
+body.dark-mode .modal-content {
+    background: #111b2e !important;
+    color: #eaf2ff !important;
+    border-color: rgba(148, 163, 184, .34) !important;
+}
+
+body.dark-mode .favorites-toolbar h2,
+body.dark-mode .favorites-toolbar p,
+body.dark-mode .empty-state h2,
+body.dark-mode .empty-state p,
+body.dark-mode .favorite-card h3,
+body.dark-mode .favorite-card p,
+body.dark-mode .settings-hero h1,
+body.dark-mode .settings-hero p,
+body.dark-mode .settings-panel h2,
+body.dark-mode .settings-panel h3,
+body.dark-mode .settings-panel p,
+body.dark-mode .setting-row h3,
+body.dark-mode .setting-row p,
+body.dark-mode .interpreter-tools h2,
+body.dark-mode .interpreter-tools p,
+body.dark-mode .interpreter-card h3,
+body.dark-mode .interpreter-card p {
+    color: #eaf2ff !important;
+}
+
+body.dark-mode .filter-tabs button,
+body.dark-mode .settings-tab,
+body.dark-mode .preference-chip,
+body.dark-mode .outline-btn,
+body.dark-mode .secondary-btn,
+body.dark-mode .empty-actions a,
+body.dark-mode .favorite-actions a,
+body.dark-mode .favorite-actions button,
+body.dark-mode .card-actions .view,
+body.dark-mode .card-actions .fav {
+    background: #0f1a2d !important;
+    color: #eaf2ff !important;
+    border-color: rgba(148, 163, 184, .42) !important;
+}
+
+body.dark-mode .filter-tabs button.active,
+body.dark-mode .settings-tab.active,
+body.dark-mode .preference-chip.active,
+body.dark-mode .save-btn,
+body.dark-mode .empty-actions a:first-child,
+body.dark-mode .favorite-actions a:hover,
+body.dark-mode .card-actions .view:hover {
+    background: #69bf24 !important;
+    color: #ffffff !important;
+    border-color: #69bf24 !important;
+}
+
+body.dark-mode .filter-tabs button:hover,
+body.dark-mode .settings-tab:hover,
+body.dark-mode .preference-chip:hover,
+body.dark-mode .outline-btn:hover,
+body.dark-mode .secondary-btn:hover,
+body.dark-mode .empty-actions a:hover,
+body.dark-mode .favorite-actions button:hover,
+body.dark-mode .card-actions .fav:hover {
+    background: #17345c !important;
+    color: #ffffff !important;
+    border-color: #2d609c !important;
+}
+
+body.dark-mode .setting-icon,
+body.dark-mode .hero-note i,
+body.dark-mode .empty-state i {
+    background: #0b74ff !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .status-pill,
+body.dark-mode .badge {
+    background: #13233a !important;
+    color: #7dcc43 !important;
+    border-color: rgba(105, 191, 36, .30) !important;
+}
+
+/* OpenRoutes dark mode polish v3: profile menu, favorites, settings and interpreter CTA */
+body.dark-mode .account-dropdown {
+    background: #0f1a2d !important;
+    border-color: rgba(148, 163, 184, .38) !important;
+}
+
+body.dark-mode .account-item {
+    background: transparent !important;
+    color: #eaf2ff !important;
+}
+
+body.dark-mode .account-item i {
+    color: #7db7ff !important;
+}
+
+body.dark-mode .account-item:hover,
+body.dark-mode .account-item:focus-visible {
+    background: #17345c !important;
+    color: #ffffff !important;
+    outline: none !important;
+}
+
+body.dark-mode .account-item:hover i,
+body.dark-mode .account-item:focus-visible i {
+    color: #69bf24 !important;
+}
+
+body.dark-mode .logout-item {
+    border-top-color: rgba(148, 163, 184, .30) !important;
+}
+
+body.dark-mode .interpreter-link-btn,
+body.dark-mode a.interpreter-link-btn,
+body.dark-mode .guides-panel .interpreter-link-btn {
+    background: #69bf24 !important;
+    color: #ffffff !important;
+    border: 1px solid #69bf24 !important;
+    box-shadow: 0 12px 24px rgba(105, 191, 36, .22) !important;
+}
+
+body.dark-mode .interpreter-link-btn i,
+body.dark-mode a.interpreter-link-btn i {
+    color: #ffffff !important;
+}
+
+body.dark-mode .interpreter-link-btn:hover,
+body.dark-mode a.interpreter-link-btn:hover {
+    background: #7dcc43 !important;
+    color: #09244a !important;
+    border-color: #7dcc43 !important;
+}
+
+body.dark-mode .interpreter-link-btn:hover i,
+body.dark-mode a.interpreter-link-btn:hover i {
+    color: #09244a !important;
+}
+
+body.dark-mode .favorites-hero,
+body.dark-mode .settings-hero,
+body.dark-mode .interpreters-hero {
+    background-color: #0b1220 !important;
+    background-blend-mode: multiply !important;
+    box-shadow: inset 0 0 0 9999px rgba(7, 18, 36, .30) !important;
+}
+
+body.dark-mode .hero-note,
+body.dark-mode .favorites-toolbar,
+body.dark-mode .empty-state,
+body.dark-mode .favorite-card,
+body.dark-mode .favorite-content,
+body.dark-mode .settings-shell,
+body.dark-mode .settings-nav,
+body.dark-mode .settings-content,
+body.dark-mode .settings-panel,
+body.dark-mode .setting-row,
+body.dark-mode .settings-actions,
+body.dark-mode .interpreter-tools,
+body.dark-mode .interpreter-card .card-body,
+body.dark-mode .modal-content {
+    background: #111b2e !important;
+    color: #eaf2ff !important;
+    border-color: rgba(148, 163, 184, .34) !important;
+}
+
+body.dark-mode .favorites-toolbar h2,
+body.dark-mode .favorites-toolbar p,
+body.dark-mode .empty-state h2,
+body.dark-mode .empty-state p,
+body.dark-mode .favorite-card h3,
+body.dark-mode .favorite-card p,
+body.dark-mode .settings-hero h1,
+body.dark-mode .settings-hero p,
+body.dark-mode .settings-panel h2,
+body.dark-mode .settings-panel h3,
+body.dark-mode .settings-panel p,
+body.dark-mode .setting-row h3,
+body.dark-mode .setting-row p,
+body.dark-mode .interpreter-tools h2,
+body.dark-mode .interpreter-tools p,
+body.dark-mode .interpreter-card h3,
+body.dark-mode .interpreter-card p {
+    color: #eaf2ff !important;
+}
+
+body.dark-mode .filter-tabs button,
+body.dark-mode .settings-tab,
+body.dark-mode .preference-chip,
+body.dark-mode .outline-btn,
+body.dark-mode .secondary-btn,
+body.dark-mode .empty-actions a,
+body.dark-mode .favorite-actions a,
+body.dark-mode .favorite-actions button,
+body.dark-mode .card-actions .view,
+body.dark-mode .card-actions .fav {
+    background: #0f1a2d !important;
+    color: #eaf2ff !important;
+    border-color: rgba(148, 163, 184, .42) !important;
+}
+
+body.dark-mode .filter-tabs button.active,
+body.dark-mode .settings-tab.active,
+body.dark-mode .preference-chip.active,
+body.dark-mode .save-btn,
+body.dark-mode .empty-actions a:first-child,
+body.dark-mode .favorite-actions a:hover,
+body.dark-mode .card-actions .view:hover {
+    background: #69bf24 !important;
+    color: #ffffff !important;
+    border-color: #69bf24 !important;
+}
+
+body.dark-mode .filter-tabs button:hover,
+body.dark-mode .settings-tab:hover,
+body.dark-mode .preference-chip:hover,
+body.dark-mode .outline-btn:hover,
+body.dark-mode .secondary-btn:hover,
+body.dark-mode .empty-actions a:hover,
+body.dark-mode .favorite-actions button:hover,
+body.dark-mode .card-actions .fav:hover {
+    background: #17345c !important;
+    color: #ffffff !important;
+    border-color: #2d609c !important;
+}
+
+body.dark-mode .setting-icon,
+body.dark-mode .hero-note i,
+body.dark-mode .empty-state i {
+    background: #0b74ff !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .status-pill,
+body.dark-mode .badge {
+    background: #13233a !important;
+    color: #7dcc43 !important;
+    border-color: rgba(105, 191, 36, .30) !important;
 }

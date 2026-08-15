@@ -1,11 +1,13 @@
 ﻿const params = new URLSearchParams(window.location.search);
-const place = params.get("place") || "coatepeque";
+const place = params.get("place") || "santa ana";
 
 const sharedGallery = [
-  "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80",
-  "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80",
-  "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=900&q=80",
-  "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=80"
+  // Video de YouTube (reemplaza el ID por el tuyo)
+  "https://www.youtube.com/watch?v=q6WZM7Mp-yk", 
+  // Imágenes estáticas
+  "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
+  "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=80",
+  "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80"
 ];
 
 const destinations = {
@@ -15,7 +17,7 @@ const destinations = {
     summary: "One of the most iconic volcanoes in El Salvador with breathtaking views.",
     overview: "Santa Ana Volcano is the highest volcano in El Salvador and offers one of the best hiking experiences in the country. The route rewards travelers with crater views, fresh mountain air and a memorable look at the western landscape.",
     locationText: "Located inside Los Volcanes National Park, this destination is best reached from Santa Ana or nearby towns with planned transportation.",
-    heroImage: "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=1800&q=85",
+    heroImage: "https://www.paradisecatchers.com/wp-content/uploads/2023/04/Santa-Ana-Volcano-Crater3.jpg",
     gallery: sharedGallery,
     highlights: [
       { title: "Crater Views", text: "A colorful volcanic lagoon at the summit.", icon: "fa-mountain-sun" },
@@ -193,20 +195,112 @@ function renderHighlights(items) {
   });
 }
 
-function renderGallery(images) {
+let galleryIndex = 0;
+let galleryImages = [];
+
+function updateGalleryCarousel() {
   if (!galleryEl) return;
-  galleryEl.innerHTML = "";
-  images.slice(0, 4).forEach((image, index) => {
-    const item = document.createElement("div");
-    item.className = "gallery-item";
-    item.innerHTML = `<img src="${image}" alt="${data.name} photo ${index + 1}">`;
-    if (index === 3) {
-      item.insertAdjacentHTML("beforeend", `<div class="more-photos"><div><strong>+8</strong><span>more photos</span></div></div>`);
-    }
-    galleryEl.appendChild(item);
+  const track = galleryEl.querySelector(".gallery-track");
+  const dots = galleryEl.querySelectorAll(".gallery-dot");
+
+  if (track) {
+    track.style.transform = `translateX(-${galleryIndex * 100}%)`;
+  }
+
+  dots.forEach((dot, index) => {
+    const isActive = index === galleryIndex;
+    dot.classList.toggle("active", isActive);
+    dot.setAttribute("aria-current", isActive ? "true" : "false");
   });
 }
 
+function setupGalleryCarousel() {
+  if (!galleryEl || galleryImages.length === 0) return;
+
+  const goToSlide = (index) => {
+    galleryIndex = (index + galleryImages.length) % galleryImages.length;
+    updateGalleryCarousel();
+  };
+
+  galleryEl.querySelector(".carousel-btn.prev")?.addEventListener("click", () => goToSlide(galleryIndex - 1));
+  galleryEl.querySelector(".carousel-btn.next")?.addEventListener("click", () => goToSlide(galleryIndex + 1));
+
+  galleryEl.querySelectorAll(".gallery-dot").forEach((dot) => {
+    dot.addEventListener("click", () => goToSlide(Number(dot.dataset.slide)));
+  });
+
+  galleryEl.querySelector(".gallery-carousel")?.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft") goToSlide(galleryIndex - 1);
+    if (event.key === "ArrowRight") goToSlide(galleryIndex + 1);
+  });
+
+  updateGalleryCarousel();
+}
+
+function renderGallery(images) {
+  if (!galleryEl) return;
+  
+  // Guardamos las imágenes originales o las compartidas por defecto
+  galleryImages = images && images.length ? images : sharedGallery;
+  galleryIndex = 0;
+
+  // Creamos el HTML base del carrusel
+  galleryEl.innerHTML = `
+    <div class="gallery-carousel" tabindex="0" aria-roledescription="carousel" aria-label="Photos and videos of ${data.name}">
+      <button class="carousel-btn prev" type="button" aria-label="Previous media">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <div class="gallery-track">
+        ${galleryImages.map((media, index) => {
+          // Detectamos si es un video de YouTube o Vimeo
+          const isVideo = media.includes("youtube.com/embed") || media.includes("vimeo.com");
+          
+          if (isVideo) {
+            // Si es un video, renderizamos un iframe
+            return `
+              <article class="gallery-slide video-slide" aria-label="Video ${index + 1} of ${galleryImages.length}">
+                <iframe src="${media}" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen
+                        style="width: 100%; height: 100%; object-fit: cover;"></iframe>
+                <div class="gallery-caption">
+                  <div>
+                    <strong>${data.name} Video</strong>
+                    <span>Video ${index + 1} of ${galleryImages.length}</span>
+                  </div>
+                </div>
+              </article>
+            `;
+          } else {
+            // Si es una imagen, renderizamos como siempre
+            return `
+              <article class="gallery-slide" aria-label="Photo ${index + 1} of ${galleryImages.length}">
+                <img src="${media}" alt="${data.name} photo ${index + 1}">
+                <div class="gallery-caption">
+                  <div>
+                    <strong>${data.name}</strong>
+                    <span>Photo ${index + 1} of ${galleryImages.length}</span>
+                  </div>
+                </div>
+              </article>
+            `;
+          }
+        }).join("")}
+      </div>
+      <button class="carousel-btn next" type="button" aria-label="Next media">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </div>
+    <div class="gallery-dots" aria-label="Choose a photo or video">
+      ${galleryImages.map((_, index) => `
+        <button class="gallery-dot" type="button" data-slide="${index}" aria-label="Show media ${index + 1}"></button>
+      `).join("")}
+    </div>
+  `;
+
+  setupGalleryCarousel();
+}
 function renderAccessibilitySummary(items) {
   if (!accessSummaryEl || !accessEl) return;
   accessSummaryEl.innerHTML = "";
@@ -343,3 +437,4 @@ setupTabs();
 setupAccessibilityMenu();
 setupShareButton();
 setupFavoriteButton();
+

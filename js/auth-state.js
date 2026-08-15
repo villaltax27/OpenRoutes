@@ -28,7 +28,7 @@
                     <a href="#" class="account-item"><i class="fa-regular fa-user"></i> My Profile</a>
                     <a href="favorites.html" class="account-item"><i class="fa-regular fa-heart"></i> My Favorites</a>
                     <button type="button" class="account-item" data-action="accessibility"><i class="fa-solid fa-universal-access"></i> Accessibility Preferences</button>
-                    <a href="#" class="account-item"><i class="fa-solid fa-gear"></i> Settings</a>
+                    <a href="settings.html" class="account-item"><i class="fa-solid fa-gear"></i> Settings</a>
                     <button type="button" class="account-item logout-item" data-action="logout"><i class="fa-solid fa-right-from-bracket"></i> Log Out</button>
                 </div>
             </div>
@@ -86,3 +86,4 @@ function getFirstName(value) {
 function getInitials(name) {
     return String(name).trim().slice(0, 1).toUpperCase() || "U";
 }
+

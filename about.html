@@ -11,20 +11,24 @@
 </head>
 <body>
     <header class="navbar">
-        <a class="logo" href="index.html" aria-label="Open Routes Home">
-            <img src="img/logo-openroutes.png" alt="Open Routes">
-        </a>
+    <a class="logo" href="index.html" aria-label="Open Routes Home">
+        <img src="img/logo-openroutes.png" alt="Open Routes">
+    </a>
 
-        <nav class="nav-links" aria-label="Main navigation">
-            <a href="index.html">Home</a>
-            <a href="destinations.html">Destinations</a>
-            <a href="about.html" class="active">About Us</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-        <div class="auth-actions">
-            <a class="auth-link" href="login.html">Login</a>
-            <a class="auth-link auth-register" href="registrer.html">Register</a>
-        </div>    </header>
+    <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="destinations.html">Destinations</a>
+                <a href="plan-your-trip.html">Plan Your Trip</a>
+        <a href="about.html" class="active">About Us</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="auth-actions">
+        <a class="auth-link" href="login.html">Login</a>
+        <a class="auth-link auth-register" href="registrer.html">Register</a>
+    </div>
+</header>
+
 
     <main>
         <section class="hero" aria-label="About Open Routes">
@@ -83,7 +87,7 @@
             <h2 class="section-title">Meet <span>Our Team</span></h2>
             <div class="title-line" aria-hidden="true"></div>
 
-            <div class="team-grid">
+                        <div class="team-grid">
                 <article class="member" data-read="Maria Lopez, Project Coordinator.">
                     <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=500&auto=format&fit=crop" alt="Maria Lopez">
                     <h3>Maria Lopez</h3>
@@ -106,6 +110,18 @@
                     <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=500&auto=format&fit=crop" alt="Carlos Ramos">
                     <h3>Carlos Ramos</h3>
                     <p>Developer</p>
+                </article>
+
+                <article class="member" data-read="Andrea Martinez, Content Specialist.">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=500&auto=format&fit=crop" alt="Andrea Martinez">
+                    <h3>Andrea Martinez</h3>
+                    <p>Content Specialist</p>
+                </article>
+
+                <article class="member" data-read="Diego Hernandez, Accessibility Tester.">
+                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=500&auto=format&fit=crop" alt="Diego Hernandez">
+                    <h3>Diego Hernandez</h3>
+                    <p>Accessibility Tester</p>
                 </article>
             </div>
         </section>
@@ -145,19 +161,32 @@
                 <span class="slider"></span>
             </label>
             <label class="menu-item">
-                <span><i class="fa-solid fa-text-height"></i> Bigger Text</span>
-                <input type="checkbox" id="chkTextSize">
+                <span><i class="fa-solid fa-moon"></i> Dark Mode</span>
+                <input type="checkbox" id="chkDarkMode">
                 <span class="slider"></span>
             </label>
+            <div class="menu-item text-size-control">
+                <div class="text-size-header">
+                    <span><i class="fa-solid fa-text-height"></i> Text Size</span>
+                    <strong id="textSizeValue">100%</strong>
+                </div>
+                <div class="text-size-actions">
+                    <button type="button" id="textSizeMinus" aria-label="Decrease text size">-</button>
+                    <input type="range" id="textSizeRange" min="90" max="130" step="5" value="100" aria-label="Text size">
+                    <button type="button" id="textSizePlus" aria-label="Increase text size">+</button>
+                </div>
+                <input type="checkbox" id="chkTextSize" hidden>
+            </div>
         </div>
     </div>
 <footer class="footer" id="contact">
-        <div class="footer-container">
-            <div class="footer-brand">
-                <img src="img/logo-openroutes-white.png" alt="Open Routes" class="footer-logo-img">
-                <p>Travel without limits, explore with freedom.</p>
-            </div>
+    <div class="footer-container">
+        <div class="footer-brand">
+            <img src="img/logo-openroutes-white.png" alt="Open Routes" class="footer-logo-img">
+            <p>Travel without limits, explore with freedom.</p>
+        </div>
 
+<<<<<<< HEAD
             <div class="footer-links">
                 <h3>Quick Links</h3>
                 <ul>
@@ -167,38 +196,58 @@
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
+=======
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                                <li><a href="plan-your-trip.html">Plan Your Trip</a></li>
+<li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+>>>>>>> origin/main
 
-            <div class="footer-social">
-                <h3>Follow Us</h3>
-                <div class="social-icons">
-                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-                </div>
-            </div>
-
-            <div class="footer-contact">
-                <h3>Contact Us</h3>
-                <p><i class="fa-solid fa-envelope"></i> info@openroutes.sv</p>
-                <p><i class="fa-solid fa-phone"></i> +503 1234 5678</p>
-            </div>
-
-            <div class="newsletter">
-                <h3>Newsletter</h3>
-                <p>Subscribe to receive travel tips and accessible updates.</p>
-                <form>
-                    <input type="email" placeholder="Your email" aria-label="Your email">
-                    <button type="submit">Subscribe</button>
-                </form>
+        <div class="footer-social">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
             </div>
         </div>
-        <p class="copy">© 2026 Open Routes. All rights reserved.</p>
-    </footer>
+
+        <div class="footer-contact">
+            <h3>Contact Us</h3>
+            <p><i class="fa-solid fa-envelope"></i> info@openroutes.sv</p>
+            <p><i class="fa-solid fa-phone"></i> +503 1234 5678</p>
+        </div>
+
+        <div class="newsletter">
+            <h3>Newsletter</h3>
+            <p>Subscribe to receive travel tips and accessible updates.</p>
+            <form>
+                <input type="email" placeholder="Your email" aria-label="Your email">
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </div>
+    <p class="copy">&copy; 2026 Open Routes. All rights reserved.</p>
+</footer>
 
     <script src="js/about.js"></script>
+        <script src="js/text-size-control.js"></script>
+    <script src="js/dark-mode.js"></script>
     <script src="js/auth-state.js"></script>
 </body>
 </html>
+
+
+
+
+
+
 
 
 

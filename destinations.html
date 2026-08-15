@@ -15,7 +15,6 @@
 
 <!-- ================= HEADER ================= -->
 <header class="navbar">
-
     <a class="logo" href="index.html" aria-label="Open Routes Home">
         <img src="img/logo-openroutes.png" alt="Open Routes">
     </a>
@@ -23,13 +22,18 @@
     <nav class="nav-links" aria-label="Main navigation">
         <a href="index.html">Home</a>
         <a href="destinations.html" class="active">Destinations</a>
+
+                <a href="plan-your-trip.html">Plan Your Trip</a>
+
         <a href="about.html">About Us</a>
         <a href="contact.html">Contact</a>
     </nav>
-        <div class="auth-actions">
-            <a class="auth-link" href="login.html">Login</a>
-            <a class="auth-link auth-register" href="registrer.html">Register</a>
-        </div>    </header>
+
+    <div class="auth-actions">
+        <a class="auth-link" href="login.html">Login</a>
+        <a class="auth-link auth-register" href="registrer.html">Register</a>
+    </div>
+</header>
 
 
 <!-- ================= HERO ================= -->
@@ -160,10 +164,22 @@
                 <span class="slider"></span>
             </label>
             <label class="menu-item">
-                <span><i class="fa-solid fa-text-height"></i> Bigger Text</span>
-                <input type="checkbox" id="chkTextSize">
+                <span><i class="fa-solid fa-moon"></i> Dark Mode</span>
+                <input type="checkbox" id="chkDarkMode">
                 <span class="slider"></span>
             </label>
+            <div class="menu-item text-size-control">
+                <div class="text-size-header">
+                    <span><i class="fa-solid fa-text-height"></i> Text Size</span>
+                    <strong id="textSizeValue">100%</strong>
+                </div>
+                <div class="text-size-actions">
+                    <button type="button" id="textSizeMinus" aria-label="Decrease text size">-</button>
+                    <input type="range" id="textSizeRange" min="90" max="130" step="5" value="100" aria-label="Text size">
+                    <button type="button" id="textSizePlus" aria-label="Increase text size">+</button>
+                </div>
+                <input type="checkbox" id="chkTextSize" hidden>
+            </div>
         </div>
     </div>
 <footer class="footer" id="contact">
@@ -178,7 +194,12 @@
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="destinations.html">Destinations</a></li>
+<<<<<<< HEAD
                 <li><a href="about.html">About Us</a></li>
+=======
+                                <li><a href="plan-your-trip.html">Plan Your Trip</a></li>
+<li><a href="about.html">About Us</a></li>
+>>>>>>> origin/main
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
@@ -207,14 +228,21 @@
             </form>
         </div>
     </div>
-    <p class="copy">2026 Open Routes. All rights reserved.</p>
+    <p class="copy">&copy; 2026 Open Routes. All rights reserved.</p>
 </footer>
 
 
 <script src="js/destinations.js"></script>
+        <script src="js/text-size-control.js"></script>
+    <script src="js/dark-mode.js"></script>
     <script src="js/auth-state.js"></script>
 </body>
 </html>
+
+
+
+
+
 
 
 

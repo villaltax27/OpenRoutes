@@ -17,6 +17,7 @@
         <nav class="auth-links" aria-label="Auth navigation">
             <a href="index.html">Home</a>
             <a href="destinations.html">Destinations</a>
+                        <a href="plan-your-trip.html">Plan Your Trip</a>
             <a href="login.html" class="outline-link">Login</a>
         </nav>
     </header>
@@ -104,21 +105,87 @@
         <div class="dropdown-menu" id="accessibilityMenu">
             <label class="menu-item"><span><i class="fa-solid fa-volume-high"></i> Audio Guide</span><input type="checkbox" id="chkVoiceReader"><span class="slider"></span></label>
             <label class="menu-item"><span><i class="fa-solid fa-circle-half-stroke"></i> High Contrast</span><input type="checkbox" id="chkContrast"><span class="slider"></span></label>
-            <label class="menu-item"><span><i class="fa-solid fa-text-height"></i> Bigger Text</span><input type="checkbox" id="chkTextSize"><span class="slider"></span></label>
+            <label class="menu-item">
+                <span><i class="fa-solid fa-moon"></i> Dark Mode</span>
+                <input type="checkbox" id="chkDarkMode">
+                <span class="slider"></span>
+            </label>
+            <div class="menu-item text-size-control">
+                <div class="text-size-header">
+                    <span><i class="fa-solid fa-text-height"></i> Text Size</span>
+                    <strong id="textSizeValue">100%</strong>
+                </div>
+                <div class="text-size-actions">
+                    <button type="button" id="textSizeMinus" aria-label="Decrease text size">-</button>
+                    <input type="range" id="textSizeRange" min="90" max="130" step="5" value="100" aria-label="Text size">
+                    <button type="button" id="textSizePlus" aria-label="Increase text size">+</button>
+                </div>
+                <input type="checkbox" id="chkTextSize" hidden>
+            </div>
         </div>
     </div>
 <footer class="footer" id="contact">
+<<<<<<< HEAD
         <div class="footer-container">
             <div class="footer-brand"><img src="img/logo-openroutes-white.png" alt="Open Routes" class="footer-logo-img"><p>Travel without limits, explore with freedom.</p></div>
             <div class="footer-links"><h3>Quick Links</h3><ul><li><a href="index.html">Home</a></li><li><a href="destinations.html">Destinations</a></li><li><a href="favorites.html">Favorites</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
             <div class="footer-social"><h3>Follow Us</h3><div class="social-icons"><a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a><a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a></div></div>
             <div class="footer-contact"><h3>Contact Us</h3><p><i class="fa-solid fa-envelope"></i> info@openroutes.sv</p><p><i class="fa-solid fa-phone"></i> +503 1234 5678</p></div>
             <div class="newsletter"><h3>Newsletter</h3><p>Subscribe to receive travel tips and accessible updates.</p><form><input type="email" placeholder="Your email" aria-label="Your email"><button type="submit">Subscribe</button></form></div>
+=======
+    <div class="footer-container">
+        <div class="footer-brand">
+            <img src="img/logo-openroutes-white.png" alt="Open Routes" class="footer-logo-img">
+            <p>Travel without limits, explore with freedom.</p>
+>>>>>>> origin/main
         </div>
-        <p class="copy">&copy; 2026 Open Routes. All rights reserved.</p>
-    </footer>
+
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                                <li><a href="plan-your-trip.html">Plan Your Trip</a></li>
+<li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-social">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-contact">
+            <h3>Contact Us</h3>
+            <p><i class="fa-solid fa-envelope"></i> info@openroutes.sv</p>
+            <p><i class="fa-solid fa-phone"></i> +503 1234 5678</p>
+        </div>
+
+        <div class="newsletter">
+            <h3>Newsletter</h3>
+            <p>Subscribe to receive travel tips and accessible updates.</p>
+            <form>
+                <input type="email" placeholder="Your email" aria-label="Your email">
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </div>
+    <p class="copy">&copy; 2026 Open Routes. All rights reserved.</p>
+</footer>
 
     <script src="js/registrer.js"></script>
+    <script src="js/text-size-control.js"></script>
+    <script src="js/dark-mode.js"></script>
 </body>
 </html>
+
+
+
+
+
 

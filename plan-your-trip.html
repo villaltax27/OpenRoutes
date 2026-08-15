@@ -1,0 +1,302 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan Your Trip - Open Routes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/plan-your-trip.css">
+</head>
+<body>
+    <header class="navbar">
+        <a class="logo" href="index.html" aria-label="Open Routes Home">
+            <img src="img/logo-openroutes.png" alt="Open Routes">
+        </a>
+
+        <nav class="nav-links" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="destinations.html">Destinations</a>
+            <a href="plan-your-trip.html" class="active">Plan Your Trip</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+
+        <div class="auth-actions">
+            <a class="auth-link" href="login.html">Login</a>
+            <a class="auth-link auth-register" href="registrer.html">Register</a>
+        </div>
+    </header>
+    <!--Cambio ejemplo-->
+
+    <main>
+        <section class="planner-hero">
+            <div class="hero-copy" data-read="Plan your accessible trip to El Salvador. Choose your travel style, accessibility needs and available time to get a suggested route.">
+                <span class="eyebrow">Accessible Travel Planner</span>
+                <h1>Build your trip before you book.</h1>
+                <p>Choose your travel style, accessibility needs and available time. Open Routes will suggest a destination, support options and next steps.</p>
+                <div class="hero-actions">
+                    <a class="btn btn-green" href="#tripPlanner">Start Planning <i class="fa-solid fa-arrow-down"></i></a>
+                    <a class="btn btn-yellow" href="destinations.html">Browse Places <i class="fa-solid fa-map-location-dot"></i></a>
+                </div>
+            </div>
+
+            <aside class="hero-status" data-read="Your plan can include accessible destination details, guide support, transportation notes and a travel checklist.">
+                <div class="status-icon"><i class="fa-solid fa-compass"></i></div>
+                <h2>Your plan can include</h2>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> Destination recommendation</li>
+                    <li><i class="fa-solid fa-check"></i> Accessibility matches</li>
+                    <li><i class="fa-solid fa-check"></i> Guide and transport notes</li>
+                </ul>
+            </aside>
+        </section>
+
+        <section class="planner-shell" id="tripPlanner" aria-label="Accessible trip planner">
+            <div class="planner-card">
+                <div class="section-heading">
+                    <span class="eyebrow">Step 1</span>
+                    <h2>Tell us what kind of trip you want.</h2>
+                    <p>Adjust the options and the recommendation will update automatically.</p>
+                </div>
+
+                <form class="planner-form" id="plannerForm">
+                    <fieldset>
+                        <legend>Travel style</legend>
+                        <div class="chip-grid" role="radiogroup" aria-label="Travel style">
+                            <label class="choice-chip active">
+                                <input type="radio" name="style" value="relaxed" checked>
+                                <i class="fa-solid fa-mug-hot"></i>
+                                <span>Relaxed</span>
+                            </label>
+                            <label class="choice-chip">
+                                <input type="radio" name="style" value="nature">
+                                <i class="fa-solid fa-mountain-sun"></i>
+                                <span>Nature</span>
+                            </label>
+                            <label class="choice-chip">
+                                <input type="radio" name="style" value="culture">
+                                <i class="fa-solid fa-landmark"></i>
+                                <span>Culture</span>
+                            </label>
+                            <label class="choice-chip">
+                                <input type="radio" name="style" value="beach">
+                                <i class="fa-solid fa-water"></i>
+                                <span>Beach</span>
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Available time</legend>
+                        <div class="time-options">
+                            <label><input type="radio" name="time" value="half-day"> Half day</label>
+                            <label><input type="radio" name="time" value="full-day" checked> Full day</label>
+                            <label><input type="radio" name="time" value="weekend"> Weekend</label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Accessibility support</legend>
+                        <div class="support-grid">
+                            <label><input type="checkbox" name="support" value="wheelchair"> Wheelchair access</label>
+                            <label><input type="checkbox" name="support" value="low-walking"> Low walking route</label>
+                            <label><input type="checkbox" name="support" value="restrooms"> Accessible restrooms</label>
+                            <label><input type="checkbox" name="support" value="interpreter"> Interpreter or guide</label>
+                            <label><input type="checkbox" name="support" value="audio"> Audio guide</label>
+                            <label><input type="checkbox" name="support" value="transport"> Private transport</label>
+                        </div>
+                    </fieldset>
+
+                    <label class="start-field" for="startPoint">
+                        <span>Starting point</span>
+                        <select id="startPoint" name="startPoint">
+                            <option value="san-salvador">San Salvador</option>
+                            <option value="santa-ana">Santa Ana</option>
+                            <option value="la-libertad">La Libertad</option>
+                            <option value="not-sure">Not sure yet</option>
+                        </select>
+                    </label>
+                </form>
+            </div>
+
+            <aside class="result-card" id="resultCard" aria-live="polite">
+                <div class="result-image">
+                    <img id="resultImage" src="https://tse3.mm.bing.net/th/id/OIP.kNAvHfoTD-ffUFfJZNuvugHaE8?r=0&cb=thfc1falcon4&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Lake Coatepeque">
+                    <span id="resultBadge">Recommended</span>
+                </div>
+                <div class="result-content" data-read="Recommended trip. Lake Coatepeque is a relaxed full day route with beautiful views, low pressure timing and support options.">
+                    <p class="result-label">Suggested plan</p>
+                    <h2 id="resultTitle">Lake Coatepeque Easy Day</h2>
+                    <p id="resultDescription">A calm full-day route with scenic views, flexible timing and space to plan support before visiting.</p>
+
+                    <div class="match-list" id="matchList">
+                        <span><i class="fa-solid fa-circle-check"></i> Scenic route</span>
+                        <span><i class="fa-solid fa-circle-check"></i> Flexible timing</span>
+                        <span><i class="fa-solid fa-circle-check"></i> Guide available</span>
+                    </div>
+
+                    <div class="mini-itinerary">
+                        <h3>Suggested route</h3>
+                        <ol id="routeSteps">
+                            <li>Start from San Salvador in the morning.</li>
+                            <li>Visit a lake viewpoint and restaurant stop.</li>
+                            <li>Return before evening traffic.</li>
+                        </ol>
+                    </div>
+
+                    <div class="result-actions">
+                        <a class="btn btn-green" id="destinationLink" href="destination-detail.html?place=coatepeque">View Destination</a>
+                        <a class="btn btn-outline" id="interpreterLink" href="interpreters.html">Find Guide</a>
+                        <button class="btn btn-save" id="savePlan" type="button"><i class="fa-regular fa-heart"></i> Save Plan</button>
+                    </div>
+                </div>
+            </aside>
+        </section>
+
+        <section class="trip-board" aria-label="Trip preparation board">
+            <article class="board-card" data-read="Transportation note. Private transport is recommended for longer routes or when accessibility support is required.">
+                <i class="fa-solid fa-car-side"></i>
+                <h2>Transport Note</h2>
+                <p id="transportNote">Private transport is recommended if you need flexible timing, extra stops or mobility support.</p>
+            </article>
+            <article class="board-card" data-read="Support note. Contact Open Routes before visiting if you need interpreter assistance, audio descriptions or route confirmation.">
+                <i class="fa-solid fa-headset"></i>
+                <h2>Support Note</h2>
+                <p id="supportNote">Contact Open Routes before visiting if you need interpreter support, audio descriptions or route confirmation.</p>
+            </article>
+            <article class="board-card" data-read="Safety note. Travel early, keep emergency contacts ready and confirm opening hours before leaving.">
+                <i class="fa-solid fa-shield-heart"></i>
+                <h2>Safety Note</h2>
+                <p>Travel early, keep emergency contacts ready and confirm opening hours before leaving.</p>
+            </article>
+        </section>
+
+        <section class="checklist-section">
+            <div class="checklist-card">
+                <div class="checklist-heading">
+                    <div>
+                        <span class="eyebrow">Step 2</span>
+                        <h2>Prepare your travel checklist.</h2>
+                        <p>Save the essentials you need before leaving.</p>
+                    </div>
+                    <div class="progress-ring">
+                        <strong id="checkProgress">0%</strong>
+                        <span>ready</span>
+                    </div>
+                </div>
+                <div class="progress-bar" aria-hidden="true"><span id="checkProgressBar"></span></div>
+                <div class="checklist-grid">
+                    <label><input type="checkbox" data-check-item="id"> ID or passport</label>
+                    <label><input type="checkbox" data-check-item="needs"> Accessibility needs list</label>
+                    <label><input type="checkbox" data-check-item="meds"> Medication</label>
+                    <label><input type="checkbox" data-check-item="water"> Water bottle</label>
+                    <label><input type="checkbox" data-check-item="sun"> Sunscreen</label>
+                    <label><input type="checkbox" data-check-item="phone"> Phone charger</label>
+                    <label><input type="checkbox" data-check-item="cash"> Small bills</label>
+                    <label><input type="checkbox" data-check-item="contacts"> Emergency contacts</label>
+                </div>
+            </div>
+        </section>
+
+        <section class="next-actions" data-read="Next steps. Explore the recommended destination, find a guide, view packages or contact support for help planning.">
+            <div>
+                <span class="eyebrow">Step 3</span>
+                <h2>Ready to continue?</h2>
+                <p>Use your recommendation to explore places, find support or ask Open Routes for help planning your visit.</p>
+            </div>
+            <div class="next-links">
+                <a class="btn btn-green" href="destinations.html">Destinations</a>
+                <a class="btn btn-yellow" href="index.html#popularTours">Packages</a>
+                <a class="btn btn-light" href="contact.html">Contact Support</a>
+            </div>
+        </section>
+    </main>
+
+    <div class="accessibility-dropdown floating-accessibility">
+        <button class="btn-accessible-mode" id="btnDropdownToggle" aria-expanded="false" aria-haspopup="true" aria-label="Accessible Mode" title="Accessible Mode">
+            <i class="fa-solid fa-universal-access"></i>
+        </button>
+        <div class="dropdown-menu" id="accessibilityMenu">
+            <label class="menu-item">
+                <span><i class="fa-solid fa-volume-high"></i> Audio Guide</span>
+                <input type="checkbox" id="chkVoiceReader">
+                <span class="slider"></span>
+            </label>
+            <label class="menu-item">
+                <span><i class="fa-solid fa-circle-half-stroke"></i> High Contrast</span>
+                <input type="checkbox" id="chkContrast">
+                <span class="slider"></span>
+            </label>
+            <label class="menu-item">
+                <span><i class="fa-solid fa-moon"></i> Dark Mode</span>
+                <input type="checkbox" id="chkDarkMode">
+                <span class="slider"></span>
+            </label>
+            <div class="menu-item text-size-control">
+                <div class="text-size-header">
+                    <span><i class="fa-solid fa-text-height"></i> Text Size</span>
+                    <strong id="textSizeValue">100%</strong>
+                </div>
+                <div class="text-size-actions">
+                    <button type="button" id="textSizeMinus" aria-label="Decrease text size">-</button>
+                    <input type="range" id="textSizeRange" min="90" max="130" step="5" value="100" aria-label="Text size">
+                    <button type="button" id="textSizePlus" aria-label="Increase text size">+</button>
+                </div>
+                <input type="checkbox" id="chkTextSize" hidden>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer" id="contact">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="img/logo-openroutes-white.png" alt="Open Routes" class="footer-logo-img">
+                <p>Travel without limits, explore with freedom.</p>
+            </div>
+
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="destinations.html">Destinations</a></li>
+                    <li><a href="plan-your-trip.html">Plan Your Trip</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fa-solid fa-envelope"></i> info@openroutes.sv</p>
+                <p><i class="fa-solid fa-phone"></i> +503 1234 5678</p>
+            </div>
+
+            <div class="newsletter">
+                <h3>Newsletter</h3>
+                <p>Subscribe to receive travel tips and accessible updates.</p>
+                <form>
+                    <input type="email" placeholder="Your email" aria-label="Your email">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <p class="copy">&copy; 2026 Open Routes. All rights reserved.</p>
+    </footer>
+
+    <script src="js/plan-your-trip.js"></script>
+    <script src="js/text-size-control.js"></script>
+    <script src="js/dark-mode.js"></script>
+    <script src="js/auth-state.js"></script>
+</body>
+</html>

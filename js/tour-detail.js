@@ -1,4 +1,4 @@
-const tours = {
+﻿const tours = {
   "santa-ana": {
     name: "Santa Ana Volcano",
     badge: "Most Popular",
@@ -114,8 +114,31 @@ setText("tourPrice", tour.price);
 renderList("tourIncludes", tour.includes, "fa-check");
 renderList("tourPlan", tour.plan, "fa-location-dot");
 
+function getOpenRoutesUser() {
+  try {
+    return JSON.parse(localStorage.getItem("loggedUser") || "null");
+  } catch (error) {
+    return null;
+  }
+}
+
+function redirectToLoginForBooking(targetUrl = window.location.href) {
+  localStorage.setItem("openRoutesPendingBooking", targetUrl);
+  window.location.href = "login.html";
+}
+
+document.querySelector('a[href="#bookingBox"]')?.addEventListener("click", (event) => {
+  if (getOpenRoutesUser()) return;
+  event.preventDefault();
+  redirectToLoginForBooking(window.location.href);
+});
+
 document.querySelector(".booking-form")?.addEventListener("submit", (event) => {
   event.preventDefault();
+  if (!getOpenRoutesUser()) {
+    redirectToLoginForBooking(window.location.href);
+    return;
+  }
   alert("Thanks! Your trip request has been received.");
 });
 
@@ -152,3 +175,4 @@ document.addEventListener("DOMContentLoaded", () => {
     window.speechSynthesis.speak(utterance);
   });
 });
+
