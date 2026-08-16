@@ -1,442 +1,1989 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Open Routes - Home</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+        crossorigin="anonymous">
+
     <link rel="stylesheet" href="css/index.css">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
 </head>
+
+
 <body>
 
+    <!-- =========================================================
+         NAVBAR
+    ========================================================= -->
+
     <header class="navbar">
-    <a class="logo" href="index.html" aria-label="Open Routes Home">
-        <img src="img/logo-openroutes.png" alt="Open Routes">
-    </a>
 
-    <nav class="nav-links" aria-label="Main navigation">
-        <a href="index.html" class="active">Home</a>
-        <a href="destinations.html">Destinations</a>
-                <a href="plan-your-trip.html">Plan Your Trip</a>
-        <a href="about.html">About Us</a>
-        <a href="contact.html">Contact</a>
-    </nav>
+        <a class="logo" href="index.html" aria-label="Open Routes Home">
+            <img src="img/logo-openroutes.png" alt="Open Routes">
+        </a>
 
-    <div class="auth-actions">
-        <a class="auth-link" href="login.html">Login</a>
-        <a class="auth-link auth-register" href="registrer.html">Register</a>
-    </div>
-</header>
+        <nav class="nav-links" aria-label="Main navigation">
 
+            <a href="index.html">Home</a>
+
+            <a href="destinations.html">Destinations</a>
+
+            <a href="plan-your-trip.html">Plan Your Trip</a>
+
+            <a href="about.html">About Us</a>
+
+            <a href="contact.html">Contact</a>
+
+        </nav>
+
+
+        <div class="auth-actions">
+
+            <a class="auth-link" href="login.html">
+                Login
+            </a>
+
+            <a class="auth-link auth-register" href="registrer.html">
+                Register
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================================
+         VIDEO MENU
+    ========================================================= -->
+
+    <aside
+        class="nav-video-menu"
+        id="navVideoMenu"
+        aria-label="Menu with video guides">
+
+        <div class="nav-video-menu__header">
+
+            <div>
+
+                <span class="nav-video-menu__eyebrow">
+                    Quick guides
+                </span>
+
+                <h2>
+                    Explore Open Routes
+                </h2>
+
+            </div>
+
+
+            <!-- BOTÓN X -->
+
+            <button
+                class="nav-video-menu__close"
+                type="button"
+                id="closeVideoMenu"
+                aria-label="Close video menu"
+                title="Close video menu">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+
+
+        <!-- LISTA DE VIDEOS -->
+
+        <div class="nav-video-menu__list">
+
+
+            <!-- HOME -->
+
+            <a class="nav-video-item" href="index.html">
+
+                <div class="nav-video-item__media">
+
+                    <video
+                        muted
+                        autoplay
+                        loop
+                        playsinline
+                        preload="metadata"
+                        aria-label="Home guide">
+
+                        <source
+                            src="videos/Home.mp4"
+                            type="video/mp4">
+
+                    </video>
+
+                </div>
+
+
+                <div class="nav-video-item__text">
+
+                    <span>01</span>
+
+                    <strong>
+                        Home
+                    </strong>
+
+                    <small>
+                        Start here
+                    </small>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- DESTINATIONS -->
+
+            <a class="nav-video-item" href="destinations.html">
+
+                <div class="nav-video-item__media">
+
+                    <video
+                        muted
+                        autoplay
+                        loop
+                        playsinline
+                        preload="metadata"
+                        aria-label="Destinations guide">
+
+                        <source
+                            src="videos/Destinations.mp4"
+                            type="video/mp4">
+
+                    </video>
+
+                </div>
+
+
+                <div class="nav-video-item__text">
+
+                    <span>02</span>
+
+                    <strong>
+                        Destinations
+                    </strong>
+
+                    <small>
+                        Discover places
+                    </small>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- PLAN YOUR TRIP -->
+
+            <a class="nav-video-item" href="plan-your-trip.html">
+
+                <div class="nav-video-item__media">
+
+                    <video
+                        muted
+                        autoplay
+                        loop
+                        playsinline
+                        preload="metadata"
+                        aria-label="Plan Your Trip guide">
+
+                        <source
+                            src="videos/PlanYourTrip.mp4"
+                            type="video/mp4">
+
+                    </video>
+
+                </div>
+
+
+                <div class="nav-video-item__text">
+
+                    <span>03</span>
+
+                    <strong>
+                        Plan Your Trip
+                    </strong>
+
+                    <small>
+                        Plan your journey
+                    </small>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- ABOUT US -->
+
+            <a class="nav-video-item" href="about.html">
+
+                <div class="nav-video-item__media">
+
+                    <video
+                        muted
+                        autoplay
+                        loop
+                        playsinline
+                        preload="metadata"
+                        aria-label="About Us guide">
+
+                        <source
+                            src="videos/Aboutus.mp4"
+                            type="video/mp4">
+
+                    </video>
+
+                </div>
+
+
+                <div class="nav-video-item__text">
+
+                    <span>04</span>
+
+                    <strong>
+                        About Us
+                    </strong>
+
+                    <small>
+                        Meet Open Routes
+                    </small>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- CONTACT -->
+
+            <a class="nav-video-item" href="contact.html">
+
+                <div class="nav-video-item__media">
+
+                    <video
+                        muted
+                        autoplay
+                        loop
+                        playsinline
+                        preload="metadata"
+                        aria-label="Contact guide">
+
+                        <source
+                            src="videos/Contact.mp4"
+                            type="video/mp4">
+
+                    </video>
+
+                </div>
+
+
+                <div class="nav-video-item__text">
+
+                    <span>05</span>
+
+                    <strong>
+                        Contact
+                    </strong>
+
+                    <small>
+                        Get in touch
+                    </small>
+
+                </div>
+
+            </a>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =========================================================
+         BOTÓN DEL MENÚ
+    ========================================================= -->
+
+    <button
+        class="nav-video-toggle"
+        id="openVideoMenu"
+        type="button"
+        aria-label="Open video menu"
+        aria-controls="navVideoMenu"
+        aria-expanded="false">
+
+        <i class="fa-solid fa-bars"></i>
+
+    </button>
+
+
+
+    <!-- =========================================================
+         MAIN
+    ========================================================= -->
 
     <main>
-        <section class="hero" aria-label="Explore El Salvador without limits">
+
+
+        <!-- HERO -->
+
+        <section
+            class="hero"
+            aria-label="Explore El Salvador without limits">
+
             <div class="hero-content">
-                <h1>Explore El Salvador <span>Without</span> Limits</h1>
-                <p>Accessible tourism for everyone. Discover amazing places, live unique experiences and travel with freedom.</p>
+
+                <h1>
+                    Explore El Salvador
+                    <span>Without</span>
+                    Limits
+                </h1>
+
+                <p>
+                    Accessible tourism for everyone.
+                    Discover amazing places, live unique experiences
+                    and travel with freedom.
+                </p>
+
+
                 <div class="hero-buttons">
-                    <a href="#destinations" class="btn btn-green">Explore Now <i class="fa-solid fa-arrow-right"></i></a>
-                    <a href="about.html" class="btn btn-yellow">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+
+                    <a
+                        href="#destinations"
+                        class="btn btn-green">
+
+                        Explore Now
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+
+                    <a
+                        href="about.html"
+                        class="btn btn-yellow">
+
+                        Learn More
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
                 </div>
+
             </div>
 
-            <aside class="access-card" data-read="We are committed to accessibility. Our tools help everyone enjoy the journey.">
-                <div class="access-icon"><i class="fa-solid fa-universal-access"></i></div>
-                <div>
-                    <h2>We are committed to accessibility.</h2>
-                    <p>Our tools help everyone enjoy the journey.</p>
+
+
+            <aside
+                class="access-card"
+                data-read="We are committed to accessibility. Our tools help everyone enjoy the journey.">
+
+                <div class="access-icon">
+
+                    <i class="fa-solid fa-universal-access"></i>
+
                 </div>
+
+
+                <div>
+
+                    <h2>
+                        We are committed to accessibility.
+                    </h2>
+
+                    <p>
+                        Our tools help everyone enjoy the journey.
+                    </p>
+
+                </div>
+
             </aside>
+
         </section>
 
-        <section class="destinations-section" id="destinations">
-            <h2 class="section-title">Popular <span>Destinations</span></h2>
-            <div class="title-line" aria-hidden="true"></div>
+
+
+        <!-- =====================================================
+             DESTINATIONS
+        ====================================================== -->
+
+        <section
+            class="destinations-section"
+            id="destinations">
+
+            <h2 class="section-title">
+                Popular <span>Destinations</span>
+            </h2>
+
+            <div
+                class="title-line"
+                aria-hidden="true">
+            </div>
+
 
             <div class="destination-grid">
-                <article class="destination-card" data-read="Santa Ana Volcano. Enjoy breathtaking views and accessible trails for everyone.">
-                    <img src="https://tse2.mm.bing.net/th/id/OIP.EMzsVu-WkvVxgp4Ke32EXQHaEb?r=0&cb=thfvnextfalcon2&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Santa Ana Volcano landscape">
-                    <div class="card-icon"><i class="fa-solid fa-mountain-sun"></i></div>
-                    <div class="card-body">
-                        <h3>Santa Ana Volcano</h3>
-                        <p>Enjoy breathtaking views and accessible trails for everyone.</p>
-                        <a href="destination-detail.html?place=santa-ana">View more <i class="fa-solid fa-arrow-right"></i></a>
+
+
+                <!-- SANTA ANA -->
+
+                <article
+                    class="destination-card"
+                    data-read="Santa Ana Volcano. Enjoy breathtaking views and accessible trails for everyone.">
+
+                    <img
+                        src="https://tse2.mm.bing.net/th/id/OIP.EMzsVu-WkvVxgp4Ke32EXQHaEb?r=0&cb=thfvnextfalcon2&rs=1&pid=ImgDetMain&o=7&rm=3"
+                        alt="Santa Ana Volcano landscape">
+
+
+                    <div class="card-icon">
+
+                        <i class="fa-solid fa-mountain-sun"></i>
+
                     </div>
+
+
+                    <div class="card-body">
+
+                        <h3>
+                            Santa Ana Volcano
+                        </h3>
+
+                        <p>
+                            Enjoy breathtaking views and accessible trails for everyone.
+                        </p>
+
+                        <a href="destination-detail.html?place=santa-ana">
+
+                            View more
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </a>
+
+                    </div>
+
                 </article>
 
-                <article class="destination-card" data-read="Lake Coatepeque. A beautiful lake perfect for relaxation and nature.">
-                    <img src="https://cdn-pro.elsalvador.com/wp-content/uploads/2019/06/Lago-Coatepeque_03.jpg" alt="Lake Coatepeque surrounded by green mountains">
-                    <div class="card-icon"><i class="fa-solid fa-water"></i></div>
-                    <div class="card-body">
-                        <h3>Lake Coatepeque</h3>
-                        <p>A beautiful lake perfect for relaxation and nature.</p>
-                        <a href="destination-detail.html?place=coatepeque">View more <i class="fa-solid fa-arrow-right"></i></a>
+
+
+                <!-- COATEPEQUE -->
+
+                <article
+                    class="destination-card"
+                    data-read="Lake Coatepeque. A beautiful lake perfect for relaxation and nature.">
+
+                    <img
+                        src="https://cdn-pro.elsalvador.com/wp-content/uploads/2019/06/Lago-Coatepeque_03.jpg"
+                        alt="Lake Coatepeque surrounded by green mountains">
+
+
+                    <div class="card-icon">
+
+                        <i class="fa-solid fa-water"></i>
+
                     </div>
+
+
+                    <div class="card-body">
+
+                        <h3>
+                            Lake Coatepeque
+                        </h3>
+
+                        <p>
+                            A beautiful lake perfect for relaxation and nature.
+                        </p>
+
+                        <a href="destination-detail.html?place=coatepeque">
+
+                            View more
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </a>
+
+                    </div>
+
                 </article>
 
-                <article class="destination-card" data-read="El Tunco Beach. Surf, sun and sea with accessible beach services.">
-                    <img src="https://bonvoyageguatemala.com/en/wp-content/uploads/2018/09/shutterstock-372639865-1600x1000.jpg" alt="El Tunco beach at sunset">
-                    <div class="card-icon"><i class="fa-solid fa-umbrella-beach"></i></div>
-                    <div class="card-body">
-                        <h3>El Tunco Beach</h3>
-                        <p>Surf, sun and sea with accessible beach services.</p>
-                        <a href="destination-detail.html?place=el-tunco">View more <i class="fa-solid fa-arrow-right"></i></a>
+
+
+                <!-- EL TUNCO -->
+
+                <article
+                    class="destination-card"
+                    data-read="El Tunco Beach. Surf, sun and sea with accessible beach services.">
+
+                    <img
+                        src="https://bonvoyageguatemala.com/en/wp-content/uploads/2018/09/shutterstock-372639865-1600x1000.jpg"
+                        alt="El Tunco beach at sunset">
+
+
+                    <div class="card-icon">
+
+                        <i class="fa-solid fa-umbrella-beach"></i>
+
                     </div>
+
+
+                    <div class="card-body">
+
+                        <h3>
+                            El Tunco Beach
+                        </h3>
+
+                        <p>
+                            Surf, sun and sea with accessible beach services.
+                        </p>
+
+                        <a href="destination-detail.html?place=el-tunco">
+
+                            View more
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </a>
+
+                    </div>
+
                 </article>
 
-                <article class="destination-card" data-read="Suchitoto. Culture, art and history in an accessible town.">
-                    <img src="https://svelsalvador.com/wp-content/uploads/2023/10/Suchitoto-Como-llegar-Donde-queda-Que-hacer-Videos.jpg" alt="Historic town and church architecture">
-                    <div class="card-icon"><i class="fa-solid fa-city"></i></div>
-                    <div class="card-body">
-                        <h3>Suchitoto</h3>
-                        <p>Culture, art and history in an accessible town.</p>
-                        <a href="destination-detail.html?place=suchitoto">View more <i class="fa-solid fa-arrow-right"></i></a>
+
+
+                <!-- SUCHITOTO -->
+
+                <article
+                    class="destination-card"
+                    data-read="Suchitoto. Culture, art and history in an accessible town.">
+
+                    <img
+                        src="https://svelsalvador.com/wp-content/uploads/2023/10/Suchitoto-Como-llegar-Donde-queda-Que-hacer-Videos.jpg"
+                        alt="Historic town and church architecture">
+
+
+                    <div class="card-icon">
+
+                        <i class="fa-solid fa-city"></i>
+
                     </div>
+
+
+                    <div class="card-body">
+
+                        <h3>
+                            Suchitoto
+                        </h3>
+
+                        <p>
+                            Culture, art and history in an accessible town.
+                        </p>
+
+                        <a href="destination-detail.html?place=suchitoto">
+
+                            View more
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </a>
+
+                    </div>
+
                 </article>
+
             </div>
+
         </section>
 
 
-        
+
+        <!-- =====================================================
+             PREMIUM SECTION
+        ====================================================== -->
+
+        <section class="premium-section">
+
+            <div class="container-premium">
 
 
-        <!------------------------jheudanf---------------------------->
-<section class="premium-section">
-    <div class="container-premium">
-        
-        <div class="features-column fade-up">
-            <div class="feature-item">
-                <span class="feature-number gradient-number">01</span>
-                <h3 class="feature-title">Find trips that fit your freedom</h3>
-                <p class="feature-description">Traveling offers freedom and flexibility, solitude and spontaneity, and privacy and purpose. Discover our <strong>lexible packages with no change fees.</strong></p>
-            </div>
+                <!-- COLUMNA IZQUIERDA -->
 
-            <div class="feature-item">
-                <span class="feature-number gradient-number">02</span>
-                <h3 class="feature-title">Get back to nature by travel</h3>
-               <p class="feature-description">The world is a playground, and you can finally explore Mother Nature's most spectacular landscapes. Discover our <strong>Volcano Route Tour</strong> and <strong>Living Nature Package</strong>.</p>
-            </div>
+                <div class="features-column fade-up">
 
-            <div class="feature-item">
-                <span class="feature-number gradient-number">03</span>
-                <h3 class="feature-title">Reignite those travel tastebuds</h3>
-                <p class="feature-description">There are countless reasons to love travel, and one of the best is discovering amazing food. Enjoy our <strong>Gastronomic Route</strong> and <strong>Flavors of El Salvador Package</strong>, included with every tour.</p>
-            </div>
-        </div>
 
-        <!-- Columna derecha: Collage de imágenes + testimonios -->
-        <div class="gallery-column fade-up delay-1">
-            <div class="image-collage">
-                <div class="collage-main">
-                    <img src="https://i.pinimg.com/1200x/b0/5a/86/b05a8641a2c8d8f452f98f8cf51ed584.jpg" alt="Volcano">
-                </div>
-                <div class="collage-stack">
-                    <img src="https://i.pinimg.com/736x/9f/00/6f/9f006fe6d06845fc4bdf2b0541f2db28.jpg" alt="Nature lake">
-                    <img src="https://i.pinimg.com/736x/98/ca/c0/98cac0f7abd342098f372af7f7b7af1b.jpg" alt="Food experience">
-                </div>
-            </div>
-            
-            <div class="testimonials-premium">
-                <div class="testimonial-card-premium">
-                    <div class="avatar-premium"><img src="https://i.pinimg.com/736x/52/d9/2f/52d92f96f0597a2acb98ea959c85b9dc.jpg"></div>
-                    <div class="testimonial-info-premium">
-                        <h4>Kornelia Diana</h4>
-                        <div class="rating-premium">4.9 ★★★★★</div>
-                        <p>"El mejor tour de mi vida"</p>
+                    <div class="feature-item">
+
+                        <span class="feature-number gradient-number">
+                            01
+                        </span>
+
+                        <h3 class="feature-title">
+                            Find trips that fit your freedom
+                        </h3>
+
+                        <p class="feature-description">
+                            Traveling offers freedom and flexibility,
+                            solitude and spontaneity, and privacy and purpose.
+                            Discover our
+                            <strong>
+                                lexible packages with no change fees.
+                            </strong>
+                        </p>
+
                     </div>
-                </div>
-                <div class="testimonial-card-premium">
-                    <div class="avatar-premium"><img src="https://i.pinimg.com/736x/71/84/5d/71845dc02c5dd3d1b97b06d68410fcc5.jpg"></div>
-                    <div class="testimonial-info-premium">
-                        <h4>Joe Zefranis</h4>
-                        <div class="rating-premium">4.9 ★★★★★</div>
-                        <p>"Accesibilidad y naturaleza"</p>
-                    </div>
-                </div>
-                <div class="testimonial-card-premium">
-                    <div class="avatar-premium"><img src="https://i.pinimg.com/736x/21/84/d3/2184d3c6c56455d8b598c3a901d013ea.jpg"></div>
-                    <div class="testimonial-info-premium">
-                        <h4>Iskak Adam</h4>
-                        <div class="rating-premium">4.5 ★★★★☆</div>
-                        <p>"Volveré por más"</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 
-<!-- ============================================ -->
-<!-- SECTION: POPULAR TOURS                       -->
-<!-- ============================================ -->
-<section class="popular-tours-section" id="popularTours">
-    <div class="container">
-        <div class="section-header">
-            <div class="header-left">
-                <h2 class="section-title">Popular <span>Tours</span></h2>
-                <p class="section-subtitle">Handpicked experiences for unforgettable memories</p>
-            </div>
-            <a href="#popularTours" class="view-all-link">VIEW ALL <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-        <div class="title-line" aria-hidden="true"></div>
 
-        <div class="tours-grid">
-            <!-- Tour 1 -->
-            <div class="tour-card">
-                <div class="tour-image">
-                    <img src="https://thf.bing.com/th/id/R.16a9d0ceaafc7d36fe72237465acccdb?rik=HUFWnO8PTnlkBg&pid=ImgRaw&r=0" alt="Santa Ana Volcano Tour">
-                    <div class="tour-badge">🔥 Most Popular</div>
-                </div>
-                <div class="tour-content">
-                    <div class="tour-category">
-                        <span class="cat-icon">⛰️</span>
-                        <span class="cat-name">Adventure</span>
+                    <div class="feature-item">
+
+                        <span class="feature-number gradient-number">
+                            02
+                        </span>
+
+                        <h3 class="feature-title">
+                            Get back to nature by travel
+                        </h3>
+
+                        <p class="feature-description">
+                            The world is a playground, and you can finally
+                            explore Mother Nature's most spectacular landscapes.
+                            Discover our
+                            <strong>
+                                Volcano Route Tour
+                            </strong>
+                            and
+                            <strong>
+                                Living Nature Package
+                            </strong>.
+                        </p>
+
                     </div>
-                    <h3>Santa Ana Volcano</h3>
-                    <p class="tour-desc">Climb the highest volcano in El Salvador with a certified guide.</p>
-                    <div class="tour-meta">
-                        <div class="tour-duration">
-                            <i class="fa-regular fa-clock"></i>
-                            <span>2 days / 1 night</span>
+
+
+
+                    <div class="feature-item">
+
+                        <span class="feature-number gradient-number">
+                            03
+                        </span>
+
+                        <h3 class="feature-title">
+                            Reignite those travel tastebuds
+                        </h3>
+
+                        <p class="feature-description">
+                            There are countless reasons to love travel,
+                            and one of the best is discovering amazing food.
+                            Enjoy our
+                            <strong>
+                                Gastronomic Route
+                            </strong>
+                            and
+                            <strong>
+                                Flavors of El Salvador Package
+                            </strong>,
+                            included with every tour.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- COLUMNA DERECHA -->
+
+                <div class="gallery-column fade-up delay-1">
+
+                    <div class="image-collage">
+
+
+                        <div class="collage-main">
+
+                            <img
+                                src="https://i.pinimg.com/1200x/b0/5a/86/b05a8641a2c8d8f452f98f8cf51ed584.jpg"
+                                alt="Volcano">
+
                         </div>
-                        <div class="tour-price">$230</div>
-                    </div>
-                    <a href="tour-detail.html?tour=santa-ana" class="tour-btn">Book now →</a>
-                </div>
-            </div>
 
-            <!-- Tour 2 -->
-            <div class="tour-card">
-                <div class="tour-image">
-                    <img src="https://cdn-pro.elsalvador.com/wp-content/uploads/2019/06/Lago-Coatepeque_03.jpg" alt="Lake Coatepeque Tour">
-                    <div class="tour-badge">⭐ Top Rated</div>
-                </div>
-                <div class="tour-content">
-                    <div class="tour-category">
-                        <span class="cat-icon">💧</span>
-                        <span class="cat-name">Nature</span>
-                    </div>
-                    <h3>Lake Coatepeque Escape</h3>
-                    <p class="tour-desc">Relax by the stunning crater lake, swim and enjoy local cuisine.</p>
-                    <div class="tour-meta">
-                        <div class="tour-duration">
-                            <i class="fa-regular fa-clock"></i>
-                            <span>2 days / 1 night</span>
+
+                        <div class="collage-stack">
+
+                            <img
+                                src="https://i.pinimg.com/736x/9f/00/6f/9f006fe6d06845fc4bdf2b0541f2db28.jpg"
+                                alt="Nature lake">
+
+
+                            <img
+                                src="https://i.pinimg.com/736x/98/ca/c0/98cac0f7abd342098f372af7f7b7af1b.jpg"
+                                alt="Food experience">
+
                         </div>
-                        <div class="tour-price">$195</div>
-                    </div>
-                    <a href="tour-detail.html?tour=coatepeque" class="tour-btn">Book now →</a>
-                </div>
-            </div>
 
-            <!-- Tour 3 -->
-            <div class="tour-card">
-                <div class="tour-image">
-                    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/22/8a/19/69/surf.jpg?w=1200&h=900&s=1" alt="El Tunco Surf Tour">
-                    <div class="tour-badge">🏄 Best Seller</div>
-                </div>
-                <div class="tour-content">
-                    <div class="tour-category">
-                        <span class="cat-icon">🏖️</span>
-                        <span class="cat-name">Beach</span>
                     </div>
-                    <h3>El Tunco Surf Experience</h3>
-                    <p class="tour-desc">Catch the perfect wave with surf lessons for all levels.</p>
-                    <div class="tour-meta">
-                        <div class="tour-duration">
-                            <i class="fa-regular fa-clock"></i>
-                            <span>2 days / 1 night</span>
+
+
+
+                    <!-- TESTIMONIOS -->
+
+                    <div class="testimonials-premium">
+
+
+                        <div class="testimonial-card-premium">
+
+                            <div class="avatar-premium">
+
+                                <img
+                                    src="https://i.pinimg.com/736x/52/d9/2f/52d92f96f0597a2acb98ea959c85b9dc.jpg"
+                                    alt="Kornelia Diana">
+
+                            </div>
+
+
+                            <div class="testimonial-info-premium">
+
+                                <h4>
+                                    Kornelia Diana
+                                </h4>
+
+                                <div class="rating-premium">
+                                    4.9 ★★★★★
+                                </div>
+
+                                <p>
+                                    "El mejor tour de mi vida"
+                                </p>
+
+                            </div>
+
                         </div>
-                        <div class="tour-price">$210</div>
-                    </div>
-                    <a href="tour-detail.html?tour=el-tunco" class="tour-btn">Book now →</a>
-                </div>
-            </div>
 
-            <!-- Tour 4 -->
-            <div class="tour-card">
-                <div class="tour-image">
-                    <img src="https://media.tacdn.com/media/attractions-splice-spp-674x446/0f/6f/7a/f0.jpg" alt="Suchitoto Cultural Tour">
-                    <div class="tour-badge">🎨 Cultural</div>
-                </div>
-                <div class="tour-content">
-                    <div class="tour-category">
-                        <span class="cat-icon">🏛️</span>
-                        <span class="cat-name">Cultural</span>
-                    </div>
-                    <h3>Suchitoto Colonial Tour</h3>
-                    <p class="tour-desc">Explore cobblestone streets, art galleries, and Lake Suchitlán.</p>
-                    <div class="tour-meta">
-                        <div class="tour-duration">
-                            <i class="fa-regular fa-clock"></i>
-                            <span>2 days / 1 night</span>
+
+
+                        <div class="testimonial-card-premium">
+
+                            <div class="avatar-premium">
+
+                                <img
+                                    src="https://i.pinimg.com/736x/71/84/5d/71845dc02c5dd3d1b97b06d68410fcc5.jpg"
+                                    alt="Joe Zefranis">
+
+                            </div>
+
+
+                            <div class="testimonial-info-premium">
+
+                                <h4>
+                                    Joe Zefranis
+                                </h4>
+
+                                <div class="rating-premium">
+                                    4.9 ★★★★★
+                                </div>
+
+                                <p>
+                                    "Accesibilidad y naturaleza"
+                                </p>
+
+                            </div>
+
                         </div>
-                        <div class="tour-price">$180</div>
-                    </div>
-                    <a href="tour-detail.html?tour=suchitoto" class="tour-btn">Book now →</a>
-                </div>
-            </div>
 
-            <!-- Tour 5 -->
-            <div class="tour-card">
-                <div class="tour-image">
-                    <img src="https://images.squarespace-cdn.com/content/v1/596b2969d2b85786e6892853/1685911318945-9D27CQ4SR2NJGJ88WSDW/0K3A0110_3-Edit-2.jpg" alt="Cerro Verde Tour">
-                    <div class="tour-badge">🌿 Eco Friendly</div>
-                </div>
-                <div class="tour-content">
-                    <div class="tour-category">
-                        <span class="cat-icon">🌲</span>
-                        <span class="cat-name">Nature</span>
-                    </div>
-                    <h3>Cerro Verde Cloud Forest</h3>
-                    <p class="tour-desc">Hike through misty forests and spot rare bird species.</p>
-                    <div class="tour-meta">
-                        <div class="tour-duration">
-                            <i class="fa-regular fa-clock"></i>
-                            <span>2 days / 1 night</span>
+
+
+                        <div class="testimonial-card-premium">
+
+                            <div class="avatar-premium">
+
+                                <img
+                                    src="https://i.pinimg.com/736x/21/84/d3/2184d3c6c56455d8b598c3a901d013ea.jpg"
+                                    alt="Iskak Adam">
+
+                            </div>
+
+
+                            <div class="testimonial-info-premium">
+
+                                <h4>
+                                    Iskak Adam
+                                </h4>
+
+                                <div class="rating-premium">
+                                    4.5 ★★★★☆
+                                </div>
+
+                                <p>
+                                    "Volveré por más"
+                                </p>
+
+                            </div>
+
                         </div>
-                        <div class="tour-price">$250</div>
+
                     </div>
-                    <a href="tour-detail.html?tour=cerro-verde" class="tour-btn">Book now →</a>
+
                 </div>
+
             </div>
 
-            <!-- Tour 6 -->
-            <div class="tour-card">
-                <div class="tour-image">
-                    <img src="https://guanacos.com/wp-content/uploads/2022/03/Foto-3-2-768x511.jpg" alt="Ruta de las Flores Tour">
-                    <div class="tour-badge">🌸 Foodie</div>
-                </div>
-                <div class="tour-content">
-                    <div class="tour-category">
-                        <span class="cat-icon">🍽️</span>
-                        <span class="cat-name">Gastronomy</span>
+        </section>
+
+
+
+        <!-- =====================================================
+             POPULAR TOURS
+        ====================================================== -->
+
+        <section
+            class="popular-tours-section"
+            id="popularTours">
+
+            <div class="container">
+
+
+                <div class="section-header">
+
+                    <div class="header-left">
+
+                        <h2 class="section-title">
+                            Popular <span>Tours</span>
+                        </h2>
+
+                        <p class="section-subtitle">
+                            Handpicked experiences for unforgettable memories
+                        </p>
+
                     </div>
-                    <h3>Ruta de Las Flores</h3>
-                    <p class="tour-desc">Visit colorful towns, coffee farms, and enjoy local food festivals.</p>
-                    <div class="tour-meta">
-                        <div class="tour-duration">
-                            <i class="fa-regular fa-clock"></i>
-                            <span>2 days / 1 night</span>
+
+
+                    <a
+                        href="#popularTours"
+                        class="view-all-link">
+
+                        VIEW ALL
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+                </div>
+
+
+                <div
+                    class="title-line"
+                    aria-hidden="true">
+                </div>
+
+
+
+                <div class="tours-grid">
+
+
+                    <!-- TOUR 1 -->
+
+                    <div class="tour-card">
+
+                        <div class="tour-image">
+
+                            <img
+                                src="https://thf.bing.com/th/id/R.16a9d0ceaafc7d36fe72237465acccdb?rik=HUFWnO8PTnlkBg&pid=ImgRaw&r=0"
+                                alt="Santa Ana Volcano Tour">
+
+                            <div class="tour-badge">
+                                🔥 Most Popular
+                            </div>
+
                         </div>
-                        <div class="tour-price">$220</div>
+
+
+                        <div class="tour-content">
+
+                            <div class="tour-category">
+
+                                <span class="cat-icon">
+                                    ⛰️
+                                </span>
+
+                                <span class="cat-name">
+                                    Adventure
+                                </span>
+
+                            </div>
+
+
+                            <h3>
+                                Santa Ana Volcano
+                            </h3>
+
+                            <p class="tour-desc">
+                                Climb the highest volcano in El Salvador
+                                with a certified guide.
+                            </p>
+
+
+                            <div class="tour-meta">
+
+                                <div class="tour-duration">
+
+                                    <i class="fa-regular fa-clock"></i>
+
+                                    <span>
+                                        2 days / 1 night
+                                    </span>
+
+                                </div>
+
+
+                                <div class="tour-price">
+                                    $230
+                                </div>
+
+                            </div>
+
+
+                            <a
+                                href="tour-detail.html?tour=santa-ana"
+                                class="tour-btn">
+
+                                Book now →
+
+                            </a>
+
+                        </div>
+
                     </div>
-                    <a href="tour-detail.html?tour=ruta-flores" class="tour-btn">Book now →</a>
+
+
+
+                    <!-- TOUR 2 -->
+
+                    <div class="tour-card">
+
+                        <div class="tour-image">
+
+                            <img
+                                src="https://cdn-pro.elsalvador.com/wp-content/uploads/2019/06/Lago-Coatepeque_03.jpg"
+                                alt="Lake Coatepeque Tour">
+
+                            <div class="tour-badge">
+                                ⭐ Top Rated
+                            </div>
+
+                        </div>
+
+
+                        <div class="tour-content">
+
+                            <div class="tour-category">
+
+                                <span class="cat-icon">
+                                    💧
+                                </span>
+
+                                <span class="cat-name">
+                                    Nature
+                                </span>
+
+                            </div>
+
+
+                            <h3>
+                                Lake Coatepeque Escape
+                            </h3>
+
+                            <p class="tour-desc">
+                                Relax by the stunning crater lake,
+                                swim and enjoy local cuisine.
+                            </p>
+
+
+                            <div class="tour-meta">
+
+                                <div class="tour-duration">
+
+                                    <i class="fa-regular fa-clock"></i>
+
+                                    <span>
+                                        2 days / 1 night
+                                    </span>
+
+                                </div>
+
+
+                                <div class="tour-price">
+                                    $195
+                                </div>
+
+                            </div>
+
+
+                            <a
+                                href="tour-detail.html?tour=coatepeque"
+                                class="tour-btn">
+
+                                Book now →
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- TOUR 3 -->
+
+                    <div class="tour-card">
+
+                        <div class="tour-image">
+
+                            <img
+                                src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/22/8a/19/69/surf.jpg?w=1200&h=900&s=1"
+                                alt="El Tunco Surf Tour">
+
+                            <div class="tour-badge">
+                                🏄 Best Seller
+                            </div>
+
+                        </div>
+
+
+                        <div class="tour-content">
+
+                            <div class="tour-category">
+
+                                <span class="cat-icon">
+                                    🏖️
+                                </span>
+
+                                <span class="cat-name">
+                                    Beach
+                                </span>
+
+                            </div>
+
+
+                            <h3>
+                                El Tunco Surf Experience
+                            </h3>
+
+                            <p class="tour-desc">
+                                Catch the perfect wave with surf lessons
+                                for all levels.
+                            </p>
+
+
+                            <div class="tour-meta">
+
+                                <div class="tour-duration">
+
+                                    <i class="fa-regular fa-clock"></i>
+
+                                    <span>
+                                        2 days / 1 night
+                                    </span>
+
+                                </div>
+
+
+                                <div class="tour-price">
+                                    $210
+                                </div>
+
+                            </div>
+
+
+                            <a
+                                href="tour-detail.html?tour=el-tunco"
+                                class="tour-btn">
+
+                                Book now →
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- TOUR 4 -->
+
+                    <div class="tour-card">
+
+                        <div class="tour-image">
+
+                            <img
+                                src="https://media.tacdn.com/media/attractions-splice-spp-674x446/0f/6f/7a/f0.jpg"
+                                alt="Suchitoto Cultural Tour">
+
+                            <div class="tour-badge">
+                                🎨 Cultural
+                            </div>
+
+                        </div>
+
+
+                        <div class="tour-content">
+
+                            <div class="tour-category">
+
+                                <span class="cat-icon">
+                                    🏛️
+                                </span>
+
+                                <span class="cat-name">
+                                    Cultural
+                                </span>
+
+                            </div>
+
+
+                            <h3>
+                                Suchitoto Colonial Tour
+                            </h3>
+
+                            <p class="tour-desc">
+                                Explore cobblestone streets, art galleries,
+                                and Lake Suchitlán.
+                            </p>
+
+
+                            <div class="tour-meta">
+
+                                <div class="tour-duration">
+
+                                    <i class="fa-regular fa-clock"></i>
+
+                                    <span>
+                                        2 days / 1 night
+                                    </span>
+
+                                </div>
+
+
+                                <div class="tour-price">
+                                    $180
+                                </div>
+
+                            </div>
+
+
+                            <a
+                                href="tour-detail.html?tour=suchitoto"
+                                class="tour-btn">
+
+                                Book now →
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- TOUR 5 -->
+
+                    <div class="tour-card">
+
+                        <div class="tour-image">
+
+                            <img
+                                src="https://images.squarespace-cdn.com/content/v1/596b2969d2b85786e6892853/1685911318945-9D27CQ4SR2NJGJ88WSDW/0K3A0110_3-Edit-2.jpg"
+                                alt="Cerro Verde Tour">
+
+                            <div class="tour-badge">
+                                🌿 Eco Friendly
+                            </div>
+
+                        </div>
+
+
+                        <div class="tour-content">
+
+                            <div class="tour-category">
+
+                                <span class="cat-icon">
+                                    🌲
+                                </span>
+
+                                <span class="cat-name">
+                                    Nature
+                                </span>
+
+                            </div>
+
+
+                            <h3>
+                                Cerro Verde Cloud Forest
+                            </h3>
+
+                            <p class="tour-desc">
+                                Hike through misty forests and spot rare
+                                bird species.
+                            </p>
+
+
+                            <div class="tour-meta">
+
+                                <div class="tour-duration">
+
+                                    <i class="fa-regular fa-clock"></i>
+
+                                    <span>
+                                        2 days / 1 night
+                                    </span>
+
+                                </div>
+
+
+                                <div class="tour-price">
+                                    $250
+                                </div>
+
+                            </div>
+
+
+                            <a
+                                href="tour-detail.html?tour=cerro-verde"
+                                class="tour-btn">
+
+                                Book now →
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- TOUR 6 -->
+
+                    <div class="tour-card">
+
+                        <div class="tour-image">
+
+                            <img
+                                src="https://guanacos.com/wp-content/uploads/2022/03/Foto-3-2-768x511.jpg"
+                                alt="Ruta de las Flores Tour">
+
+                            <div class="tour-badge">
+                                🌸 Foodie
+                            </div>
+
+                        </div>
+
+
+                        <div class="tour-content">
+
+                            <div class="tour-category">
+
+                                <span class="cat-icon">
+                                    🍽️
+                                </span>
+
+                                <span class="cat-name">
+                                    Gastronomy
+                                </span>
+
+                            </div>
+
+
+                            <h3>
+                                Ruta de Las Flores
+                            </h3>
+
+                            <p class="tour-desc">
+                                Visit colorful towns, coffee farms,
+                                and enjoy local food festivals.
+                            </p>
+
+
+                            <div class="tour-meta">
+
+                                <div class="tour-duration">
+
+                                    <i class="fa-regular fa-clock"></i>
+
+                                    <span>
+                                        2 days / 1 night
+                                    </span>
+
+                                </div>
+
+
+                                <div class="tour-price">
+                                    $220
+                                </div>
+
+                            </div>
+
+
+                            <a
+                                href="tour-detail.html?tour=ruta-flores"
+                                class="tour-btn">
+
+                                Book now →
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
                 </div>
+
             </div>
-        </div>
-    </div>
-</section>
-</main>
+
+        </section>
 
 
-<!-- Es el footer-->
-<!---------------->
+
+        <!-- =====================================================
+             ACCESSIBILITY TOOLS
+        ====================================================== -->
+
+        <section
+            class="tools-strip"
+            aria-label="Accessibility tools summary">
+
+            <h2>
+                Destination Support
+            </h2>
+
+
+            <div
+                class="tool-item"
+                data-read="Audio guide. Listen to destination information.">
+
+                <span>
+                    <i class="fa-solid fa-volume-high"></i>
+                </span>
+
+                <div>
+
+                    <h3>
+                        Audio Guide
+                    </h3>
+
+                    <p>
+                        Listen to destination information.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div
+                class="tool-item"
+                data-read="Route details. Check route notes before traveling.">
+
+                <span>
+                    <i class="fa-solid fa-route"></i>
+                </span>
+
+                <div>
+
+                    <h3>
+                        Route Details
+                    </h3>
+
+                    <p>
+                        Check route notes before traveling.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div
+                class="tool-item"
+                data-read="High contrast. Improve visibility with one click.">
+
+                <span>
+                    <i class="fa-solid fa-circle-half-stroke"></i>
+                </span>
+
+                <div>
+
+                    <h3>
+                        High Contrast
+                    </h3>
+
+                    <p>
+                        Improve visibility with one click.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =========================================================
+         ACCESSIBILITY DROPDOWN
+    ========================================================= -->
+
     <div class="accessibility-dropdown floating-accessibility">
-        <button class="btn-accessible-mode" id="btnDropdownToggle" aria-expanded="false" aria-haspopup="true" aria-label="Accessible Mode" title="Accessible Mode">
+
+        <button
+            class="btn-accessible-mode"
+            id="btnDropdownToggle"
+            aria-expanded="false"
+            aria-haspopup="true"
+            aria-label="Accessible Mode"
+            title="Accessible Mode">
+
             <i class="fa-solid fa-universal-access"></i>
+
         </button>
-        <div class="dropdown-menu" id="accessibilityMenu">
+
+
+        <div
+            class="dropdown-menu"
+            id="accessibilityMenu">
+
+
+            <!-- AUDIO -->
+
             <label class="menu-item">
-                <span><i class="fa-solid fa-volume-high"></i> Audio Guide</span>
-                <input type="checkbox" id="chkVoiceReader">
+
+                <span>
+                    <i class="fa-solid fa-volume-high"></i>
+                    Audio Guide
+                </span>
+
+                <input
+                    type="checkbox"
+                    id="chkVoiceReader">
+
                 <span class="slider"></span>
+
             </label>
+
+
+
+            <!-- HIGH CONTRAST -->
+
             <label class="menu-item">
-                <span><i class="fa-solid fa-circle-half-stroke"></i> High Contrast</span>
-                <input type="checkbox" id="chkContrast">
+
+                <span>
+                    <i class="fa-solid fa-circle-half-stroke"></i>
+                    High Contrast
+                </span>
+
+                <input
+                    type="checkbox"
+                    id="chkContrast">
+
                 <span class="slider"></span>
+
             </label>
+
+
+
+            <!-- DARK MODE -->
+
             <label class="menu-item">
-                <span><i class="fa-solid fa-moon"></i> Dark Mode</span>
-                <input type="checkbox" id="chkDarkMode">
+
+                <span>
+                    <i class="fa-solid fa-moon"></i>
+                    Dark Mode
+                </span>
+
+                <input
+                    type="checkbox"
+                    id="chkDarkMode">
+
                 <span class="slider"></span>
+
             </label>
+
+
+
+            <!-- TEXT SIZE -->
+
             <div class="menu-item text-size-control">
+
                 <div class="text-size-header">
-                    <span><i class="fa-solid fa-text-height"></i> Text Size</span>
-                    <strong id="textSizeValue">100%</strong>
+
+                    <span>
+
+                        <i class="fa-solid fa-text-height"></i>
+
+                        Text Size
+
+                    </span>
+
+                    <strong id="textSizeValue">
+                        100%
+                    </strong>
+
                 </div>
+
+
                 <div class="text-size-actions">
-                    <button type="button" id="textSizeMinus" aria-label="Decrease text size">-</button>
-                    <input type="range" id="textSizeRange" min="90" max="130" step="5" value="100" aria-label="Text size">
-                    <button type="button" id="textSizePlus" aria-label="Increase text size">+</button>
+
+                    <button
+                        type="button"
+                        id="textSizeMinus"
+                        aria-label="Decrease text size">
+
+                        -
+
+                    </button>
+
+
+                    <input
+                        type="range"
+                        id="textSizeRange"
+                        min="90"
+                        max="130"
+                        step="5"
+                        value="100"
+                        aria-label="Text size">
+
+
+                    <button
+                        type="button"
+                        id="textSizePlus"
+                        aria-label="Increase text size">
+
+                        +
+
+                    </button>
+
                 </div>
-                <input type="checkbox" id="chkTextSize" hidden>
+
+
+                <input
+                    type="checkbox"
+                    id="chkTextSize"
+                    hidden>
+
             </div>
+
         </div>
+
     </div>
 
-<footer class="footer" id="contact">
-    <div class="footer-container">
-        <div class="footer-brand">
-            <img src="img/logo-openroutes-white.png" alt="Open Routes" class="footer-logo-img">
-            <p>Travel without limits, explore with freedom.</p>
-        </div>
 
-        <div class="footer-links">
-            <h3>Quick Links</h3>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="destinations.html">Destinations</a></li>
-                                <li><a href="plan-your-trip.html">Plan Your Trip</a></li>
-<li><a href="about.html">About Us</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
 
-        <div class="footer-social">
-            <h3>Follow Us</h3>
-            <div class="social-icons">
-                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+    <!-- =========================================================
+         FOOTER
+    ========================================================= -->
+
+    <footer
+        class="footer"
+        id="contact">
+
+
+        <div class="footer-container">
+
+
+            <!-- BRAND -->
+
+            <div class="footer-brand">
+
+                <img
+                    src="img/logo-openroutes-white.png"
+                    alt="Open Routes"
+                    class="footer-logo-img">
+
+                <p>
+                    Travel without limits,
+                    explore with freedom.
+                </p>
+
             </div>
+
+
+
+            <!-- LINKS -->
+
+            <div class="footer-links">
+
+                <h3>
+                    Quick Links
+                </h3>
+
+                <ul>
+
+                    <li>
+                        <a href="index.html">
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="destinations.html">
+                            Destinations
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="plan-your-trip.html">
+                            Plan Your Trip
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="about.html">
+                            About Us
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="contact.html">
+                            Contact
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+
+            <!-- SOCIAL -->
+
+            <div class="footer-social">
+
+                <h3>
+                    Follow Us
+                </h3>
+
+                <div class="social-icons">
+
+                    <a
+                        href="#"
+                        aria-label="Facebook">
+
+                        <i class="fa-brands fa-facebook-f"></i>
+
+                    </a>
+
+
+                    <a
+                        href="#"
+                        aria-label="Instagram">
+
+                        <i class="fa-brands fa-instagram"></i>
+
+                    </a>
+
+
+                    <a
+                        href="#"
+                        aria-label="YouTube">
+
+                        <i class="fa-brands fa-youtube"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CONTACT -->
+
+            <div class="footer-contact">
+
+                <h3>
+                    Contact Us
+                </h3>
+
+                <p>
+                    <i class="fa-solid fa-envelope"></i>
+                    info@openroutes.sv
+                </p>
+
+                <p>
+                    <i class="fa-solid fa-phone"></i>
+                    +503 1234 5678
+                </p>
+
+            </div>
+
+
+
+            <!-- NEWSLETTER -->
+
+            <div class="newsletter">
+
+                <h3>
+                    Newsletter
+                </h3>
+
+                <p>
+                    Subscribe to receive travel tips
+                    and accessible updates.
+                </p>
+
+
+                <form>
+
+                    <input
+                        type="email"
+                        placeholder="Your email"
+                        aria-label="Your email">
+
+                    <button type="submit">
+                        Subscribe
+                    </button>
+
+                </form>
+
+            </div>
+
         </div>
 
-        <div class="footer-contact">
-            <h3>Contact Us</h3>
-            <p><i class="fa-solid fa-envelope"></i> info@openroutes.sv</p>
-            <p><i class="fa-solid fa-phone"></i> +503 1234 5678</p>
-        </div>
 
-        <div class="newsletter">
-            <h3>Newsletter</h3>
-            <p>Subscribe to receive travel tips and accessible updates.</p>
-            <form>
-                <input type="email" placeholder="Your email" aria-label="Your email">
-                <button type="submit">Subscribe</button>
-            </form>
-        </div>
-    </div>
-    <p class="copy">&copy; 2026 Open Routes. All rights reserved.</p>
-</footer>
+        <p class="copy">
+            &copy; 2026 Open Routes. All rights reserved.
+        </p>
 
+    </footer>
+
+
+
+    <!-- =========================================================
+         JAVASCRIPT EXISTENTE
+    ========================================================= -->
 
     <script src="js/index.js"></script>
-        <script src="js/text-size-control.js"></script>
+
+    
+
     <script src="js/dark-mode.js"></script>
+
     <script src="js/auth-state.js"></script>
+    <script src="js/text-size-control.js"></script>
+
+
+
+    <!-- =========================================================
+         VIDEO MENU JAVASCRIPT
+    ========================================================= -->
+
+    <script>
+
+        (function () {
+
+            const menu =
+                document.getElementById('navVideoMenu');
+
+            const openBtn =
+                document.getElementById('openVideoMenu');
+
+            const closeBtn =
+                document.getElementById('closeVideoMenu');
+
+
+            if (!menu || !openBtn || !closeBtn) {
+                return;
+            }
+
+
+
+            /* ==========================================
+               ABRIR / CERRAR MENÚ
+            ========================================== */
+
+            function setMenu(open) {
+
+                menu.classList.toggle(
+                    'is-open',
+                    open
+                );
+
+
+                openBtn.setAttribute(
+                    'aria-expanded',
+                    String(open)
+                );
+
+
+
+                /* ======================================
+                   PAUSAR VIDEOS CUANDO SE CIERRA
+                ====================================== */
+
+                if (!open) {
+
+                    menu
+                        .querySelectorAll('video')
+                        .forEach(video => {
+
+                            video.pause();
+
+                        });
+
+                }
+
+
+                /* ======================================
+                   REPRODUCIR VIDEOS CUANDO SE ABRE
+                ====================================== */
+
+                else {
+
+                    menu
+                        .querySelectorAll('video')
+                        .forEach(video => {
+
+                            const promise =
+                                video.play();
+
+                            if (promise) {
+
+                                promise.catch(
+                                    () => {}
+                                );
+
+                            }
+
+                        });
+
+                }
+
+            }
+
+
+
+            /* ==========================================
+               BOTÓN ☰
+               
+               Si está cerrado → ABRE
+               Si está abierto → CIERRA
+            ========================================== */
+
+            openBtn.addEventListener(
+                'click',
+                function (event) {
+
+                    event.stopPropagation();
+
+
+                    const isOpen =
+                        menu.classList.contains(
+                            'is-open'
+                        );
+
+
+                    setMenu(!isOpen);
+
+                }
+            );
+
+
+
+            /* ==========================================
+               BOTÓN X
+            ========================================== */
+
+            closeBtn.addEventListener(
+                'click',
+                function (event) {
+
+                    event.stopPropagation();
+
+                    setMenu(false);
+
+                }
+            );
+
+
+
+            /* ==========================================
+               CERRAR AL HACER CLIC AFUERA
+            ========================================== */
+
+            document.addEventListener(
+                'click',
+                function (event) {
+
+                    const clickedInsideMenu =
+                        menu.contains(event.target);
+
+
+                    const clickedButton =
+                        openBtn.contains(event.target);
+
+
+                    if (
+                        menu.classList.contains('is-open') &&
+                        !clickedInsideMenu &&
+                        !clickedButton
+                    ) {
+
+                        setMenu(false);
+
+                    }
+
+                }
+            );
+
+
+
+            /* ==========================================
+               CERRAR CON ESCAPE
+            ========================================== */
+
+            document.addEventListener(
+                'keydown',
+                function (event) {
+
+                    if (
+                        event.key === 'Escape' &&
+                        menu.classList.contains('is-open')
+                    ) {
+
+                        setMenu(false);
+
+                        openBtn.focus();
+
+                    }
+
+                }
+            );
+
+        })();
+
+    </script>
+
+
 </body>
+
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
