@@ -2,13 +2,27 @@
 const place = params.get("place") || "santa ana";
 
 const sharedGallery = [
-  // Video de YouTube (reemplaza el ID por el tuyo)
-  // cambio video
-  "https://www.youtube.com/watch?v=q6WZM7Mp-yk", 
-  // Imágenes estáticas
-  "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
-  "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=80",
-  "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80"
+  {
+    type: "image",
+    src: "https://cdn-pro.elsalvador.com/wp-content/uploads/2019/06/Lago-Coatepeque_03.jpg",
+    alt: "Lake Coatepeque surrounded by green mountains",
+    title: "Open Routes destination photo",
+    description: "Accessible travel inspiration in El Salvador"
+  },
+  {
+    type: "image",
+    src: "https://bonvoyageguatemala.com/en/wp-content/uploads/2018/09/shutterstock-372639865-1600x1000.jpg",
+    alt: "El Tunco beach at sunset",
+    title: "Open Routes destination photo",
+    description: "Accessible travel inspiration in El Salvador"
+  },
+  {
+    type: "image",
+    src: "https://svelsalvador.com/wp-content/uploads/2023/10/Suchitoto-Como-llegar-Donde-queda-Que-hacer-Videos.jpg",
+    alt: "Suchitoto historic town architecture",
+    title: "Open Routes destination photo",
+    description: "Accessible travel inspiration in El Salvador"
+  }
 ];
 
 const destinations = {
@@ -19,7 +33,36 @@ const destinations = {
     overview: "Santa Ana Volcano is the highest volcano in El Salvador and offers one of the best hiking experiences in the country. The route rewards travelers with crater views, fresh mountain air and a memorable look at the western landscape.",
     locationText: "Located inside Los Volcanes National Park, this destination is best reached from Santa Ana or nearby towns with planned transportation.",
     heroImage: "https://www.paradisecatchers.com/wp-content/uploads/2023/04/Santa-Ana-Volcano-Crater3.jpg",
-    gallery: sharedGallery,
+    gallery: [
+      {
+        type: "image",
+        src: "https://www.paradisecatchers.com/wp-content/uploads/2023/04/Santa-Ana-Volcano-Crater3.jpg",
+        alt: "Santa Ana Volcano crater lagoon",
+        title: "Santa Ana Volcano",
+        description: "Crater lagoon view at the summit"
+      },
+      {
+        type: "image",
+        src: "https://theworldtravelguy.com/wp-content/uploads/2023/07/DSCF3609-2.jpg",
+        alt: "Hikers on the Santa Ana Volcano trail",
+        title: "Hiking Trail",
+        description: "Guided route through volcanic landscapes"
+      },
+      {
+        type: "image",
+        src: "https://flyflapper.com/_next/image?q=75&url=https%3A%2F%2Fflappermedia.s3.us-east-1.amazonaws.com%2Fcms-strapi%2Ftrekking_volcan_santa_ana_589x392_099469d80e.avif&w=3840",
+        alt: "Turquoise crater lake at Santa Ana Volcano",
+        title: "Crater Viewpoint",
+        description: "Panoramic volcanic scenery"
+      },
+      {
+        type: "image",
+        src: "https://thf.bing.com/th/id/R.16a9d0ceaafc7d36fe72237465acccdb?rik=HUFWnO8PTnlkBg&pid=ImgRaw&r=0",
+        alt: "Santa Ana Volcano landscape view",
+        title: "Volcano Landscape",
+        description: "Mountain views around Los Volcanes National Park"
+      }
+    ],
     highlights: [
       { title: "Crater Views", text: "A colorful volcanic lagoon at the summit.", icon: "fa-mountain-sun" },
       { title: "Fresh Climate", text: "Cool mountain weather during most mornings.", icon: "fa-cloud-sun" },
@@ -41,8 +84,37 @@ const destinations = {
     summary: "Enjoy the breathtaking beauty of Lake Coatepeque, one of the most stunning lakes in El Salvador. Perfect for relaxation, nature and accessible experiences for everyone.",
     overview: "Lake Coatepeque is a volcanic crater lake known for its deep blue waters and beautiful views. It is an ideal destination for travelers looking for a peaceful and accessible place to enjoy nature.",
     locationText: "Lake Coatepeque is located in Santa Ana, surrounded by panoramic roads, restaurants, viewpoints and lakefront activities.",
-    heroImage: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=85",
-    gallery: sharedGallery,
+    heroImage: "https://cdn-pro.elsalvador.com/wp-content/uploads/2019/06/Lago-Coatepeque_03.jpg",
+    gallery: [
+      {
+        type: "image",
+        src: "https://cdn-pro.elsalvador.com/wp-content/uploads/2019/06/Lago-Coatepeque_03.jpg",
+        alt: "Lake Coatepeque surrounded by green mountains",
+        title: "Lake Coatepeque",
+        description: "Blue crater lake surrounded by volcanic hills"
+      },
+      {
+        type: "image",
+        src: "https://images.trvl-media.com/place/53/f552d646-78fa-4ba5-b304-98c376d4de33.jpg",
+        alt: "Aerial view of Lake Coatepeque",
+        title: "Aerial View",
+        description: "Wide view of the lake and shoreline"
+      },
+      {
+        type: "image",
+        src: "https://www.latinroutes.co.uk/media/aobp4yjn/coatepeque-lake-in-el-salvador-central-america.jpeg",
+        alt: "Lake Coatepeque volcanic panorama",
+        title: "Volcanic Panorama",
+        description: "Clear water and green volcanic slopes"
+      },
+      {
+        type: "image",
+        src: "https://mediaim.expedia.com/localexpert/1344277/0e2be726-588a-4d49-9a8b-545327b5399c.jpg",
+        alt: "Coatepeque lake viewpoint",
+        title: "Lake Viewpoint",
+        description: "Scenic overlook for visitors"
+      }
+    ],
     highlights: [
       { title: "Stunning Views", text: "Panoramic landscapes that make the visit unforgettable.", icon: "fa-mountain" },
       { title: "Perfect Climate", text: "Warm and pleasant weather through most of the year.", icon: "fa-cloud-sun" },
@@ -65,8 +137,37 @@ const destinations = {
     summary: "A famous surf beach with restaurants, nightlife and beautiful sunsets by the Pacific coast.",
     overview: "El Tunco is a popular beach destination known for surfing, sunsets and a lively coastal atmosphere. Travelers can enjoy food, music and ocean views in a compact walkable town.",
     locationText: "El Tunco is located in La Libertad, close to the coastal highway and other beaches along Surf City.",
-    heroImage: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=85",
-    gallery: sharedGallery,
+    heroImage: "https://bonvoyageguatemala.com/en/wp-content/uploads/2018/09/shutterstock-372639865-1600x1000.jpg",
+    gallery: [
+      {
+        type: "image",
+        src: "https://bonvoyageguatemala.com/en/wp-content/uploads/2018/09/shutterstock-372639865-1600x1000.jpg",
+        alt: "El Tunco beach at sunset",
+        title: "El Tunco Beach",
+        description: "Pacific coast sunset and surf atmosphere"
+      },
+      {
+        type: "image",
+        src: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/22/8a/19/69/surf.jpg?w=1200&h=900&s=1",
+        alt: "Surfing at El Tunco beach",
+        title: "Surf Experience",
+        description: "Waves and surf lessons by the coast"
+      },
+      {
+        type: "image",
+        src: "https://onewaytickettoparadise.com/wp-content/uploads/2018/01/DSC_6125-600x400.jpg",
+        alt: "El Tunco shoreline and beach bars",
+        title: "Beach Walk",
+        description: "Rocky shoreline and ocean views"
+      },
+      {
+        type: "image",
+        src: "https://traveledearth.com/wp-content/gallery/playa-el-tunco/_MG_2232_01.jpg",
+        alt: "Rock formations at Playa El Tunco",
+        title: "Rock Formations",
+        description: "Iconic coastal scenery in La Libertad"
+      }
+    ],
     highlights: [
       { title: "Surf Culture", text: "Popular waves and surf schools for visitors.", icon: "fa-water" },
       { title: "Sunsets", text: "Golden evening views over the Pacific.", icon: "fa-sun" },
@@ -88,8 +189,37 @@ const destinations = {
     summary: "A charming colonial town full of culture, art, history and lake views.",
     overview: "Suchitoto is one of El Salvador's most beautiful colonial towns, known for cobblestone streets, galleries, cultural spaces and views toward Lake Suchitlan.",
     locationText: "Suchitoto is located in Cuscatlan and is commonly visited as a day trip from San Salvador.",
-    heroImage: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1800&q=85",
-    gallery: sharedGallery,
+    heroImage: "https://svelsalvador.com/wp-content/uploads/2023/10/Suchitoto-Como-llegar-Donde-queda-Que-hacer-Videos.jpg",
+    gallery: [
+      {
+        type: "image",
+        src: "https://svelsalvador.com/wp-content/uploads/2023/10/Suchitoto-Como-llegar-Donde-queda-Que-hacer-Videos.jpg",
+        alt: "Suchitoto church and historic town",
+        title: "Suchitoto",
+        description: "Colonial streets and cultural landmarks"
+      },
+      {
+        type: "image",
+        src: "https://media.tacdn.com/media/attractions-splice-spp-674x446/0f/6f/7a/f0.jpg",
+        alt: "Suchitoto colonial architecture",
+        title: "Colonial Town",
+        description: "Historic architecture and local culture"
+      },
+      {
+        type: "image",
+        src: "https://www.gotravelly.com/blog/wp-content/uploads/2021/08/Suchitoto.jpg",
+        alt: "Suchitoto town square and white church",
+        title: "Central Plaza",
+        description: "Town square and church facade"
+      },
+      {
+        type: "image",
+        src: "https://tuncolife.com/wp-content/uploads/2021/11/suchitoto-lake-day-tour-to-suchitoto-trip-cascadas-las-tercios-colonial-town-1.jpg",
+        alt: "Lake Suchitlan near Suchitoto",
+        title: "Lake Suchitlan",
+        description: "Peaceful lake views near town"
+      }
+    ],
     highlights: [
       { title: "Colonial Streets", text: "Colorful architecture and historic corners.", icon: "fa-landmark" },
       { title: "Art Spaces", text: "Galleries, workshops and cultural houses.", icon: "fa-palette" },
@@ -111,8 +241,37 @@ const destinations = {
     summary: "The cultural and political heart of the capital city, filled with landmarks and public squares.",
     overview: "The Historic Center of San Salvador features iconic landmarks such as the Metropolitan Cathedral, National Palace, National Theater and vibrant plazas.",
     locationText: "Located in downtown San Salvador, the Historic Center is connected to public transportation and city services.",
-    heroImage: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1800&q=85",
-    gallery: sharedGallery,
+    heroImage: "https://centrohistorico.gob.sv/wp-content/uploads/2025/08/Centro-Historico-San-Salvador-29072022-Alcaldia-de-san-salvador-5.jpg",
+    gallery: [
+      {
+        type: "image",
+        src: "https://centrohistorico.gob.sv/wp-content/uploads/2025/08/Centro-Historico-San-Salvador-29072022-Alcaldia-de-san-salvador-5.jpg",
+        alt: "Aerial night view of San Salvador Historic Center",
+        title: "Historic Center",
+        description: "Cathedral, plazas and civic landmarks"
+      },
+      {
+        type: "image",
+        src: "https://panukraine.ua/catalog/city/san-salvador/san-salvador_4.jpg",
+        alt: "Downtown San Salvador with theater and cathedral",
+        title: "Downtown San Salvador",
+        description: "Historic buildings around the main plaza"
+      },
+      {
+        type: "image",
+        src: "https://www.latinroutes.co.uk/media/gyhjut3o/san-salvador-cathedral-el-salvador.jpeg",
+        alt: "Metropolitan Cathedral of San Salvador",
+        title: "Metropolitan Cathedral",
+        description: "One of the main landmarks in the capital"
+      },
+      {
+        type: "image",
+        src: "https://3.bp.blogspot.com/-RUhU3wUDuK8/VxhHCOd0oPI/AAAAAAAAAgU/-2dB3U3zLJA3wjL3NGQ57AipaFrm7b96QCLcB/s1600/palacio%2Bnacional.jpg",
+        alt: "National Palace in San Salvador",
+        title: "National Palace",
+        description: "Historic civic architecture in the city center"
+      }
+    ],
     highlights: [
       { title: "Landmarks", text: "Cathedral, theater and historic buildings.", icon: "fa-landmark" },
       { title: "Public Plazas", text: "Open spaces for walking and photos.", icon: "fa-city" },
@@ -134,8 +293,37 @@ const destinations = {
     summary: "One of the most important natural reserves in El Salvador, ideal for wildlife and hiking.",
     overview: "El Imposible National Park is a protected rainforest area known for biodiversity, trails, viewpoints and nature experiences for adventurous travelers.",
     locationText: "Located in Ahuachapan, the park requires planned transportation and guide coordination for the best experience.",
-    heroImage: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1800&q=85",
-    gallery: sharedGallery,
+    heroImage: "https://guanacos.com/wp-content/uploads/2024/01/GUANACOS-PARQUE-NACIONAL-EL-IMPOSIBLE-2-1024x555.jpg",
+    gallery: [
+      {
+        type: "image",
+        src: "https://guanacos.com/wp-content/uploads/2024/01/GUANACOS-PARQUE-NACIONAL-EL-IMPOSIBLE-2-1024x555.jpg",
+        alt: "El Imposible National Park mountain landscape",
+        title: "El Imposible National Park",
+        description: "Protected forest and mountain scenery"
+      },
+      {
+        type: "image",
+        src: "https://i0.wp.com/www.explorelsalvador.com/wp-content/uploads/2017/11/El-Imposible-%C2%A9-Explore-El-Salvador.jpg?fit=5075%2C3397&ssl=1",
+        alt: "Hikers in El Imposible National Park forest",
+        title: "Forest Trail",
+        description: "Guided trail through dense tropical forest"
+      },
+      {
+        type: "image",
+        src: "https://online.salvadoreantours.com/wp-content/uploads/2016/05/El-Imposible-e1463584161769.jpeg",
+        alt: "Trail inside El Imposible National Park",
+        title: "Nature Path",
+        description: "Green route for nature visitors"
+      },
+      {
+        type: "image",
+        src: "https://photos.smugmug.com/El-Sal/El-Salvador/i-W5xtR7m/0/L/DSC_6327-L.jpg",
+        alt: "Mountain view in El Imposible National Park",
+        title: "Mountain Viewpoint",
+        description: "Rugged forested mountains in Ahuachapan"
+      }
+    ],
     highlights: [
       { title: "Biodiversity", text: "Birds, forest life and native plants.", icon: "fa-leaf" },
       { title: "Trails", text: "Nature routes with different difficulty levels.", icon: "fa-person-hiking" },
@@ -238,14 +426,52 @@ function setupGalleryCarousel() {
   updateGalleryCarousel();
 }
 
+function getYouTubeEmbedUrl(src) {
+  try {
+    const url = new URL(src, window.location.href);
+    if (url.hostname.includes("youtu.be")) {
+      return `https://www.youtube.com/embed/${url.pathname.replace("/", "")}`;
+    }
+    if (url.hostname.includes("youtube.com")) {
+      const videoId = url.searchParams.get("v");
+      if (videoId) return `https://www.youtube.com/embed/${videoId}`;
+    }
+  } catch (error) {
+    return src;
+  }
+  return src;
+}
+
+function normalizeGalleryMedia(media, index) {
+  const item = typeof media === "string" ? { src: media } : { ...media };
+  const src = item.src || "";
+  const cleanSrc = src.split("?")[0].toLowerCase();
+  const isLocalVideo = /\.(mp4|webm|ogg)$/.test(cleanSrc);
+  const isYouTube = src.includes("youtube.com") || src.includes("youtu.be");
+  const isVimeo = src.includes("vimeo.com");
+
+  if (!item.type) {
+    item.type = isLocalVideo ? "video" : isYouTube || isVimeo ? "embed" : "image";
+  }
+
+  if (item.type === "embed" && isYouTube) {
+    item.src = getYouTubeEmbedUrl(src);
+  }
+
+  item.title = item.title || data.name;
+  item.description = item.description || `${item.type === "image" ? "Photo" : "Video"} ${index + 1} of ${data.name}`;
+  item.alt = item.alt || `${data.name} ${item.type === "image" ? "photo" : "video"} ${index + 1}`;
+
+  return item;
+}
+
 function renderGallery(images) {
   if (!galleryEl) return;
-  
-  // Guardamos las imágenes originales o las compartidas por defecto
-  galleryImages = images && images.length ? images : sharedGallery;
+
+  const sourceMedia = images && images.length ? images : sharedGallery;
+  galleryImages = sourceMedia.map((media, index) => normalizeGalleryMedia(media, index));
   galleryIndex = 0;
 
-  // Creamos el HTML base del carrusel
   galleryEl.innerHTML = `
     <div class="gallery-carousel" tabindex="0" aria-roledescription="carousel" aria-label="Photos and videos of ${data.name}">
       <button class="carousel-btn prev" type="button" aria-label="Previous media">
@@ -253,40 +479,51 @@ function renderGallery(images) {
       </button>
       <div class="gallery-track">
         ${galleryImages.map((media, index) => {
-          // Detectamos si es un video de YouTube o Vimeo
-          const isVideo = media.includes("youtube.com/embed") || media.includes("vimeo.com");
-          
-          if (isVideo) {
-            // Si es un video, renderizamos un iframe
+          if (media.type === "embed") {
             return `
-              <article class="gallery-slide video-slide" aria-label="Video ${index + 1} of ${galleryImages.length}">
-                <iframe src="${media}" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen
-                        style="width: 100%; height: 100%; object-fit: cover;"></iframe>
+              <article class="gallery-slide video-slide" aria-label="Video ${index + 1} of ${galleryImages.length}: ${media.title}">
+                <iframe src="${media.src}"
+                        title="${media.title}"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
                 <div class="gallery-caption">
                   <div>
-                    <strong>${data.name} Video</strong>
-                    <span>Video ${index + 1} of ${galleryImages.length}</span>
-                  </div>
-                </div>
-              </article>
-            `;
-          } else {
-            // Si es una imagen, renderizamos como siempre
-            return `
-              <article class="gallery-slide" aria-label="Photo ${index + 1} of ${galleryImages.length}">
-                <img src="${media}" alt="${data.name} photo ${index + 1}">
-                <div class="gallery-caption">
-                  <div>
-                    <strong>${data.name}</strong>
-                    <span>Photo ${index + 1} of ${galleryImages.length}</span>
+                    <strong>${media.title}</strong>
+                    <span>${media.description}</span>
                   </div>
                 </div>
               </article>
             `;
           }
+
+          if (media.type === "video") {
+            return `
+              <article class="gallery-slide video-slide" aria-label="Sign language video ${index + 1} of ${galleryImages.length}: ${media.title}">
+                <video controls preload="metadata" playsinline ${media.poster ? `poster="${media.poster}"` : ""} aria-label="${media.alt}">
+                  <source src="${media.src}" type="${media.mime || "video/mp4"}">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="gallery-caption">
+                  <div>
+                    <strong>${media.title}</strong>
+                    <span>${media.description}</span>
+                  </div>
+                </div>
+              </article>
+            `;
+          }
+
+          return `
+            <article class="gallery-slide" aria-label="Photo ${index + 1} of ${galleryImages.length}: ${media.title}">
+              <img src="${media.src}" alt="${media.alt}" loading="lazy">
+              <div class="gallery-caption">
+                <div>
+                  <strong>${media.title}</strong>
+                  <span>${media.description}</span>
+                </div>
+              </div>
+            </article>
+          `;
         }).join("")}
       </div>
       <button class="carousel-btn next" type="button" aria-label="Next media">
@@ -294,8 +531,8 @@ function renderGallery(images) {
       </button>
     </div>
     <div class="gallery-dots" aria-label="Choose a photo or video">
-      ${galleryImages.map((_, index) => `
-        <button class="gallery-dot" type="button" data-slide="${index}" aria-label="Show media ${index + 1}"></button>
+      ${galleryImages.map((media, index) => `
+        <button class="gallery-dot" type="button" data-slide="${index}" aria-label="Show ${media.type === "image" ? "photo" : "video"} ${index + 1}: ${media.title}"></button>
       `).join("")}
     </div>
   `;
@@ -438,4 +675,26 @@ setupTabs();
 setupAccessibilityMenu();
 setupShareButton();
 setupFavoriteButton();
+// OpenRoutes detail popular tours booking protection
+function getOpenRoutesUserForDetailBooking() {
+  try {
+    return JSON.parse(localStorage.getItem("loggedUser") || "null");
+  } catch (error) {
+    return null;
+  }
+}
+
+function protectDetailTourBookingLinks() {
+  document.querySelectorAll(".detail-popular-tours .tour-btn").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      if (getOpenRoutesUserForDetailBooking()) return;
+      event.preventDefault();
+      localStorage.setItem("openRoutesPendingBooking", button.getAttribute("href") || "tour-detail.html");
+      window.location.href = "login.html";
+    });
+  });
+}
+
+protectDetailTourBookingLinks();
+
 
