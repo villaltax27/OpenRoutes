@@ -94,6 +94,14 @@ const destinations = {
         description: "Blue crater lake surrounded by volcanic hills"
       },
       {
+        type: "video",
+        src: "videos/destinations/Hazel (Lake coatepeque).mp4",
+        poster: "https://cdn-pro.elsalvador.com/wp-content/uploads/2019/06/Lago-Coatepeque_03.jpg",
+        alt: "Sign language video guide for Lake Coatepeque",
+        title: "Sign Language Guide",
+        description: "Video explanation in sign language about Lake Coatepeque"
+      },
+      {
         type: "image",
         src: "https://images.trvl-media.com/place/53/f552d646-78fa-4ba5-b304-98c376d4de33.jpg",
         alt: "Aerial view of Lake Coatepeque",
@@ -391,6 +399,7 @@ function updateGalleryCarousel() {
   if (!galleryEl) return;
   const track = galleryEl.querySelector(".gallery-track");
   const dots = galleryEl.querySelectorAll(".gallery-dot");
+  const slides = galleryEl.querySelectorAll(".gallery-slide");
 
   if (track) {
     track.style.transform = `translateX(-${galleryIndex * 100}%)`;
@@ -400,6 +409,27 @@ function updateGalleryCarousel() {
     const isActive = index === galleryIndex;
     dot.classList.toggle("active", isActive);
     dot.setAttribute("aria-current", isActive ? "true" : "false");
+  });
+
+  slides.forEach((slide, index) => {
+    const isActive = index === galleryIndex;
+    slide.classList.toggle("active", isActive);
+    slide.setAttribute("aria-hidden", isActive ? "false" : "true");
+
+    const video = slide.querySelector("video");
+    if (!video) return;
+
+    if (isActive) {
+      video.muted = true;
+      video.setAttribute("muted", "");
+      const playPromise = video.play();
+      if (playPromise) {
+        playPromise.catch(() => {});
+      }
+      return;
+    }
+
+    video.pause();
   });
 }
 
@@ -499,7 +529,7 @@ function renderGallery(images) {
           if (media.type === "video") {
             return `
               <article class="gallery-slide video-slide" aria-label="Sign language video ${index + 1} of ${galleryImages.length}: ${media.title}">
-                <video controls preload="metadata" playsinline ${media.poster ? `poster="${media.poster}"` : ""} aria-label="${media.alt}">
+                <video controls muted preload="metadata" playsinline ${media.poster ? `poster="${media.poster}"` : ""} aria-label="${media.alt}">
                   <source src="${media.src}" type="${media.mime || "video/mp4"}">
                   Your browser does not support the video tag.
                 </video>
@@ -696,5 +726,7 @@ function protectDetailTourBookingLinks() {
 }
 
 protectDetailTourBookingLinks();
+
+
 
 
