@@ -1939,3 +1939,75 @@ body.dark-mode .gallery-slide iframe,
 body.dark-mode .gallery-slide video {
     background: #030712 !important;
 }
+
+.practical-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 22px;
+}
+
+.practical-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 18px;
+    border: 1px solid #e4edf7;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 8px 22px rgba(0, 37, 84, 0.08);
+}
+
+.practical-icon {
+    display: grid;
+    place-items: center;
+    flex: 0 0 44px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(0, 113, 227, 0.12);
+    color: var(--bright-blue);
+    font-size: 1.05rem;
+}
+
+.practical-card h3 {
+    margin: 0 0 6px;
+    color: var(--dark-blue);
+    font-size: 1rem;
+}
+
+.practical-card p {
+    margin: 0;
+    color: var(--text);
+    line-height: 1.55;
+}
+
+body.dark-mode .practical-card {
+    border-color: rgba(144, 202, 249, 0.24);
+    background: rgba(13, 28, 48, 0.96);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
+}
+
+body.dark-mode .practical-card h3 {
+    color: #f7fbff;
+}
+
+body.dark-mode .practical-card p {
+    color: #d9e8f7;
+}
+
+body.dark-mode .practical-icon {
+    background: rgba(144, 202, 249, 0.16);
+    color: #90caf9;
+}
+
+body.high-contrast .practical-card {
+    border-color: currentColor;
+    box-shadow: none;
+}
+
+@media (max-width: 760px) {
+    .practical-grid {
+        grid-template-columns: 1fr;
+    }
+}
