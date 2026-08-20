@@ -1,4 +1,4 @@
-﻿const params = new URLSearchParams(window.location.search);
+const params = new URLSearchParams(window.location.search);
 const place = params.get("place") || "santa ana";
 
 const sharedGallery = [
@@ -63,7 +63,16 @@ const destinations = {
         description: "Mountain views around Los Volcanes National Park"
       }
     ],
-    highlights: [
+        practicalInfo: [
+      { title: "Opening Hours", text: "MARN lists entry from 7:30 AM to 11:00 AM on weekdays and from 4:00 AM on weekends. Confirm conditions before traveling.", icon: "fa-clock" },
+      { title: "Entry Fee", text: "Reference fees: Salvadorans $2, foreigners $3, students $0.50-$1; children under 12 and seniors enter free.", icon: "fa-ticket" },
+      { title: "Best Time", text: "Clear mornings in the dry season are best for crater views; weather can change quickly near the summit.", icon: "fa-sun" },
+      { title: "Visit Duration", text: "Plan a half-day trip, including registration, guided hiking time and rest stops.", icon: "fa-hourglass-half" },
+      { title: "Difficulty", text: "Moderate hike with volcanic gravel, sun exposure and cool windy sections near the crater.", icon: "fa-person-hiking" },
+      { title: "How to Get There", text: "Travel to the Los Volcanes or Cerro Verde access area from Santa Ana, or arrange tourist transport with a guide.", icon: "fa-car" },
+      { title: "Accessibility Note", text: "The summit trail is not wheelchair accessible; support is mainly available around parking and visitor areas.", icon: "fa-wheelchair" },
+      { title: "Safety Tip", text: "Bring water, sunscreen, suitable hiking shoes and follow ranger or guide instructions.", icon: "fa-shield-heart" }
+    ],    highlights: [
       { title: "Crater Views", text: "A colorful volcanic lagoon at the summit.", icon: "fa-mountain-sun" },
       { title: "Fresh Climate", text: "Cool mountain weather during most mornings.", icon: "fa-cloud-sun" },
       { title: "Guided Routes", text: "Local guides can support safer visits.", icon: "fa-person-hiking" },
@@ -123,7 +132,16 @@ const destinations = {
         description: "Scenic overlook for visitors"
       }
     ],
-    highlights: [
+        practicalInfo: [
+      { title: "Opening Hours", text: "Open viewpoints and lake roads can be visited during the day; restaurants, boat tours and private access points set their own schedules.", icon: "fa-clock" },
+      { title: "Entry Fee", text: "Public viewpoints may be free, but lake access is often through restaurants, hotels or activity providers with separate costs.", icon: "fa-ticket" },
+      { title: "Best Time", text: "Morning and sunset offer calmer weather, softer light and better views across the crater lake.", icon: "fa-sun" },
+      { title: "Visit Duration", text: "Plan a half day for viewpoints and lunch, or a full day if adding a boat ride, kayak or swimming.", icon: "fa-hourglass-half" },
+      { title: "Difficulty", text: "Easy for viewpoints and restaurants; water access depends on the specific venue.", icon: "fa-person-walking" },
+      { title: "How to Get There", text: "Best reached by car, tourist transport or arranged guide from Santa Ana.", icon: "fa-car" },
+      { title: "Accessibility Note", text: "Accessible access depends on the restaurant, hotel or viewpoint; confirm ramps and restrooms before going.", icon: "fa-wheelchair" },
+      { title: "Safety Tip", text: "If the lake changes color, avoid water activities and enjoy the view from outside the water.", icon: "fa-shield-heart" }
+    ],    highlights: [
       { title: "Stunning Views", text: "Panoramic landscapes that make the visit unforgettable.", icon: "fa-mountain" },
       { title: "Perfect Climate", text: "Warm and pleasant weather through most of the year.", icon: "fa-cloud-sun" },
       { title: "Local Culture", text: "Friendly lake communities and Salvadoran cuisine.", icon: "fa-people-group" },
@@ -176,7 +194,16 @@ const destinations = {
         description: "Iconic coastal scenery in La Libertad"
       }
     ],
-    highlights: [
+        practicalInfo: [
+      { title: "Opening Hours", text: "The beach area is open access; restaurants, surf schools and nightlife operate on their own schedules.", icon: "fa-clock" },
+      { title: "Entry Fee", text: "There is no general beach entry fee; parking, lessons, rentals and venues have separate costs.", icon: "fa-ticket" },
+      { title: "Best Time", text: "Morning is best for surfing, while sunset is ideal for photos and a calmer visit.", icon: "fa-sun" },
+      { title: "Visit Duration", text: "Plan a half day to a full day, especially if taking surf lessons or staying for nightlife.", icon: "fa-hourglass-half" },
+      { title: "Difficulty", text: "Easy to moderate; streets are compact, but beach access can be rocky and sandy.", icon: "fa-person-walking" },
+      { title: "How to Get There", text: "Located about 7 km west of Puerto de La Libertad, around kilometer 43 on the coastal highway.", icon: "fa-car" },
+      { title: "Accessibility Note", text: "Town areas are easier than the sand and rock beach; confirm accessible parking and restaurant entrances.", icon: "fa-wheelchair" },
+      { title: "Safety Tip", text: "Advanced waves like La Bocana are for experienced surfers; beginners should use instructors and calmer areas.", icon: "fa-shield-heart" }
+    ],    highlights: [
       { title: "Surf Culture", text: "Popular waves and surf schools for visitors.", icon: "fa-water" },
       { title: "Sunsets", text: "Golden evening views over the Pacific.", icon: "fa-sun" },
       { title: "Restaurants", text: "Compact food spots and beachfront cafes.", icon: "fa-utensils" },
@@ -228,7 +255,16 @@ const destinations = {
         description: "Peaceful lake views near town"
       }
     ],
-    highlights: [
+        practicalInfo: [
+      { title: "Opening Hours", text: "Town areas are open during the day; the tourist information center operates Monday to Sunday, 9:00 AM to 5:00 PM.", icon: "fa-clock" },
+      { title: "Entry Fee", text: "Walking around town is free; museums, tours, boat rides or cultural activities may have separate prices.", icon: "fa-ticket" },
+      { title: "Best Time", text: "Morning or late afternoon is best for cooler walking, photography and plaza visits.", icon: "fa-sun" },
+      { title: "Visit Duration", text: "Plan a half day for the historic center, or a full day if adding Lake Suchitlan or workshops.", icon: "fa-hourglass-half" },
+      { title: "Difficulty", text: "Easy to moderate because of cobblestone streets, slopes and uneven sidewalks.", icon: "fa-person-walking" },
+      { title: "How to Get There", text: "Commonly visited by car, tourist transport or guided day trip from San Salvador.", icon: "fa-car" },
+      { title: "Accessibility Note", text: "Main plaza areas are easier, but cobblestone streets can be challenging for wheelchair users.", icon: "fa-wheelchair" },
+      { title: "Safety Tip", text: "Wear comfortable shoes, bring water and ask locally about the easiest walking route.", icon: "fa-shield-heart" }
+    ],    highlights: [
       { title: "Colonial Streets", text: "Colorful architecture and historic corners.", icon: "fa-landmark" },
       { title: "Art Spaces", text: "Galleries, workshops and cultural houses.", icon: "fa-palette" },
       { title: "Lake Views", text: "Peaceful viewpoints toward Lake Suchitlan.", icon: "fa-water" },
@@ -280,7 +316,16 @@ const destinations = {
         description: "Historic civic architecture in the city center"
       }
     ],
-    highlights: [
+        practicalInfo: [
+      { title: "Opening Hours", text: "Public plazas are generally visited during the day; some landmarks such as the National Palace have set schedules.", icon: "fa-clock" },
+      { title: "Entry Fee", text: "Public areas are free; National Palace reference fees are $1 Salvadorans, $3 Central Americans or residents and $5 non-resident foreigners.", icon: "fa-ticket" },
+      { title: "Best Time", text: "Morning or afternoon is best for walking tours; check events for extended activity in the area.", icon: "fa-sun" },
+      { title: "Visit Duration", text: "Plan 2 to 4 hours for main landmarks, or more if visiting museums, cafes or events.", icon: "fa-hourglass-half" },
+      { title: "Difficulty", text: "Easy urban route with sidewalks, plazas and short walking distances.", icon: "fa-person-walking" },
+      { title: "How to Get There", text: "Use arranged transport, ride-share or public transport to downtown San Salvador; plan parking before arriving.", icon: "fa-car" },
+      { title: "Accessibility Note", text: "Plazas and renovated areas are easier to move through, but older sidewalks and busy streets may vary.", icon: "fa-wheelchair" },
+      { title: "Safety Tip", text: "Visit during active hours, keep belongings secure and follow local guidance around crowds or events.", icon: "fa-shield-heart" }
+    ],    highlights: [
       { title: "Landmarks", text: "Cathedral, theater and historic buildings.", icon: "fa-landmark" },
       { title: "Public Plazas", text: "Open spaces for walking and photos.", icon: "fa-city" },
       { title: "Street Food", text: "Traditional snacks near central areas.", icon: "fa-utensils" },
@@ -332,7 +377,16 @@ const destinations = {
         description: "Rugged forested mountains in Ahuachapan"
       }
     ],
-    highlights: [
+        practicalInfo: [
+      { title: "Opening Hours", text: "Official tourism information lists the park as open 24 hours/day, but visits and permits should be coordinated before traveling.", icon: "fa-clock" },
+      { title: "Entry Fee", text: "Reference fees are $3 for nationals and $6 for foreigners; camping fees are also listed separately.", icon: "fa-ticket" },
+      { title: "Best Time", text: "Dry season mornings are best for trails, viewpoints and river areas.", icon: "fa-sun" },
+      { title: "Visit Duration", text: "Plan a full day for trails, or overnight only with prior camping or cabin arrangements.", icon: "fa-hourglass-half" },
+      { title: "Difficulty", text: "Moderate to difficult, depending on trail length, weather and river conditions.", icon: "fa-person-hiking" },
+      { title: "How to Get There", text: "Travel to Ahuachapan and coordinate access through park information, guides or MARN contacts.", icon: "fa-car" },
+      { title: "Accessibility Note", text: "Trails are natural, uneven and generally not wheelchair accessible.", icon: "fa-wheelchair" },
+      { title: "Safety Tip", text: "Go with a guide, carry water and insect repellent, and confirm permits or reservations in advance.", icon: "fa-shield-heart" }
+    ],    highlights: [
       { title: "Biodiversity", text: "Birds, forest life and native plants.", icon: "fa-leaf" },
       { title: "Trails", text: "Nature routes with different difficulty levels.", icon: "fa-person-hiking" },
       { title: "Waterfalls", text: "Natural scenery during guided visits.", icon: "fa-water" },
@@ -362,6 +416,7 @@ const accessEl = document.getElementById("accessText");
 const accessSummaryEl = document.getElementById("accessibilitySummary");
 const galleryEl = document.getElementById("placeGallery");
 const locationTextEl = document.getElementById("locationText");
+const practicalInfoEl = document.getElementById("practicalInfo");
 const crumbEl = document.getElementById("crumb");
 
 function renderStackList(container, items, iconClass) {
@@ -569,6 +624,24 @@ function renderGallery(images) {
 
   setupGalleryCarousel();
 }
+function renderPracticalInfo(items) {
+  if (!practicalInfoEl) return;
+
+  practicalInfoEl.innerHTML = "";
+
+  items.forEach((item) => {
+    const article = document.createElement("article");
+    article.className = "practical-card";
+    article.innerHTML = `
+      <span class="practical-icon" aria-hidden="true"><i class="fa-solid ${item.icon}"></i></span>
+      <div>
+        <h3>${item.title}</h3>
+        <p>${item.text}</p>
+      </div>
+    `;
+    practicalInfoEl.appendChild(article);
+  });
+}
 function renderAccessibilitySummary(items) {
   if (!accessSummaryEl || !accessEl) return;
   accessSummaryEl.innerHTML = "";
@@ -694,6 +767,7 @@ function renderDestination() {
   if (crumbEl) crumbEl.textContent = data.name;
 
   renderHighlights(data.highlights);
+  renderPracticalInfo(data.practicalInfo || []);
   renderStackList(todoEl, data.todo, "fa-circle-check");
   renderStackList(tipsEl, data.tips, "fa-lightbulb");
   renderAccessibilitySummary(data.accessDetails);
@@ -726,6 +800,7 @@ function protectDetailTourBookingLinks() {
 }
 
 protectDetailTourBookingLinks();
+
 
 
 

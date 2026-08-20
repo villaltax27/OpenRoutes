@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -73,6 +73,10 @@
                 <i class="fa-regular fa-rectangle-list"></i>
                 Overview
             </button>
+            <button class="tab-btn" type="button" role="tab" aria-selected="false" data-tab="practical">
+                <i class="fa-solid fa-circle-info"></i>
+                Practical Info
+            </button>
             <button class="tab-btn" type="button" role="tab" aria-selected="false" data-tab="accessibility">
                 <i class="fa-solid fa-wheelchair"></i>
                 Accessibility
@@ -101,6 +105,11 @@
                     <p class="lead-text" id="overviewText"></p>
                     <div class="feature-grid" id="highlights"></div>
                     <div class="gallery" id="placeGallery" aria-label="Destination gallery"></div>
+                </section>
+                <section class="tab-panel" data-panel="practical">
+                    <h2>Practical Information</h2>
+                    <p class="lead-text">Key details to plan your visit before you go.</p>
+                    <div class="practical-grid" id="practicalInfo"></div>
                 </section>
 
                 <section class="tab-panel" data-panel="accessibility">
@@ -407,6 +416,9 @@
     <script src="js/auth-state.js"></script>
 </body>
 </html>
+
+
+
 
 
 
