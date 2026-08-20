@@ -2152,3 +2152,220 @@ body.high-contrast .location-directions-btn {
         grid-template-columns: 1fr;
     }
 }
+
+.accessibility-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: -4px 0 22px;
+}
+
+.legend-pill {
+    display: inline-flex;
+    align-items: center;
+    min-height: 30px;
+    padding: 0 12px;
+    border-radius: 999px;
+    font-size: .78rem;
+    font-weight: 800;
+    border: 1px solid transparent;
+}
+
+.legend-pill.available,
+.badge.available {
+    background: #e7f8dc;
+    color: #34780f;
+}
+
+.legend-pill.limited,
+.badge.limited {
+    background: #fff0c6;
+    color: #9f6400;
+}
+
+.legend-pill.ask,
+.badge.ask {
+    background: #e7f0ff;
+    color: #0b4f9f;
+}
+
+.legend-pill.no,
+.badge.no {
+    background: #ffe1e1;
+    color: #b42318;
+}
+
+.access-checklist {
+    display: grid;
+    gap: 24px;
+}
+
+.access-category {
+    display: grid;
+    gap: 14px;
+}
+
+.access-category > h3 {
+    margin: 0;
+    color: var(--dark-blue);
+    font-size: 1.05rem;
+}
+
+.access-category-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.access-check-item {
+    padding: 18px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 8px 22px rgba(0, 37, 84, .07);
+    border-left: 5px solid var(--bright-blue);
+}
+
+.access-check-item.available { border-left-color: var(--green); }
+.access-check-item.limited { border-left-color: #f5a400; }
+.access-check-item.ask { border-left-color: var(--bright-blue); }
+.access-check-item.no { border-left-color: #e5484d; }
+
+.access-check-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.access-check-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: rgba(11, 116, 255, .1);
+    color: var(--bright-blue);
+}
+
+.access-check-item.available .access-check-icon {
+    background: rgba(105, 191, 36, .14);
+    color: var(--green-dark);
+}
+
+.access-check-item.limited .access-check-icon {
+    background: rgba(245, 164, 0, .14);
+    color: #c98200;
+}
+
+.access-check-item.no .access-check-icon {
+    background: rgba(229, 72, 77, .14);
+    color: #b42318;
+}
+
+.access-check-item h4 {
+    margin: 0 0 7px;
+    color: var(--dark-blue);
+    font-size: 1rem;
+}
+
+.access-check-item p {
+    margin: 0 0 12px;
+    color: #31506f;
+    line-height: 1.55;
+}
+
+.access-check-item small {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    color: #5f7188;
+    line-height: 1.45;
+    font-weight: 600;
+}
+
+.access-check-item small i {
+    color: var(--green-dark);
+    margin-top: 2px;
+}
+
+.verification-note {
+    margin: 22px 0 0;
+    padding: 14px 16px;
+    border-radius: 10px;
+    background: #eef6ff;
+    color: #19395f;
+    line-height: 1.55;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.verification-note i {
+    color: var(--bright-blue);
+    margin-top: 4px;
+}
+
+body.dark-mode .access-category > h3,
+body.dark-mode .access-check-item h4 {
+    color: #f7fbff;
+}
+
+body.dark-mode .access-check-item {
+    border-color: rgba(144, 202, 249, .24);
+    background: rgba(13, 28, 48, .96);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, .24);
+}
+
+body.dark-mode .access-check-item p,
+body.dark-mode .access-check-item small,
+body.dark-mode .verification-note {
+    color: #d9e8f7;
+}
+
+body.dark-mode .verification-note {
+    background: rgba(45, 140, 255, .13);
+    border: 1px solid rgba(144, 202, 249, .2);
+}
+
+body.dark-mode .badge.available,
+body.dark-mode .legend-pill.available {
+    background: rgba(105, 191, 36, .18) !important;
+    color: #9be36a !important;
+}
+
+body.dark-mode .badge.limited,
+body.dark-mode .legend-pill.limited {
+    background: rgba(255, 201, 40, .16) !important;
+    color: #ffd76d !important;
+}
+
+body.dark-mode .badge.ask,
+body.dark-mode .legend-pill.ask {
+    background: rgba(45, 140, 255, .18) !important;
+    color: #90caf9 !important;
+}
+
+body.dark-mode .badge.no,
+body.dark-mode .legend-pill.no {
+    background: rgba(229, 72, 77, .18) !important;
+    color: #ffaaa8 !important;
+}
+
+body.high-contrast .access-check-item,
+body.high-contrast .verification-note,
+body.high-contrast .legend-pill {
+    border-color: #ffff00 !important;
+    box-shadow: none !important;
+}
+
+@media (max-width: 760px) {
+    .access-category-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .access-check-top {
+        align-items: flex-start;
+    }
+}

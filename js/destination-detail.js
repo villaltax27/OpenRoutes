@@ -91,10 +91,14 @@ const destinations = {
     todo: ["Hike with a local guide", "Take landscape photos", "Visit nearby viewpoints", "Plan a picnic stop after the hike"],
     tips: ["Wear comfortable hiking shoes", "Bring water and sunscreen", "Go early in the morning", "Check weather conditions before leaving"],
     accessDetails: [
-      { title: "Wheelchair Access", text: "The summit trail is not wheelchair accessible.", status: "Limited", icon: "fa-wheelchair" },
-      { title: "Parking", text: "Parking is available near the park entrance.", status: "Yes", icon: "fa-square-parking" },
-      { title: "Restrooms", text: "Basic facilities are available near access points.", status: "Yes", icon: "fa-restroom" },
-      { title: "Guided Assistance", text: "Guides are recommended for support.", status: "Yes", icon: "fa-hands-helping" }
+      { category: "Mobility", title: "Wheelchair Route", text: "The summit trail is a natural volcanic path and is not wheelchair accessible.", status: "Not Available", icon: "fa-wheelchair", evidence: "Natural trail with steep sections and loose volcanic ground." },
+      { category: "Mobility", title: "Walking Distance", text: "Expect a long uphill walk from the access area to the crater viewpoint.", status: "Limited", icon: "fa-person-hiking", evidence: "Best for travelers comfortable with moderate hiking." },
+      { category: "Arrival", title: "Parking", text: "Parking is available near the park access area.", status: "Available", icon: "fa-square-parking", evidence: "Visitors still need to continue on foot after parking." },
+      { category: "Facilities", title: "Restrooms", text: "Basic restrooms are available near access points, not along the trail.", status: "Limited", icon: "fa-restroom", evidence: "Use facilities before beginning the hike." },
+      { category: "Communication", title: "Sign Language Video", text: "A sign language video can be added to the gallery when available for this destination.", status: "Ask First", icon: "fa-hands", evidence: "Only destinations with uploaded videos display this support." },
+      { category: "Communication", title: "Audio Guide", text: "Audio guide support is available through the site accessibility tools.", status: "Available", icon: "fa-volume-high", evidence: "Use the floating accessibility button." },
+      { category: "Support", title: "Guided Assistance", text: "Guides are recommended for safer hiking and orientation.", status: "Available", icon: "fa-hands-helping", evidence: "Guided entry helps manage route timing and safety." },
+      { category: "Sensory", title: "Crowds and Noise", text: "Crowds can increase on weekends and holidays.", status: "Ask First", icon: "fa-users", evidence: "Visit early and confirm expected visitor flow." }
     ]
   },
   "coatepeque": {
@@ -170,11 +174,14 @@ const destinations = {
     todo: ["Take a boat ride around the lake", "Try local seafood", "Visit a panoramic viewpoint", "Enjoy kayaking or swimming in safe areas"],
     tips: ["Visit during sunset", "Bring cash for small restaurants", "Ask about accessible entrances before booking", "Use sunscreen during midday"],
     accessDetails: [
-      { title: "Wheelchair Access", text: "Accessible paths and ramps available in selected areas.", status: "Yes", icon: "fa-wheelchair" },
-      { title: "Parking", text: "Designated accessible parking spaces in main spots.", status: "Yes", icon: "fa-square-parking" },
-      { title: "Restrooms", text: "Accessible restrooms available in some restaurants.", status: "Yes", icon: "fa-restroom" },
-      { title: "Audio Information", text: "Audio guides and descriptions can be requested.", status: "Yes", icon: "fa-volume-high" },
-      { title: "Guided Assistance", text: "Staff availability depends on the place you visit.", status: "Limited", icon: "fa-hands-helping" }
+      { category: "Mobility", title: "Wheelchair Route", text: "Some viewpoints, restaurants and lakefront venues may have ramps or flatter access.", status: "Limited", icon: "fa-wheelchair", evidence: "Accessibility depends on the exact place selected around the lake." },
+      { category: "Mobility", title: "Flat Paths", text: "Main venue areas may be easier to move through than direct shore access.", status: "Limited", icon: "fa-route", evidence: "Lakefront slopes, docks and stairs vary by provider." },
+      { category: "Arrival", title: "Parking", text: "Parking is available in selected restaurants, viewpoints and private access points.", status: "Available", icon: "fa-square-parking", evidence: "Confirm accessible parking with the venue before arrival." },
+      { category: "Facilities", title: "Restrooms", text: "Accessible restrooms may be available in some restaurants or hotels.", status: "Ask First", icon: "fa-restroom", evidence: "Public information varies by venue." },
+      { category: "Communication", title: "Sign Language Video", text: "A sign language video guide is available in the destination gallery.", status: "Available", icon: "fa-hands", evidence: "The Coatepeque carousel includes an uploaded sign language video." },
+      { category: "Communication", title: "Audio Guide", text: "Audio guide support is available through the site accessibility tools.", status: "Available", icon: "fa-volume-high", evidence: "Use the floating accessibility button." },
+      { category: "Support", title: "Guided Assistance", text: "Local support depends on the activity provider or restaurant staff.", status: "Limited", icon: "fa-hands-helping", evidence: "Ask before booking boat rides or lake activities." },
+      { category: "Safety", title: "Water Activity Conditions", text: "Water activities should be confirmed before entering the lake.", status: "Ask First", icon: "fa-water", evidence: "Lake conditions can change and some activities may pause." }
     ]
   },
   "el-tunco": {
@@ -242,10 +249,14 @@ const destinations = {
     todo: ["Take a surf lesson", "Walk near the beach caves", "Watch the sunset", "Try seafood and local snacks"],
     tips: ["Best waves are usually in the morning", "Bring sandals for rocky areas", "Weekends can be crowded", "Keep personal items close"],
     accessDetails: [
-      { title: "Wheelchair Access", text: "Town access is easier than direct sand access.", status: "Limited", icon: "fa-wheelchair" },
-      { title: "Parking", text: "Public and private parking options nearby.", status: "Yes", icon: "fa-square-parking" },
-      { title: "Restrooms", text: "Available in restaurants and hotels.", status: "Yes", icon: "fa-restroom" },
-      { title: "Guided Assistance", text: "Local support can be arranged ahead of time.", status: "Limited", icon: "fa-hands-helping" }
+      { category: "Mobility", title: "Wheelchair Route", text: "Town streets are easier than the beach, but sand and rocks limit direct shore access.", status: "Limited", icon: "fa-wheelchair", evidence: "Beach terrain is uneven and changes with tide." },
+      { category: "Mobility", title: "Walking Surface", text: "Expect compact streets, sand, stones and uneven beach areas.", status: "Limited", icon: "fa-shoe-prints", evidence: "Wear appropriate shoes and plan shorter routes." },
+      { category: "Arrival", title: "Parking", text: "Public and private parking options are available near town.", status: "Available", icon: "fa-square-parking", evidence: "Parking can fill quickly during weekends." },
+      { category: "Facilities", title: "Restrooms", text: "Restrooms are available through restaurants, hotels and surf businesses.", status: "Available", icon: "fa-restroom", evidence: "Accessible restroom quality depends on the venue." },
+      { category: "Communication", title: "Sign Language Video", text: "A sign language video can be added to the gallery when available for this destination.", status: "Ask First", icon: "fa-hands", evidence: "Only destinations with uploaded videos display this support." },
+      { category: "Communication", title: "Audio Guide", text: "Audio guide support is available through the site accessibility tools.", status: "Available", icon: "fa-volume-high", evidence: "Use the floating accessibility button." },
+      { category: "Support", title: "Surf or Local Assistance", text: "Surf instructors and local guides may support beginners and visitors needing help.", status: "Limited", icon: "fa-person-swimming", evidence: "Book support before arriving when possible." },
+      { category: "Sensory", title: "Crowds and Nightlife", text: "Noise and crowds can be high at sunset, weekends and nightlife hours.", status: "Ask First", icon: "fa-users", evidence: "Choose morning visits for a calmer experience." }
     ]
   },
   "suchitoto": {
@@ -313,10 +324,14 @@ const destinations = {
     todo: ["Take a walking tour", "Visit local art shops", "Explore the central plaza", "Take a boat ride on Lake Suchitlan"],
     tips: ["Wear comfortable walking shoes", "Some streets are cobblestone", "Visit during cultural festivals", "Bring a light jacket for evenings"],
     accessDetails: [
-      { title: "Wheelchair Access", text: "Main plaza areas are easier to access.", status: "Limited", icon: "fa-wheelchair" },
-      { title: "Parking", text: "Parking available near central areas.", status: "Yes", icon: "fa-square-parking" },
-      { title: "Restrooms", text: "Available in restaurants and public places.", status: "Yes", icon: "fa-restroom" },
-      { title: "Guided Assistance", text: "Local guides can help with route planning.", status: "Yes", icon: "fa-hands-helping" }
+      { category: "Mobility", title: "Wheelchair Route", text: "Main plaza areas are easier, but many streets are cobblestone or sloped.", status: "Limited", icon: "fa-wheelchair", evidence: "Route comfort depends on the street selected." },
+      { category: "Mobility", title: "Rest Stops", text: "Benches, cafes and plaza areas offer places to rest during walking routes.", status: "Available", icon: "fa-chair", evidence: "Useful for pacing the visit in warm weather." },
+      { category: "Arrival", title: "Parking", text: "Parking is available near central areas, though streets may be narrow.", status: "Available", icon: "fa-square-parking", evidence: "Arrive early for easier parking near the plaza." },
+      { category: "Facilities", title: "Restrooms", text: "Restrooms are available in restaurants and public/tourist areas.", status: "Available", icon: "fa-restroom", evidence: "Confirm accessible restroom availability before long visits." },
+      { category: "Communication", title: "Sign Language Video", text: "A sign language video can be added to the gallery when available for this destination.", status: "Ask First", icon: "fa-hands", evidence: "Only destinations with uploaded videos display this support." },
+      { category: "Communication", title: "Audio Guide", text: "Audio guide support is available through the site accessibility tools.", status: "Available", icon: "fa-volume-high", evidence: "Use the floating accessibility button." },
+      { category: "Support", title: "Guided Route Planning", text: "Local guides can help choose easier walking routes and cultural stops.", status: "Available", icon: "fa-hands-helping", evidence: "Helpful because street slope and surface vary." },
+      { category: "Sensory", title: "Quiet Areas", text: "The town has calmer areas away from festivals or main plaza activity.", status: "Limited", icon: "fa-ear-listen", evidence: "Avoid festival days if a quieter visit is needed." }
     ]
   },
   "historic-center": {
@@ -384,10 +399,14 @@ const destinations = {
     todo: ["Visit the National Palace", "Walk around Plaza Barrios", "Explore the National Theater", "Try local street food"],
     tips: ["Visit during daytime", "Stay aware of crowds", "Use comfortable shoes", "Plan parking before arriving"],
     accessDetails: [
-      { title: "Wheelchair Access", text: "Many main sidewalks and plazas are accessible.", status: "Yes", icon: "fa-wheelchair" },
-      { title: "Parking", text: "Parking varies by zone.", status: "Limited", icon: "fa-square-parking" },
-      { title: "Restrooms", text: "Available in museums and restaurants.", status: "Yes", icon: "fa-restroom" },
-      { title: "Guided Assistance", text: "City guides can support planned routes.", status: "Yes", icon: "fa-hands-helping" }
+      { category: "Mobility", title: "Wheelchair Route", text: "Many renovated plazas and central sidewalks are easier to access.", status: "Available", icon: "fa-wheelchair", evidence: "Older sidewalks and crowded streets may still vary." },
+      { category: "Mobility", title: "Walking Distance", text: "Main landmarks are close together, but visitors should plan breaks between stops.", status: "Available", icon: "fa-person-walking", evidence: "Useful for short cultural walking routes." },
+      { category: "Arrival", title: "Parking", text: "Parking varies by zone and should be planned before arriving.", status: "Limited", icon: "fa-square-parking", evidence: "Downtown traffic and events can affect access." },
+      { category: "Facilities", title: "Restrooms", text: "Restrooms are available in museums, cafes and restaurants.", status: "Available", icon: "fa-restroom", evidence: "Accessible restroom details depend on each building." },
+      { category: "Communication", title: "Sign Language Video", text: "A sign language video can be added to the gallery when available for this destination.", status: "Ask First", icon: "fa-hands", evidence: "Only destinations with uploaded videos display this support." },
+      { category: "Communication", title: "Audio Guide", text: "Audio guide support is available through the site accessibility tools.", status: "Available", icon: "fa-volume-high", evidence: "Use the floating accessibility button." },
+      { category: "Support", title: "City Guides", text: "City guides can support planned routes through main landmarks.", status: "Available", icon: "fa-hands-helping", evidence: "Recommended for first-time visitors." },
+      { category: "Sensory", title: "Crowds and Events", text: "Crowds can be high during events, weekends and busy downtown hours.", status: "Ask First", icon: "fa-users", evidence: "Check local event schedules before visiting." }
     ]
   },
   "imposible": {
@@ -455,10 +474,14 @@ const destinations = {
     todo: ["Hike with a certified guide", "Observe wildlife", "Take nature photos", "Visit scenic viewpoints"],
     tips: ["Go with a guide", "Wear hiking boots", "Bring insect repellent", "Carry enough water"],
     accessDetails: [
-      { title: "Wheelchair Access", text: "Trails are steep and not wheelchair accessible.", status: "No", icon: "fa-wheelchair" },
-      { title: "Parking", text: "Parking is available near access areas.", status: "Yes", icon: "fa-square-parking" },
-      { title: "Restrooms", text: "Basic facilities are limited.", status: "Limited", icon: "fa-restroom" },
-      { title: "Guided Assistance", text: "Guides are strongly recommended.", status: "Yes", icon: "fa-hands-helping" }
+      { category: "Mobility", title: "Wheelchair Route", text: "Natural trails are steep, uneven and generally not wheelchair accessible.", status: "Not Available", icon: "fa-wheelchair", evidence: "Protected forest terrain includes slopes, dirt paths and river areas." },
+      { category: "Mobility", title: "Trail Difficulty", text: "Hiking difficulty can be moderate to difficult depending on the selected trail.", status: "Limited", icon: "fa-person-hiking", evidence: "Choose routes according to stamina, weather and guide advice." },
+      { category: "Arrival", title: "Parking", text: "Parking is available near access areas, depending on the selected sector.", status: "Available", icon: "fa-square-parking", evidence: "Confirm the exact access point before traveling." },
+      { category: "Facilities", title: "Restrooms", text: "Basic facilities are limited and may not be close to all trails.", status: "Limited", icon: "fa-restroom", evidence: "Prepare before entering longer routes." },
+      { category: "Communication", title: "Sign Language Video", text: "A sign language video can be added to the gallery when available for this destination.", status: "Ask First", icon: "fa-hands", evidence: "Only destinations with uploaded videos display this support." },
+      { category: "Communication", title: "Audio Guide", text: "Audio guide support is available through the site accessibility tools.", status: "Available", icon: "fa-volume-high", evidence: "Use the floating accessibility button." },
+      { category: "Support", title: "Guided Assistance", text: "Guides are strongly recommended for route safety and orientation.", status: "Available", icon: "fa-hands-helping", evidence: "Natural protected areas require careful route planning." },
+      { category: "Safety", title: "Emergency Planning", text: "Visitors should confirm permits, trail conditions and emergency support before arrival.", status: "Ask First", icon: "fa-kit-medical", evidence: "Signal, weather and route conditions can vary." }
     ]
   }
 };
@@ -745,14 +768,23 @@ function renderPracticalInfo(items) {
     practicalInfoEl.appendChild(article);
   });
 }
+function getAccessibilityStatusClass(status) {
+  const value = status.toLowerCase();
+  if (value.includes("not") || value === "no") return "no";
+  if (value.includes("limited")) return "limited";
+  if (value.includes("ask")) return "ask";
+  return "available";
+}
+
 function renderAccessibilitySummary(items) {
   if (!accessSummaryEl || !accessEl) return;
   accessSummaryEl.innerHTML = "";
   accessEl.innerHTML = "";
 
-  items.forEach((item) => {
+  const priorityItems = items.slice(0, 5);
+  priorityItems.forEach((item) => {
+    const statusClass = getAccessibilityStatusClass(item.status);
     const row = document.createElement("div");
-    const statusClass = item.status.toLowerCase() === "limited" ? "limited" : item.status.toLowerCase() === "no" ? "no" : "";
     row.className = "access-row";
     row.innerHTML = `
       <i class="fa-solid ${item.icon}"></i>
@@ -763,14 +795,43 @@ function renderAccessibilitySummary(items) {
       <span class="badge ${statusClass}">${item.status}</span>
     `;
     accessSummaryEl.appendChild(row);
+  });
 
-    const detail = document.createElement("div");
-    detail.className = "stack-item";
-    detail.innerHTML = `<i class="fa-solid ${item.icon}"></i><span><strong>${item.title}:</strong> ${item.text} (${item.status})</span>`;
-    accessEl.appendChild(detail);
+  const groupedItems = items.reduce((groups, item) => {
+    const category = item.category || "Accessibility";
+    if (!groups[category]) groups[category] = [];
+    groups[category].push(item);
+    return groups;
+  }, {});
+
+  Object.entries(groupedItems).forEach(([category, categoryItems]) => {
+    const section = document.createElement("section");
+    section.className = "access-category";
+    section.innerHTML = `<h3>${category}</h3>`;
+
+    const list = document.createElement("div");
+    list.className = "access-category-grid";
+
+    categoryItems.forEach((item) => {
+      const statusClass = getAccessibilityStatusClass(item.status);
+      const card = document.createElement("article");
+      card.className = `access-check-item ${statusClass}`;
+      card.innerHTML = `
+        <div class="access-check-top">
+          <span class="access-check-icon" aria-hidden="true"><i class="fa-solid ${item.icon}"></i></span>
+          <span class="badge ${statusClass}">${item.status}</span>
+        </div>
+        <h4>${item.title}</h4>
+        <p>${item.text}</p>
+        <small><i class="fa-solid fa-clipboard-check"></i> ${item.evidence}</small>
+      `;
+      list.appendChild(card);
+    });
+
+    section.appendChild(list);
+    accessEl.appendChild(section);
   });
 }
-
 function setupTabs() {
   document.querySelectorAll(".tab-btn").forEach((button) => {
     button.addEventListener("click", () => {
@@ -904,6 +965,7 @@ function protectDetailTourBookingLinks() {
 }
 
 protectDetailTourBookingLinks();
+
 
 
 
