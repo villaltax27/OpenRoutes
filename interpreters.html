@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/interpreters.css">
+    <link rel="stylesheet" href="css/video-menu.css">
 </head>
 <body>
     <header class="navbar">
@@ -29,6 +30,89 @@
         <a class="auth-link auth-register" href="registrer.html">Register</a>
     </div>
 </header>
+    <!-- SIGN LANGUAGE VIDEO MENU -->
+    <aside class="nav-video-menu" id="navVideoMenu" aria-label="Sign language navigation menu" aria-hidden="true">
+        <div class="nav-video-menu__header">
+            <div>
+                <span class="nav-video-menu__eyebrow">Sign language</span>
+                <h2>Explore Open Routes</h2>
+            </div>
+            <button class="nav-video-menu__close" type="button" id="closeVideoMenu" aria-label="Close sign language menu" title="Close sign language menu">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div class="nav-video-menu__list">
+            <a class="nav-video-item" href="index.html">
+                <div class="nav-video-item__media">
+                    <video muted loop playsinline preload="metadata" aria-label="Home sign language guide">
+                        <source src="videos/menu/Home.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="nav-video-item__text">
+                    <span>01</span>
+                    <strong>Home</strong>
+                    <small>Start here</small>
+                </div>
+            </a>
+
+            <a class="nav-video-item" href="destinations.html">
+                <div class="nav-video-item__media">
+                    <video muted loop playsinline preload="metadata" aria-label="Destinations sign language guide">
+                        <source src="videos/menu/Destinations.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="nav-video-item__text">
+                    <span>02</span>
+                    <strong>Destinations</strong>
+                    <small>Discover places</small>
+                </div>
+            </a>
+
+            <a class="nav-video-item" href="plan-your-trip.html">
+                <div class="nav-video-item__media">
+                    <video muted loop playsinline preload="metadata" aria-label="Plan Your Trip sign language guide">
+                        <source src="videos/menu/Plan%20your%20trip.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="nav-video-item__text">
+                    <span>03</span>
+                    <strong>Plan Your Trip</strong>
+                    <small>Plan your journey</small>
+                </div>
+            </a>
+
+            <a class="nav-video-item" href="about.html">
+                <div class="nav-video-item__media">
+                    <video muted loop playsinline preload="metadata" aria-label="About Us sign language guide">
+                        <source src="videos/menu/About%20us.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="nav-video-item__text">
+                    <span>04</span>
+                    <strong>About Us</strong>
+                    <small>Meet Open Routes</small>
+                </div>
+            </a>
+
+            <a class="nav-video-item" href="contact.html">
+                <div class="nav-video-item__media">
+                    <video muted loop playsinline preload="metadata" aria-label="Contact sign language guide">
+                        <source src="videos/menu/Conatct.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="nav-video-item__text">
+                    <span>05</span>
+                    <strong>Contact</strong>
+                    <small>Get in touch</small>
+                </div>
+            </a>
+        </div>
+    </aside>
+
+    <button class="nav-video-toggle" id="openVideoMenu" type="button" aria-label="Open sign language menu" aria-controls="navVideoMenu" aria-expanded="false" title="Open sign language menu">
+        <i class="fa-solid fa-hands"></i>
+    </button>
 
 
     <main>
@@ -196,8 +280,11 @@
         <script src="js/text-size-control.js"></script>
     <script src="js/dark-mode.js"></script>
     <script src="js/auth-state.js"></script>
+    <script src="js/video-menu.js"></script>
 </body>
 </html>
+
+
 
 
 

@@ -2011,3 +2011,144 @@ body.high-contrast .practical-card {
         grid-template-columns: 1fr;
     }
 }
+
+.location-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(280px, .85fr);
+    gap: 22px;
+    align-items: stretch;
+    margin-top: 22px;
+}
+
+.location-map-card {
+    min-height: 380px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--soft-blue);
+    box-shadow: 0 12px 28px rgba(9, 36, 74, .1);
+}
+
+.location-map {
+    width: 100%;
+    height: 100%;
+    min-height: 380px;
+    border: 0;
+    display: block;
+}
+
+.location-planner {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.location-facts {
+    display: grid;
+    gap: 14px;
+}
+
+.location-fact-card {
+    display: grid;
+    grid-template-columns: 42px 1fr;
+    gap: 13px;
+    align-items: flex-start;
+    padding: 16px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 8px 22px rgba(0, 37, 84, 0.07);
+}
+
+.location-fact-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: rgba(105, 191, 36, .14);
+    color: var(--green-dark);
+    font-size: 1rem;
+}
+
+.location-fact-card h3 {
+    margin: 0 0 5px;
+    color: var(--dark-blue);
+    font-size: .98rem;
+}
+
+.location-fact-card p {
+    margin: 0;
+    color: #31506f;
+    line-height: 1.55;
+    font-size: .9rem;
+}
+
+.location-directions-btn {
+    min-height: 50px;
+    border-radius: 999px;
+    background: var(--primary-blue);
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 0 20px;
+    font-weight: 800;
+    box-shadow: 0 12px 24px rgba(11, 79, 159, .2);
+    transition: transform .2s ease, background-color .2s ease;
+}
+
+.location-directions-btn:hover {
+    transform: translateY(-2px);
+    background: var(--bright-blue);
+}
+
+body.dark-mode .location-map-card,
+body.dark-mode .location-fact-card {
+    border-color: rgba(144, 202, 249, .24);
+    background: rgba(13, 28, 48, .96);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, .24);
+}
+
+body.dark-mode .location-fact-card h3 {
+    color: #f7fbff;
+}
+
+body.dark-mode .location-fact-card p {
+    color: #d9e8f7;
+}
+
+body.dark-mode .location-fact-icon {
+    background: rgba(105, 191, 36, .18);
+    color: #9be36a;
+}
+
+body.dark-mode .location-directions-btn {
+    background: #2d8cff;
+    color: #061325;
+}
+
+body.high-contrast .location-map-card,
+body.high-contrast .location-fact-card,
+body.high-contrast .location-directions-btn {
+    border-color: currentColor;
+    box-shadow: none;
+}
+
+@media (max-width: 900px) {
+    .location-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 560px) {
+    .location-map-card,
+    .location-map {
+        min-height: 300px;
+    }
+
+    .location-fact-card {
+        grid-template-columns: 1fr;
+    }
+}
