@@ -32,7 +32,17 @@ const destinations = {
     summary: "One of the most iconic volcanoes in El Salvador with breathtaking views.",
     overview: "Santa Ana Volcano is the highest volcano in El Salvador and offers one of the best hiking experiences in the country. The route rewards travelers with crater views, fresh mountain air and a memorable look at the western landscape.",
     locationText: "Located inside Los Volcanes National Park, this destination is best reached from Santa Ana or nearby towns with planned transportation.",
-    heroImage: "https://www.paradisecatchers.com/wp-content/uploads/2023/04/Santa-Ana-Volcano-Crater3.jpg",
+        map: {
+      lat: 13.85142,
+      lng: -89.62902,
+      query: "Santa Ana Volcano, El Salvador",
+      facts: [
+        { title: "Nearest City", text: "Santa Ana is the main city travelers usually use as a starting point.", icon: "fa-city" },
+        { title: "Main Access", text: "Plan the route through Los Volcanes or Cerro Verde with arranged transport.", icon: "fa-road" },
+        { title: "Parking", text: "Parking is available near the access area, but walking is required for the trail.", icon: "fa-square-parking" },
+        { title: "Arrival Tip", text: "Arrive early because guided hiking departures and weather windows are limited.", icon: "fa-clock" }
+      ]
+    },heroImage: "https://www.paradisecatchers.com/wp-content/uploads/2023/04/Santa-Ana-Volcano-Crater3.jpg",
     gallery: [
       {
         type: "image",
@@ -93,7 +103,17 @@ const destinations = {
     summary: "Enjoy the breathtaking beauty of Lake Coatepeque, one of the most stunning lakes in El Salvador. Perfect for relaxation, nature and accessible experiences for everyone.",
     overview: "Lake Coatepeque is a volcanic crater lake known for its deep blue waters and beautiful views. It is an ideal destination for travelers looking for a peaceful and accessible place to enjoy nature.",
     locationText: "Lake Coatepeque is located in Santa Ana, surrounded by panoramic roads, restaurants, viewpoints and lakefront activities.",
-    heroImage: "https://cdn-pro.elsalvador.com/wp-content/uploads/2019/06/Lago-Coatepeque_03.jpg",
+        map: {
+      lat: 13.86361,
+      lng: -89.54639,
+      query: "Lake Coatepeque, El Salvador",
+      facts: [
+        { title: "Nearest City", text: "Santa Ana is the closest major city for transport, food and services.", icon: "fa-city" },
+        { title: "Main Access", text: "The lake is best reached by car, tour van or arranged guide from Santa Ana.", icon: "fa-road" },
+        { title: "Parking", text: "Parking depends on the viewpoint, restaurant or lakefront venue you choose.", icon: "fa-square-parking" },
+        { title: "Arrival Tip", text: "Choose the exact viewpoint or restaurant before leaving so navigation is easier.", icon: "fa-location-crosshairs" }
+      ]
+    },heroImage: "https://cdn-pro.elsalvador.com/wp-content/uploads/2019/06/Lago-Coatepeque_03.jpg",
     gallery: [
       {
         type: "image",
@@ -163,7 +183,17 @@ const destinations = {
     summary: "A famous surf beach with restaurants, nightlife and beautiful sunsets by the Pacific coast.",
     overview: "El Tunco is a popular beach destination known for surfing, sunsets and a lively coastal atmosphere. Travelers can enjoy food, music and ocean views in a compact walkable town.",
     locationText: "El Tunco is located in La Libertad, close to the coastal highway and other beaches along Surf City.",
-    heroImage: "https://bonvoyageguatemala.com/en/wp-content/uploads/2018/09/shutterstock-372639865-1600x1000.jpg",
+        map: {
+      lat: 13.49222,
+      lng: -89.38139,
+      query: "Playa El Tunco, La Libertad, El Salvador",
+      facts: [
+        { title: "Nearest City", text: "Puerto de La Libertad is the closest city for extra services and transport.", icon: "fa-city" },
+        { title: "Main Access", text: "Drive along the coastal highway to kilometer 43 in La Libertad.", icon: "fa-road" },
+        { title: "Parking", text: "Parking is available in town, especially near restaurants and surf schools.", icon: "fa-square-parking" },
+        { title: "Arrival Tip", text: "Arrive before sunset on busy weekends to find parking and move around calmly.", icon: "fa-clock" }
+      ]
+    },heroImage: "https://bonvoyageguatemala.com/en/wp-content/uploads/2018/09/shutterstock-372639865-1600x1000.jpg",
     gallery: [
       {
         type: "image",
@@ -224,7 +254,17 @@ const destinations = {
     summary: "A charming colonial town full of culture, art, history and lake views.",
     overview: "Suchitoto is one of El Salvador's most beautiful colonial towns, known for cobblestone streets, galleries, cultural spaces and views toward Lake Suchitlan.",
     locationText: "Suchitoto is located in Cuscatlan and is commonly visited as a day trip from San Salvador.",
-    heroImage: "https://svelsalvador.com/wp-content/uploads/2023/10/Suchitoto-Como-llegar-Donde-queda-Que-hacer-Videos.jpg",
+        map: {
+      lat: 13.93672,
+      lng: -89.02593,
+      query: "Suchitoto, Cuscatlan, El Salvador",
+      facts: [
+        { title: "Nearest City", text: "San Salvador is the most common starting point for day trips to Suchitoto.", icon: "fa-city" },
+        { title: "Main Access", text: "Travel by car, tour van or guided route toward Cuscatlan Norte.", icon: "fa-road" },
+        { title: "Parking", text: "Parking is usually found near the central area, but streets can be narrow.", icon: "fa-square-parking" },
+        { title: "Arrival Tip", text: "Use the central plaza as a practical starting point for walking tours.", icon: "fa-location-crosshairs" }
+      ]
+    },heroImage: "https://svelsalvador.com/wp-content/uploads/2023/10/Suchitoto-Como-llegar-Donde-queda-Que-hacer-Videos.jpg",
     gallery: [
       {
         type: "image",
@@ -285,7 +325,17 @@ const destinations = {
     summary: "The cultural and political heart of the capital city, filled with landmarks and public squares.",
     overview: "The Historic Center of San Salvador features iconic landmarks such as the Metropolitan Cathedral, National Palace, National Theater and vibrant plazas.",
     locationText: "Located in downtown San Salvador, the Historic Center is connected to public transportation and city services.",
-    heroImage: "https://centrohistorico.gob.sv/wp-content/uploads/2025/08/Centro-Historico-San-Salvador-29072022-Alcaldia-de-san-salvador-5.jpg",
+        map: {
+      lat: 13.6975,
+      lng: -89.19031,
+      query: "Centro Historico de San Salvador, El Salvador",
+      facts: [
+        { title: "Nearest City", text: "The destination is in downtown San Salvador, close to major cultural landmarks.", icon: "fa-city" },
+        { title: "Main Access", text: "Arrive by ride-share, tourist transport or public transportation to the central area.", icon: "fa-road" },
+        { title: "Parking", text: "Plan parking before arriving because downtown streets can be busy.", icon: "fa-square-parking" },
+        { title: "Arrival Tip", text: "Start around the main plazas to visit the Cathedral, National Palace and nearby sites.", icon: "fa-location-crosshairs" }
+      ]
+    },heroImage: "https://centrohistorico.gob.sv/wp-content/uploads/2025/08/Centro-Historico-San-Salvador-29072022-Alcaldia-de-san-salvador-5.jpg",
     gallery: [
       {
         type: "image",
@@ -346,7 +396,17 @@ const destinations = {
     summary: "One of the most important natural reserves in El Salvador, ideal for wildlife and hiking.",
     overview: "El Imposible National Park is a protected rainforest area known for biodiversity, trails, viewpoints and nature experiences for adventurous travelers.",
     locationText: "Located in Ahuachapan, the park requires planned transportation and guide coordination for the best experience.",
-    heroImage: "https://guanacos.com/wp-content/uploads/2024/01/GUANACOS-PARQUE-NACIONAL-EL-IMPOSIBLE-2-1024x555.jpg",
+        map: {
+      lat: 13.8309,
+      lng: -89.9589,
+      query: "Parque Nacional El Imposible, El Salvador",
+      facts: [
+        { title: "Nearest City", text: "Ahuachapan is the main nearby city for planning supplies and transport.", icon: "fa-city" },
+        { title: "Main Access", text: "Coordinate the route with park information, guides or MARN contacts before traveling.", icon: "fa-road" },
+        { title: "Parking", text: "Parking and access points depend on the trail or sector selected for the visit.", icon: "fa-square-parking" },
+        { title: "Arrival Tip", text: "Confirm permits, trail conditions and guide support before starting the trip.", icon: "fa-clock" }
+      ]
+    },heroImage: "https://guanacos.com/wp-content/uploads/2024/01/GUANACOS-PARQUE-NACIONAL-EL-IMPOSIBLE-2-1024x555.jpg",
     gallery: [
       {
         type: "image",
@@ -416,6 +476,9 @@ const accessEl = document.getElementById("accessText");
 const accessSummaryEl = document.getElementById("accessibilitySummary");
 const galleryEl = document.getElementById("placeGallery");
 const locationTextEl = document.getElementById("locationText");
+const locationMapEl = document.getElementById("locationMap");
+const locationQuickFactsEl = document.getElementById("locationQuickFacts");
+const locationMapsLinkEl = document.getElementById("locationMapsLink");
 const practicalInfoEl = document.getElementById("practicalInfo");
 const crumbEl = document.getElementById("crumb");
 
@@ -624,6 +687,46 @@ function renderGallery(images) {
 
   setupGalleryCarousel();
 }
+function createOsmEmbedUrl(lat, lng) {
+  const latSpan = 0.045;
+  const lngSpan = 0.065;
+  const bbox = [lng - lngSpan, lat - latSpan, lng + lngSpan, lat + latSpan]
+    .map((value) => value.toFixed(5))
+    .join("%2C");
+
+  return `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${lat.toFixed(5)}%2C${lng.toFixed(5)}`;
+}
+
+function renderLocationInfo(map) {
+  if (!map) return;
+
+  if (locationMapEl) {
+    locationMapEl.src = createOsmEmbedUrl(map.lat, map.lng);
+    locationMapEl.title = `Map showing ${data.name}`;
+  }
+
+  if (locationQuickFactsEl) {
+    locationQuickFactsEl.innerHTML = "";
+    map.facts.forEach((fact) => {
+      const article = document.createElement("article");
+      article.className = "location-fact-card";
+      article.innerHTML = `
+        <span class="location-fact-icon" aria-hidden="true"><i class="fa-solid ${fact.icon}"></i></span>
+        <div>
+          <h3>${fact.title}</h3>
+          <p>${fact.text}</p>
+        </div>
+      `;
+      locationQuickFactsEl.appendChild(article);
+    });
+  }
+
+  if (locationMapsLinkEl) {
+    const query = encodeURIComponent(map.query || `${data.name}, ${data.location}`);
+    locationMapsLinkEl.href = `https://www.google.com/maps/search/?api=1&query=${query}`;
+    locationMapsLinkEl.innerHTML = `<i class="fa-solid fa-route"></i> Open route in Google Maps`;
+  }
+}
 function renderPracticalInfo(items) {
   if (!practicalInfoEl) return;
 
@@ -764,6 +867,7 @@ function renderDestination() {
   summaryEl.textContent = data.summary;
   overviewEl.textContent = data.overview;
   locationTextEl.textContent = data.locationText;
+  renderLocationInfo(data.map);
   if (crumbEl) crumbEl.textContent = data.name;
 
   renderHighlights(data.highlights);
@@ -800,6 +904,7 @@ function protectDetailTourBookingLinks() {
 }
 
 protectDetailTourBookingLinks();
+
 
 
 
