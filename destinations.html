@@ -136,14 +136,55 @@
     </div>
 </section>
 
-<section class="filters-section" id="destinations">
+<section class="filters-section advanced-filters" id="destinations" aria-label="Destination search and filters">
+    <div class="filter-topline">
+        <label class="search-field" for="destinationSearch">
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            <span class="sr-only">Search destinations</span>
+            <input type="search" id="destinationSearch" placeholder="Search by place, city, accessibility or activity..." autocomplete="off">
+        </label>
 
-    <button class="filter-btn active" data-filter="all">All</button>
-    <button class="filter-btn" data-filter="nature">Nature</button>
-    <button class="filter-btn" data-filter="beach">Beach</button>
-    <button class="filter-btn" data-filter="culture">Culture</button>
-    <button class="filter-btn" data-filter="lake">Lake</button>
+        <label class="sort-field" for="destinationSort">
+            <span>Sort by</span>
+            <select id="destinationSort">
+                <option value="recommended">Recommended</option>
+                <option value="easy-access">Easy access first</option>
+                <option value="az">A-Z</option>
+            </select>
+        </label>
+    </div>
 
+    <div class="filter-group" aria-label="Destination type">
+        <span class="filter-label">Type</span>
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="nature">Nature</button>
+        <button class="filter-btn" data-filter="beach">Beach</button>
+        <button class="filter-btn" data-filter="culture">Culture</button>
+        <button class="filter-btn" data-filter="lake">Lake</button>
+    </div>
+
+    <div class="filter-group" aria-label="Accessibility filters">
+        <span class="filter-label">Accessibility</span>
+        <button class="filter-chip" type="button" data-access="wheelchair">Wheelchair</button>
+        <button class="filter-chip" type="button" data-access="low-walking">Low walking</button>
+        <button class="filter-chip" type="button" data-access="restrooms">Restrooms</button>
+        <button class="filter-chip" type="button" data-access="sign-language">Sign language</button>
+        <button class="filter-chip" type="button" data-access="guide">Guide</button>
+    </div>
+
+    <div class="filter-group" aria-label="Experience filters">
+        <span class="filter-label">Experience</span>
+        <button class="filter-chip" type="button" data-experience="relaxed">Relaxed</button>
+        <button class="filter-chip" type="button" data-experience="hiking">Hiking</button>
+        <button class="filter-chip" type="button" data-experience="photo">Photography</button>
+        <button class="filter-chip" type="button" data-experience="family">Family</button>
+        <button class="filter-chip" type="button" data-experience="food">Food nearby</button>
+    </div>
+
+    <div class="filter-footer">
+        <p id="resultsCount" aria-live="polite">6 destinations found</p>
+        <button class="clear-filters" type="button" id="clearDestinationFilters">Clear filters</button>
+    </div>
 </section>
 
 
@@ -156,7 +197,7 @@
     <div class="destination-grid">
 
         <!-- SANTA ANA -->
-        <article class="destination-card" data-category="nature">
+        <article class="destination-card" data-category="nature" data-location="Santa Ana" data-access="guide parking audio" data-experience="hiking photo nature" data-ease="2" data-popularity="6" data-keywords="volcano crater hiking trail santa ana los volcanes guide mountain">
             <img src="https://images.unsplash.com/photo-1589308078059-be1415eab4c3" alt="">
             <div class="card-body">
                 <h3>Santa Ana Volcano</h3>
@@ -168,7 +209,7 @@
         </article>
 
         <!-- COATEPEQUE -->
-        <article class="destination-card" data-category="lake">
+        <article class="destination-card" data-category="lake" data-location="Santa Ana" data-access="wheelchair low-walking restrooms sign-language guide audio parking" data-experience="relaxed photo family food lake" data-ease="1" data-popularity="1" data-keywords="lake coatepeque santa ana volcanic lake boat kayak restaurant viewpoint sign language">
             <img src="https://tse3.mm.bing.net/th/id/OIP.kNAvHfoTD-ffUFfJZNuvugHaE8?r=0&cb=thfc1falcon4&rs=1&pid=ImgDetMain&o=7&rm=3" alt="">
             <div class="card-body">
                 <h3>Lake Coatepeque</h3>
@@ -180,7 +221,7 @@
         </article>
 
         <!-- EL TUNCO -->
-        <article class="destination-card" data-category="beach">
+        <article class="destination-card" data-category="beach" data-location="La Libertad" data-access="restrooms guide audio parking" data-experience="beach photo food surfing" data-ease="4" data-popularity="2" data-keywords="el tunco beach surf sunset la libertad restaurants nightlife">
             <img src="https://tse3.mm.bing.net/th/id/OIP.skfvtLItixcFJGeyZrcaxAHaFj" alt="">
             <div class="card-body">
                 <h3>El Tunco Beach</h3>
@@ -192,7 +233,7 @@
         </article>
 
         <!-- SUCHITOTO -->
-        <article class="destination-card" data-category="culture">
+        <article class="destination-card" data-category="culture" data-location="Cuscatlan" data-access="low-walking restrooms guide audio parking" data-experience="culture relaxed photo family food" data-ease="3" data-popularity="3" data-keywords="suchitoto colonial town culture history lake suchitlan art cobblestone">
             <img src="https://tse3.mm.bing.net/th/id/OIP.hW0UJVspMfddhoJFwtLlfQHaEK" alt="">
             <div class="card-body">
                 <h3>Suchitoto</h3>
@@ -204,7 +245,7 @@
         </article>
 
         <!-- HISTORIC CENTER -->
-        <article class="destination-card" data-category="culture">
+        <article class="destination-card" data-category="culture" data-location="San Salvador" data-access="wheelchair low-walking restrooms guide audio parking" data-experience="culture photo family food" data-ease="1" data-popularity="4" data-keywords="historic center san salvador cathedral national palace museums plazas">
             <img src="https://tse1.mm.bing.net/th/id/OIP.yPRPuVKNNxyZXXmEGH1-EgHaFV" alt="">
             <div class="card-body">
                 <h3>Historic Center</h3>
@@ -216,7 +257,7 @@
         </article>
 
         <!-- EL IMPOSIBLE -->
-        <article class="destination-card" data-category="nature">
+        <article class="destination-card" data-category="nature" data-location="Ahuachapan" data-access="guide audio parking" data-experience="hiking photo nature wildlife" data-ease="6" data-popularity="5" data-keywords="el imposible national park ahuachapan forest hiking wildlife guide">
             <img src="https://guanacos.com/wp-content/uploads/2024/01/GUANACOS-PARQUE-NACIONAL-EL-IMPOSIBLE-2-1024x555.jpg" alt="">
             <div class="card-body">
                 <h3>El Imposible Park</h3>
@@ -228,7 +269,12 @@
         </article>
 
     </div>
-
+    <div class="destination-empty-state" id="destinationEmptyState" hidden>
+        <i class="fa-solid fa-map-location-dot"></i>
+        <h3>No destinations match your filters.</h3>
+        <p>Try removing one filter or searching another word.</p>
+        <button type="button" class="clear-filters">Reset search</button>
+    </div>
 </section>
 
 </main>
@@ -320,6 +366,7 @@
     <script src="js/video-menu.js"></script>
 </body>
 </html>
+
 
 
 

@@ -1028,3 +1028,251 @@ body.dark-mode .social-icons a {
     }
 }
 
+
+.useful-info {
+    padding: 0 8% 64px;
+}
+
+.useful-info-header {
+    width: min(880px, 100%);
+    margin-bottom: 26px;
+}
+
+.useful-info-header h2 {
+    color: var(--dark-blue);
+    font-size: clamp(1.9rem, 3vw, 3rem);
+    line-height: 1.12;
+    margin-bottom: 12px;
+}
+
+.useful-info-header p {
+    color: var(--muted);
+    line-height: 1.65;
+    max-width: 760px;
+}
+
+.useful-info-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.useful-card,
+.traveler-help-card,
+.useful-accordion {
+    background: var(--white);
+    border: 1px solid #e4edf7;
+    border-radius: 12px;
+    box-shadow: 0 12px 30px rgba(9, 36, 74, .09);
+}
+
+.useful-card {
+    padding: 22px;
+    min-height: 230px;
+}
+
+.useful-card.urgent {
+    border-color: rgba(229, 72, 77, .28);
+    background: linear-gradient(180deg, #fff7f7, #ffffff);
+}
+
+.useful-icon,
+.traveler-help-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: #eef6ff;
+    color: var(--bright-blue);
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+}
+
+.useful-card.urgent .useful-icon {
+    background: #ffe1e1;
+    color: #b42318;
+}
+
+.useful-card h3,
+.traveler-help-card h3 {
+    color: var(--dark-blue);
+    font-size: 1.08rem;
+    margin-bottom: 10px;
+}
+
+.useful-card p,
+.traveler-help-card p,
+.useful-accordion p {
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.useful-info-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 380px);
+    gap: 24px;
+    align-items: start;
+}
+
+.useful-accordion-list {
+    display: grid;
+    gap: 12px;
+}
+
+.useful-accordion {
+    padding: 0;
+    overflow: hidden;
+}
+
+.useful-accordion summary {
+    min-height: 60px;
+    padding: 17px 20px;
+    cursor: pointer;
+    list-style: none;
+    color: var(--dark-blue);
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+}
+
+.useful-accordion summary::-webkit-details-marker {
+    display: none;
+}
+
+.useful-accordion summary::after {
+    content: "+";
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: #eef6ff;
+    color: var(--primary-blue);
+    flex: 0 0 auto;
+}
+
+.useful-accordion[open] summary::after {
+    content: "-";
+    background: var(--green);
+    color: #ffffff;
+}
+
+.useful-accordion summary span {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.useful-accordion summary i {
+    color: var(--bright-blue);
+}
+
+.useful-accordion p {
+    padding: 0 20px 20px;
+}
+
+.traveler-help-card {
+    padding: 26px;
+    position: sticky;
+    top: 92px;
+    background: linear-gradient(135deg, #f7fbff, #ffffff 52%, #eef8e8);
+}
+
+.traveler-help-icon {
+    background: var(--green);
+    color: #ffffff;
+}
+
+.traveler-help-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+body.dark-mode .useful-info-header h2,
+body.dark-mode .useful-card h3,
+body.dark-mode .traveler-help-card h3,
+body.dark-mode .useful-accordion summary {
+    color: #eaf2ff !important;
+}
+
+body.dark-mode .useful-info-header p,
+body.dark-mode .useful-card p,
+body.dark-mode .traveler-help-card p,
+body.dark-mode .useful-accordion p {
+    color: #cbd9ec !important;
+}
+
+body.dark-mode .useful-card,
+body.dark-mode .traveler-help-card,
+body.dark-mode .useful-accordion {
+    background: #111b2e !important;
+    border-color: rgba(148, 163, 184, .34) !important;
+    box-shadow: 0 18px 42px rgba(0, 0, 0, .28) !important;
+}
+
+body.dark-mode .useful-card.urgent {
+    background: linear-gradient(180deg, rgba(82, 22, 30, .72), #111b2e) !important;
+    border-color: rgba(255, 170, 168, .28) !important;
+}
+
+body.dark-mode .useful-icon,
+body.dark-mode .useful-accordion summary::after {
+    background: #17345c !important;
+    color: #90caf9 !important;
+}
+
+body.dark-mode .traveler-help-icon,
+body.dark-mode .useful-accordion[open] summary::after {
+    background: #69bf24 !important;
+    color: #ffffff !important;
+}
+
+body.high-contrast .useful-card,
+body.high-contrast .traveler-help-card,
+body.high-contrast .useful-accordion {
+    background: #111 !important;
+    border-color: #ff0 !important;
+    box-shadow: none !important;
+}
+
+body.high-contrast .useful-icon,
+body.high-contrast .traveler-help-icon,
+body.high-contrast .useful-accordion summary::after {
+    background: #ff0 !important;
+    color: #000 !important;
+}
+
+@media (max-width: 1120px) {
+    .useful-info-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .useful-info-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .traveler-help-card {
+        position: static;
+    }
+}
+
+@media (max-width: 760px) {
+    .useful-info {
+        padding-left: 6%;
+        padding-right: 6%;
+    }
+
+    .useful-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .useful-card {
+        min-height: auto;
+    }
+}
