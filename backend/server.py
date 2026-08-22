@@ -42,6 +42,16 @@ ALLOWED_ACTIONS = {
     "high_contrast",
     "dark_mode",
     "text_size",
+    "search_destinations",
+    "filter_destinations",
+    "open_tab",
+    "add_favorite",
+    "book_trip",
+    "fill_planner",
+    "save_plan",
+    "checklist",
+    "video_menu",
+    "click_visible",
     "repeat_help",
     "stop_assistant",
     "answer",
@@ -78,6 +88,36 @@ ALLOWED_VALUES = {
     "off",
     "increase",
     "decrease",
+    "all",
+    "nature",
+    "beach",
+    "culture",
+    "lake",
+    "wheelchair",
+    "low-walking",
+    "restrooms",
+    "sign-language",
+    "guide",
+    "relaxed",
+    "hiking",
+    "photo",
+    "family",
+    "food",
+    "easy-access",
+    "az",
+    "recommended",
+    "overview",
+    "practical",
+    "accessibility",
+    "things",
+    "location",
+    "guides",
+    "tips",
+    "security",
+    "travel",
+    "language",
+    "notifications",
+    "privacy",
     "none",
 }
 
@@ -100,8 +140,12 @@ OUTPUT_SCHEMA: dict[str, Any] = {
             "type": "string",
             "maxLength": 180,
         },
+        "query": {
+            "type": "string",
+            "maxLength": 100,
+        },
     },
-    "required": ["action", "target", "value", "reply"],
+    "required": ["action", "target", "value", "query", "reply"],
     "additionalProperties": False,
 }
 
@@ -141,6 +185,16 @@ Available actions:
 - high_contrast: value must be on or off
 - dark_mode: value must be on or off
 - text_size: value must be increase or decrease
+- search_destinations: search the destinations page. Put the search words in query.
+- filter_destinations: apply a destination filter. Value can be nature, beach, culture, lake, wheelchair, low-walking, restrooms, sign-language, guide, relaxed, hiking, photo, family, food, easy-access, az, recommended, or all.
+- open_tab: open a visible page section or tab. Value can be overview, practical, accessibility, things, location, guides, tips, security, travel, language, notifications, or privacy.
+- add_favorite: click the favorite button for the current destination, interpreter, or visible item.
+- book_trip: open the booking area or booking button.
+- fill_planner: update the Plan Your Trip form. Put desired style, time, support, and start point in query.
+- save_plan: save the current plan.
+- checklist: update or show the trip checklist. Put the item in query and use value on or off.
+- video_menu: open or close the sign language navigation menu. Value must be on or off.
+- click_visible: click a visible local button/link by label. Put the label in query.
 - repeat_help
 - stop_assistant
 - answer: briefly answer a question using only the supplied page context
@@ -149,10 +203,12 @@ Available actions:
 Rules:
 1. Never invent a URL, JavaScript, selector, file, command, or action.
 2. For navigate, use only an allowed target.
-3. For answer, only use facts present in the page context.
-4. Keep reply friendly, in English, and under 25 words.
-5. If uncertain, use action "none", target "none", and value "none".
-6. Interpret phrases such as "come to the home" as navigation to home.
+3. For click_visible, use only labels that are likely visible on the current page, such as Contact Support, Find Guide, View Destination, or Book Trip.
+4. For answer, only use facts present in the page context.
+5. Keep reply friendly, in English, and under 25 words.
+6. If uncertain, use action "answer" for help questions or "none" for unsupported requests.
+7. Interpret phrases such as "come to the home" as navigation to home.
+8. Always include query. Use an empty string when no query is needed.
 """.strip()
 
 
@@ -162,6 +218,7 @@ def safe_result(raw_result: Any) -> dict[str, str]:
         "action": "none",
         "target": "none",
         "value": "none",
+        "query": "",
         "reply": "I did not understand that command.",
     }
 
@@ -171,6 +228,7 @@ def safe_result(raw_result: Any) -> dict[str, str]:
     action = raw_result.get("action")
     target = raw_result.get("target", "none")
     value = raw_result.get("value", "none")
+    query = raw_result.get("query", "")
     reply = raw_result.get("reply", "")
 
     if action not in ALLOWED_ACTIONS:
@@ -179,9 +237,12 @@ def safe_result(raw_result: Any) -> dict[str, str]:
         target = "none"
     if value not in ALLOWED_VALUES:
         value = "none"
+    if not isinstance(query, str):
+        query = ""
     if not isinstance(reply, str) or not reply.strip():
         reply = fallback["reply"]
 
+    query = " ".join(query.strip().split())[:100]
     reply = " ".join(reply.strip().split())[:180]
 
     if action == "navigate" and target == "none":
@@ -192,14 +253,55 @@ def safe_result(raw_result: Any) -> dict[str, str]:
         "high_contrast": {"on", "off"},
         "dark_mode": {"on", "off"},
         "text_size": {"increase", "decrease"},
+        "video_menu": {"on", "off"},
+        "checklist": {"on", "off", "none"},
+        "filter_destinations": {
+            "all",
+            "nature",
+            "beach",
+            "culture",
+            "lake",
+            "wheelchair",
+            "low-walking",
+            "restrooms",
+            "sign-language",
+            "guide",
+            "relaxed",
+            "hiking",
+            "photo",
+            "family",
+            "food",
+            "easy-access",
+            "az",
+            "recommended",
+        },
+        "open_tab": {
+            "overview",
+            "practical",
+            "accessibility",
+            "things",
+            "location",
+            "guides",
+            "tips",
+            "security",
+            "travel",
+            "language",
+            "notifications",
+            "privacy",
+        },
     }
     if action in required_values and value not in required_values[action]:
+        return fallback
+
+    actions_requiring_query = {"search_destinations", "fill_planner", "click_visible"}
+    if action in actions_requiring_query and not query:
         return fallback
 
     return {
         "action": action,
         "target": target,
         "value": value,
+        "query": query,
         "reply": reply,
     }
 
