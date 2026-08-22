@@ -1,56 +1,118 @@
 /* OpenRoutes Voice Assistant
    All selectors use the "orva" prefix to avoid conflicts with existing CSS. */
 
-.orva-assistant-button {
+.orva-assistant-prompt {
   position: fixed;
-  right: 24px;
-  bottom: 104px;
-  z-index: 10001;
-  display: inline-flex;
+  inset: 0;
+  z-index: 10050;
+  display: none;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  min-width: 64px;
-  min-height: 64px;
-  padding: 12px 16px;
-  border: 3px solid #ffffff;
-  border-radius: 999px;
-  background: #14532d;
-  color: #ffffff;
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+  padding: 24px;
+  background: rgba(7, 29, 61, 0.48);
+  backdrop-filter: blur(7px);
+}
+
+.orva-assistant-prompt.is-visible {
+  display: flex;
+}
+
+.orva-prompt-card {
+  width: min(540px, 100%);
+  border: 1px solid rgba(219, 232, 246, 0.96);
+  border-radius: 18px;
+  background: #ffffff;
+  color: #071d3d;
+  box-shadow: 0 24px 70px rgba(7, 29, 61, 0.28);
+  padding: 30px;
   font-family: inherit;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1.2;
+}
+
+.orva-prompt-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #0f72d9, #69bf24);
+  color: #ffffff;
+  font-size: 1.45rem;
+}
+
+.orva-prompt-eyebrow {
+  display: inline-flex;
+  margin-bottom: 8px;
+  color: #1d7a19;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.orva-prompt-copy h2 {
+  margin: 0 0 12px;
+  color: #071d3d;
+  font-size: 1.8rem;
+  line-height: 1.16;
+}
+
+.orva-prompt-copy p {
+  margin: 0;
+  color: #36506f;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.orva-prompt-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.orva-prompt-actions button {
+  min-height: 46px;
+  border-radius: 999px;
+  padding: 0 20px;
+  border: 0;
+  font: inherit;
+  font-weight: 800;
   cursor: pointer;
 }
 
-.orva-assistant-button:hover {
-  transform: translateY(-2px);
+.orva-prompt-primary {
+  background: #69bf24;
+  color: #ffffff;
+  box-shadow: 0 12px 24px rgba(105, 191, 36, 0.22);
 }
 
-.orva-assistant-button:focus-visible {
+.orva-prompt-primary:hover {
+  background: #58a91d;
+}
+
+.orva-prompt-secondary {
+  background: #eef6ff;
+  color: #071d3d;
+}
+
+.orva-prompt-secondary:hover {
+  background: #dfeeff;
+}
+
+.orva-prompt-actions button:focus-visible {
   outline: 4px solid #facc15;
-  outline-offset: 4px;
-}
-
-.orva-assistant-button.is-active {
-  background: #b91c1c;
-  animation: orva-pulse 1.8s infinite;
-}
-
-.orva-button-label {
-  max-width: 120px;
+  outline-offset: 3px;
 }
 
 .orva-status-panel {
   position: fixed;
-  right: 24px;
-  bottom: 184px;
+  left: 24px;
+  bottom: 24px;
   z-index: 10000;
   width: min(360px, calc(100vw - 48px));
   padding: 14px 16px;
-  border: 3px solid #14532d;
+  border: 2px solid #69bf24;
   border-radius: 14px;
   background: #ffffff;
   color: #172033;
@@ -78,71 +140,93 @@
   cursor: pointer;
 }
 
-body.high-contrast .orva-assistant-button,
-body.high-contrast .orva-status-panel {
-  border-color: #ffff00;
+body.high-contrast .orva-assistant-prompt {
+  background: rgba(0, 0, 0, 0.78);
 }
 
+body.high-contrast .orva-prompt-card,
 body.high-contrast .orva-status-panel {
   background: #000000;
   color: #ffffff;
+  border-color: #ffff00;
 }
 
+body.high-contrast .orva-prompt-copy h2,
+body.high-contrast .orva-prompt-copy p,
+body.high-contrast .orva-prompt-eyebrow,
+body.high-contrast .orva-status-panel strong,
+body.high-contrast .orva-status-panel p {
+  color: #ffff00;
+}
+
+body.high-contrast .orva-prompt-primary,
+body.high-contrast .orva-prompt-secondary {
+  background: #ffff00;
+  color: #000000;
+}
+
+body.dark-mode .orva-prompt-card,
+body.dark .orva-prompt-card,
 body.dark-mode .orva-status-panel,
 body.dark .orva-status-panel {
   background: #18202e;
   color: #ffffff;
-  border-color: #facc15;
+  border-color: rgba(250, 204, 21, 0.78);
 }
 
-@keyframes orva-pulse {
-  0%,
-  100% {
-    box-shadow:
-      0 0 0 0 rgba(185, 28, 28, 0.45),
-      0 10px 28px rgba(0, 0, 0, 0.28);
-  }
+body.dark-mode .orva-prompt-copy h2,
+body.dark .orva-prompt-copy h2,
+body.dark-mode .orva-status-panel strong,
+body.dark .orva-status-panel strong {
+  color: #ffffff;
+}
 
-  50% {
-    box-shadow:
-      0 0 0 12px rgba(185, 28, 28, 0),
-      0 10px 28px rgba(0, 0, 0, 0.28);
-  }
+body.dark-mode .orva-prompt-copy p,
+body.dark .orva-prompt-copy p,
+body.dark-mode .orva-status-panel p,
+body.dark .orva-status-panel p {
+  color: #dbe7f6;
+}
+
+body.dark-mode .orva-prompt-secondary,
+body.dark .orva-prompt-secondary {
+  background: #22314a;
+  color: #ffffff;
 }
 
 @media (max-width: 620px) {
-  .orva-assistant-button {
-    right: 14px;
-    bottom: 92px;
-    min-width: 58px;
-    min-height: 58px;
-    padding: 10px 13px;
+  .orva-assistant-prompt {
+    align-items: flex-end;
+    padding: 14px;
   }
 
-  .orva-button-label {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
+  .orva-prompt-card {
+    padding: 22px;
+    border-radius: 16px;
+  }
+
+  .orva-prompt-copy h2 {
+    font-size: 1.45rem;
+  }
+
+  .orva-prompt-actions {
+    flex-direction: column;
+  }
+
+  .orva-prompt-actions button {
+    width: 100%;
   }
 
   .orva-status-panel {
-    right: 14px;
-    bottom: 162px;
+    left: 14px;
+    bottom: 14px;
     width: calc(100vw - 28px);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .orva-assistant-button,
-  .orva-assistant-button.is-active {
-    animation: none;
+  .orva-assistant-prompt,
+  .orva-prompt-actions button {
     transition: none;
-  }
-
-  .orva-assistant-button:hover {
-    transform: none;
   }
 }
