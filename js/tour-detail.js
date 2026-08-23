@@ -127,20 +127,209 @@ function redirectToLoginForBooking(targetUrl = window.location.href) {
   window.location.href = "login.html";
 }
 
+const bookingForm = document.getElementById("bookingForm");
+const bookingError = document.getElementById("bookingError");
+const bookingConfirmation = document.getElementById("bookingConfirmation");
+const confirmationText = document.getElementById("confirmationText");
+const bookingDate = document.getElementById("bookingDate");
+const bookingGuests = document.getElementById("bookingGuests");
+const bookingGuide = document.getElementById("bookingGuide");
+const bookingAccessibility = document.getElementById("bookingAccessibility");
+const cardNumber = document.getElementById("cardNumber");
+const cardExpiry = document.getElementById("cardExpiry");
+const summaryTour = document.getElementById("summaryTour");
+const summaryDate = document.getElementById("summaryDate");
+const summaryGuests = document.getElementById("summaryGuests");
+const summarySupport = document.getElementById("summarySupport");
+const summaryTotal = document.getElementById("summaryTotal");
+const summaryDeposit = document.getElementById("summaryDeposit");
+
+function getTourBasePrice() {
+  return Number(tour.price.replace(/[^0-9.]/g, "")) || 0;
+}
+
+function formatMoney(value) {
+  return `$${Math.round(value).toLocaleString("en-US")}`;
+}
+
+function getSelectedGuideFee() {
+  const option = bookingGuide?.selectedOptions?.[0];
+  return Number(option?.dataset.fee || 0);
+}
+
+function getBookingEstimate() {
+  const guests = Math.max(1, Number(bookingGuests?.value || 1));
+  const subtotal = getTourBasePrice() * guests;
+  const supportFee = getSelectedGuideFee();
+  const total = subtotal + supportFee;
+  const deposit = Math.max(25, Math.round(total * 0.2));
+
+  return { guests, supportFee, total, deposit };
+}
+
+function formatDisplayDate(value) {
+  if (!value) return "Select date";
+  const date = new Date(`${value}T12:00:00`);
+  return date.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+}
+
+function updateBookingSummary() {
+  const estimate = getBookingEstimate();
+  if (summaryTour) summaryTour.textContent = tour.name;
+  if (summaryDate) summaryDate.textContent = formatDisplayDate(bookingDate?.value);
+  if (summaryGuests) summaryGuests.textContent = `${estimate.guests} ${estimate.guests === 1 ? "person" : "people"}`;
+  if (summarySupport) summarySupport.textContent = bookingGuide?.value || "Local guide included";
+  if (summaryTotal) summaryTotal.textContent = formatMoney(estimate.total);
+  if (summaryDeposit) summaryDeposit.textContent = formatMoney(estimate.deposit);
+}
+
+function setMinimumBookingDate() {
+  if (!bookingDate) return;
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  bookingDate.min = tomorrow.toISOString().split("T")[0];
+}
+
+function prefillBookingUser() {
+  const user = getOpenRoutesUser();
+  if (!user) return;
+
+  const nameInput = document.getElementById("bookingName");
+  const emailInput = document.getElementById("bookingEmail");
+  const displayName = user.name || user.fullName || user.username || "";
+
+  if (nameInput && !nameInput.value) nameInput.value = displayName;
+  if (emailInput && !emailInput.value) emailInput.value = user.email || "";
+}
+
+function getDigits(value) {
+  return String(value || "").replace(/\D/g, "");
+}
+
+function formatCardNumber(value) {
+  return getDigits(value).slice(0, 16).replace(/(.{4})/g, "$1 ").trim();
+}
+
+function formatExpiry(value) {
+  const digits = getDigits(value).slice(0, 4);
+  if (digits.length <= 2) return digits;
+  return `${digits.slice(0, 2)}/${digits.slice(2)}`;
+}
+
+function isExpiryValid(value) {
+  const match = String(value || "").match(/^(\d{2})\/(\d{2})$/);
+  if (!match) return false;
+
+  const month = Number(match[1]);
+  const year = Number(`20${match[2]}`);
+  if (month < 1 || month > 12) return false;
+
+  const expiryEnd = new Date(year, month, 0, 23, 59, 59);
+  return expiryEnd >= new Date();
+}
+
+function showBookingError(message) {
+  if (!bookingError) return;
+  bookingError.textContent = message;
+  bookingError.classList.toggle("show", Boolean(message));
+}
+
+function validateBookingForm() {
+  if (!bookingForm) return false;
+
+  const requiredFields = Array.from(bookingForm.querySelectorAll("[required]"));
+  const emptyField = requiredFields.find((field) => !String(field.value || "").trim());
+  if (emptyField) {
+    emptyField.focus();
+    showBookingError("Please complete all required booking and payment fields.");
+    return false;
+  }
+
+  if (bookingDate?.value && bookingDate.min && bookingDate.value < bookingDate.min) {
+    bookingDate.focus();
+    showBookingError("Please select a future travel date.");
+    return false;
+  }
+
+  if (getDigits(cardNumber?.value).length < 13) {
+    cardNumber?.focus();
+    showBookingError("Please enter a valid test card number.");
+    return false;
+  }
+
+  if (!isExpiryValid(cardExpiry?.value)) {
+    cardExpiry?.focus();
+    showBookingError("Please enter a valid future expiry date.");
+    return false;
+  }
+
+  const cvc = getDigits(document.getElementById("cardCvc")?.value);
+  if (cvc.length < 3) {
+    document.getElementById("cardCvc")?.focus();
+    showBookingError("Please enter a valid CVC.");
+    return false;
+  }
+
+  showBookingError("");
+  return true;
+}
+
+function confirmBooking() {
+  const estimate = getBookingEstimate();
+  const reference = `OR-${Date.now().toString().slice(-6)}`;
+  const lastFour = getDigits(cardNumber?.value).slice(-4);
+  const booking = {
+    reference,
+    tour: tour.name,
+    date: bookingDate?.value,
+    guests: estimate.guests,
+    accessibility: bookingAccessibility?.value || "No specific needs",
+    guide: bookingGuide?.value || "Local guide included",
+    total: estimate.total,
+    deposit: estimate.deposit,
+    cardLastFour: lastFour
+  };
+
+  localStorage.setItem("openRoutesLastBooking", JSON.stringify(booking));
+  bookingForm.hidden = true;
+  bookingConfirmation.hidden = false;
+  if (confirmationText) {
+    confirmationText.textContent = `${reference}: ${tour.name} for ${estimate.guests} ${estimate.guests === 1 ? "person" : "people"} on ${formatDisplayDate(booking.date)}. Deposit ${formatMoney(estimate.deposit)} confirmed with card ending in ${lastFour}.`;
+  }
+}
+
 document.querySelector('a[href="#bookingBox"]')?.addEventListener("click", (event) => {
   if (getOpenRoutesUser()) return;
   event.preventDefault();
   redirectToLoginForBooking(window.location.href);
 });
 
-document.querySelector(".booking-form")?.addEventListener("submit", (event) => {
+bookingForm?.addEventListener("submit", (event) => {
   event.preventDefault();
   if (!getOpenRoutesUser()) {
     redirectToLoginForBooking(window.location.href);
     return;
   }
-  alert("Thanks! Your trip request has been received.");
+  if (!validateBookingForm()) return;
+  confirmBooking();
 });
+
+[bookingDate, bookingGuests, bookingGuide, bookingAccessibility].forEach((field) => {
+  field?.addEventListener("input", updateBookingSummary);
+  field?.addEventListener("change", updateBookingSummary);
+});
+
+cardNumber?.addEventListener("input", () => {
+  cardNumber.value = formatCardNumber(cardNumber.value);
+});
+
+cardExpiry?.addEventListener("input", () => {
+  cardExpiry.value = formatExpiry(cardExpiry.value);
+});
+
+setMinimumBookingDate();
+prefillBookingUser();
+updateBookingSummary();
 
 document.addEventListener("DOMContentLoaded", () => {
   const btnDropdownToggle = document.getElementById("btnDropdownToggle");

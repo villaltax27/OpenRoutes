@@ -22,6 +22,8 @@
     login: "login.html",
     register: "registrer.html",
     settings: "settings.html",
+    faq: "faq.html",
+    accessibility_statement: "accessibility-statement.html",
     santa_ana: "destination-detail.html?place=santa-ana",
     coatepeque: "destination-detail.html?place=coatepeque",
     el_tunco: "destination-detail.html?place=el-tunco",
@@ -1109,6 +1111,16 @@
         target: "settings",
         label: "Settings",
         aliases: ["settings", "preferences"]
+      },
+      {
+        target: "faq",
+        label: "Help and FAQ",
+        aliases: ["faq", "help", "help page", "frequently asked questions", "questions"]
+      },
+      {
+        target: "accessibility_statement",
+        label: "Accessibility Statement",
+        aliases: ["accessibility statement", "accessibility policy", "accessibility commitment"]
       },
       {
         target: "home",

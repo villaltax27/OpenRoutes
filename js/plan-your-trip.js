@@ -13,6 +13,11 @@
     const resultDescription = document.getElementById("resultDescription");
     const matchList = document.getElementById("matchList");
     const routeSteps = document.getElementById("routeSteps");
+    const routeStartLabel = document.getElementById("routeStartLabel");
+    const routeEndLabel = document.getElementById("routeEndLabel");
+    const routeTimeLabel = document.getElementById("routeTimeLabel");
+    const routeTransportLabel = document.getElementById("routeTransportLabel");
+    const routeAccessLabel = document.getElementById("routeAccessLabel");
     const destinationLink = document.getElementById("destinationLink");
     const interpreterLink = document.getElementById("interpreterLink");
     const savePlan = document.getElementById("savePlan");
@@ -30,6 +35,7 @@
             image: "https://tse3.mm.bing.net/th/id/OIP.kNAvHfoTD-ffUFfJZNuvugHaE8?r=0&cb=thfc1falcon4&rs=1&pid=ImgDetMain&o=7&rm=3",
             alt: "Lake Coatepeque",
             link: "destination-detail.html?place=coatepeque",
+            routeKey: "coatepeque",
             description: "A calm route with scenic views, flexible timing and good options for guide support before visiting.",
             matches: ["Scenic views", "Flexible timing", "Guide available"],
             steps: ["Start from San Salvador in the morning.", "Visit a lake viewpoint and restaurant stop.", "Return before evening traffic."],
@@ -42,6 +48,7 @@
             image: "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=1200&q=80",
             alt: "Santa Ana Volcano",
             link: "destination-detail.html?place=santa-ana",
+            routeKey: "santa-ana",
             description: "A nature-focused route for travelers who want landscapes, viewpoints and a more active outdoor experience.",
             matches: ["Outdoor views", "Early start", "Route planning needed"],
             steps: ["Leave early and confirm trail conditions.", "Visit accessible viewpoints or easier walking areas.", "Plan rest breaks and return before late afternoon."],
@@ -54,6 +61,7 @@
             image: "https://tse3.mm.bing.net/th/id/OIP.hW0UJVspMfddhoJFwtLlfQHaEK",
             alt: "Suchitoto",
             link: "destination-detail.html?place=suchitoto",
+            routeKey: "suchitoto",
             description: "A cultural route with historic streets, local food, artisan spaces and guide support for context.",
             matches: ["Local culture", "Short stops", "Interpreter useful"],
             steps: ["Start with the historic center.", "Visit a local food or artisan stop.", "Finish with a viewpoint or calm plaza area."],
@@ -66,10 +74,61 @@
             image: "https://tse3.mm.bing.net/th/id/OIP.skfvtLItixcFJGeyZrcaxAHaFj",
             alt: "El Tunco Beach",
             link: "destination-detail.html?place=el-tunco",
+            routeKey: "el-tunco",
             description: "A beach plan focused on ocean views, relaxed timing, shaded breaks and sunset.",
             matches: ["Beach services", "Sunset timing", "Restaurant stops"],
             steps: ["Travel after the hottest hours.", "Confirm parking and restroom availability.", "Plan dinner or support before returning."],
             transport: "Private transport is helpful for beach equipment, mobility support and flexible return time."
+        }
+    };
+
+    const startPointLabels = {
+        "san-salvador": "San Salvador",
+        "santa-ana": "Santa Ana",
+        "la-libertad": "La Libertad",
+        "not-sure": "Choose start point"
+    };
+
+    const routeDetails = {
+        "coatepeque": {
+            times: {
+                "san-salvador": "1 hr 20 min",
+                "santa-ana": "35 min",
+                "la-libertad": "2 hr",
+                "not-sure": "Depends on start"
+            },
+            transport: "Private car or tour van",
+            access: "Confirm the exact viewpoint, restaurant or dock before leaving."
+        },
+        "santa-ana": {
+            times: {
+                "san-salvador": "1 hr 30 min",
+                "santa-ana": "45 min",
+                "la-libertad": "2 hr 20 min",
+                "not-sure": "Depends on start"
+            },
+            transport: "Private car or guide transport",
+            access: "Confirm trail conditions and choose visitor areas if walking support is needed."
+        },
+        "suchitoto": {
+            times: {
+                "san-salvador": "1 hr 15 min",
+                "santa-ana": "2 hr",
+                "la-libertad": "1 hr 45 min",
+                "not-sure": "Depends on start"
+            },
+            transport: "Private car or guided day trip",
+            access: "Start near the central plaza to reduce walking through cobblestone streets."
+        },
+        "el-tunco": {
+            times: {
+                "san-salvador": "45 min to 1 hr",
+                "santa-ana": "2 hr 10 min",
+                "la-libertad": "20 min",
+                "not-sure": "Depends on start"
+            },
+            transport: "Private car, ride-share or shuttle",
+            access: "Town access is easier than beach terrain, so confirm parking and restaurant entrances."
         }
     };
 
@@ -97,7 +156,11 @@
     }
 
     function buildRecommendation(state) {
-        const base = { ...plans[state.style] };
+        const base = {
+            ...plans[state.style],
+            matches: [...plans[state.style].matches],
+            steps: [...plans[state.style].steps]
+        };
 
         if (state.support.includes("low-walking") || state.support.includes("wheelchair")) {
             if (state.style === "nature") {
@@ -107,6 +170,7 @@
                 base.image = plans.relaxed.image;
                 base.alt = plans.relaxed.alt;
                 base.link = plans.relaxed.link;
+                base.routeKey = plans.relaxed.routeKey;
                 base.description = "A lower-pressure route with scenic views and easier planning than a demanding trail.";
                 base.matches = ["Lower walking", "Scenic views", "Support recommended"];
                 base.steps = ["Choose a viewpoint or restaurant with close access.", "Avoid steep walking sections.", "Contact support to confirm parking and restroom details."];
@@ -151,6 +215,17 @@
         return base;
     }
 
+    function updateRoutePreview(state, plan) {
+        const details = routeDetails[plan.routeKey] || routeDetails.coatepeque;
+        const startLabel = startPointLabels[state.startPoint] || startPointLabels["san-salvador"];
+
+        if (routeStartLabel) routeStartLabel.textContent = startLabel;
+        if (routeEndLabel) routeEndLabel.textContent = plan.destination;
+        if (routeTimeLabel) routeTimeLabel.textContent = details.times[state.startPoint] || details.times["san-salvador"];
+        if (routeTransportLabel) routeTransportLabel.textContent = details.transport;
+        if (routeAccessLabel) routeAccessLabel.textContent = details.access;
+    }
+
     function renderRecommendation() {
         if (!plannerForm) return;
 
@@ -171,6 +246,7 @@
 
         matchList.innerHTML = plan.matches.map((match) => `<span><i class="fa-solid fa-circle-check"></i> ${match}</span>`).join("");
         routeSteps.innerHTML = plan.steps.map((step) => `<li>${step}</li>`).join("");
+        updateRoutePreview(state, plan);
 
         const readText = `Recommended trip. ${plan.title}. ${plan.description}`;
         document.querySelector(".result-content")?.setAttribute("data-read", readText);

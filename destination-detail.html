@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="css/destination-detail.css">
     <link rel="stylesheet" href="css/video-menu.css">
+    <link rel="stylesheet" href="css/responsive-fixes.css">
 </head>
 
 <body>
@@ -166,8 +167,8 @@
                 Accessibility
             </button>
             <button class="tab-btn" type="button" role="tab" aria-selected="false" data-tab="things">
-                <i class="fa-solid fa-camera-retro"></i>
-                Things to Do
+                <i class="fa-solid fa-bowl-food"></i>
+                Local Experience
             </button>
             <button class="tab-btn" type="button" role="tab" aria-selected="false" data-tab="location">
                 <i class="fa-solid fa-location-dot"></i>
@@ -209,9 +210,9 @@
                 </section>
 
                 <section class="tab-panel" data-panel="things">
-                    <h2>Things to Do</h2>
-                    <p class="lead-text">Activities and experiences recommended for this destination.</p>
-                    <div class="stack-list" id="todoList"></div>
+                    <h2>Local Experience</h2>
+                    <p class="lead-text">Food, culture, local advice and suggested routes to experience this destination with more Salvadoran context.</p>
+                    <div class="local-experience-grid" id="localExperience"></div>
                 </section>
                 <section class="tab-panel" data-panel="location">
                     <h2>Location</h2>
@@ -222,6 +223,7 @@
                         </div>
                         <div class="location-planner">
                             <div class="location-facts" id="locationQuickFacts"></div>
+                            <div class="route-visual" id="routeVisual" aria-label="Suggested route overview"></div>
                             <a class="location-directions-btn" id="locationMapsLink" href="#" target="_blank" rel="noopener">
                                 <i class="fa-solid fa-route"></i>
                                 Open route in Google Maps
@@ -268,6 +270,19 @@
             </aside>
         </div>
     </section>
+
+<section class="destination-reviews-section" aria-label="Traveler reviews">
+    <div class="container">
+        <div class="section-header">
+            <div class="header-left">
+                <h2 class="section-title">Traveler <span>Reviews</span></h2>
+                <p class="section-subtitle">Recent visitor notes about accessibility, routes and the overall experience.</p>
+            </div>
+        </div>
+        <div class="title-line" aria-hidden="true"></div>
+        <div class="destination-reviews-grid" id="destinationReviews"></div>
+    </div>
+</section>
 
 <section class="popular-tours-section detail-popular-tours" id="destinationTours" aria-label="Popular tours for this destination">
                         <div class="container">

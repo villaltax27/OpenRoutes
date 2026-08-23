@@ -42,7 +42,16 @@ const destinations = {
         { title: "Parking", text: "Parking is available near the access area, but walking is required for the trail.", icon: "fa-square-parking" },
         { title: "Arrival Tip", text: "Arrive early because guided hiking departures and weather windows are limited.", icon: "fa-clock" }
       ]
-    },heroImage: "https://www.paradisecatchers.com/wp-content/uploads/2023/04/Santa-Ana-Volcano-Crater3.jpg",
+    },
+    route: {
+      origin: "San Salvador or Santa Ana",
+      destination: "Los Volcanes National Park access",
+      estimate: "1 hr 30 min from San Salvador / 45 min from Santa Ana",
+      transport: "Private car, tour van or guide transport",
+      accessNote: "The summit trail is demanding, so confirm guide times and choose visitor areas if you need lower walking support.",
+      stops: ["San Salvador", "Santa Ana", "Cerro Verde access", "Volcano viewpoint"]
+    },
+    heroImage: "https://www.paradisecatchers.com/wp-content/uploads/2023/04/Santa-Ana-Volcano-Crater3.jpg",
     gallery: [
       {
         type: "image",
@@ -89,6 +98,16 @@ const destinations = {
       { title: "Photography", text: "Wide views of Izalco and Coatepeque.", icon: "fa-camera" }
     ],
     todo: ["Hike with a local guide", "Take landscape photos", "Visit nearby viewpoints", "Plan a picnic stop after the hike"],
+    localExperience: {
+      food: "Try Santa Ana classics after the hike: pupusas, elotes locos, minutas and the traditional panes chucos around the historic center.",
+      culture: "Pair the volcano route with Santa Ana's historic center, especially the cathedral, theater area and local plazas.",
+      localTip: "Start early, then leave space for a relaxed food stop in Santa Ana after the trail.",
+      routes: [
+        { title: "1 Day", text: "Morning volcano hike, lunch in Santa Ana, quick photo stop near the cathedral." },
+        { title: "2 Days", text: "Add Lake Coatepeque or Cerro Verde viewpoints with a slower recovery day." },
+        { title: "Weekend", text: "Combine the volcano, Santa Ana historic center and a lakefront meal at Coatepeque." }
+      ]
+    },
     tips: ["Wear comfortable hiking shoes", "Bring water and sunscreen", "Go early in the morning", "Check weather conditions before leaving"],
     accessDetails: [
       { category: "Mobility", title: "Wheelchair Route", text: "The summit trail is a natural volcanic path and is not wheelchair accessible.", status: "Not Available", icon: "fa-wheelchair", evidence: "Natural trail with steep sections and loose volcanic ground." },
@@ -117,7 +136,16 @@ const destinations = {
         { title: "Parking", text: "Parking depends on the viewpoint, restaurant or lakefront venue you choose.", icon: "fa-square-parking" },
         { title: "Arrival Tip", text: "Choose the exact viewpoint or restaurant before leaving so navigation is easier.", icon: "fa-location-crosshairs" }
       ]
-    },heroImage: "https://cdn-pro.elsalvador.com/wp-content/uploads/2019/06/Lago-Coatepeque_03.jpg",
+    },
+    route: {
+      origin: "San Salvador or Santa Ana",
+      destination: "Lake Coatepeque viewpoint",
+      estimate: "1 hr 20 min from San Salvador / 35 min from Santa Ana",
+      transport: "Private car, tour van or arranged guide",
+      accessNote: "Choose a restaurant or viewpoint with close parking, ramps and restroom access before leaving.",
+      stops: ["San Salvador", "Santa Ana", "Lake viewpoint", "Restaurant or dock"]
+    },
+    heroImage: "https://cdn-pro.elsalvador.com/wp-content/uploads/2019/06/Lago-Coatepeque_03.jpg",
     gallery: [
       {
         type: "image",
@@ -172,6 +200,16 @@ const destinations = {
       { title: "Water Activities", text: "Kayaking, swimming and boat tours available.", icon: "fa-water" }
     ],
     todo: ["Take a boat ride around the lake", "Try local seafood", "Visit a panoramic viewpoint", "Enjoy kayaking or swimming in safe areas"],
+    localExperience: {
+      food: "Choose a lakefront restaurant for seafood, pupusas, coffee or a relaxed lunch with a crater-lake view.",
+      culture: "Coatepeque is a weekend favorite for Salvadoran families, with boat rides, viewpoints and water activities around the lake.",
+      localTip: "Pick your exact restaurant or viewpoint before leaving because access, parking and ramps vary by venue.",
+      routes: [
+        { title: "1 Day", text: "Viewpoint stop, lunch by the water, boat ride or kayak, sunset before returning." },
+        { title: "2 Days", text: "Add Santa Ana city, local food and a slower morning by the lake." },
+        { title: "Weekend", text: "Combine Coatepeque, Santa Ana Volcano viewpoints and nearby coffee or town stops." }
+      ]
+    },
     tips: ["Visit during sunset", "Bring cash for small restaurants", "Ask about accessible entrances before booking", "Use sunscreen during midday"],
     accessDetails: [
       { category: "Mobility", title: "Wheelchair Route", text: "Some viewpoints, restaurants and lakefront venues may have ramps or flatter access.", status: "Limited", icon: "fa-wheelchair", evidence: "Accessibility depends on the exact place selected around the lake." },
@@ -200,7 +238,16 @@ const destinations = {
         { title: "Parking", text: "Parking is available in town, especially near restaurants and surf schools.", icon: "fa-square-parking" },
         { title: "Arrival Tip", text: "Arrive before sunset on busy weekends to find parking and move around calmly.", icon: "fa-clock" }
       ]
-    },heroImage: "https://bonvoyageguatemala.com/en/wp-content/uploads/2018/09/shutterstock-372639865-1600x1000.jpg",
+    },
+    route: {
+      origin: "San Salvador or La Libertad",
+      destination: "Playa El Tunco",
+      estimate: "45 min to 1 hr from San Salvador / 20 min from La Libertad",
+      transport: "Private car, ride-share or coastal shuttle",
+      accessNote: "Town streets are easier than the beach; confirm restaurant entrances and parking before sunset hours.",
+      stops: ["San Salvador", "La Libertad", "El Tunco entrance", "Beach restaurants"]
+    },
+    heroImage: "https://bonvoyageguatemala.com/en/wp-content/uploads/2018/09/shutterstock-372639865-1600x1000.jpg",
     gallery: [
       {
         type: "image",
@@ -208,6 +255,14 @@ const destinations = {
         alt: "El Tunco beach at sunset",
         title: "El Tunco Beach",
         description: "Pacific coast sunset and surf atmosphere"
+      },
+      {
+        type: "video",
+        src: "videos/destinations/Xavier- El tunco.mp4",
+        poster: "https://bonvoyageguatemala.com/en/wp-content/uploads/2018/09/shutterstock-372639865-1600x1000.jpg",
+        alt: "Sign language video guide for El Tunco Beach",
+        title: "Sign Language Guide",
+        description: "Video explanation in sign language about El Tunco Beach"
       },
       {
         type: "image",
@@ -247,13 +302,23 @@ const destinations = {
       { title: "Nightlife", text: "Music and social spaces during weekends.", icon: "fa-music" }
     ],
     todo: ["Take a surf lesson", "Walk near the beach caves", "Watch the sunset", "Try seafood and local snacks"],
+    localExperience: {
+      food: "Try seafood, pupusas, pastelitos, cold drinks or casual international food in town; nearby La Libertad is known for fish and the sea market.",
+      culture: "El Tunco is one of El Salvador's most iconic surf communities, with murals, board rentals, surf schools and a bohemian beach atmosphere.",
+      localTip: "Visit earlier if you need calmer movement; sunset and weekends are busier and parking fills faster.",
+      routes: [
+        { title: "1 Day", text: "Arrive before lunch, eat seafood, take a beginner surf class or beach walk, stay for sunset." },
+        { title: "2 Days", text: "Add Puerto de La Libertad, the boardwalk and a slower morning for coffee or surf." },
+        { title: "Weekend", text: "Base yourself in El Tunco and explore Surf City beaches, seafood stops and local shops." }
+      ]
+    },
     tips: ["Best waves are usually in the morning", "Bring sandals for rocky areas", "Weekends can be crowded", "Keep personal items close"],
     accessDetails: [
       { category: "Mobility", title: "Wheelchair Route", text: "Town streets are easier than the beach, but sand and rocks limit direct shore access.", status: "Limited", icon: "fa-wheelchair", evidence: "Beach terrain is uneven and changes with tide." },
       { category: "Mobility", title: "Walking Surface", text: "Expect compact streets, sand, stones and uneven beach areas.", status: "Limited", icon: "fa-shoe-prints", evidence: "Wear appropriate shoes and plan shorter routes." },
       { category: "Arrival", title: "Parking", text: "Public and private parking options are available near town.", status: "Available", icon: "fa-square-parking", evidence: "Parking can fill quickly during weekends." },
       { category: "Facilities", title: "Restrooms", text: "Restrooms are available through restaurants, hotels and surf businesses.", status: "Available", icon: "fa-restroom", evidence: "Accessible restroom quality depends on the venue." },
-      { category: "Communication", title: "Sign Language Video", text: "A sign language video can be added to the gallery when available for this destination.", status: "Ask First", icon: "fa-hands", evidence: "Only destinations with uploaded videos display this support." },
+      { category: "Communication", title: "Sign Language Video", text: "A sign language video guide is available in the destination gallery.", status: "Available", icon: "fa-hands", evidence: "The El Tunco carousel includes an uploaded sign language video." },
       { category: "Communication", title: "Audio Guide", text: "Audio guide support is available through the site accessibility tools.", status: "Available", icon: "fa-volume-high", evidence: "Use the floating accessibility button." },
       { category: "Support", title: "Surf or Local Assistance", text: "Surf instructors and local guides may support beginners and visitors needing help.", status: "Limited", icon: "fa-person-swimming", evidence: "Book support before arriving when possible." },
       { category: "Sensory", title: "Crowds and Nightlife", text: "Noise and crowds can be high at sunset, weekends and nightlife hours.", status: "Ask First", icon: "fa-users", evidence: "Choose morning visits for a calmer experience." }
@@ -275,7 +340,16 @@ const destinations = {
         { title: "Parking", text: "Parking is usually found near the central area, but streets can be narrow.", icon: "fa-square-parking" },
         { title: "Arrival Tip", text: "Use the central plaza as a practical starting point for walking tours.", icon: "fa-location-crosshairs" }
       ]
-    },heroImage: "https://svelsalvador.com/wp-content/uploads/2023/10/Suchitoto-Como-llegar-Donde-queda-Que-hacer-Videos.jpg",
+    },
+    route: {
+      origin: "San Salvador",
+      destination: "Suchitoto central plaza",
+      estimate: "1 hr 15 min from San Salvador",
+      transport: "Private car, tour van or guided day trip",
+      accessNote: "Start at the central plaza and choose shorter walking sections because several streets are cobblestone.",
+      stops: ["San Salvador", "Cuscatlan route", "Suchitoto plaza", "Lake Suchitlan viewpoint"]
+    },
+    heroImage: "https://svelsalvador.com/wp-content/uploads/2023/10/Suchitoto-Como-llegar-Donde-queda-Que-hacer-Videos.jpg",
     gallery: [
       {
         type: "image",
@@ -283,6 +357,14 @@ const destinations = {
         alt: "Suchitoto church and historic town",
         title: "Suchitoto",
         description: "Colonial streets and cultural landmarks"
+      },
+      {
+        type: "video",
+        src: "videos/destinations/Abner  - Suchitoto.mp4",
+        poster: "https://svelsalvador.com/wp-content/uploads/2023/10/Suchitoto-Como-llegar-Donde-queda-Que-hacer-Videos.jpg",
+        alt: "Sign language video guide for Suchitoto",
+        title: "Sign Language Guide",
+        description: "Video explanation in sign language about Suchitoto"
       },
       {
         type: "image",
@@ -322,13 +404,23 @@ const destinations = {
       { title: "Local Food", text: "Traditional flavors in town restaurants.", icon: "fa-utensils" }
     ],
     todo: ["Take a walking tour", "Visit local art shops", "Explore the central plaza", "Take a boat ride on Lake Suchitlan"],
+    localExperience: {
+      food: "Look for traditional Salvadoran plates, coffee, sweets and corn-based food during local festivals or plaza visits.",
+      culture: "Suchitoto is known for colonial architecture, art spaces, indigo workshops, Lake Suchitlan and festivals such as art, film, indigo and corn events.",
+      localTip: "Plan walking in shorter sections because the cobblestone streets are beautiful but can be tiring.",
+      routes: [
+        { title: "1 Day", text: "Central plaza, Santa Lucia Church, local lunch, artisan stop and lake viewpoint." },
+        { title: "2 Days", text: "Add Casa Museo Alejandro Cotto, Centro Arte para la Paz, boat ride and Los Tercios." },
+        { title: "Weekend", text: "Visit during a cultural or food festival, then add Lake Suchitlan and indigo or art workshops." }
+      ]
+    },
     tips: ["Wear comfortable walking shoes", "Some streets are cobblestone", "Visit during cultural festivals", "Bring a light jacket for evenings"],
     accessDetails: [
       { category: "Mobility", title: "Wheelchair Route", text: "Main plaza areas are easier, but many streets are cobblestone or sloped.", status: "Limited", icon: "fa-wheelchair", evidence: "Route comfort depends on the street selected." },
       { category: "Mobility", title: "Rest Stops", text: "Benches, cafes and plaza areas offer places to rest during walking routes.", status: "Available", icon: "fa-chair", evidence: "Useful for pacing the visit in warm weather." },
       { category: "Arrival", title: "Parking", text: "Parking is available near central areas, though streets may be narrow.", status: "Available", icon: "fa-square-parking", evidence: "Arrive early for easier parking near the plaza." },
       { category: "Facilities", title: "Restrooms", text: "Restrooms are available in restaurants and public/tourist areas.", status: "Available", icon: "fa-restroom", evidence: "Confirm accessible restroom availability before long visits." },
-      { category: "Communication", title: "Sign Language Video", text: "A sign language video can be added to the gallery when available for this destination.", status: "Ask First", icon: "fa-hands", evidence: "Only destinations with uploaded videos display this support." },
+      { category: "Communication", title: "Sign Language Video", text: "A sign language video guide is available in the destination gallery.", status: "Available", icon: "fa-hands", evidence: "The Suchitoto carousel includes an uploaded sign language video." },
       { category: "Communication", title: "Audio Guide", text: "Audio guide support is available through the site accessibility tools.", status: "Available", icon: "fa-volume-high", evidence: "Use the floating accessibility button." },
       { category: "Support", title: "Guided Route Planning", text: "Local guides can help choose easier walking routes and cultural stops.", status: "Available", icon: "fa-hands-helping", evidence: "Helpful because street slope and surface vary." },
       { category: "Sensory", title: "Quiet Areas", text: "The town has calmer areas away from festivals or main plaza activity.", status: "Limited", icon: "fa-ear-listen", evidence: "Avoid festival days if a quieter visit is needed." }
@@ -350,7 +442,16 @@ const destinations = {
         { title: "Parking", text: "Plan parking before arriving because downtown streets can be busy.", icon: "fa-square-parking" },
         { title: "Arrival Tip", text: "Start around the main plazas to visit the Cathedral, National Palace and nearby sites.", icon: "fa-location-crosshairs" }
       ]
-    },heroImage: "https://centrohistorico.gob.sv/wp-content/uploads/2025/08/Centro-Historico-San-Salvador-29072022-Alcaldia-de-san-salvador-5.jpg",
+    },
+    route: {
+      origin: "San Salvador",
+      destination: "Historic Center main plazas",
+      estimate: "10 to 25 min from central San Salvador",
+      transport: "Ride-share, tourist transport or public transportation",
+      accessNote: "Use renovated plazas as the main route and plan breaks because older sidewalks and crowds can vary.",
+      stops: ["Hotel or meeting point", "Plaza Barrios", "National Palace", "Metropolitan Cathedral"]
+    },
+    heroImage: "https://centrohistorico.gob.sv/wp-content/uploads/2025/08/Centro-Historico-San-Salvador-29072022-Alcaldia-de-san-salvador-5.jpg",
     gallery: [
       {
         type: "image",
@@ -358,6 +459,14 @@ const destinations = {
         alt: "Aerial night view of San Salvador Historic Center",
         title: "Historic Center",
         description: "Cathedral, plazas and civic landmarks"
+      },
+      {
+        type: "video",
+        src: "videos/destinations/Krissia - Centro historico.mp4",
+        poster: "https://centrohistorico.gob.sv/wp-content/uploads/2025/08/Centro-Historico-San-Salvador-29072022-Alcaldia-de-san-salvador-5.jpg",
+        alt: "Sign language video guide for the Historic Center",
+        title: "Sign Language Guide",
+        description: "Video explanation in sign language about the Historic Center"
       },
       {
         type: "image",
@@ -397,13 +506,23 @@ const destinations = {
       { title: "Culture", text: "Museums, events and guided city stories.", icon: "fa-book-open" }
     ],
     todo: ["Visit the National Palace", "Walk around Plaza Barrios", "Explore the National Theater", "Try local street food"],
+    localExperience: {
+      food: "Try typical dishes in downtown restaurants and coffee shops around the renovated plazas.",
+      culture: "The route centers on the Metropolitan Cathedral, National Palace, National Theater, Liberty Park and the National Library cultural area.",
+      localTip: "Go during active daytime or event hours, keep the route compact and plan parking or drop-off before arriving.",
+      routes: [
+        { title: "1 Day", text: "Plaza Barrios, Cathedral, National Palace, coffee stop and National Theater photos." },
+        { title: "2 Days", text: "Add BINAES, nearby museums or a guided city walk with a food stop." },
+        { title: "Weekend", text: "Combine the Historic Center with San Benito, museums or a route toward Surf City." }
+      ]
+    },
     tips: ["Visit during daytime", "Stay aware of crowds", "Use comfortable shoes", "Plan parking before arriving"],
     accessDetails: [
       { category: "Mobility", title: "Wheelchair Route", text: "Many renovated plazas and central sidewalks are easier to access.", status: "Available", icon: "fa-wheelchair", evidence: "Older sidewalks and crowded streets may still vary." },
       { category: "Mobility", title: "Walking Distance", text: "Main landmarks are close together, but visitors should plan breaks between stops.", status: "Available", icon: "fa-person-walking", evidence: "Useful for short cultural walking routes." },
       { category: "Arrival", title: "Parking", text: "Parking varies by zone and should be planned before arriving.", status: "Limited", icon: "fa-square-parking", evidence: "Downtown traffic and events can affect access." },
       { category: "Facilities", title: "Restrooms", text: "Restrooms are available in museums, cafes and restaurants.", status: "Available", icon: "fa-restroom", evidence: "Accessible restroom details depend on each building." },
-      { category: "Communication", title: "Sign Language Video", text: "A sign language video can be added to the gallery when available for this destination.", status: "Ask First", icon: "fa-hands", evidence: "Only destinations with uploaded videos display this support." },
+      { category: "Communication", title: "Sign Language Video", text: "A sign language video guide is available in the destination gallery.", status: "Available", icon: "fa-hands", evidence: "The Historic Center carousel includes an uploaded sign language video." },
       { category: "Communication", title: "Audio Guide", text: "Audio guide support is available through the site accessibility tools.", status: "Available", icon: "fa-volume-high", evidence: "Use the floating accessibility button." },
       { category: "Support", title: "City Guides", text: "City guides can support planned routes through main landmarks.", status: "Available", icon: "fa-hands-helping", evidence: "Recommended for first-time visitors." },
       { category: "Sensory", title: "Crowds and Events", text: "Crowds can be high during events, weekends and busy downtown hours.", status: "Ask First", icon: "fa-users", evidence: "Check local event schedules before visiting." }
@@ -425,7 +544,16 @@ const destinations = {
         { title: "Parking", text: "Parking and access points depend on the trail or sector selected for the visit.", icon: "fa-square-parking" },
         { title: "Arrival Tip", text: "Confirm permits, trail conditions and guide support before starting the trip.", icon: "fa-clock" }
       ]
-    },heroImage: "https://guanacos.com/wp-content/uploads/2024/01/GUANACOS-PARQUE-NACIONAL-EL-IMPOSIBLE-2-1024x555.jpg",
+    },
+    route: {
+      origin: "San Salvador or Ahuachapan",
+      destination: "El Imposible National Park access",
+      estimate: "2 hr 30 min to 3 hr from San Salvador / 1 hr from Ahuachapan",
+      transport: "Private car, guide transport or arranged nature tour",
+      accessNote: "Confirm permits, trail conditions and guide support before traveling because routes can be demanding.",
+      stops: ["San Salvador", "Ahuachapan", "Park access point", "Selected trail"]
+    },
+    heroImage: "https://guanacos.com/wp-content/uploads/2024/01/GUANACOS-PARQUE-NACIONAL-EL-IMPOSIBLE-2-1024x555.jpg",
     gallery: [
       {
         type: "image",
@@ -472,6 +600,16 @@ const destinations = {
       { title: "Viewpoints", text: "Forest and mountain landscapes.", icon: "fa-mountain-sun" }
     ],
     todo: ["Hike with a certified guide", "Observe wildlife", "Take nature photos", "Visit scenic viewpoints"],
+    localExperience: {
+      food: "Plan meals before entering the park and add nearby Ahuachapan or Ruta de Las Flores for coffee, yucca dishes and local food after the hike.",
+      culture: "El Imposible connects nature and history through biodiversity, rivers and archaeological traces such as Piedra Sellada.",
+      localTip: "This is not a casual stop: confirm guide support, permits, trail conditions and water needs before traveling.",
+      routes: [
+        { title: "1 Day", text: "Early guided trail, viewpoint or river stop, return before dark." },
+        { title: "2 Days", text: "Add a slower nature route, Ahuachapan food stop and rest after hiking." },
+        { title: "Weekend", text: "Combine El Imposible with Ruta de Las Flores towns, coffee, crafts and local gastronomy." }
+      ]
+    },
     tips: ["Go with a guide", "Wear hiking boots", "Bring insect repellent", "Carry enough water"],
     accessDetails: [
       { category: "Mobility", title: "Wheelchair Route", text: "Natural trails are steep, uneven and generally not wheelchair accessible.", status: "Not Available", icon: "fa-wheelchair", evidence: "Protected forest terrain includes slopes, dirt paths and river areas." },
@@ -486,6 +624,117 @@ const destinations = {
   }
 };
 
+const destinationReviews = {
+  "santa-ana": [
+    {
+      name: "Daniel Martinez",
+      initials: "DM",
+      destination: "Santa Ana Volcano",
+      rating: 4.8,
+      date: "June 2026",
+      comment: "The early route advice was accurate, and the guide recommendation made the hike feel safer."
+    },
+    {
+      name: "Sofia Hernandez",
+      initials: "SH",
+      destination: "Santa Ana Volcano",
+      rating: 4.6,
+      date: "May 2026",
+      comment: "Beautiful crater views. The accessibility checklist helped us understand the walking difficulty before going."
+    }
+  ],
+  coatepeque: [
+    {
+      name: "Maria Lopez",
+      initials: "ML",
+      destination: "Lake Coatepeque",
+      rating: 5.0,
+      date: "June 2026",
+      comment: "The route details and accessibility notes helped us plan a calm family day by the lake."
+    },
+    {
+      name: "Carlos Mejia",
+      initials: "CM",
+      destination: "Lake Coatepeque",
+      rating: 4.9,
+      date: "May 2026",
+      comment: "Knowing to choose the restaurant and parking before leaving made the visit much easier."
+    }
+  ],
+  "el-tunco": [
+    {
+      name: "Ana Perez",
+      initials: "AP",
+      destination: "El Tunco Beach",
+      rating: 4.7,
+      date: "April 2026",
+      comment: "I liked knowing the parking and restroom details before arriving, especially near sunset."
+    },
+    {
+      name: "Kevin Morales",
+      initials: "KM",
+      destination: "El Tunco Beach",
+      rating: 4.8,
+      date: "June 2026",
+      comment: "The beach was lively, and the notes about rocky access were helpful for planning shoes and timing."
+    }
+  ],
+  suchitoto: [
+    {
+      name: "Jose Rivera",
+      initials: "JR",
+      destination: "Suchitoto",
+      rating: 4.8,
+      date: "May 2026",
+      comment: "The guide suggestions made the colonial walk easier and more enjoyable."
+    },
+    {
+      name: "Lucia Gomez",
+      initials: "LG",
+      destination: "Suchitoto",
+      rating: 4.9,
+      date: "June 2026",
+      comment: "The route notes about cobblestone streets helped us keep the visit comfortable."
+    }
+  ],
+  "historic-center": [
+    {
+      name: "Andrea Castillo",
+      initials: "AC",
+      destination: "Historic Center",
+      rating: 4.7,
+      date: "May 2026",
+      comment: "The main plazas were easy to follow, and the safety notes helped us choose the right time to visit."
+    },
+    {
+      name: "Miguel Torres",
+      initials: "MT",
+      destination: "Historic Center",
+      rating: 4.6,
+      date: "April 2026",
+      comment: "Good cultural route for a short city visit. The parking warning was useful."
+    }
+  ],
+  imposible: [
+    {
+      name: "Paola Rivas",
+      initials: "PR",
+      destination: "El Imposible National Park",
+      rating: 4.8,
+      date: "June 2026",
+      comment: "The guide and permit reminders were important. This is a destination that needs planning."
+    },
+    {
+      name: "Ernesto Diaz",
+      initials: "ED",
+      destination: "El Imposible National Park",
+      rating: 4.7,
+      date: "May 2026",
+      comment: "Amazing nature route. The accessibility information helped set realistic expectations."
+    }
+  ]
+};
+
 const data = destinations[place] || destinations.coatepeque;
 
 const nameEl = document.getElementById("placeName");
@@ -493,7 +742,7 @@ const locationEl = document.getElementById("placeLocation");
 const summaryEl = document.getElementById("summary");
 const overviewEl = document.getElementById("overviewText");
 const highlightsEl = document.getElementById("highlights");
-const todoEl = document.getElementById("todoList");
+const localExperienceEl = document.getElementById("localExperience");
 const tipsEl = document.getElementById("tipsList");
 const accessEl = document.getElementById("accessText");
 const accessSummaryEl = document.getElementById("accessibilitySummary");
@@ -502,7 +751,9 @@ const locationTextEl = document.getElementById("locationText");
 const locationMapEl = document.getElementById("locationMap");
 const locationQuickFactsEl = document.getElementById("locationQuickFacts");
 const locationMapsLinkEl = document.getElementById("locationMapsLink");
+const routeVisualEl = document.getElementById("routeVisual");
 const practicalInfoEl = document.getElementById("practicalInfo");
+const destinationReviewsEl = document.getElementById("destinationReviews");
 const crumbEl = document.getElementById("crumb");
 
 function renderStackList(container, items, iconClass) {
@@ -746,8 +997,51 @@ function renderLocationInfo(map) {
 
   if (locationMapsLinkEl) {
     const query = encodeURIComponent(map.query || `${data.name}, ${data.location}`);
-    locationMapsLinkEl.href = `https://www.google.com/maps/search/?api=1&query=${query}`;
+    locationMapsLinkEl.href = `https://www.google.com/maps/dir/?api=1&origin=San%20Salvador%2C%20El%20Salvador&destination=${query}&travelmode=driving`;
     locationMapsLinkEl.innerHTML = `<i class="fa-solid fa-route"></i> Open route in Google Maps`;
+  }
+
+  if (routeVisualEl && data.route) {
+    routeVisualEl.innerHTML = `
+      <div class="route-visual-header">
+        <span class="route-visual-icon" aria-hidden="true"><i class="fa-solid fa-route"></i></span>
+        <div>
+          <p>Suggested Route</p>
+          <h3>${data.route.origin} to ${data.name}</h3>
+        </div>
+      </div>
+      <div class="route-line" aria-label="Route stops">
+        ${data.route.stops.map((stop, index) => `
+          <div class="route-stop">
+            <span>${index + 1}</span>
+            <p>${stop}</p>
+          </div>
+        `).join("")}
+      </div>
+      <div class="route-meta-grid">
+        <article>
+          <i class="fa-solid fa-clock" aria-hidden="true"></i>
+          <div>
+            <strong>Estimated Time</strong>
+            <p>${data.route.estimate}</p>
+          </div>
+        </article>
+        <article>
+          <i class="fa-solid fa-car-side" aria-hidden="true"></i>
+          <div>
+            <strong>Best Transport</strong>
+            <p>${data.route.transport}</p>
+          </div>
+        </article>
+        <article class="route-access-note">
+          <i class="fa-solid fa-universal-access" aria-hidden="true"></i>
+          <div>
+            <strong>Accessibility Note</strong>
+            <p>${data.route.accessNote}</p>
+          </div>
+        </article>
+      </div>
+    `;
   }
 }
 function renderPracticalInfo(items) {
@@ -766,6 +1060,86 @@ function renderPracticalInfo(items) {
       </div>
     `;
     practicalInfoEl.appendChild(article);
+  });
+}
+
+function renderLocalExperience(experience) {
+  if (!localExperienceEl || !experience) return;
+
+  const cards = [
+    { title: "Local Food Nearby", text: experience.food, icon: "fa-utensils" },
+    { title: "Culture and Events", text: experience.culture, icon: "fa-masks-theater" },
+    { title: "Local Recommendation", text: experience.localTip, icon: "fa-map-pin" }
+  ];
+
+  localExperienceEl.innerHTML = `
+    <div class="local-context-cards">
+      ${cards.map((card) => `
+        <article class="local-context-card">
+          <span aria-hidden="true"><i class="fa-solid ${card.icon}"></i></span>
+          <div>
+            <h3>${card.title}</h3>
+            <p>${card.text}</p>
+          </div>
+        </article>
+      `).join("")}
+    </div>
+    <article class="local-route-card">
+      <div class="local-route-heading">
+        <span aria-hidden="true"><i class="fa-solid fa-calendar-days"></i></span>
+        <div>
+          <h3>Suggested Routes by Time</h3>
+          <p>Choose a plan based on how much time you have.</p>
+        </div>
+      </div>
+      <div class="local-route-options">
+        ${experience.routes.map((route) => `
+          <div>
+            <strong>${route.title}</strong>
+            <p>${route.text}</p>
+          </div>
+        `).join("")}
+      </div>
+    </article>
+  `;
+}
+
+function renderStars(rating) {
+  const rounded = Math.round(rating * 2) / 2;
+  const fullStars = Math.floor(rounded);
+  const hasHalfStar = rounded % 1 !== 0;
+  const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+
+  return [
+    ...Array(fullStars).fill('<i class="fa-solid fa-star"></i>'),
+    ...(hasHalfStar ? ['<i class="fa-solid fa-star-half-stroke"></i>'] : []),
+    ...Array(emptyStars).fill('<i class="fa-regular fa-star"></i>')
+  ].join("");
+}
+
+function renderReviews(items) {
+  if (!destinationReviewsEl) return;
+  destinationReviewsEl.innerHTML = "";
+
+  items.forEach((review) => {
+    const article = document.createElement("article");
+    article.className = "destination-review-card";
+    article.innerHTML = `
+      <div class="review-card-header">
+        <span class="review-avatar" aria-hidden="true">${review.initials}</span>
+        <div>
+          <h3>${review.name}</h3>
+          <p>${review.destination}</p>
+        </div>
+      </div>
+      <div class="review-rating" aria-label="${review.rating} out of 5 stars">
+        <span>${review.rating.toFixed(1)}</span>
+        ${renderStars(review.rating)}
+      </div>
+      <p class="review-comment">"${review.comment}"</p>
+      <time>${review.date}</time>
+    `;
+    destinationReviewsEl.appendChild(article);
   });
 }
 function getAccessibilityStatusClass(status) {
@@ -933,7 +1307,8 @@ function renderDestination() {
 
   renderHighlights(data.highlights);
   renderPracticalInfo(data.practicalInfo || []);
-  renderStackList(todoEl, data.todo, "fa-circle-check");
+  renderReviews(destinationReviews[place] || destinationReviews.coatepeque);
+  renderLocalExperience(data.localExperience);
   renderStackList(tipsEl, data.tips, "fa-lightbulb");
   renderAccessibilitySummary(data.accessDetails);
   renderGallery(data.gallery || sharedGallery);

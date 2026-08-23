@@ -600,10 +600,10 @@ input:checked + .slider::before {
 
 .testimonial-card-premium {
     background: #ffffff;
-    border-radius: 20px;
-    padding: 14px 20px;
+    border-radius: 14px;
+    padding: 16px 18px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 18px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
     border: 1px solid #eef3e8;
@@ -623,15 +623,43 @@ input:checked + .slider::before {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.6rem;
+    color: #0b376d;
+    font-size: .95rem;
+    font-weight: 900;
     flex-shrink: 0;
 }
 
+.testimonial-info-premium {
+    min-width: 0;
+}
+
+.testimonial-topline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 3px;
+}
+
 .testimonial-info-premium h4 {
-    margin: 0 0 4px 0;
+    margin: 0;
     font-size: 1rem;
     font-weight: 700;
     color: #2c3e2f;
+}
+
+.testimonial-topline span {
+    color: #7890a8;
+    font-size: .74rem;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.review-destination {
+    color: #4ea61c !important;
+    font-size: .76rem !important;
+    font-weight: 900;
+    margin: 0 0 5px !important;
 }
 
 .rating-premium {
@@ -645,6 +673,7 @@ input:checked + .slider::before {
     margin: 0;
     font-size: 0.8rem;
     color: #6e7e68;
+    line-height: 1.45;
 }
 
 .fade-up {
@@ -706,6 +735,11 @@ input:checked + .slider::before {
     .testimonial-card-premium {
         flex-direction: column;
         text-align: center;
+    }
+
+    .testimonial-topline {
+        justify-content: center;
+        flex-wrap: wrap;
     }
 }
 
@@ -2161,6 +2195,7 @@ body.dark-mode .lead-text,
 body.dark-mode .tour-desc,
 body.dark-mode .feature-description,
 body.dark-mode .testimonial-info-premium p,
+body.dark-mode .testimonial-topline span,
 body.dark-mode .card-body p,
 body.dark-mode .tour-content p,
 body.dark-mode .info-card p,
@@ -2194,6 +2229,7 @@ body.dark-mode .section-kicker,
 body.dark-mode .card-body a,
 body.dark-mode .breadcrumb span,
 body.dark-mode .rating-premium,
+body.dark-mode .review-destination,
 body.dark-mode .tour-price,
 body.dark-mode .feature-number {
     color: #7dcc43 !important;

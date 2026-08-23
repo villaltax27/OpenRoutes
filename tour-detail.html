@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/tour-detail.css">
     <link rel="stylesheet" href="css/video-menu.css">
+    <link rel="stylesheet" href="css/responsive-fixes.css">
 </head>
 <body>
     <header class="navbar">
@@ -162,15 +163,114 @@
             </div>
 
             <aside class="booking-card" id="bookingBox">
-                <span>Starting From</span>
-                <h2 id="tourPrice"></h2>
-                <p>Reserve your spot and our team will contact you to confirm details.</p>
-                <form class="booking-form">
-                    <input type="text" placeholder="Full name" aria-label="Full name">
-                    <input type="email" placeholder="Email" aria-label="Email">
-                    <input type="date" aria-label="Trip date">
-                    <button type="submit">Book Trip</button>
+                <div class="booking-card-header">
+                    <span>Starting From</span>
+                    <h2 id="tourPrice"></h2>
+                    <p>Reserve your spot with a secure demo checkout. No real payment is processed.</p>
+                </div>
+
+                <form class="booking-form" id="bookingForm" novalidate>
+                    <div class="checkout-steps" aria-label="Booking steps">
+                        <span class="active">1 Trip</span>
+                        <span>2 Support</span>
+                        <span>3 Payment</span>
+                    </div>
+
+                    <fieldset class="booking-fieldset">
+                        <legend>Traveler Details</legend>
+                        <label>
+                            Full name
+                            <input type="text" id="bookingName" name="name" autocomplete="name" required>
+                        </label>
+                        <label>
+                            Email
+                            <input type="email" id="bookingEmail" name="email" autocomplete="email" required>
+                        </label>
+                        <label>
+                            Phone
+                            <input type="tel" id="bookingPhone" name="phone" autocomplete="tel" placeholder="+503 0000 0000">
+                        </label>
+                    </fieldset>
+
+                    <fieldset class="booking-fieldset">
+                        <legend>Trip Details</legend>
+                        <div class="booking-grid-2">
+                            <label>
+                                Travel date
+                                <input type="date" id="bookingDate" name="date" required>
+                            </label>
+                            <label>
+                                People
+                                <input type="number" id="bookingGuests" name="guests" min="1" max="20" value="2" required>
+                            </label>
+                        </div>
+                        <label>
+                            Accessibility needs
+                            <select id="bookingAccessibility" name="accessibility">
+                                <option value="No specific needs">No specific needs</option>
+                                <option value="Wheelchair or mobility support">Wheelchair or mobility support</option>
+                                <option value="Low walking route">Low walking route</option>
+                                <option value="Audio guide support">Audio guide support</option>
+                                <option value="Sign language support">Sign language support</option>
+                            </select>
+                        </label>
+                        <label>
+                            Guide or interpreter
+                            <select id="bookingGuide" name="guide">
+                                <option value="Local guide included" data-fee="0">Local guide included</option>
+                                <option value="Sign language interpreter" data-fee="35">Sign language interpreter (+$35)</option>
+                                <option value="Private accessibility assistant" data-fee="45">Private accessibility assistant (+$45)</option>
+                            </select>
+                        </label>
+                        <label>
+                            Notes for our team
+                            <textarea id="bookingNotes" name="notes" rows="3" placeholder="Tell us about arrival time, mobility needs or food restrictions."></textarea>
+                        </label>
+                    </fieldset>
+
+                    <div class="booking-summary" aria-live="polite">
+                        <h3>Trip Summary</h3>
+                        <div class="summary-row"><span>Package</span><strong id="summaryTour">Tour package</strong></div>
+                        <div class="summary-row"><span>Date</span><strong id="summaryDate">Select date</strong></div>
+                        <div class="summary-row"><span>People</span><strong id="summaryGuests">2</strong></div>
+                        <div class="summary-row"><span>Support</span><strong id="summarySupport">Local guide included</strong></div>
+                        <div class="summary-row total"><span>Total estimate</span><strong id="summaryTotal">$0</strong></div>
+                        <div class="summary-row deposit"><span>Reservation deposit</span><strong id="summaryDeposit">$0</strong></div>
+                    </div>
+
+                    <fieldset class="booking-fieldset payment-fieldset">
+                        <legend><i class="fa-solid fa-lock"></i> Payment Details</legend>
+                        <p class="payment-note">Use test information only. Card data is not stored by Open Routes.</p>
+                        <label>
+                            Name on card
+                            <input type="text" id="cardName" autocomplete="cc-name" required>
+                        </label>
+                        <label>
+                            Card number
+                            <input type="text" id="cardNumber" inputmode="numeric" autocomplete="cc-number" maxlength="19" placeholder="4242 4242 4242 4242" required>
+                        </label>
+                        <div class="booking-grid-2">
+                            <label>
+                                Expiry
+                                <input type="text" id="cardExpiry" inputmode="numeric" autocomplete="cc-exp" maxlength="5" placeholder="MM/YY" required>
+                            </label>
+                            <label>
+                                CVC
+                                <input type="password" id="cardCvc" inputmode="numeric" autocomplete="cc-csc" maxlength="4" placeholder="123" required>
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <p class="booking-error" id="bookingError" role="alert"></p>
+                    <button type="submit"><i class="fa-solid fa-lock"></i> Confirm Booking</button>
                 </form>
+
+                <div class="booking-confirmation" id="bookingConfirmation" hidden>
+                    <i class="fa-solid fa-circle-check"></i>
+                    <h3>Booking request confirmed</h3>
+                    <p id="confirmationText"></p>
+                    <a href="index.html#popularTours">Explore more tours</a>
+                </div>
             </aside>
         </section>
     </main>
