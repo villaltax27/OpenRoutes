@@ -27,8 +27,8 @@
                 <div class="account-dropdown">
                     <a href="#" class="account-item"><i class="fa-regular fa-user"></i> My Profile</a>
                     <a href="favorites.html" class="account-item"><i class="fa-regular fa-heart"></i> My Favorites</a>
-                    <button type="button" class="account-item" data-action="accessibility"><i class="fa-solid fa-universal-access"></i> Accessibility Preferences</button>
                     <a href="settings.html" class="account-item"><i class="fa-solid fa-gear"></i> Settings</a>
+                    <a href="faq.html" class="account-item"><i class="fa-regular fa-circle-question"></i> Help & FAQ</a>
                     <button type="button" class="account-item logout-item" data-action="logout"><i class="fa-solid fa-right-from-bracket"></i> Log Out</button>
                 </div>
             </div>
@@ -48,13 +48,6 @@
         document.querySelectorAll(".account-menu.open").forEach((menu) => {
             menu.classList.remove("open");
             menu.querySelector(".account-toggle")?.setAttribute("aria-expanded", "false");
-        });
-    });
-
-    document.querySelectorAll('[data-action="accessibility"]').forEach((button) => {
-        button.addEventListener("click", () => {
-            document.querySelector(".account-menu.open")?.classList.remove("open");
-            document.getElementById("btnDropdownToggle")?.click();
         });
     });
 

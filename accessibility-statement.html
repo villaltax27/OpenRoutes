@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessibility Statement - Open Routes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/settings.css">
+    <link rel="stylesheet" href="css/accessibility-statement.css">
+    <link rel="stylesheet" href="css/video-menu.css">
+    <link rel="stylesheet" href="css/responsive-fixes.css">
+</head>
+<body>
+    <header class="navbar">
+        <a class="logo" href="index.html" aria-label="Open Routes Home">
+            <img src="img/logo-openroutes.png" alt="Open Routes">
+        </a>
+
+        <nav class="nav-links" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="destinations.html">Destinations</a>
+            <a href="plan-your-trip.html">Plan Your Trip</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+
+        <div class="auth-actions">
+            <a class="auth-link" href="login.html">Login</a>
+            <a class="auth-link auth-register" href="registrer.html">Register</a>
+        </div>
+    </header>
+
+    <aside class="nav-video-menu" id="navVideoMenu" aria-label="Sign language navigation menu" aria-hidden="true">
+        <div class="nav-video-menu__header">
+            <div>
+                <span class="nav-video-menu__eyebrow">Sign language</span>
+                <h2>Explore Open Routes</h2>
+            </div>
+            <button class="nav-video-menu__close" type="button" id="closeVideoMenu" aria-label="Close sign language menu" title="Close sign language menu">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div class="nav-video-menu__list">
+            <a class="nav-video-item" href="index.html">
+                <div class="nav-video-item__media">
+                    <video muted loop playsinline preload="metadata" aria-label="Home sign language guide">
+                        <source src="videos/menu/Home.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="nav-video-item__text">
+                    <span>01</span>
+                    <strong>Home</strong>
+                    <small>Start here</small>
+                </div>
+            </a>
+
+            <a class="nav-video-item" href="destinations.html">
+                <div class="nav-video-item__media">
+                    <video muted loop playsinline preload="metadata" aria-label="Destinations sign language guide">
+                        <source src="videos/menu/Destinations.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="nav-video-item__text">
+                    <span>02</span>
+                    <strong>Destinations</strong>
+                    <small>Discover places</small>
+                </div>
+            </a>
+
+            <a class="nav-video-item" href="plan-your-trip.html">
+                <div class="nav-video-item__media">
+                    <video muted loop playsinline preload="metadata" aria-label="Plan Your Trip sign language guide">
+                        <source src="videos/menu/Plan%20your%20trip.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="nav-video-item__text">
+                    <span>03</span>
+                    <strong>Plan Your Trip</strong>
+                    <small>Plan your journey</small>
+                </div>
+            </a>
+
+            <a class="nav-video-item" href="about.html">
+                <div class="nav-video-item__media">
+                    <video muted loop playsinline preload="metadata" aria-label="About Us sign language guide">
+                        <source src="videos/menu/About%20us.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="nav-video-item__text">
+                    <span>04</span>
+                    <strong>About Us</strong>
+                    <small>Meet Open Routes</small>
+                </div>
+            </a>
+
+            <a class="nav-video-item" href="contact.html">
+                <div class="nav-video-item__media">
+                    <video muted loop playsinline preload="metadata" aria-label="Contact sign language guide">
+                        <source src="videos/menu/Conatct.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="nav-video-item__text">
+                    <span>05</span>
+                    <strong>Contact</strong>
+                    <small>Get in touch</small>
+                </div>
+            </a>
+        </div>
+    </aside>
+
+    <button class="nav-video-toggle" id="openVideoMenu" type="button" aria-label="Open sign language menu" aria-controls="navVideoMenu" aria-expanded="false" title="Open sign language menu">
+        <i class="fa-solid fa-hands"></i>
+    </button>
+
+    <main class="statement-page">
+        <section class="statement-hero">
+            <div>
+                <span class="eyebrow">Accessibility</span>
+                <h1>Accessibility Statement</h1>
+                <p>Open Routes is committed to making tourism information easier to access, understand and use for travelers with different needs.</p>
+            </div>
+            <aside class="statement-status" aria-label="Accessibility statement status">
+                <i class="fa-solid fa-universal-access"></i>
+                <h2>Last reviewed</h2>
+                <p>August 2026</p>
+                <span>Active commitment</span>
+            </aside>
+        </section>
+
+        <section class="statement-shell">
+            <aside class="statement-nav" aria-label="Statement sections">
+                <a href="#commitment"><i class="fa-solid fa-handshake"></i> Commitment</a>
+                <a href="#tools"><i class="fa-solid fa-screwdriver-wrench"></i> Tools</a>
+                <a href="#limitations"><i class="fa-solid fa-triangle-exclamation"></i> Limitations</a>
+                <a href="#feedback"><i class="fa-solid fa-envelope-open-text"></i> Feedback</a>
+            </aside>
+
+            <div class="statement-content">
+                <section class="statement-card" id="commitment" data-read="Open Routes is committed to accessible tourism information for everyone.">
+                    <span class="section-kicker">Our Commitment</span>
+                    <h2>Accessible tourism information for everyone</h2>
+                    <p>Open Routes aims to help people explore El Salvador with clearer information about destinations, routes, accessibility support and travel planning. We design the website with accessibility in mind so visitors can navigate, read and plan with fewer barriers.</p>
+                    <p>Our goal is to keep improving the experience for users who rely on keyboard navigation, visual adjustments, audio support, sign language content or clearer route information before traveling.</p>
+                </section>
+
+                <section class="statement-card" id="tools">
+                    <span class="section-kicker">Available Tools</span>
+                    <h2>Accessibility features currently included</h2>
+                    <div class="tool-list">
+                        <article>
+                            <i class="fa-solid fa-circle-half-stroke"></i>
+                            <div>
+                                <h3>High contrast and dark mode</h3>
+                                <p>Users can adjust the visual appearance of the site from the floating accessibility button.</p>
+                            </div>
+                        </article>
+                        <article>
+                            <i class="fa-solid fa-text-height"></i>
+                            <div>
+                                <h3>Adjustable text size</h3>
+                                <p>The text size control allows users to increase or reduce reading size.</p>
+                            </div>
+                        </article>
+                        <article>
+                            <i class="fa-solid fa-volume-high"></i>
+                            <div>
+                                <h3>Audio guide support</h3>
+                                <p>The site includes a reader tool that can speak page content when enabled.</p>
+                            </div>
+                        </article>
+                        <article>
+                            <i class="fa-solid fa-hands"></i>
+                            <div>
+                                <h3>Sign language resources</h3>
+                                <p>Open Routes includes a sign language navigation menu and destination videos where available.</p>
+                            </div>
+                        </article>
+                        <article>
+                            <i class="fa-solid fa-list-check"></i>
+                            <div>
+                                <h3>Destination access details</h3>
+                                <p>Destination pages include accessibility checklists, practical information and route notes.</p>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <section class="statement-card" id="limitations">
+                    <span class="section-kicker">Known Limitations</span>
+                    <h2>What we are still improving</h2>
+                    <ul class="statement-list">
+                        <li>Not every destination currently has a sign language video.</li>
+                        <li>Some maps and external content may not be fully controlled by Open Routes.</li>
+                        <li>Real-world accessibility conditions can change, so travelers should confirm details before visiting.</li>
+                        <li>Some booking and payment features are demo flows and do not process real payments yet.</li>
+                        <li>Some destination accessibility information depends on restaurants, guides, venues or local providers.</li>
+                    </ul>
+                </section>
+
+                <section class="statement-card" id="feedback">
+                    <span class="section-kicker">Feedback and Support</span>
+                    <h2>Report an accessibility problem</h2>
+                    <p>If you find something difficult to use, unclear or inaccessible, please contact Open Routes. Helpful details include the page name, the problem you found, the device or browser you used and the support you need.</p>
+                    <div class="contact-options">
+                        <a href="mailto:info@openroutes.sv"><i class="fa-solid fa-envelope"></i> info@openroutes.sv</a>
+                        <a href="contact.html"><i class="fa-solid fa-headset"></i> Contact Support</a>
+                        <a href="faq.html"><i class="fa-regular fa-circle-question"></i> Help & FAQ</a>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <div class="accessibility-dropdown floating-accessibility">
+        <button class="btn-accessible-mode" id="btnDropdownToggle" aria-expanded="false" aria-haspopup="true" aria-label="Accessible Mode" title="Accessible Mode">
+            <i class="fa-solid fa-universal-access"></i>
+        </button>
+        <div class="dropdown-menu" id="accessibilityMenu">
+            <label class="menu-item">
+                <span><i class="fa-solid fa-volume-high"></i> Audio Guide</span>
+                <input type="checkbox" id="chkVoiceReader">
+                <span class="slider"></span>
+            </label>
+            <label class="menu-item">
+                <span><i class="fa-solid fa-circle-half-stroke"></i> High Contrast</span>
+                <input type="checkbox" id="chkContrast">
+                <span class="slider"></span>
+            </label>
+            <label class="menu-item">
+                <span><i class="fa-solid fa-moon"></i> Dark Mode</span>
+                <input type="checkbox" id="chkDarkMode">
+                <span class="slider"></span>
+            </label>
+            <div class="menu-item text-size-control">
+                <div class="text-size-header">
+                    <span><i class="fa-solid fa-text-height"></i> Text Size</span>
+                    <strong id="textSizeValue">100%</strong>
+                </div>
+                <div class="text-size-actions">
+                    <button type="button" id="textSizeMinus" aria-label="Decrease text size">-</button>
+                    <input type="range" id="textSizeRange" min="90" max="130" step="5" value="100" aria-label="Text size">
+                    <button type="button" id="textSizePlus" aria-label="Increase text size">+</button>
+                </div>
+                <input type="checkbox" id="chkTextSize" hidden>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer" id="contact">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="img/logo-openroutes-white.png" alt="Open Routes" class="footer-logo-img">
+                <p>Travel without limits, explore with freedom.</p>
+            </div>
+
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="destinations.html">Destinations</a></li>
+                    <li><a href="plan-your-trip.html">Plan Your Trip</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="faq.html">Help & FAQ</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fa-solid fa-envelope"></i> info@openroutes.sv</p>
+                <p><i class="fa-solid fa-phone"></i> +503 1234 5678</p>
+            </div>
+
+            <div class="newsletter">
+                <h3>Newsletter</h3>
+                <p>Subscribe to receive travel tips and accessible updates.</p>
+                <form>
+                    <input type="email" placeholder="Your email" aria-label="Your email">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <p class="copy">&copy; 2026 Open Routes. All rights reserved.</p>
+    </footer>
+
+    <script src="js/text-size-control.js"></script>
+    <script src="js/dark-mode.js"></script>
+    <script src="js/auth-state.js"></script>
+    <script src="js/video-menu.js"></script>
+    <script src="js/voice-assistant.js"></script>
+</body>
+</html>

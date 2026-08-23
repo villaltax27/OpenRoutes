@@ -414,6 +414,61 @@ legend,
     margin: 18px 0 22px;
 }
 .mini-itinerary h3 { color: var(--dark-blue); margin-bottom: 10px; }
+.planner-route-preview {
+    display: grid;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding: 14px;
+    border: 1px solid rgba(0, 103, 217, .12);
+    border-radius: 10px;
+    background: #ffffff;
+}
+.planner-route-path {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: center;
+    gap: 10px;
+}
+.planner-route-path span {
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 12px;
+    border-radius: 999px;
+    background: #eef6ff;
+    color: var(--dark-blue);
+    font-weight: 900;
+    text-align: center;
+}
+.planner-route-path i {
+    color: var(--green);
+}
+.planner-route-meta {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+.planner-route-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 38px;
+    padding: 0 12px;
+    border-radius: 8px;
+    background: #f6fbff;
+    color: var(--dark-blue);
+    font-size: .84rem;
+}
+.planner-route-meta i {
+    color: var(--primary-blue);
+}
+.planner-route-preview p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.5;
+    font-size: .9rem;
+}
 .mini-itinerary ol {
     display: grid;
     gap: 8px;
@@ -658,6 +713,9 @@ body.high-contrast .planner-card,
 body.high-contrast .result-card,
 body.high-contrast .board-card,
 body.high-contrast .checklist-card,
+body.high-contrast .planner-route-preview,
+body.high-contrast .planner-route-path span,
+body.high-contrast .planner-route-meta span,
 body.high-contrast .choice-chip,
 body.high-contrast .support-grid label,
 body.high-contrast .time-options label,
@@ -738,6 +796,9 @@ body.dark-mode .support-grid label,
 body.dark-mode .time-options label,
 body.dark-mode .checklist-grid label,
 body.dark-mode .mini-itinerary,
+body.dark-mode .planner-route-preview,
+body.dark-mode .planner-route-path span,
+body.dark-mode .planner-route-meta span,
 body.dark-mode .start-field select,
 body.dark-mode .progress-ring {
     background: #0f1a2d !important;
@@ -801,6 +862,18 @@ body.dark-mode .footer { background: linear-gradient(135deg,#061b35,#071528 58%,
         min-width: 60px !important;
     }
     .floating-accessibility .dropdown-menu { width: min(285px, calc(100vw - 36px)); }
+}
+
+@media (max-width: 520px) {
+    .planner-route-path,
+    .planner-route-meta {
+        grid-template-columns: 1fr;
+    }
+
+    .planner-route-path i {
+        transform: rotate(90deg);
+        justify-self: center;
+    }
 }
 /* OpenRoutes polish v6: match shared navbar and footer */
 .navbar {

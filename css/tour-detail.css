@@ -849,6 +849,291 @@ body.dark-mode .badge {
     border-color: rgba(105, 191, 36, .30) !important;
 }
 
+/* OpenRoutes professional booking checkout */
+.booking-card {
+    display: grid;
+    gap: 18px;
+}
+
+.booking-card-header {
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e7eef8;
+}
+
+.booking-card-header span {
+    display: block;
+}
+
+.checkout-steps {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin-bottom: 2px;
+}
+
+.checkout-steps span {
+    min-height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: #eef6ff;
+    color: #31506f;
+    font-size: .76rem;
+    font-weight: 900;
+}
+
+.checkout-steps span.active {
+    background: var(--primary-blue, #0b4f9f);
+    color: #ffffff;
+}
+
+.booking-fieldset {
+    display: grid;
+    gap: 12px;
+    margin: 0;
+    padding: 16px;
+    border: 1px solid #e4edf7;
+    border-radius: 12px;
+    background: #f8fbff;
+}
+
+.booking-fieldset legend {
+    padding: 0 8px;
+    color: var(--dark-blue, #09244a);
+    font-size: .9rem;
+    font-weight: 900;
+}
+
+.booking-fieldset label {
+    display: grid;
+    gap: 7px;
+    color: var(--dark-blue, #09244a);
+    font-size: .84rem;
+    font-weight: 800;
+}
+
+.booking-form input,
+.booking-form select,
+.booking-form textarea {
+    width: 100%;
+    min-height: 46px;
+    border: 1px solid #dbe8f6;
+    border-radius: 9px;
+    padding: 0 13px;
+    background: #ffffff;
+    color: #09244a;
+    font: inherit;
+    outline: none;
+    transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.booking-form textarea {
+    min-height: 84px;
+    padding-top: 12px;
+    resize: vertical;
+}
+
+.booking-form input:focus,
+.booking-form select:focus,
+.booking-form textarea:focus {
+    border-color: var(--bright-blue, #2f80ed);
+    box-shadow: 0 0 0 3px rgba(47, 128, 237, .14);
+}
+
+.booking-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.booking-summary {
+    display: grid;
+    gap: 10px;
+    padding: 16px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #09244a, #0b4f9f);
+    color: #ffffff;
+    box-shadow: 0 14px 28px rgba(9, 36, 74, .16);
+}
+
+.booking-summary h3 {
+    margin: 0 0 4px;
+    font-size: 1rem;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    color: rgba(255, 255, 255, .86);
+    font-size: .86rem;
+}
+
+.summary-row strong {
+    color: #ffffff;
+    text-align: right;
+}
+
+.summary-row.total {
+    margin-top: 4px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, .22);
+    font-size: .96rem;
+}
+
+.summary-row.deposit strong {
+    color: #9be36a;
+}
+
+.payment-fieldset legend {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.payment-note {
+    margin: 0;
+    color: #536b88;
+    font-size: .82rem;
+    line-height: 1.45;
+}
+
+.booking-error {
+    display: none;
+    margin: 0;
+    padding: 11px 13px;
+    border-radius: 9px;
+    background: #fff1f1;
+    color: #a71919 !important;
+    border: 1px solid #ffd0d0;
+    font-size: .86rem;
+    font-weight: 800;
+}
+
+.booking-error.show {
+    display: block;
+}
+
+.booking-form button[type="submit"] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 52px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--green, #69bf24);
+    color: #ffffff;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 0 14px 28px rgba(105, 191, 36, .22);
+    transition: transform .2s ease, background-color .2s ease;
+}
+
+.booking-form button[type="submit"]:hover {
+    background: var(--green-dark, #4e9d18);
+    transform: translateY(-2px);
+}
+
+.booking-confirmation {
+    text-align: center;
+    padding: 24px 18px;
+    border: 1px solid rgba(105, 191, 36, .3);
+    border-radius: 14px;
+    background: #f4ffe9;
+}
+
+.booking-confirmation > i {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    display: inline-grid;
+    place-items: center;
+    margin-bottom: 14px;
+    background: var(--green, #69bf24);
+    color: #ffffff;
+    font-size: 1.5rem;
+}
+
+.booking-confirmation h3 {
+    margin: 0 0 8px;
+    color: var(--dark-blue, #09244a);
+}
+
+.booking-confirmation p {
+    margin: 0 0 16px;
+    color: #31506f;
+}
+
+.booking-confirmation a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 0 18px;
+    border-radius: 999px;
+    background: var(--primary-blue, #0b4f9f);
+    color: #ffffff;
+    font-weight: 900;
+}
+
+body.dark-mode .booking-card-header,
+body.dark-mode .booking-fieldset,
+body.dark-mode .booking-summary,
+body.dark-mode .booking-confirmation {
+    border-color: rgba(148, 163, 184, .34) !important;
+}
+
+body.dark-mode .booking-fieldset,
+body.dark-mode .checkout-steps span,
+body.dark-mode .booking-confirmation {
+    background: #0f1a2d !important;
+}
+
+body.dark-mode .checkout-steps span.active {
+    background: #0b74ff !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .booking-summary {
+    background: linear-gradient(135deg, #071528, #0f2f58) !important;
+}
+
+body.dark-mode .booking-fieldset legend,
+body.dark-mode .booking-fieldset label,
+body.dark-mode .booking-confirmation h3 {
+    color: #eaf2ff !important;
+}
+
+body.dark-mode .payment-note,
+body.dark-mode .booking-confirmation p {
+    color: #c8d6ea !important;
+}
+
+body.dark-mode .booking-error {
+    background: rgba(127, 29, 29, .35) !important;
+    color: #ffd7d7 !important;
+    border-color: rgba(248, 113, 113, .45) !important;
+}
+
+body.high-contrast .checkout-steps span,
+body.high-contrast .booking-fieldset,
+body.high-contrast .booking-summary,
+body.high-contrast .booking-error,
+body.high-contrast .booking-confirmation {
+    background: #111 !important;
+    border-color: #ff0 !important;
+    box-shadow: none !important;
+}
+
+@media(max-width:760px) {
+    .booking-grid-2,
+    .checkout-steps {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* OpenRoutes dark mode polish v3: profile menu, favorites, settings and interpreter CTA */
 body.dark-mode .account-dropdown {
     background: #0f1a2d !important;

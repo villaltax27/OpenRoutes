@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help & FAQ - Open Routes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/settings.css">
+    <link rel="stylesheet" href="css/faq.css">
+    <link rel="stylesheet" href="css/video-menu.css">
+    <link rel="stylesheet" href="css/responsive-fixes.css">
+</head>
+<body>
+    <header class="navbar">
+        <a class="logo" href="index.html" aria-label="Open Routes Home">
+            <img src="img/logo-openroutes.png" alt="Open Routes">
+        </a>
+
+        <nav class="nav-links" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="destinations.html">Destinations</a>
+            <a href="plan-your-trip.html">Plan Your Trip</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+
+        <div class="auth-actions">
+            <a class="auth-link" href="login.html">Login</a>
+            <a class="auth-link auth-register" href="registrer.html">Register</a>
+        </div>
+    </header>
+
+    <aside class="nav-video-menu" id="navVideoMenu" aria-label="Sign language navigation menu" aria-hidden="true">
+        <div class="nav-video-menu__header">
+            <div>
+                <span class="nav-video-menu__eyebrow">Sign language</span>
+                <h2>Explore Open Routes</h2>
+            </div>
+            <button class="nav-video-menu__close" type="button" id="closeVideoMenu" aria-label="Close sign language menu" title="Close sign language menu">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div class="nav-video-menu__list">
+            <a class="nav-video-item" href="index.html">
+                <div class="nav-video-item__media">
+                    <video muted loop playsinline preload="metadata" aria-label="Home sign language guide">
+                        <source src="videos/menu/Home.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="nav-video-item__text">
+                    <span>01</span>
+                    <strong>Home</strong>
+                    <small>Start here</small>
+                </div>
+            </a>
+
+            <a class="nav-video-item" href="destinations.html">
+                <div class="nav-video-item__media">
+                    <video muted loop playsinline preload="metadata" aria-label="Destinations sign language guide">
+                        <source src="videos/menu/Destinations.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="nav-video-item__text">
+                    <span>02</span>
+                    <strong>Destinations</strong>
+                    <small>Discover places</small>
+                </div>
+            </a>
+
+            <a class="nav-video-item" href="plan-your-trip.html">
+                <div class="nav-video-item__media">
+                    <video muted loop playsinline preload="metadata" aria-label="Plan Your Trip sign language guide">
+                        <source src="videos/menu/Plan%20your%20trip.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="nav-video-item__text">
+                    <span>03</span>
+                    <strong>Plan Your Trip</strong>
+                    <small>Plan your journey</small>
+                </div>
+            </a>
+
+            <a class="nav-video-item" href="about.html">
+                <div class="nav-video-item__media">
+                    <video muted loop playsinline preload="metadata" aria-label="About Us sign language guide">
+                        <source src="videos/menu/About%20us.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="nav-video-item__text">
+                    <span>04</span>
+                    <strong>About Us</strong>
+                    <small>Meet Open Routes</small>
+                </div>
+            </a>
+
+            <a class="nav-video-item" href="contact.html">
+                <div class="nav-video-item__media">
+                    <video muted loop playsinline preload="metadata" aria-label="Contact sign language guide">
+                        <source src="videos/menu/Conatct.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="nav-video-item__text">
+                    <span>05</span>
+                    <strong>Contact</strong>
+                    <small>Get in touch</small>
+                </div>
+            </a>
+        </div>
+    </aside>
+
+    <button class="nav-video-toggle" id="openVideoMenu" type="button" aria-label="Open sign language menu" aria-controls="navVideoMenu" aria-expanded="false" title="Open sign language menu">
+        <i class="fa-solid fa-hands"></i>
+    </button>
+
+    <main class="faq-page">
+        <section class="faq-hero">
+            <div>
+                <span class="eyebrow">Help Center</span>
+                <h1>Help & FAQ</h1>
+                <p>Find quick answers about bookings, accessibility support, guides, favorites and sign language resources.</p>
+            </div>
+            <div class="faq-hero-card" data-read="Open Routes help center. Find answers about booking, accessibility support, guides and sign language videos.">
+                <i class="fa-solid fa-headset"></i>
+                <h2>Need personal help?</h2>
+                <p>Contact our team if your trip needs special route planning or accessibility confirmation.</p>
+                <div class="faq-hero-actions">
+                    <a href="contact.html">Contact Support</a>
+                    <a class="secondary-help-link" href="accessibility-statement.html">Accessibility Statement</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-shell" aria-label="Frequently asked questions">
+            <div class="faq-intro">
+                <span class="section-kicker">Common Questions</span>
+                <h2>Before you travel</h2>
+                <p>These answers explain how Open Routes works today. Some features are simulated for the school project, but the flow is designed like a professional tourism platform.</p>
+            </div>
+
+            <div class="faq-grid">
+                <article class="faq-group">
+                    <div class="faq-group-title">
+                        <i class="fa-solid fa-calendar-check"></i>
+                        <h3>Bookings</h3>
+                    </div>
+
+                    <details open>
+                        <summary>Do I need an account to book a trip?</summary>
+                        <p>Yes. Users need to log in before booking so the site can connect the trip request with their account, favorites and saved planning details.</p>
+                    </details>
+
+                    <details>
+                        <summary>Do tours include transportation?</summary>
+                        <p>Most packages include transportation coordination or a recommended transport option. The tour detail page shows what is included before booking.</p>
+                    </details>
+
+                    <details>
+                        <summary>Can I review my trip before reserving?</summary>
+                        <p>Yes. The booking form includes a trip summary with date, number of people, support request, estimated total and reservation deposit before confirmation.</p>
+                    </details>
+                </article>
+
+                <article class="faq-group">
+                    <div class="faq-group-title">
+                        <i class="fa-solid fa-universal-access"></i>
+                        <h3>Accessibility</h3>
+                    </div>
+
+                    <details>
+                        <summary>How do I request an interpreter?</summary>
+                        <p>You can choose interpreter support during booking or visit the interpreters page from the destination detail page. The team can help confirm availability.</p>
+                    </details>
+
+                    <details>
+                        <summary>What if I need wheelchair support?</summary>
+                        <p>Each destination has an accessibility checklist. You can also select wheelchair or mobility support in the booking form so the team can review route conditions.</p>
+                    </details>
+
+                    <details>
+                        <summary>What accessibility tools are available?</summary>
+                        <p>The floating accessibility button includes audio guide support, high contrast, dark mode and adjustable text size.</p>
+                    </details>
+
+                    <details>
+                        <summary>Where can I read the accessibility statement?</summary>
+                        <p>You can read the full <a href="accessibility-statement.html">Accessibility Statement</a> to learn about Open Routes' commitment, current tools, known limitations and support contact.</p>
+                    </details>
+                </article>
+
+                <article class="faq-group">
+                    <div class="faq-group-title">
+                        <i class="fa-solid fa-heart"></i>
+                        <h3>Account Features</h3>
+                    </div>
+
+                    <details>
+                        <summary>Can I save favorites?</summary>
+                        <p>Yes. Destinations and interpreters can be saved to My Favorites so users can return to them later while planning.</p>
+                    </details>
+
+                    <details>
+                        <summary>Where can I change my preferences?</summary>
+                        <p>Open the profile menu and choose Settings. There you can manage account, travel, language, notification and privacy preferences.</p>
+                    </details>
+
+                    <details>
+                        <summary>What happens when I log out?</summary>
+                        <p>The site clears the active session on this browser. Favorites and saved demo data may still remain locally depending on the browser storage.</p>
+                    </details>
+                </article>
+
+                <article class="faq-group">
+                    <div class="faq-group-title">
+                        <i class="fa-solid fa-hands"></i>
+                        <h3>Videos & Guides</h3>
+                    </div>
+
+                    <details>
+                        <summary>Do the videos include sign language?</summary>
+                        <p>Yes. The site includes a sign language navigation menu and destination videos where the team has uploaded them.</p>
+                    </details>
+
+                    <details>
+                        <summary>Do all destinations already have sign language videos?</summary>
+                        <p>Not all yet. Destination accessibility cards indicate whether a sign language video is available or should be requested first.</p>
+                    </details>
+
+                    <details>
+                        <summary>Can I use the site without the voice assistant?</summary>
+                        <p>Yes. When the assistant prompt appears, users can choose no and continue using the website normally.</p>
+                    </details>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <div class="accessibility-dropdown floating-accessibility">
+        <button class="btn-accessible-mode" id="btnDropdownToggle" aria-expanded="false" aria-haspopup="true" aria-label="Accessible Mode" title="Accessible Mode">
+            <i class="fa-solid fa-universal-access"></i>
+        </button>
+        <div class="dropdown-menu" id="accessibilityMenu">
+            <label class="menu-item">
+                <span><i class="fa-solid fa-volume-high"></i> Audio Guide</span>
+                <input type="checkbox" id="chkVoiceReader">
+                <span class="slider"></span>
+            </label>
+            <label class="menu-item">
+                <span><i class="fa-solid fa-circle-half-stroke"></i> High Contrast</span>
+                <input type="checkbox" id="chkContrast">
+                <span class="slider"></span>
+            </label>
+            <label class="menu-item">
+                <span><i class="fa-solid fa-moon"></i> Dark Mode</span>
+                <input type="checkbox" id="chkDarkMode">
+                <span class="slider"></span>
+            </label>
+            <div class="menu-item text-size-control">
+                <div class="text-size-header">
+                    <span><i class="fa-solid fa-text-height"></i> Text Size</span>
+                    <strong id="textSizeValue">100%</strong>
+                </div>
+                <div class="text-size-actions">
+                    <button type="button" id="textSizeMinus" aria-label="Decrease text size">-</button>
+                    <input type="range" id="textSizeRange" min="90" max="130" step="5" value="100" aria-label="Text size">
+                    <button type="button" id="textSizePlus" aria-label="Increase text size">+</button>
+                </div>
+                <input type="checkbox" id="chkTextSize" hidden>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer" id="contact">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="img/logo-openroutes-white.png" alt="Open Routes" class="footer-logo-img">
+                <p>Travel without limits, explore with freedom.</p>
+            </div>
+
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="destinations.html">Destinations</a></li>
+                    <li><a href="plan-your-trip.html">Plan Your Trip</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="accessibility-statement.html">Accessibility Statement</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fa-solid fa-envelope"></i> info@openroutes.sv</p>
+                <p><i class="fa-solid fa-phone"></i> +503 1234 5678</p>
+            </div>
+
+            <div class="newsletter">
+                <h3>Newsletter</h3>
+                <p>Subscribe to receive travel tips and accessible updates.</p>
+                <form>
+                    <input type="email" placeholder="Your email" aria-label="Your email">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <p class="copy">&copy; 2026 Open Routes. All rights reserved.</p>
+    </footer>
+
+    <script src="js/text-size-control.js"></script>
+    <script src="js/dark-mode.js"></script>
+    <script src="js/auth-state.js"></script>
+    <script src="js/video-menu.js"></script>
+    <script src="js/voice-assistant.js"></script>
+</body>
+</html>
