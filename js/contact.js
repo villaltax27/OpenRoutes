@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const synth = window.speechSynthesis;
 
     function speakText(text) {
-        if (!chkVoiceReader.checked || !text || !synth) return;
+        if (!chkVoiceReader?.checked || !text || !synth) return;
         synth.cancel();
         const utterance = new SpeechSynthesisUtterance(text);
         utterance.lang = "en-US";
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
         speakText(chkTextSize.checked ? "Bigger text activated" : "Text size returned to normal");
     });
 
-    chkVoiceReader.addEventListener("change", () => {
+    chkVoiceReader?.addEventListener("change", () => {
         if (chkVoiceReader.checked) {
             speakText("Audio guide enabled");
         } else {

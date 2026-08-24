@@ -1,3 +1,4 @@
 .audit-edge/
 .audit-temp/
 responsive-audit-output/
+backend/__pycache__/

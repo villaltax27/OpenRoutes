@@ -2,12 +2,16 @@
   "use strict";
 
   const CONFIG = Object.freeze({
-    endpoint: "/api/assistant",
+    endpoint:
+      window.location.hostname === "127.0.0.1" ||
+      window.location.hostname === "localhost"
+        ? "/api/assistant"
+        : "http://127.0.0.1:5510/api/assistant",
     language: "en-US",
     resumeKey: "openRoutesVoiceAssistantResume",
     pendingActionKey: "openRoutesVoiceAssistantPendingAction",
     promptChoiceKey: "openRoutesVoiceAssistantPromptChoice",
-    requestTimeoutMs: 25000
+    requestTimeoutMs: 120000
   });
 
   const ROUTES = Object.freeze({
@@ -28,30 +32,53 @@
     coatepeque: "destination-detail.html?place=coatepeque",
     el_tunco: "destination-detail.html?place=el-tunco",
     suchitoto: "destination-detail.html?place=suchitoto",
+    historic_center: "destination-detail.html?place=historic-center",
     cerro_verde: "tour-detail.html?tour=cerro-verde",
     ruta_flores: "tour-detail.html?tour=ruta-flores"
   });
 
   const HELP_MESSAGE =
-    "You can say: find wheelchair beaches, show accessibility details, add this to favorites, " +
-    "book this trip, plan a beach trip, open the sign language menu, read this page, or stop listening.";
+    "You can say: open home, open destinations, open Lake Coatepeque, turn on dark mode, " +
+    "increase text, add this to favorites, book this trip, open the sign language menu, " +
+    "read this page, read menu, or stop listening.";
+
+  const NAVIGATION_MESSAGE =
+    "Main pages: Home, Destinations, Plan Your Trip, About Us, and Contact. " +
+    "Account pages: Login, Register, Favorites, Settings, and FAQ. " +
+    "Destination pages: Lake Coatepeque, El Tunco Beach, Suchitoto, Santa Ana Volcano, and Historic Center. " +
+    "Tour pages: Cerro Verde and Ruta de las Flores.";
 
   const TAB_ALIASES = Object.freeze({
     overview: "overview",
+    resumen: "overview",
     practical: "practical",
     "practical info": "practical",
+    "informacion practica": "practical",
+    practica: "practical",
     accessibility: "accessibility",
     access: "accessibility",
+    accesibilidad: "accessibility",
     things: "things",
     "things to do": "things",
     activities: "things",
+    actividades: "things",
+    cultura: "things",
+    gastronomia: "things",
+    recomendaciones: "things",
     location: "location",
+    ubicacion: "location",
+    mapa: "location",
     map: "location",
     guides: "guides",
     guide: "guides",
     interpreters: "guides",
+    guias: "guides",
+    guia: "guides",
+    interpretes: "guides",
     tips: "tips",
+    consejos: "tips",
     security: "security",
+    seguridad: "security",
     "login security": "security",
     travel: "travel",
     "travel preferences": "travel",
@@ -63,48 +90,91 @@
 
   const DESTINATION_FILTERS = Object.freeze({
     all: "all",
+    todos: "all",
+    todo: "all",
     nature: "nature",
+    naturaleza: "nature",
     beach: "beach",
     beaches: "beach",
+    playa: "beach",
+    playas: "beach",
     culture: "culture",
     cultural: "culture",
+    cultura: "culture",
     lake: "lake",
     lakes: "lake",
+    lago: "lake",
+    lagos: "lake",
     wheelchair: "wheelchair",
     "wheelchair access": "wheelchair",
+    silla: "wheelchair",
+    "silla de ruedas": "wheelchair",
     "low walking": "low-walking",
+    "poca caminata": "low-walking",
+    "caminar poco": "low-walking",
     restrooms: "restrooms",
     bathrooms: "restrooms",
+    banos: "restrooms",
     "sign language": "sign-language",
+    "lenguaje de senas": "sign-language",
+    "lengua de senas": "sign-language",
     guide: "guide",
     guides: "guide",
+    guia: "guide",
+    guias: "guide",
     relaxed: "relaxed",
+    relajado: "relaxed",
+    tranquilo: "relaxed",
     hiking: "hiking",
+    caminata: "hiking",
+    senderismo: "hiking",
     photography: "photo",
     photo: "photo",
+    foto: "photo",
+    fotos: "photo",
     family: "family",
+    familia: "family",
     food: "food",
+    comida: "food",
+    gastronomia: "food",
     "easy access": "easy-access",
+    "acceso facil": "easy-access",
     "a z": "az",
-    recommended: "recommended"
+    recommended: "recommended",
+    recomendados: "recommended"
   });
 
   const PLANNER_VALUES = Object.freeze({
     relaxed: "relaxed",
+    relajado: "relaxed",
+    tranquilo: "relaxed",
     nature: "nature",
+    naturaleza: "nature",
     culture: "culture",
+    cultura: "culture",
     beach: "beach",
+    playa: "beach",
     "half day": "half-day",
+    "medio dia": "half-day",
     "full day": "full-day",
+    "dia completo": "full-day",
     weekend: "weekend",
+    "fin de semana": "weekend",
     wheelchair: "wheelchair",
+    "silla de ruedas": "wheelchair",
     "low walking": "low-walking",
+    "poca caminata": "low-walking",
     restrooms: "restrooms",
+    banos: "restrooms",
     interpreter: "interpreter",
+    interprete: "interpreter",
     guide: "interpreter",
+    guia: "interpreter",
     audio: "audio",
     transport: "transport",
-    "private transport": "transport"
+    transporte: "transport",
+    "private transport": "transport",
+    "transporte privado": "transport"
   });
 
   const SpeechRecognition =
@@ -278,6 +348,10 @@
       .replace(/[.,!?;:]/g, " ")
       .replace(/\s+/g, " ")
       .trim();
+  }
+
+  function includesAny(command, phrases) {
+    return phrases.some((phrase) => command.includes(phrase));
   }
 
   function selectEnglishVoice() {
@@ -646,6 +720,22 @@
     const chunks = splitIntoSpeechChunks(context.slice(0, 5000));
     setStatus(`Reading this page in ${chunks.length} parts.`);
     speakChunks(chunks);
+  }
+
+  function summarizeCurrentPage() {
+    const heading =
+      document.querySelector("main h1, .hero h1, .planner-hero h1, .place-title")?.textContent ||
+      getPageName();
+    const intro =
+      document.querySelector("main p, .hero p, .planner-hero p, .place-description")?.textContent ||
+      getPageContext().slice(0, 220);
+    const summary = `${heading.replace(/\s+/g, " ").trim()}. ${intro.replace(/\s+/g, " ").trim()}`;
+
+    speak(summary || "This page is part of Open Routes, an accessible tourism website for El Salvador.");
+  }
+
+  function readNavigationMenu() {
+    speak(NAVIGATION_MESSAGE);
   }
 
   function stopReading() {
@@ -1028,7 +1118,7 @@
       {
         target: "santa_ana",
         label: "Santa Ana Volcano",
-        aliases: ["santa ana volcano", "santa ana", "volcano", "volcan"]
+        aliases: ["santa ana volcano", "santa ana", "volcano", "volcan", "volcan santa ana"]
       },
       {
         target: "coatepeque",
@@ -1039,58 +1129,83 @@
           "coatepeque",
           "coatepec",
           "coatepeq",
+          "lago de coatepeque",
+          "lago coatepeque",
           "the lake"
         ]
       },
       {
         target: "el_tunco",
         label: "El Tunco Beach",
-        aliases: ["el tunco beach", "el tunco", "tunco", "the beach"]
+        aliases: ["el tunco beach", "el tunco", "tunco", "playa el tunco", "the beach"]
       },
       {
         target: "suchitoto",
         label: "Suchitoto",
-        aliases: ["suchitoto"]
+        aliases: ["suchitoto", "suchi toto"]
+      },
+      {
+        target: "historic_center",
+        label: "Historic Center",
+        aliases: [
+          "historic center",
+          "historical center",
+          "centro historico",
+          "centro de san salvador",
+          "centro historico de san salvador",
+          "san salvador historic center"
+        ]
       },
       {
         target: "cerro_verde",
         label: "Cerro Verde",
-        aliases: ["cerro verde"]
+        aliases: ["cerro verde", "cerro verde tour", "tour cerro verde"]
       },
       {
         target: "ruta_flores",
         label: "Ruta de las Flores",
-        aliases: ["ruta de las flores", "ruta flores", "flowers route"]
+        aliases: ["ruta de las flores", "ruta flores", "flowers route", "tour ruta de las flores"]
       },
       {
         target: "destinations",
         label: "Destinations",
-        aliases: ["destinations", "destination page", "places", "routes"]
+        aliases: ["destinations", "destination page", "places", "routes", "destinos", "lugares"]
       },
       {
         target: "plan_trip",
         label: "Plan Your Trip",
-        aliases: ["plan your trip", "trip planner", "travel planner", "planner", "plan trip"]
+        aliases: [
+          "plan your trip",
+          "trip planner",
+          "travel planner",
+          "planner",
+          "plan trip",
+          "planear viaje",
+          "planear mi viaje",
+          "planificar viaje",
+          "planificador",
+          "planificador de viaje"
+        ]
       },
       {
         target: "about",
         label: "About Us",
-        aliases: ["about us", "about page", "about"]
+        aliases: ["about us", "about page", "about", "sobre nosotros", "nosotros"]
       },
       {
         target: "contact",
         label: "Contact",
-        aliases: ["contact us", "contact page", "contact", "support"]
+        aliases: ["contact us", "contact page", "contact", "support", "contacto", "soporte"]
       },
       {
         target: "favorites",
         label: "Favorites",
-        aliases: ["favorites", "favourites", "my favorites"]
+        aliases: ["favorites", "favourites", "my favorites", "favoritos", "mis favoritos"]
       },
       {
         target: "interpreters",
         label: "Interpreters",
-        aliases: ["interpreters", "interpreter", "guides", "guide"]
+        aliases: ["interpreters", "interpreter", "guides", "guide", "interpretes", "interprete", "guias", "guia"]
       },
       {
         target: "steven",
@@ -1100,39 +1215,47 @@
       {
         target: "login",
         label: "Login",
-        aliases: ["login", "log in", "sign in"]
+        aliases: ["login", "log in", "sign in", "iniciar sesion", "inicio de sesion"]
       },
       {
         target: "register",
         label: "Register",
-        aliases: ["register", "registration", "sign up", "create account"]
+        aliases: ["register", "registration", "sign up", "create account", "registrarse", "registro", "crear cuenta"]
       },
       {
         target: "settings",
         label: "Settings",
-        aliases: ["settings", "preferences"]
+        aliases: ["settings", "preferences", "configuracion", "ajustes"]
       },
       {
         target: "faq",
         label: "Help and FAQ",
-        aliases: ["faq", "help", "help page", "frequently asked questions", "questions"]
+        aliases: ["faq", "help", "help page", "frequently asked questions", "questions", "preguntas frecuentes", "ayuda"]
       },
       {
         target: "accessibility_statement",
         label: "Accessibility Statement",
-        aliases: ["accessibility statement", "accessibility policy", "accessibility commitment"]
+        aliases: ["accessibility statement", "accessibility policy", "accessibility commitment", "declaracion de accesibilidad"]
       },
       {
         target: "home",
         label: "Home",
-        aliases: ["home page", "homepage", "the home", "home", "main page"]
+        aliases: ["home page", "homepage", "the home", "home", "main page", "inicio", "pagina principal"]
       }
     ];
 
     const hasNavigationIntent =
-      /(^|\s)(go|open|take|navigate|come|bring|show|visit|switch|change|move|send)(\s|$)/.test(command) ||
+      /(^|\s)(go|open|take|navigate|come|bring|show|visit|switch|change|move|send|ir|abre|abrir|muestra|mostrar|ver|visitar|cambia|lleva|llevame|manda)(\s|$)/.test(command) ||
       command.includes("take me to") ||
       command.includes("go to") ||
+      command.includes("ir a") ||
+      command.includes("abre la") ||
+      command.includes("abre el") ||
+      command.includes("abre los") ||
+      command.includes("abre mi") ||
+      command.includes("quiero ver") ||
+      command.includes("muestrame") ||
+      command.includes("llevame a") ||
       command.includes("switch to") ||
       command.includes("change to") ||
       command.startsWith("yes ");
@@ -1157,9 +1280,16 @@
     const command = normalizeText(rawTranscript);
 
     if (
-      command.includes("stop reading") ||
-      command.includes("stop speaking") ||
-      command.includes("be quiet")
+      includesAny(command, [
+        "stop reading",
+        "stop speaking",
+        "be quiet",
+        "detener lectura",
+        "parar lectura",
+        "detener audio",
+        "parar audio",
+        "callate"
+      ])
     ) {
       return {
         action: "stop_reading",
@@ -1170,10 +1300,18 @@
     }
 
     if (
-      command.includes("stop listening") ||
-      command.includes("stop assistant") ||
-      command.includes("turn off assistant") ||
-      command === "goodbye"
+      includesAny(command, [
+        "stop listening",
+        "stop assistant",
+        "turn off assistant",
+        "detener asistente",
+        "apagar asistente",
+        "cerrar asistente",
+        "ya no escuchar",
+        "deja de escuchar"
+      ]) ||
+      command === "goodbye" ||
+      command === "adios"
     ) {
       return {
         action: "stop_assistant",
@@ -1184,13 +1322,24 @@
     }
 
     if (
-      command.includes("what can i say") ||
-      command.includes("available commands") ||
-      command.includes("voice commands") ||
+      includesAny(command, [
+        "what can i say",
+        "available commands",
+        "voice commands",
+        "show commands",
+        "que puedo decir",
+        "que puedes hacer",
+        "comandos",
+        "mostrar comandos"
+      ]) ||
       command === "help" ||
+      command === "ayuda" ||
       command === "yes" ||
       command === "yes please" ||
-      command.includes("i need help")
+      command === "si" ||
+      command === "si por favor" ||
+      command.includes("i need help") ||
+      command.includes("necesito ayuda")
     ) {
       return {
         action: "repeat_help",
@@ -1201,9 +1350,57 @@
     }
 
     if (
+      includesAny(command, [
+        "read menu",
+        "read navbar",
+        "read navigation",
+        "read the menu",
+        "read the navbar",
+        "read navigation menu",
+        "what pages can i open",
+        "where can i go",
+        "available pages",
+        "site menu",
+        "leer menu",
+        "leer navbar",
+        "leer navegacion"
+      ])
+    ) {
+      return {
+        action: "read_menu",
+        target: "none",
+        value: "none",
+        query: "",
+        reply: NAVIGATION_MESSAGE
+      };
+    }
+
+    if (
+      includesAny(command, [
+        "what is this page about",
+        "what is the page about",
+        "what is this about",
+        "summarize this page",
+        "summarize the page",
+        "tell me about this page",
+        "describe this page",
+        "page summary"
+      ])
+    ) {
+      return {
+        action: "summarize_page",
+        target: "none",
+        value: "none",
+        query: "",
+        reply: ""
+      };
+    }
+
+    if (
       command === "no" ||
       command.includes("no thank you") ||
-      command.includes("no thanks")
+      command.includes("no thanks") ||
+      command.includes("no gracias")
     ) {
       return {
         action: "stop_assistant",
@@ -1214,10 +1411,17 @@
     }
 
     if (
-      command.includes("read this page") ||
-      command.includes("read the page") ||
-      command.includes("read page") ||
-      command.includes("read aloud")
+      includesAny(command, [
+        "read this page",
+        "read the page",
+        "read page",
+        "read aloud",
+        "leer pagina",
+        "lee la pagina",
+        "leer esta pagina",
+        "guia de audio",
+        "audio guide"
+      ])
     ) {
       return {
         action: "read_page",
@@ -1227,7 +1431,7 @@
       };
     }
 
-    if (command.includes("go back") || command === "back") {
+    if (command.includes("go back") || command.includes("regresar") || command.includes("volver") || command === "back") {
       return {
         action: "go_back",
         target: "none",
@@ -1236,7 +1440,7 @@
       };
     }
 
-    if (command.includes("go forward") || command === "forward") {
+    if (command.includes("go forward") || command.includes("adelante") || command === "forward") {
       return {
         action: "go_forward",
         target: "none",
@@ -1248,12 +1452,20 @@
     const scrollCommands = [
       ["scroll down", "down"],
       ["move down", "down"],
+      ["bajar", "down"],
+      ["desplazar abajo", "down"],
       ["scroll up", "up"],
       ["move up", "up"],
+      ["subir", "up"],
+      ["desplazar arriba", "up"],
       ["go to the top", "top"],
       ["scroll to top", "top"],
+      ["ir arriba", "top"],
+      ["hasta arriba", "top"],
       ["go to the bottom", "bottom"],
-      ["scroll to bottom", "bottom"]
+      ["scroll to bottom", "bottom"],
+      ["ir abajo", "bottom"],
+      ["hasta abajo", "bottom"]
     ];
 
     for (const [phrase, value] of scrollCommands) {
@@ -1268,8 +1480,15 @@
     }
 
     if (
-      command.includes("turn on high contrast") ||
-      command.includes("enable high contrast")
+      includesAny(command, [
+        "turn on high contrast",
+        "enable high contrast",
+        "activar alto contraste",
+        "activar contraste",
+        "alto contraste",
+        "poner contraste"
+      ]) &&
+      !includesAny(command, ["turn off", "disable", "desactivar", "quitar"])
     ) {
       return {
         action: "high_contrast",
@@ -1280,8 +1499,14 @@
     }
 
     if (
-      command.includes("turn off high contrast") ||
-      command.includes("disable high contrast")
+      includesAny(command, [
+        "turn off high contrast",
+        "disable high contrast",
+        "desactivar alto contraste",
+        "quitar alto contraste",
+        "desactivar contraste",
+        "quitar contraste"
+      ])
     ) {
       return {
         action: "high_contrast",
@@ -1292,8 +1517,15 @@
     }
 
     if (
-      command.includes("turn on dark mode") ||
-      command.includes("enable dark mode")
+      includesAny(command, [
+        "turn on dark mode",
+        "enable dark mode",
+        "dark mode",
+        "activar modo oscuro",
+        "modo oscuro",
+        "poner modo oscuro"
+      ]) &&
+      !includesAny(command, ["turn off", "disable", "desactivar", "quitar", "modo claro"])
     ) {
       return {
         action: "dark_mode",
@@ -1304,9 +1536,15 @@
     }
 
     if (
-      command.includes("turn off dark mode") ||
-      command.includes("disable dark mode") ||
-      command.includes("light mode")
+      includesAny(command, [
+        "turn off dark mode",
+        "disable dark mode",
+        "light mode",
+        "desactivar modo oscuro",
+        "quitar modo oscuro",
+        "modo claro",
+        "activar modo claro"
+      ])
     ) {
       return {
         action: "dark_mode",
@@ -1317,9 +1555,16 @@
     }
 
     if (
-      command.includes("increase text") ||
-      command.includes("bigger text") ||
-      command.includes("make text bigger")
+      includesAny(command, [
+        "increase text",
+        "bigger text",
+        "make text bigger",
+        "aumentar texto",
+        "texto grande",
+        "letra mas grande",
+        "agrandar letra",
+        "aumentar letra"
+      ])
     ) {
       return {
         action: "text_size",
@@ -1330,9 +1575,16 @@
     }
 
     if (
-      command.includes("decrease text") ||
-      command.includes("smaller text") ||
-      command.includes("make text smaller")
+      includesAny(command, [
+        "decrease text",
+        "smaller text",
+        "make text smaller",
+        "disminuir texto",
+        "texto pequeno",
+        "letra mas pequena",
+        "hacer letra pequena",
+        "reducir letra"
+      ])
     ) {
       return {
         action: "text_size",
@@ -1343,10 +1595,18 @@
     }
 
     if (
-      command.includes("open sign language") ||
-      command.includes("show sign language") ||
-      command.includes("open video menu") ||
-      command.includes("show video menu")
+      includesAny(command, [
+        "open sign language",
+        "show sign language",
+        "open video menu",
+        "show video menu",
+        "abrir lenguaje de senas",
+        "mostrar lenguaje de senas",
+        "abrir lengua de senas",
+        "mostrar lengua de senas",
+        "abrir menu de videos",
+        "mostrar menu de videos"
+      ])
     ) {
       return {
         action: "video_menu",
@@ -1358,9 +1618,16 @@
     }
 
     if (
-      command.includes("close sign language") ||
-      command.includes("hide sign language") ||
-      command.includes("close video menu")
+      includesAny(command, [
+        "close sign language",
+        "hide sign language",
+        "close video menu",
+        "cerrar lenguaje de senas",
+        "ocultar lenguaje de senas",
+        "cerrar lengua de senas",
+        "ocultar lengua de senas",
+        "cerrar menu de videos"
+      ])
     ) {
       return {
         action: "video_menu",
@@ -1372,10 +1639,16 @@
     }
 
     if (
-      command.includes("add to favorites") ||
-      command.includes("add this to favorites") ||
-      command.includes("favorite this") ||
-      command.includes("save favorite")
+      includesAny(command, [
+        "add to favorites",
+        "add this to favorites",
+        "favorite this",
+        "save favorite",
+        "agregar a favoritos",
+        "anadir a favoritos",
+        "guardar favorito",
+        "guardar en favoritos"
+      ])
     ) {
       return {
         action: "add_favorite",
@@ -1387,11 +1660,18 @@
     }
 
     if (
-      command.includes("book this") ||
-      command.includes("book trip") ||
-      command.includes("book now") ||
-      command.includes("reserve this") ||
-      command.includes("reserve trip")
+      includesAny(command, [
+        "book this",
+        "book trip",
+        "book now",
+        "reserve this",
+        "reserve trip",
+        "reservar viaje",
+        "reservar tour",
+        "reservar ahora",
+        "hacer reserva",
+        "book tour"
+      ])
     ) {
       return {
         action: "book_trip",
@@ -1402,13 +1682,31 @@
       };
     }
 
-    if (command.includes("save plan") || command.includes("save my plan")) {
+    if (includesAny(command, ["save plan", "save my plan", "guardar plan", "guardar mi plan"])) {
       return {
         action: "save_plan",
         target: "none",
         value: "none",
         query: "",
         reply: "Saving your trip plan."
+      };
+    }
+
+    if (
+      includesAny(command, [
+        "log out",
+        "logout",
+        "sign out",
+        "cerrar sesion",
+        "salir de la cuenta"
+      ])
+    ) {
+      return {
+        action: "logout",
+        target: "none",
+        value: "none",
+        query: "",
+        reply: "Logging out."
       };
     }
 
@@ -1419,7 +1717,9 @@
 
     const searchMatch =
       command.match(/(?:search|find|look for|show me)\s+(?:destinations?\s+)?(?:for\s+|with\s+|about\s+)?(.+)/) ||
-      command.match(/(?:find|show me)\s+(.+)\s+destinations?/);
+      command.match(/(?:find|show me)\s+(.+)\s+destinations?/) ||
+      command.match(/(?:buscar|busca|encontrar|encuentra|mostrar|muestrame|ver)\s+(?:destinos?\s+|lugares?\s+)?(?:de\s+|con\s+|sobre\s+)?(.+)/) ||
+      command.match(/(?:buscar|mostrar|muestrame)\s+(.+)\s+(?:destinos?|lugares?)/);
 
     if (searchMatch && searchMatch[1]) {
       const searchQuery = searchMatch[1]
@@ -1463,8 +1763,13 @@
     for (const [phrase, filterValue] of Object.entries(DESTINATION_FILTERS)) {
       if (
         command.includes(`filter ${phrase}`) ||
+        command.includes(`filtrar ${phrase}`) ||
         command.includes(`show ${phrase}`) ||
+        command.includes(`mostrar ${phrase}`) ||
+        command.includes(`ver ${phrase}`) ||
         command.includes(`${phrase} destinations`) ||
+        command.includes(`destinos ${phrase}`) ||
+        command.includes(`lugares ${phrase}`) ||
         command.includes(`sort by ${phrase}`)
       ) {
         return {
@@ -1482,7 +1787,13 @@
         command.includes(`show ${phrase}`) ||
         command.includes(`show me ${phrase}`) ||
         command.includes(`open ${phrase}`) ||
-        command.includes(`go to ${phrase}`)
+        command.includes(`go to ${phrase}`) ||
+        command.includes(`mostrar ${phrase}`) ||
+        command.includes(`muestrame ${phrase}`) ||
+        command.includes(`abrir ${phrase}`) ||
+        command.includes(`abre ${phrase}`) ||
+        command.includes(`ir a ${phrase}`) ||
+        command.includes(`ver ${phrase}`)
       ) {
         return {
           action: "open_tab",
@@ -1499,7 +1810,11 @@
       command.includes("plan my") ||
       command.includes("make a plan") ||
       command.includes("create a trip") ||
-      command.includes("trip plan")
+      command.includes("trip plan") ||
+      command.includes("planear") ||
+      command.includes("planificar") ||
+      command.includes("crear viaje") ||
+      command.includes("hacer plan")
     ) {
       return {
         action: "fill_planner",
@@ -1510,8 +1825,8 @@
       };
     }
 
-    const checklistMatch = command.match(/(?:check|mark|add)\s+(?:the\s+)?(.+)/);
-    if (checklistMatch && command.includes("check")) {
+    const checklistMatch = command.match(/(?:check|mark|add|marcar|agregar|anadir)\s+(?:the\s+|el\s+|la\s+)?(.+)/);
+    if (checklistMatch && (command.includes("check") || command.includes("marcar"))) {
       return {
         action: "checklist",
         target: "none",
@@ -1521,7 +1836,7 @@
       };
     }
 
-    const clickMatch = command.match(/(?:click|press|open)\s+(?:the\s+)?(.+)/);
+    const clickMatch = command.match(/(?:click|press|open|abre|abrir|tocar|presiona|selecciona)\s+(?:the\s+|el\s+|la\s+|los\s+|las\s+)?(.+)/);
     if (clickMatch && clickMatch[1]) {
       const requested = clickMatch[1].trim();
       if (requested.length > 2) {
@@ -1578,6 +1893,7 @@
       "navigate",
       "scroll",
       "read_page",
+      "summarize_page",
       "stop_reading",
       "go_back",
       "go_forward",
@@ -1594,6 +1910,8 @@
       "checklist",
       "video_menu",
       "click_visible",
+      "logout",
+      "read_menu",
       "repeat_help",
       "stop_assistant",
       "answer",
@@ -1686,8 +2004,8 @@
 
       const errorMessage =
         error.name === "AbortError"
-          ? "Ollama took too long to respond."
-          : "I could not reach Ollama. Open Ollama and make sure gemma3 is installed. Basic commands still work.";
+          ? "Ollama took too long to respond. Keep the assistant server open and try again."
+          : error.message || "I could not reach the local assistant server. Run start-assistant-server.bat and open the local site it provides.";
 
       speak(errorMessage);
     }
@@ -1717,6 +2035,10 @@
 
       case "read_page":
         readCurrentPage();
+        break;
+
+      case "summarize_page":
+        summarizeCurrentPage();
         break;
 
       case "stop_reading":
@@ -1799,8 +2121,24 @@
         clickVisibleControl(command.query, command.reply);
         break;
 
+      case "logout":
+        localStorage.removeItem("loggedUser");
+        localStorage.removeItem("isLogged");
+        localStorage.removeItem("rememberSession");
+        speak(command.reply || "Logging out.", {
+          listenAfter: false,
+          afterSpeak: () => {
+            window.location.href = ROUTES.home;
+          }
+        });
+        break;
+
       case "repeat_help":
         speak(command.reply || HELP_MESSAGE);
+        break;
+
+      case "read_menu":
+        readNavigationMenu();
         break;
 
       case "stop_assistant": {
