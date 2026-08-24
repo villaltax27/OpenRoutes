@@ -14,6 +14,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import sys
 import urllib.error
 import urllib.request
@@ -36,6 +37,7 @@ ALLOWED_ACTIONS = {
     "navigate",
     "scroll",
     "read_page",
+    "summarize_page",
     "stop_reading",
     "go_back",
     "go_forward",
@@ -52,6 +54,8 @@ ALLOWED_ACTIONS = {
     "checklist",
     "video_menu",
     "click_visible",
+    "logout",
+    "read_menu",
     "repeat_help",
     "stop_assistant",
     "answer",
@@ -70,10 +74,13 @@ ALLOWED_TARGETS = {
     "login",
     "register",
     "settings",
+    "faq",
+    "accessibility_statement",
     "santa_ana",
     "coatepeque",
     "el_tunco",
     "suchitoto",
+    "historic_center",
     "cerro_verde",
     "ruta_flores",
     "none",
@@ -168,10 +175,13 @@ Available pages and destinations. Use the target name shown in parentheses:
 - login (login)
 - register (register)
 - settings (settings)
+- FAQ or help page (faq)
+- accessibility statement (accessibility_statement)
 - Santa Ana Volcano (santa_ana)
 - Lake Coatepeque (coatepeque)
 - El Tunco Beach (el_tunco)
 - Suchitoto (suchitoto)
+- Historic Center of San Salvador (historic_center)
 - Cerro Verde tour (cerro_verde)
 - Ruta de las Flores tour (ruta_flores)
 
@@ -179,6 +189,7 @@ Available actions:
 - navigate: open an allowed page or destination
 - scroll: value must be up, down, top, or bottom
 - read_page: read visible page content
+- summarize_page: briefly summarize the current page
 - stop_reading
 - go_back
 - go_forward
@@ -195,6 +206,8 @@ Available actions:
 - checklist: update or show the trip checklist. Put the item in query and use value on or off.
 - video_menu: open or close the sign language navigation menu. Value must be on or off.
 - click_visible: click a visible local button/link by label. Put the label in query.
+- read_menu: read the main navigation options.
+- logout: log out from the local session.
 - repeat_help
 - stop_assistant
 - answer: briefly answer a question using only the supplied page context
@@ -230,6 +243,46 @@ def safe_result(raw_result: Any) -> dict[str, str]:
     value = raw_result.get("value", "none")
     query = raw_result.get("query", "")
     reply = raw_result.get("reply", "")
+
+    action_aliases = {
+        "open": "navigate",
+        "go": "navigate",
+        "visit": "navigate",
+        "show_page": "navigate",
+        "go_to": "navigate",
+        "summarize": "summarize_page",
+        "summary": "summarize_page",
+        "read_navigation": "read_menu",
+        "read_navbar": "read_menu",
+        "sign_out": "logout",
+    }
+    if isinstance(action, str):
+        action = action_aliases.get(action.strip().lower(), action.strip().lower())
+
+    target_aliases = {
+        "home page": "home",
+        "homepage": "home",
+        "destination": "destinations",
+        "destination page": "destinations",
+        "plan your trip": "plan_trip",
+        "planner": "plan_trip",
+        "about us": "about",
+        "contact us": "contact",
+        "help": "faq",
+        "questions": "faq",
+        "accessibility statement": "accessibility_statement",
+        "lake coatepeque": "coatepeque",
+        "coatepeque lake": "coatepeque",
+        "el tunco beach": "el_tunco",
+        "santa ana volcano": "santa_ana",
+        "historic center": "historic_center",
+        "historical center": "historic_center",
+        "centro historico": "historic_center",
+        "cerro verde tour": "cerro_verde",
+        "ruta de las flores": "ruta_flores",
+    }
+    if isinstance(target, str):
+        target = target_aliases.get(target.strip().lower(), target.strip().lower())
 
     if action not in ALLOWED_ACTIONS:
         return fallback
@@ -306,6 +359,29 @@ def safe_result(raw_result: Any) -> dict[str, str]:
     }
 
 
+def parse_model_json(model_content: str) -> Any:
+    """Parse Ollama JSON even when the small model wraps it in extra text."""
+    if not isinstance(model_content, str) or not model_content.strip():
+        raise RuntimeError("Ollama returned an empty response.")
+
+    text = model_content.strip()
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError:
+        pass
+
+    fenced = re.search(r"```(?:json)?\s*(\{.*?\})\s*```", text, re.DOTALL)
+    if fenced:
+        return json.loads(fenced.group(1))
+
+    start = text.find("{")
+    end = text.rfind("}")
+    if start != -1 and end != -1 and end > start:
+        return json.loads(text[start : end + 1])
+
+    raise RuntimeError("Ollama returned invalid JSON.")
+
+
 def request_ollama(
     *,
     message: str,
@@ -316,7 +392,7 @@ def request_ollama(
     payload = {
         "model": model,
         "stream": False,
-        "format": OUTPUT_SCHEMA,
+        "format": "json",
         "messages": [
             {
                 "role": "system",
@@ -333,6 +409,7 @@ def request_ollama(
         ],
         "options": {
             "temperature": 0,
+            "num_predict": 140,
         },
     }
 
@@ -344,7 +421,7 @@ def request_ollama(
     )
 
     try:
-        with urllib.request.urlopen(request, timeout=35) as response:
+        with urllib.request.urlopen(request, timeout=115) as response:
             ollama_response = json.loads(response.read().decode("utf-8"))
     except urllib.error.HTTPError as exc:
         body = exc.read().decode("utf-8", errors="replace")
@@ -363,10 +440,7 @@ def request_ollama(
         else ""
     )
 
-    try:
-        parsed = json.loads(model_content)
-    except (TypeError, json.JSONDecodeError) as exc:
-        raise RuntimeError("Ollama returned invalid structured JSON.") from exc
+    parsed = parse_model_json(model_content)
 
     return safe_result(parsed)
 
@@ -388,8 +462,18 @@ class OpenRoutesHandler(SimpleHTTPRequestHandler):
         self.send_header("Content-Type", "application/json; charset=utf-8")
         self.send_header("Content-Length", str(len(encoded)))
         self.send_header("Cache-Control", "no-store")
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.send_header("Access-Control-Allow-Headers", "Content-Type")
+        self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
         self.end_headers()
         self.wfile.write(encoded)
+
+    def do_OPTIONS(self) -> None:
+        self.send_response(HTTPStatus.NO_CONTENT.value)
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.send_header("Access-Control-Allow-Headers", "Content-Type")
+        self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+        self.end_headers()
 
     def do_GET(self) -> None:
         if self.path.split("?", 1)[0] == "/api/health":
@@ -423,7 +507,7 @@ class OpenRoutesHandler(SimpleHTTPRequestHandler):
             )
             return
 
-        if content_length <= 0 or content_length > 20_000:
+        if content_length <= 0 or content_length > 80_000:
             self._send_json(
                 HTTPStatus.BAD_REQUEST,
                 {"error": "Request body is empty or too large."},
