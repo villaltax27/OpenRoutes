@@ -145,7 +145,7 @@ a { color: inherit; }
     align-items: center;
     gap: 40px;
     background:
-        linear-gradient(90deg, rgba(255,255,255,.98) 0%, rgba(255,255,255,.88) 38%, rgba(255,255,255,.16) 76%),
+        linear-gradient(90deg, rgba(255,255,255,.76) 0%, rgba(255,255,255,.52) 38%, rgba(255,255,255,.10) 76%),
         url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=80");
     background-size: cover;
     background-position: center;
@@ -764,7 +764,7 @@ body.dark-mode .text-size-actions button { background: #17345c !important; }
 body.dark-mode .auth-register { background: #69bf24 !important; color: #fff !important; }
 body.dark-mode .planner-hero {
     background:
-        linear-gradient(90deg, rgba(7,18,36,.98) 0%, rgba(11,31,55,.92) 46%, rgba(11,31,55,.26) 100%),
+        linear-gradient(90deg, rgba(7,18,36,.86) 0%, rgba(11,31,55,.70) 46%, rgba(11,31,55,.18) 100%),
         url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=80") !important;
     background-size: cover !important;
     background-position: center !important;

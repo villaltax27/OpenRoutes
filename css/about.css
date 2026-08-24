@@ -191,7 +191,7 @@ input:checked + .slider::before {
     align-items: center;
     overflow: hidden;
     background:
-        linear-gradient(90deg, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.88) 30%, rgba(255,255,255,0.14) 60%),
+        linear-gradient(90deg, rgba(255,255,255,0.62) 0%, rgba(255,255,255,0.34) 36%, rgba(255,255,255,0.06) 66%),
         url('../img/foto grupal.jpg');
     background-size: cover;
     background-position: center;
@@ -679,8 +679,8 @@ body.high-contrast .social-icons a {
         min-height: auto;
         padding: 64px 6% 120px;
         background:
-            linear-gradient(90deg, rgba(255,255,255,0.97), rgba(255,255,255,0.74)),
-            url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop');
+            linear-gradient(90deg, rgba(255,255,255,0.62), rgba(255,255,255,0.28), rgba(255,255,255,0.04)),
+            url('../img/foto grupal.jpg');
         background-size: cover;
         background-position: center;
     }
