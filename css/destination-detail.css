@@ -104,7 +104,7 @@ button, input { font: inherit; }
 
 .place-hero {
     min-height: 430px;
-    background-image: linear-gradient(90deg, rgba(246, 249, 253, .98) 0%, rgba(246, 249, 253, .76) 28%, rgba(246, 249, 253, .06) 52%), var(--hero-image);
+    background-image: linear-gradient(90deg, rgba(246, 249, 253, .76) 0%, rgba(246, 249, 253, .48) 30%, rgba(246, 249, 253, .04) 56%), var(--hero-image);
     background-size: cover;
     background-position: center;
     position: relative;
@@ -820,7 +820,7 @@ body.high-contrast .interpreter-link-btn { background: #ffff00 !important; color
     .account-menu { width: min(320px, 100%); }
     .account-toggle { width: 100%; justify-content: center; }
     .account-dropdown { right: 50%; transform: translateX(50%); width: min(292px, calc(100vw - 36px)); }
-    .place-hero { min-height: auto; background-image: linear-gradient(180deg, rgba(246, 249, 253, .72), rgba(246, 249, 253, .96)), var(--hero-image); }
+    .place-hero { min-height: auto; background-image: linear-gradient(180deg, rgba(246, 249, 253, .58), rgba(246, 249, 253, .76)), var(--hero-image); }
     .place-hero-inner { padding: 24px 0 32px; }
     .place-hero-card { padding: 22px; }
     .detail-tabs { gap: 8px; }
