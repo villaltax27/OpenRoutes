@@ -7,7 +7,7 @@
       window.location.hostname === "localhost"
         ? "/api/assistant"
         : "http://127.0.0.1:5510/api/assistant",
-    language: "en-US",
+    language: localStorage.getItem("openRoutesLanguage") === "es" ? "es-SV" : "en-US",
     resumeKey: "openRoutesVoiceAssistantResume",
     pendingActionKey: "openRoutesVoiceAssistantPendingAction",
     promptChoiceKey: "openRoutesVoiceAssistantPromptChoice",
@@ -354,15 +354,19 @@
     return phrases.some((phrase) => command.includes(phrase));
   }
 
-  function selectEnglishVoice() {
+  function getAssistantLanguage() {
+    return localStorage.getItem("openRoutesLanguage") === "es" ? "es-SV" : "en-US";
+  }
+
+  function selectVoice(language) {
     if (!synth) {
       return null;
     }
 
     const voices = synth.getVoices();
     return (
-      voices.find((voice) => voice.lang === "en-US") ||
-      voices.find((voice) => voice.lang.startsWith("en")) ||
+      voices.find((voice) => voice.lang === language) ||
+      voices.find((voice) => voice.lang.startsWith(language.slice(0, 2))) ||
       null
     );
   }
@@ -411,12 +415,12 @@
     synth.cancel();
 
     const utterance = new SpeechSynthesisUtterance(cleanText);
-    utterance.lang = CONFIG.language;
+    utterance.lang = getAssistantLanguage();
     utterance.rate = 0.9;
     utterance.pitch = 1;
     utterance.volume = 1;
 
-    const voice = selectEnglishVoice();
+    const voice = selectVoice(utterance.lang);
     if (voice) {
       utterance.voice = voice;
     }
@@ -552,7 +556,7 @@
     }
 
     recognition = new SpeechRecognition();
-    recognition.lang = CONFIG.language;
+    recognition.lang = getAssistantLanguage();
     recognition.continuous = false;
     recognition.interimResults = false;
     recognition.maxAlternatives = 1;

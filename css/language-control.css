@@ -1,0 +1,37 @@
+.language-control {
+    display: grid;
+    gap: 8px;
+    align-items: start;
+}
+
+.language-control label {
+    color: inherit;
+    font-weight: 700;
+}
+
+.language-control label i { margin-right: 7px; }
+
+.language-control select {
+    width: 100%;
+    min-height: 38px;
+    padding: 7px 10px;
+    border: 1px solid #cbd8e6;
+    border-radius: 8px;
+    background: #fff;
+    color: #09244a;
+    font: inherit;
+    font-size: .88rem;
+    cursor: pointer;
+}
+
+body.dark-mode .language-control select {
+    border-color: rgba(148, 163, 184, .42);
+    background: #0f1a2d;
+    color: #eaf2ff;
+}
+
+body.high-contrast .language-control select {
+    border: 2px solid #ffff00;
+    background: #000;
+    color: #ffff00;
+}
