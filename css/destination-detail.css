@@ -207,7 +207,12 @@ button, input { font: inherit; }
     gap: 18px;
     border-bottom: 1px solid var(--line);
     overflow-x: auto;
-    scrollbar-width: thin;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.detail-tabs::-webkit-scrollbar {
+    display: none;
 }
 
 .tab-btn {
