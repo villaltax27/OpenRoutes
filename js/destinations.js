@@ -110,6 +110,29 @@ document.addEventListener("DOMContentLoaded", () => {
         applyDestinationFilters();
     }
 
+    function setupClickableDestinationCards() {
+        destinationCards.forEach((card) => {
+            const link = card.querySelector("a[href*='destination-detail.html']");
+            if (!link) return;
+
+            card.setAttribute("role", "link");
+            card.setAttribute("tabindex", "0");
+            card.setAttribute("aria-label", `View details for ${card.querySelector("h3")?.textContent || "destination"}`);
+
+            card.addEventListener("click", (event) => {
+                if (event.target.closest("a, button, input, select, textarea, label")) return;
+                window.location.href = link.href;
+            });
+
+            card.addEventListener("keydown", (event) => {
+                if (event.key !== "Enter" && event.key !== " ") return;
+                if (event.target.closest("a, button, input, select, textarea, label")) return;
+                event.preventDefault();
+                window.location.href = link.href;
+            });
+        });
+    }
+
     if (btnDropdownToggle && accessibilityMenu) {
         btnDropdownToggle.addEventListener("click", (event) => {
             event.stopPropagation();
@@ -193,5 +216,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     clearButtons.forEach((button) => button.addEventListener("click", clearAllFilters));
 
+    setupClickableDestinationCards();
     applyDestinationFilters();
 });
