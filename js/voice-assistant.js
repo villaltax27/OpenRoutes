@@ -7,7 +7,7 @@
       window.location.hostname === "localhost"
         ? "/api/assistant"
         : "http://127.0.0.1:5510/api/assistant",
-    language: localStorage.getItem("openRoutesLanguage") === "es" ? "es-SV" : "en-US",
+    language: localStorage.getItem("openRoutesLanguageV3") === "es" ? "es-SV" : "en-US",
     resumeKey: "openRoutesVoiceAssistantResume",
     pendingActionKey: "openRoutesVoiceAssistantPendingAction",
     promptChoiceKey: "openRoutesVoiceAssistantPromptChoice",
@@ -18,6 +18,7 @@
     home: "index.html",
     destinations: "destinations.html",
     plan_trip: "plan-your-trip.html",
+    popular_tours: "index.html#popularTours",
     about: "about.html",
     contact: "contact.html",
     favorites: "favorites.html",
@@ -33,20 +34,113 @@
     el_tunco: "destination-detail.html?place=el-tunco",
     suchitoto: "destination-detail.html?place=suchitoto",
     historic_center: "destination-detail.html?place=historic-center",
+    el_imposible: "destination-detail.html?place=imposible",
+    tour_santa_ana: "tour-detail.html?tour=santa-ana",
+    tour_coatepeque: "tour-detail.html?tour=coatepeque",
+    tour_el_tunco: "tour-detail.html?tour=el-tunco",
+    tour_suchitoto: "tour-detail.html?tour=suchitoto",
     cerro_verde: "tour-detail.html?tour=cerro-verde",
     ruta_flores: "tour-detail.html?tour=ruta-flores"
   });
 
-  const HELP_MESSAGE =
-    "You can say: open home, open destinations, open Lake Coatepeque, turn on dark mode, " +
-    "increase text, add this to favorites, book this trip, open the sign language menu, " +
-    "read this page, read menu, or stop listening.";
+  const HELP_MESSAGES = Object.freeze({
+    en:
+      "You can say: open home, open destinations, open Lake Coatepeque, open popular tours, " +
+      "turn on dark mode, increase text, add this to favorites, book this trip, open the sign language menu, " +
+      "read this page, read menu, or stop listening.",
+    es:
+      "Puedes decir: abrir inicio, abrir destinos, abrir lago de Coatepeque, abrir tours populares, " +
+      "activar modo oscuro, aumentar texto, agregar esto a favoritos, reservar este viaje, abrir el menu de lengua de senas, " +
+      "leer esta pagina, leer menu o detener asistente."
+  });
 
-  const NAVIGATION_MESSAGE =
-    "Main pages: Home, Destinations, Plan Your Trip, About Us, and Contact. " +
-    "Account pages: Login, Register, Favorites, Settings, and FAQ. " +
-    "Destination pages: Lake Coatepeque, El Tunco Beach, Suchitoto, Santa Ana Volcano, and Historic Center. " +
-    "Tour pages: Cerro Verde and Ruta de las Flores.";
+  const NAVIGATION_MESSAGES = Object.freeze({
+    en:
+      "Main pages: Home, Destinations, Plan Your Trip, About Us, and Contact. " +
+      "Account pages: Login, Register, Favorites, Settings, and FAQ. " +
+      "Destination pages: Lake Coatepeque, El Tunco Beach, Suchitoto, Santa Ana Volcano, Historic Center and El Imposible. " +
+      "Tour pages: Santa Ana Volcano, Lake Coatepeque, El Tunco, Suchitoto, Cerro Verde and Ruta de las Flores.",
+    es:
+      "Paginas principales: Inicio, Destinos, Planifica tu viaje, Sobre nosotros y Contacto. " +
+      "Paginas de cuenta: Iniciar sesion, Registrarse, Favoritos, Configuracion y Preguntas frecuentes. " +
+      "Paginas de destino: Lago de Coatepeque, playa El Tunco, Suchitoto, volcan de Santa Ana, Centro Historico y El Imposible. " +
+      "Paginas de tours: volcan de Santa Ana, lago de Coatepeque, El Tunco, Suchitoto, Cerro Verde y Ruta de las Flores."
+  });
+
+  const PAGE_SUMMARIES = Object.freeze({
+    en: {
+      "index.html": "This is the Open Routes home page. It introduces accessible tourism in El Salvador, highlights popular destinations, shows popular tours and gives visitors a quick way to start exploring the site.",
+      "destinations.html": "This is the destinations page. It lets visitors browse places in El Salvador, filter by travel style or accessibility needs, and open each destination detail page.",
+      "destination-detail.html": "This is a destination detail page. It explains one place in El Salvador with photos, accessibility notes, practical information, local experiences, guides, location details, reviews and related tour options.",
+      "plan-your-trip.html": "This is the Plan Your Trip page. It helps visitors choose travel style, time, accessibility needs and support options before booking a trip.",
+      "tour-detail.html": "This is a tour detail page. It shows the package information, price, date selection, number of travelers, accessibility requests and booking summary.",
+      "about.html": "This is the About Us page. It explains the Open Routes project, the team's mission and the people behind the accessible tourism website.",
+      "contact.html": "This is the contact page. Visitors can send a message, find support information and contact Open Routes for travel or accessibility questions.",
+      "favorites.html": "This is the favorites page. It shows destinations, guides or interpreters saved by the user while planning a trip.",
+      "interpreters.html": "This is the interpreters and guides page. Visitors can find people who support language, sign language and accessible travel planning.",
+      "Steven_information.html": "This is Steven's interpreter profile page. It shows information about Steven, his support services and options to contact or save him.",
+      "login.html": "This is the login page. Returning users can sign in before booking trips, saving favorites or managing their account.",
+      "registrer.html": "This is the register page. New users can create an Open Routes account to use booking, favorites and profile features.",
+      "settings.html": "This is the settings page. Users can manage account, travel, language, notification and privacy preferences.",
+      "faq.html": "This is the Help and FAQ page. It answers common questions about bookings, accessibility support, interpreters, favorites, videos and the voice assistant.",
+      "accessibility-statement.html": "This is the accessibility statement page. It explains Open Routes' accessibility commitment, available tools, current limitations and support contact."
+    },
+    es: {
+      "index.html": "Esta es la pagina principal de Open Routes. Presenta el turismo accesible en El Salvador, muestra destinos populares, tours populares y ayuda a los visitantes a empezar a explorar el sitio.",
+      "destinations.html": "Esta es la pagina de destinos. Permite explorar lugares de El Salvador, filtrar por estilo de viaje o necesidades de accesibilidad y abrir la informacion de cada destino.",
+      "destination-detail.html": "Esta es una pagina de detalle de destino. Explica un lugar de El Salvador con fotos, notas de accesibilidad, informacion practica, experiencias locales, guias, ubicacion, resenas y tours relacionados.",
+      "plan-your-trip.html": "Esta es la pagina Plan Your Trip. Ayuda a elegir estilo de viaje, tiempo disponible, necesidades de accesibilidad y opciones de apoyo antes de reservar.",
+      "tour-detail.html": "Esta es una pagina de detalle de tour. Muestra informacion del paquete, precio, fecha, numero de viajeros, solicitudes de accesibilidad y resumen de reserva.",
+      "about.html": "Esta es la pagina About Us. Explica el proyecto Open Routes, la mision del equipo y las personas detras del sitio de turismo accesible.",
+      "contact.html": "Esta es la pagina de contacto. Los visitantes pueden enviar un mensaje, encontrar soporte y contactar a Open Routes por dudas de viaje o accesibilidad.",
+      "favorites.html": "Esta es la pagina de favoritos. Muestra destinos, guias o interpretes guardados por el usuario mientras planea su viaje.",
+      "interpreters.html": "Esta es la pagina de interpretes y guias. Los visitantes pueden encontrar personas que apoyan con idioma, lengua de senas y planificacion accesible.",
+      "Steven_information.html": "Esta es la pagina del perfil del interprete Steven. Muestra informacion sobre Steven, sus servicios de apoyo y opciones para contactarlo o guardarlo.",
+      "login.html": "Esta es la pagina de inicio de sesion. Los usuarios pueden entrar antes de reservar viajes, guardar favoritos o administrar su cuenta.",
+      "registrer.html": "Esta es la pagina de registro. Nuevos usuarios pueden crear una cuenta de Open Routes para usar reservas, favoritos y funciones de perfil.",
+      "settings.html": "Esta es la pagina de configuracion. Los usuarios pueden administrar preferencias de cuenta, viaje, idioma, notificaciones y privacidad.",
+      "faq.html": "Esta es la pagina de ayuda y preguntas frecuentes. Responde dudas comunes sobre reservas, accesibilidad, interpretes, favoritos, videos y el asistente de voz.",
+      "accessibility-statement.html": "Esta es la declaracion de accesibilidad. Explica el compromiso de Open Routes, herramientas disponibles, limitaciones actuales y contacto de soporte."
+    }
+  });
+
+  const DESTINATION_SUMMARIES = Object.freeze({
+    en: {
+      "santa-ana": "This page is about Santa Ana Volcano, one of El Salvador's most iconic volcanoes. It includes destination information, accessibility notes, practical tips, location details and related tours.",
+      coatepeque: "This page is about Lake Coatepeque, a volcanic crater lake known for deep blue water, viewpoints and lakeside experiences. It includes photos, accessibility notes, practical information, guides and tours.",
+      "el-tunco": "This page is about El Tunco Beach, a Pacific coast destination known for surf, sunsets, restaurants and nightlife. It includes accessibility details, local experiences and related tour options.",
+      suchitoto: "This page is about Suchitoto, a colonial town known for culture, art, cobblestone streets and views of Lake Suchitlan. It includes accessibility notes, local recommendations, guides and tours.",
+      "historic-center": "This page is about the Historic Center of San Salvador, with landmarks such as the cathedral, National Palace, National Theater and public plazas. It includes practical and accessibility information.",
+      imposible: "This page is about El Imposible National Park, a protected natural area known for biodiversity, trails and viewpoints. It includes accessibility guidance, practical information and local recommendations."
+    },
+    es: {
+      "santa-ana": "Esta pagina trata sobre el volcan de Santa Ana, uno de los volcanes mas iconicos de El Salvador. Incluye informacion del destino, accesibilidad, consejos, ubicacion y tours relacionados.",
+      coatepeque: "Esta pagina trata sobre el lago de Coatepeque, un lago de crater volcanico conocido por su agua azul, miradores y experiencias junto al lago. Incluye fotos, accesibilidad, informacion practica, guias y tours.",
+      "el-tunco": "Esta pagina trata sobre playa El Tunco, un destino del Pacifico conocido por surf, atardeceres, restaurantes y ambiente costero. Incluye accesibilidad, experiencias locales y tours relacionados.",
+      suchitoto: "Esta pagina trata sobre Suchitoto, un pueblo colonial conocido por cultura, arte, calles empedradas y vistas al lago Suchitlan. Incluye accesibilidad, recomendaciones locales, guias y tours.",
+      "historic-center": "Esta pagina trata sobre el Centro Historico de San Salvador, con lugares como la catedral, Palacio Nacional, Teatro Nacional y plazas publicas. Incluye informacion practica y de accesibilidad.",
+      imposible: "Esta pagina trata sobre el Parque Nacional El Imposible, un area natural protegida conocida por biodiversidad, senderos y miradores. Incluye accesibilidad, informacion practica y recomendaciones locales."
+    }
+  });
+
+  const TOUR_SUMMARIES = Object.freeze({
+    en: {
+      "santa-ana": "This page is about the Santa Ana Volcano tour package. Visitors can review the experience, price, date, number of travelers, accessibility requests and booking summary.",
+      coatepeque: "This page is about the Lake Coatepeque tour package. Visitors can review the lake experience, price, date, travelers, support needs and booking summary.",
+      "el-tunco": "This page is about the El Tunco surf tour package. Visitors can review the beach experience, price, date, travelers, accessibility requests and booking summary.",
+      suchitoto: "This page is about the Suchitoto colonial tour package. Visitors can review the cultural experience, price, date, travelers, support requests and booking summary.",
+      "cerro-verde": "This page is about the Cerro Verde tour package. Visitors can review the mountain experience, price, date, travelers, accessibility needs and booking summary.",
+      "ruta-flores": "This page is about the Ruta de las Flores tour package. Visitors can review the towns, food and coffee experience, price, date, travelers and booking summary."
+    },
+    es: {
+      "santa-ana": "Esta pagina trata sobre el paquete del tour al volcan de Santa Ana. Permite revisar experiencia, precio, fecha, viajeros, solicitudes de accesibilidad y resumen de reserva.",
+      coatepeque: "Esta pagina trata sobre el paquete del tour al lago de Coatepeque. Permite revisar la experiencia del lago, precio, fecha, viajeros, apoyo requerido y resumen de reserva.",
+      "el-tunco": "Esta pagina trata sobre el paquete del tour de surf en El Tunco. Permite revisar experiencia de playa, precio, fecha, viajeros, accesibilidad y resumen de reserva.",
+      suchitoto: "Esta pagina trata sobre el paquete del tour colonial en Suchitoto. Permite revisar experiencia cultural, precio, fecha, viajeros, apoyo requerido y resumen de reserva.",
+      "cerro-verde": "Esta pagina trata sobre el paquete del tour a Cerro Verde. Permite revisar experiencia de montana, precio, fecha, viajeros, accesibilidad y resumen de reserva.",
+      "ruta-flores": "Esta pagina trata sobre el paquete Ruta de las Flores. Permite revisar pueblos, comida, cafe, precio, fecha, viajeros y resumen de reserva."
+    }
+  });
 
   const TAB_ALIASES = Object.freeze({
     overview: "overview",
@@ -336,7 +430,7 @@
 
   function setStatus(message) {
     if (statusText) {
-      statusText.textContent = message;
+      statusText.textContent = localizeAssistantText(message);
     }
   }
 
@@ -345,6 +439,8 @@
       .toLowerCase()
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "")
+      .replace(/\bwhat'?s\b/g, "what is")
+      .replace(/\bwhats\b/g, "what is")
       .replace(/[.,!?;:]/g, " ")
       .replace(/\s+/g, " ")
       .trim();
@@ -355,7 +451,169 @@
   }
 
   function getAssistantLanguage() {
-    return localStorage.getItem("openRoutesLanguage") === "es" ? "es-SV" : "en-US";
+    return localStorage.getItem("openRoutesLanguageV3") === "es" ? "es-SV" : "en-US";
+  }
+
+  function getLanguageCode() {
+    return localStorage.getItem("openRoutesLanguageV3") === "es" ? "es" : "en";
+  }
+
+  function getHelpMessage() {
+    return HELP_MESSAGES[getLanguageCode()] || HELP_MESSAGES.en;
+  }
+
+  function getNavigationMessage() {
+    return NAVIGATION_MESSAGES[getLanguageCode()] || NAVIGATION_MESSAGES.en;
+  }
+
+  function localizeAssistantLabel(label) {
+    if (getLanguageCode() !== "es") {
+      return label;
+    }
+
+    const replacements = {
+      "Home": "Inicio",
+      "Destinations": "Destinos",
+      "Plan Your Trip": "Planifica tu viaje",
+      "Popular Tours": "Tours populares",
+      "About Us": "Sobre nosotros",
+      "Contact": "Contacto",
+      "Favorites": "Favoritos",
+      "Interpreters": "Interpretes",
+      "Steven": "Steven",
+      "Login": "Inicio de sesion",
+      "Register": "Registro",
+      "Settings": "Configuracion",
+      "Help and FAQ": "Ayuda y preguntas frecuentes",
+      "Accessibility Statement": "Declaracion de accesibilidad",
+      "Santa Ana Volcano": "volcan de Santa Ana",
+      "Santa Ana Volcano Tour": "tour del volcan de Santa Ana",
+      "Lake Coatepeque": "lago de Coatepeque",
+      "Lake Coatepeque Tour": "tour del lago de Coatepeque",
+      "El Tunco Beach": "playa El Tunco",
+      "El Tunco Surf Tour": "tour de surf en El Tunco",
+      "Suchitoto": "Suchitoto",
+      "Suchitoto Colonial Tour": "tour colonial de Suchitoto",
+      "Historic Center": "Centro Historico",
+      "El Imposible National Park": "Parque Nacional El Imposible",
+      "Cerro Verde": "Cerro Verde",
+      "Ruta de las Flores": "Ruta de las Flores"
+    };
+
+    return replacements[label] || label;
+  }
+
+  function localizeAssistantText(text) {
+    if (getLanguageCode() !== "es") {
+      return text;
+    }
+
+    const exact = {
+      "Text-to-speech is not supported in this browser.": "La lectura por voz no esta disponible en este navegador.",
+      "I could not speak that response.": "No pude leer esa respuesta.",
+      "Reading stopped.": "Lectura detenida.",
+      "Voice assistant stopped.": "Asistente de voz detenido.",
+      "Okay. Voice assistant stopped.": "De acuerdo. Asistente de voz detenido.",
+      "I will read this page.": "Voy a leer esta pagina.",
+      "Going back.": "Volviendo atras.",
+      "Going forward.": "Avanzando.",
+      "High contrast turned on.": "Alto contraste activado.",
+      "High contrast turned off.": "Alto contraste desactivado.",
+      "Dark mode turned on.": "Modo oscuro activado.",
+      "Dark mode turned off.": "Modo oscuro desactivado.",
+      "Text size increased.": "Tamano del texto aumentado.",
+      "Text size decreased.": "Tamano del texto reducido.",
+      "Opening the sign language menu.": "Abriendo el menu de lengua de senas.",
+      "Closing the sign language menu.": "Cerrando el menu de lengua de senas.",
+      "Adding this to favorites.": "Agregando esto a favoritos.",
+      "Opening the booking option.": "Abriendo la opcion de reserva.",
+      "Saving your trip plan.": "Guardando tu plan de viaje.",
+      "Logging out.": "Cerrando sesion.",
+      "Spanish activated.": "Espanol activado.",
+      "English activated.": "Ingles activado.",
+      "That language is not available.": "Ese idioma no esta disponible.",
+      "That page is not available.": "Esa pagina no esta disponible.",
+      "I could not find readable content on this page.": "No pude encontrar contenido legible en esta pagina.",
+      "Text size controls are not available on this page.": "Los controles de tamano de texto no estan disponibles en esta pagina.",
+      "The sign language menu is not available on this page.": "El menu de lengua de senas no esta disponible en esta pagina.",
+      "That accessibility control is not available on this page.": "Ese control de accesibilidad no esta disponible en esta pagina.",
+      "I did not understand that command.": "No entendi ese comando.",
+      "I did not understand. Say what can I say to hear the commands.": "No entendi. Di que puedo decir para escuchar los comandos.",
+      "This page is part of Open Routes, an accessible tourism website for El Salvador.": "Esta pagina forma parte de Open Routes, un sitio de turismo accesible en El Salvador."
+      ,
+      "Finished reading. Listening…": "Lectura terminada. Escuchando...",
+      "Listening… Speak now.": "Escuchando... Habla ahora.",
+      "I did not hear anything. Listening again…": "No escuche nada. Estoy escuchando otra vez...",
+      "No microphone was found.": "No se encontro ningun microfono.",
+      "Reading stopped. Listening…": "Lectura detenida. Escuchando...",
+      "Opening destinations to search.": "Abriendo destinos para buscar.",
+      "Opening destinations to apply the filter.": "Abriendo destinos para aplicar el filtro.",
+      "I could not find that destination filter.": "No pude encontrar ese filtro de destinos.",
+      "Filter applied.": "Filtro aplicado.",
+      "I could not find that section on this page.": "No pude encontrar esa seccion en esta pagina.",
+      "I could not find a favorite button on this page.": "No pude encontrar un boton de favoritos en esta pagina.",
+      "I added this item to your favorites.": "Agregue este elemento a tus favoritos.",
+      "The booking form is ready.": "El formulario de reserva esta listo.",
+      "I could not find a booking option on this page.": "No pude encontrar una opcion de reserva en esta pagina.",
+      "I updated your trip plan.": "Actualice tu plan de viaje.",
+      "Tell me a style like beach, nature, culture, or relaxed.": "Dime un estilo como playa, naturaleza, cultura o relajado.",
+      "Your trip plan has been saved.": "Tu plan de viaje fue guardado.",
+      "The checklist is ready. You can say check water, check passport, or check medication.": "La lista esta lista. Puedes decir marcar agua, marcar pasaporte o marcar medicina.",
+      "Checklist updated.": "Lista actualizada.",
+      "Tell me what button or link you want me to open.": "Dime que boton o enlace quieres que abra.",
+      "I could not find that visible control.": "No pude encontrar ese control visible.",
+      "I cannot open external links by voice.": "No puedo abrir enlaces externos por voz."
+    };
+
+    if (exact[text]) {
+      return exact[text];
+    }
+
+    let match = text.match(/^Opening (.+)\.$/);
+    if (match) return `Abriendo ${localizeAssistantLabel(match[1])}.`;
+
+    match = text.match(/^Showing (.+)\.$/);
+    if (match) return `Mostrando ${localizeAssistantLabel(match[1])}.`;
+
+    match = text.match(/^Applying (.+) filter\.$/);
+    if (match) return `Aplicando filtro de ${localizeAssistantLabel(match[1])}.`;
+
+    match = text.match(/^Searching destinations for (.+)\.$/);
+    if (match) return `Buscando destinos sobre ${match[1]}.`;
+
+    match = text.match(/^Searching destinations for (.+)\. (.+)$/);
+    if (match) return `Buscando destinos sobre ${match[1]}. ${match[2]}`;
+
+    match = text.match(/^Filter applied\. (.+)$/);
+    if (match) return `Filtro aplicado. ${match[1]}`;
+
+    match = text.match(/^Opening destinations to (.+)\.$/);
+    if (match) return `Abriendo destinos para ${match[1]}.`;
+
+    match = text.match(/^Scrolling (.+)\.$/);
+    if (match) {
+      const directions = { up: "hacia arriba", down: "hacia abajo", top: "al inicio", bottom: "al final" };
+      return `Desplazando ${directions[match[1]] || match[1]}.`;
+    }
+
+    match = text.match(/^Reading this page in (\d+) parts\.$/);
+    if (match) return `Leyendo esta pagina en ${match[1]} partes.`;
+
+    match = text.match(/^You said: (.+)$/);
+    if (match) return `Dijiste: ${match[1]}`;
+
+    match = text.match(/^Recognition error: (.+)$/);
+    if (match) return `Error de reconocimiento: ${match[1]}`;
+
+    return text;
+  }
+
+  function localizeStatusPrefix(prefix) {
+    if (getLanguageCode() !== "es") {
+      return prefix;
+    }
+
+    return prefix === "Assistant" ? "Asistente" : prefix;
   }
 
   function selectVoice(language) {
@@ -394,7 +652,7 @@
       statusPrefix = "Assistant"
     } = options;
 
-    const cleanText = String(text || "").trim();
+    const cleanText = localizeAssistantText(String(text || "").trim());
 
     if (!cleanText) {
       if (typeof afterSpeak === "function") {
@@ -426,7 +684,7 @@
     }
 
     speaking = true;
-    setStatus(`${statusPrefix}: ${cleanText}`);
+    setStatus(`${localizeStatusPrefix(statusPrefix)}: ${cleanText}`);
 
     utterance.onend = () => {
       speaking = false;
@@ -664,8 +922,12 @@
     updateControls();
 
     const greeting = fromUserGesture
-      ? "Hello. Do you need help? You can say yes, go to home, or what can I say?"
-      : `Voice assistant resumed. You are on ${getPageName()}. How can I help?`;
+      ? getLanguageCode() === "es"
+        ? "Hola. Necesitas ayuda? Puedes decir si, abrir inicio o que puedo decir?"
+        : "Hello. Do you need help? You can say yes, go to home, or what can I say?"
+      : getLanguageCode() === "es"
+        ? `Asistente de voz reanudado. Estas en ${getPageName()}. Como puedo ayudar?`
+        : `Voice assistant resumed. You are on ${getPageName()}. How can I help?`;
 
     speak(greeting);
   }
@@ -726,7 +988,35 @@
     speakChunks(chunks);
   }
 
+  function getPreparedPageSummary() {
+    const language = getLanguageCode();
+    const summaries = PAGE_SUMMARIES[language] || PAGE_SUMMARIES.en;
+    const destinationSummaries = DESTINATION_SUMMARIES[language] || DESTINATION_SUMMARIES.en;
+    const tourSummaries = TOUR_SUMMARIES[language] || TOUR_SUMMARIES.en;
+    const pathName = window.location.pathname.split("/").pop() || "index.html";
+    const params = new URLSearchParams(window.location.search);
+
+    if (pathName === "destination-detail.html") {
+      const place = params.get("place") || "coatepeque";
+      return destinationSummaries[place] || summaries[pathName];
+    }
+
+    if (pathName === "tour-detail.html") {
+      const tour = params.get("tour") || "santa-ana";
+      return tourSummaries[tour] || summaries[pathName];
+    }
+
+    return summaries[pathName] || "";
+  }
+
   function summarizeCurrentPage() {
+    const preparedSummary = getPreparedPageSummary();
+
+    if (preparedSummary) {
+      speak(preparedSummary);
+      return;
+    }
+
     const heading =
       document.querySelector("main h1, .hero h1, .planner-hero h1, .place-title")?.textContent ||
       getPageName();
@@ -739,7 +1029,7 @@
   }
 
   function readNavigationMenu() {
-    speak(NAVIGATION_MESSAGE);
+    speak(getNavigationMessage());
   }
 
   function stopReading() {
@@ -1117,12 +1407,104 @@
     );
   }
 
+  function setSiteLanguage(language) {
+    if (!["en", "es"].includes(language)) {
+      speak("That language is not available.");
+      return;
+    }
+
+    localStorage.setItem("openRoutesLanguageV3", language);
+
+    const languageSelect = document.querySelector("[data-language-select]");
+    if (languageSelect) {
+      languageSelect.value = language;
+      languageSelect.dispatchEvent(new Event("change", { bubbles: true }));
+    } else if (window.OpenRoutesLanguage?.apply) {
+      window.OpenRoutesLanguage.apply(language);
+      window.dispatchEvent(
+        new CustomEvent("openroutes:languagechange", { detail: { language } })
+      );
+    }
+
+    speak(language === "es" ? "Spanish activated." : "English activated.");
+  }
+
   function getNavigationAction(command) {
     const navigationAliases = [
       {
+        target: "tour_santa_ana",
+        label: "Santa Ana Volcano Tour",
+        aliases: [
+          "santa ana tour",
+          "santa ana volcano tour",
+          "santa ana package",
+          "volcano tour",
+          "volcano route tour",
+          "tour santa ana",
+          "tour del volcan",
+          "paquete santa ana",
+          "paquete del volcan"
+        ]
+      },
+      {
+        target: "tour_coatepeque",
+        label: "Lake Coatepeque Tour",
+        aliases: [
+          "coatepeque tour",
+          "lake coatepeque tour",
+          "coatepeque package",
+          "lake package",
+          "tour coatepeque",
+          "tour del lago",
+          "paquete coatepeque",
+          "paquete del lago"
+        ]
+      },
+      {
+        target: "tour_el_tunco",
+        label: "El Tunco Surf Tour",
+        aliases: [
+          "el tunco tour",
+          "el tunco surf tour",
+          "tunco tour",
+          "surf tour",
+          "beach tour",
+          "el tunco package",
+          "tour el tunco",
+          "tour de surf",
+          "paquete el tunco",
+          "paquete de playa"
+        ]
+      },
+      {
+        target: "tour_suchitoto",
+        label: "Suchitoto Colonial Tour",
+        aliases: [
+          "suchitoto tour",
+          "suchitoto colonial tour",
+          "cultural tour",
+          "colonial tour",
+          "suchitoto package",
+          "tour suchitoto",
+          "tour colonial",
+          "paquete suchitoto",
+          "paquete cultural"
+        ]
+      },
+      {
         target: "santa_ana",
         label: "Santa Ana Volcano",
-        aliases: ["santa ana volcano", "santa ana", "volcano", "volcan", "volcan santa ana"]
+        aliases: [
+          "santa ana volcano",
+          "santa ana",
+          "volcano",
+          "volcan",
+          "volcan santa ana",
+          "volcan de santa ana",
+          "santa ana volcano detail",
+          "santa ana information",
+          "informacion de santa ana"
+        ]
       },
       {
         target: "coatepeque",
@@ -1135,18 +1517,42 @@
           "coatepeq",
           "lago de coatepeque",
           "lago coatepeque",
-          "the lake"
+          "the lake",
+          "coatepeque detail",
+          "coatepeque information",
+          "lake information",
+          "informacion de coatepeque",
+          "informacion del lago",
+          "detalle de coatepeque"
         ]
       },
       {
         target: "el_tunco",
         label: "El Tunco Beach",
-        aliases: ["el tunco beach", "el tunco", "tunco", "playa el tunco", "the beach"]
+        aliases: [
+          "el tunco beach",
+          "el tunco",
+          "tunco",
+          "playa el tunco",
+          "the beach",
+          "tunco beach",
+          "el tunco information",
+          "informacion del tunco",
+          "informacion de el tunco",
+          "detalle del tunco"
+        ]
       },
       {
         target: "suchitoto",
         label: "Suchitoto",
-        aliases: ["suchitoto", "suchi toto"]
+        aliases: [
+          "suchitoto",
+          "suchi toto",
+          "suchitoto information",
+          "suchitoto detail",
+          "informacion de suchitoto",
+          "detalle de suchitoto"
+        ]
       },
       {
         target: "historic_center",
@@ -1155,25 +1561,70 @@
           "historic center",
           "historical center",
           "centro historico",
+          "centro historico de san salvador",
           "centro de san salvador",
           "centro historico de san salvador",
-          "san salvador historic center"
+          "san salvador historic center",
+          "historic center information",
+          "informacion del centro historico",
+          "detalle del centro historico"
+        ]
+      },
+      {
+        target: "el_imposible",
+        label: "El Imposible National Park",
+        aliases: [
+          "el imposible",
+          "el imposible national park",
+          "parque el imposible",
+          "parque nacional el imposible",
+          "imposible park",
+          "imposible",
+          "informacion de el imposible",
+          "informacion del imposible"
         ]
       },
       {
         target: "cerro_verde",
         label: "Cerro Verde",
-        aliases: ["cerro verde", "cerro verde tour", "tour cerro verde"]
+        aliases: [
+          "cerro verde",
+          "cerro verde tour",
+          "tour cerro verde",
+          "cerro verde package",
+          "paquete cerro verde",
+          "tour de cerro verde"
+        ]
       },
       {
         target: "ruta_flores",
         label: "Ruta de las Flores",
-        aliases: ["ruta de las flores", "ruta flores", "flowers route", "tour ruta de las flores"]
+        aliases: [
+          "ruta de las flores",
+          "ruta flores",
+          "flowers route",
+          "flower route",
+          "tour ruta de las flores",
+          "ruta de las flores tour",
+          "paquete ruta de las flores"
+        ]
       },
       {
         target: "destinations",
         label: "Destinations",
-        aliases: ["destinations", "destination page", "places", "routes", "destinos", "lugares"]
+        aliases: [
+          "destinations",
+          "destination page",
+          "places",
+          "routes",
+          "explore places",
+          "browse places",
+          "destinos",
+          "lugares",
+          "pagina de destinos",
+          "ver destinos",
+          "explorar lugares"
+        ]
       },
       {
         target: "plan_trip",
@@ -1184,82 +1635,234 @@
           "travel planner",
           "planner",
           "plan trip",
+          "build trip",
+          "build my trip",
+          "plan a trip",
+          "travel plan",
           "planear viaje",
           "planear mi viaje",
           "planificar viaje",
           "planificador",
-          "planificador de viaje"
+          "planificador de viaje",
+          "planifica mi viaje",
+          "crear mi viaje",
+          "armar mi viaje"
+        ]
+      },
+      {
+        target: "popular_tours",
+        label: "Popular Tours",
+        aliases: [
+          "popular tours",
+          "tour packages",
+          "packages",
+          "travel packages",
+          "tour cards",
+          "paquetes",
+          "tours populares",
+          "paquetes populares",
+          "paquetes de viaje",
+          "cards de tours"
         ]
       },
       {
         target: "about",
         label: "About Us",
-        aliases: ["about us", "about page", "about", "sobre nosotros", "nosotros"]
+        aliases: [
+          "about us",
+          "about page",
+          "about",
+          "team",
+          "our team",
+          "meet the team",
+          "sobre nosotros",
+          "nosotros",
+          "equipo",
+          "nuestro equipo"
+        ]
       },
       {
         target: "contact",
         label: "Contact",
-        aliases: ["contact us", "contact page", "contact", "support", "contacto", "soporte"]
+        aliases: [
+          "contact us",
+          "contact page",
+          "contact",
+          "support",
+          "customer support",
+          "contact support",
+          "contacto",
+          "soporte",
+          "ayuda de contacto",
+          "contactar"
+        ]
       },
       {
         target: "favorites",
         label: "Favorites",
-        aliases: ["favorites", "favourites", "my favorites", "favoritos", "mis favoritos"]
+        aliases: [
+          "favorites",
+          "favourites",
+          "my favorites",
+          "saved places",
+          "saved trips",
+          "favorite places",
+          "favoritos",
+          "mis favoritos",
+          "lugares guardados",
+          "viajes guardados"
+        ]
       },
       {
         target: "interpreters",
         label: "Interpreters",
-        aliases: ["interpreters", "interpreter", "guides", "guide", "interpretes", "interprete", "guias", "guia"]
+        aliases: [
+          "interpreters",
+          "interpreter",
+          "guides",
+          "guide",
+          "find an interpreter",
+          "find a guide",
+          "tour guides",
+          "interpretes",
+          "interprete",
+          "guias",
+          "guia",
+          "buscar interprete",
+          "buscar guia",
+          "guias e interpretes"
+        ]
       },
       {
         target: "steven",
         label: "Steven",
-        aliases: ["steven", "steven profile", "steven information"]
+        aliases: [
+          "steven",
+          "steven profile",
+          "steven information",
+          "steven interpreter",
+          "steven guide",
+          "perfil de steven",
+          "informacion de steven",
+          "interprete steven"
+        ]
       },
       {
         target: "login",
         label: "Login",
-        aliases: ["login", "log in", "sign in", "iniciar sesion", "inicio de sesion"]
+        aliases: [
+          "login",
+          "log in",
+          "sign in",
+          "access account",
+          "my account",
+          "iniciar sesion",
+          "inicio de sesion",
+          "entrar a mi cuenta",
+          "mi cuenta"
+        ]
       },
       {
         target: "register",
         label: "Register",
-        aliases: ["register", "registration", "sign up", "create account", "registrarse", "registro", "crear cuenta"]
+        aliases: [
+          "register",
+          "registration",
+          "sign up",
+          "create account",
+          "new account",
+          "make an account",
+          "registrarse",
+          "registro",
+          "crear cuenta",
+          "nueva cuenta",
+          "hacer cuenta"
+        ]
       },
       {
         target: "settings",
         label: "Settings",
-        aliases: ["settings", "preferences", "configuracion", "ajustes"]
+        aliases: [
+          "settings",
+          "preferences",
+          "account settings",
+          "profile settings",
+          "configuracion",
+          "ajustes",
+          "configuracion de cuenta",
+          "ajustes de perfil"
+        ]
       },
       {
         target: "faq",
         label: "Help and FAQ",
-        aliases: ["faq", "help", "help page", "frequently asked questions", "questions", "preguntas frecuentes", "ayuda"]
+        aliases: [
+          "faq",
+          "help",
+          "help page",
+          "frequently asked questions",
+          "questions",
+          "common questions",
+          "preguntas frecuentes",
+          "ayuda",
+          "preguntas",
+          "dudas",
+          "preguntas comunes"
+        ]
       },
       {
         target: "accessibility_statement",
         label: "Accessibility Statement",
-        aliases: ["accessibility statement", "accessibility policy", "accessibility commitment", "declaracion de accesibilidad"]
+        aliases: [
+          "accessibility statement",
+          "accessibility policy",
+          "accessibility commitment",
+          "accessibility information",
+          "declaracion de accesibilidad",
+          "politica de accesibilidad",
+          "compromiso de accesibilidad"
+        ]
       },
       {
         target: "home",
         label: "Home",
-        aliases: ["home page", "homepage", "the home", "home", "main page", "inicio", "pagina principal"]
+        aliases: [
+          "home page",
+          "homepage",
+          "the home",
+          "home",
+          "main page",
+          "start page",
+          "inicio",
+          "pagina principal",
+          "pagina de inicio",
+          "menu principal"
+        ]
       }
     ];
 
     const hasNavigationIntent =
-      /(^|\s)(go|open|take|navigate|come|bring|show|visit|switch|change|move|send|ir|abre|abrir|muestra|mostrar|ver|visitar|cambia|lleva|llevame|manda)(\s|$)/.test(command) ||
+      /(^|\s)(go|open|take|navigate|come|bring|show|visit|switch|change|move|send|lead|enter|ir|abre|abrir|entra|entrar|muestra|mostrar|ver|visitar|cambia|lleva|llevame|manda|mandame|dirigete)(\s|$)/.test(command) ||
       command.includes("take me to") ||
       command.includes("go to") ||
+      command.includes("send me to") ||
+      command.includes("bring me to") ||
+      command.includes("i want to go") ||
+      command.includes("i want to open") ||
+      command.includes("i want to see") ||
       command.includes("ir a") ||
+      command.includes("quiero ir") ||
+      command.includes("quiero abrir") ||
+      command.includes("quiero ver") ||
+      command.includes("quiero conocer") ||
       command.includes("abre la") ||
       command.includes("abre el") ||
       command.includes("abre los") ||
       command.includes("abre mi") ||
-      command.includes("quiero ver") ||
       command.includes("muestrame") ||
       command.includes("llevame a") ||
+      command.includes("mandame a") ||
+      command.includes("entrar a") ||
       command.includes("switch to") ||
       command.includes("change to") ||
       command.startsWith("yes ");
@@ -1288,10 +1891,18 @@
         "stop reading",
         "stop speaking",
         "be quiet",
+        "pause reading",
+        "cancel reading",
+        "stop the voice",
+        "quiet please",
         "detener lectura",
         "parar lectura",
         "detener audio",
         "parar audio",
+        "pausar lectura",
+        "cancelar lectura",
+        "para de hablar",
+        "deja de hablar",
         "callate"
       ])
     ) {
@@ -1308,9 +1919,15 @@
         "stop listening",
         "stop assistant",
         "turn off assistant",
+        "close assistant",
+        "disable assistant",
+        "assistant off",
+        "finish assistant",
         "detener asistente",
         "apagar asistente",
         "cerrar asistente",
+        "desactivar asistente",
+        "terminar asistente",
         "ya no escuchar",
         "deja de escuchar"
       ]) ||
@@ -1331,8 +1948,16 @@
         "available commands",
         "voice commands",
         "show commands",
+        "tell me the commands",
+        "commands list",
+        "what can you do",
+        "how can you help",
+        "assistant help",
         "que puedo decir",
         "que puedes hacer",
+        "como me ayudas",
+        "como puedes ayudar",
+        "lista de comandos",
         "comandos",
         "mostrar comandos"
       ]) ||
@@ -1349,7 +1974,7 @@
         action: "repeat_help",
         target: "none",
         value: "none",
-        reply: HELP_MESSAGE
+        reply: getHelpMessage()
       };
     }
 
@@ -1364,10 +1989,21 @@
         "what pages can i open",
         "where can i go",
         "available pages",
+        "menu options",
+        "navigation options",
+        "tell me the menu",
+        "say the menu",
+        "what is in the navbar",
         "site menu",
         "leer menu",
         "leer navbar",
-        "leer navegacion"
+        "leer navegacion",
+        "dime el menu",
+        "decime el menu",
+        "opciones del menu",
+        "que paginas hay",
+        "a donde puedo ir",
+        "leer barra de navegacion"
       ])
     ) {
       return {
@@ -1375,7 +2011,7 @@
         target: "none",
         value: "none",
         query: "",
-        reply: NAVIGATION_MESSAGE
+        reply: getNavigationMessage()
       };
     }
 
@@ -1384,11 +2020,33 @@
         "what is this page about",
         "what is the page about",
         "what is this about",
+        "what page is this",
+        "where am i",
+        "where am i now",
+        "what am i looking at",
+        "tell me where i am",
         "summarize this page",
         "summarize the page",
+        "summary of this page",
         "tell me about this page",
         "describe this page",
-        "page summary"
+        "page summary",
+        "explain this page",
+        "what does this page do",
+        "what is this section about",
+        "tell me what this page does",
+        "de que trata esta pagina",
+        "de que trata la pagina",
+        "que es esta pagina",
+        "en que pagina estoy",
+        "donde estoy",
+        "que estoy viendo",
+        "explica esta pagina",
+        "resume esta pagina",
+        "resumen de esta pagina",
+        "descripcion de la pagina",
+        "dime de que trata",
+        "dime donde estoy"
       ])
     ) {
       return {
@@ -1420,9 +2078,18 @@
         "read the page",
         "read page",
         "read aloud",
+        "read the content",
+        "read content",
+        "start reading",
+        "voice guide",
+        "tell me what it says",
         "leer pagina",
         "lee la pagina",
         "leer esta pagina",
+        "leer contenido",
+        "lee el contenido",
+        "empieza a leer",
+        "dime que dice",
         "guia de audio",
         "audio guide"
       ])
@@ -1456,20 +2123,37 @@
     const scrollCommands = [
       ["scroll down", "down"],
       ["move down", "down"],
+      ["go down", "down"],
+      ["page down", "down"],
+      ["lower the page", "down"],
       ["bajar", "down"],
+      ["baja", "down"],
+      ["baja la pagina", "down"],
+      ["mueve hacia abajo", "down"],
       ["desplazar abajo", "down"],
       ["scroll up", "up"],
       ["move up", "up"],
+      ["go up", "up"],
+      ["page up", "up"],
       ["subir", "up"],
+      ["sube", "up"],
+      ["sube la pagina", "up"],
+      ["mueve hacia arriba", "up"],
       ["desplazar arriba", "up"],
       ["go to the top", "top"],
       ["scroll to top", "top"],
+      ["back to top", "top"],
+      ["top of page", "top"],
       ["ir arriba", "top"],
       ["hasta arriba", "top"],
+      ["inicio de la pagina", "top"],
       ["go to the bottom", "bottom"],
       ["scroll to bottom", "bottom"],
+      ["bottom of page", "bottom"],
+      ["end of page", "bottom"],
       ["ir abajo", "bottom"],
-      ["hasta abajo", "bottom"]
+      ["hasta abajo", "bottom"],
+      ["final de la pagina", "bottom"]
     ];
 
     for (const [phrase, value] of scrollCommands) {
@@ -1487,10 +2171,16 @@
       includesAny(command, [
         "turn on high contrast",
         "enable high contrast",
+        "use high contrast",
+        "put high contrast",
+        "contrast mode",
+        "make it easier to see",
         "activar alto contraste",
         "activar contraste",
         "alto contraste",
-        "poner contraste"
+        "poner contraste",
+        "modo contraste",
+        "que se vea mejor"
       ]) &&
       !includesAny(command, ["turn off", "disable", "desactivar", "quitar"])
     ) {
@@ -1506,10 +2196,13 @@
       includesAny(command, [
         "turn off high contrast",
         "disable high contrast",
+        "remove high contrast",
+        "normal contrast",
         "desactivar alto contraste",
         "quitar alto contraste",
         "desactivar contraste",
-        "quitar contraste"
+        "quitar contraste",
+        "contraste normal"
       ])
     ) {
       return {
@@ -1525,9 +2218,16 @@
         "turn on dark mode",
         "enable dark mode",
         "dark mode",
+        "night mode",
+        "make it dark",
+        "put dark mode",
+        "switch to dark mode",
         "activar modo oscuro",
         "modo oscuro",
-        "poner modo oscuro"
+        "poner modo oscuro",
+        "modo noche",
+        "pantalla oscura",
+        "cambiar a modo oscuro"
       ]) &&
       !includesAny(command, ["turn off", "disable", "desactivar", "quitar", "modo claro"])
     ) {
@@ -1544,10 +2244,15 @@
         "turn off dark mode",
         "disable dark mode",
         "light mode",
+        "make it light",
+        "switch to light mode",
+        "normal mode",
         "desactivar modo oscuro",
         "quitar modo oscuro",
         "modo claro",
-        "activar modo claro"
+        "activar modo claro",
+        "pantalla clara",
+        "cambiar a modo claro"
       ])
     ) {
       return {
@@ -1560,14 +2265,76 @@
 
     if (
       includesAny(command, [
+        "change to spanish",
+        "switch to spanish",
+        "spanish language",
+        "set spanish",
+        "put spanish",
+        "translate to spanish",
+        "show in spanish",
+        "espanol",
+        "cambiar a espanol",
+        "poner espanol",
+        "activar espanol",
+        "traducir a espanol",
+        "mostrar en espanol",
+        "pagina en espanol"
+      ])
+    ) {
+      return {
+        action: "language",
+        target: "none",
+        value: "es",
+        query: "",
+        reply: "Spanish activated."
+      };
+    }
+
+    if (
+      includesAny(command, [
+        "change to english",
+        "switch to english",
+        "english language",
+        "set english",
+        "put english",
+        "translate to english",
+        "show in english",
+        "ingles",
+        "cambiar a ingles",
+        "poner ingles",
+        "activar ingles",
+        "traducir a ingles",
+        "mostrar en ingles",
+        "pagina en ingles"
+      ])
+    ) {
+      return {
+        action: "language",
+        target: "none",
+        value: "en",
+        query: "",
+        reply: "English activated."
+      };
+    }
+
+    if (
+      includesAny(command, [
         "increase text",
         "bigger text",
         "make text bigger",
+        "larger text",
+        "zoom text",
+        "text up",
+        "increase font",
+        "make letters bigger",
         "aumentar texto",
         "texto grande",
         "letra mas grande",
         "agrandar letra",
-        "aumentar letra"
+        "aumentar letra",
+        "subir texto",
+        "aumentar fuente",
+        "hacer letras mas grandes"
       ])
     ) {
       return {
@@ -1583,11 +2350,18 @@
         "decrease text",
         "smaller text",
         "make text smaller",
+        "reduce text",
+        "text down",
+        "decrease font",
+        "make letters smaller",
         "disminuir texto",
         "texto pequeno",
         "letra mas pequena",
         "hacer letra pequena",
-        "reducir letra"
+        "reducir letra",
+        "bajar texto",
+        "disminuir fuente",
+        "hacer letras mas pequenas"
       ])
     ) {
       return {
@@ -1604,12 +2378,20 @@
         "show sign language",
         "open video menu",
         "show video menu",
+        "sign language menu",
+        "open signs",
+        "show signs",
+        "open lessa menu",
+        "show lessa menu",
         "abrir lenguaje de senas",
         "mostrar lenguaje de senas",
         "abrir lengua de senas",
         "mostrar lengua de senas",
         "abrir menu de videos",
-        "mostrar menu de videos"
+        "mostrar menu de videos",
+        "abrir menu de lessa",
+        "mostrar menu de lessa",
+        "menu de senas"
       ])
     ) {
       return {
@@ -1626,11 +2408,17 @@
         "close sign language",
         "hide sign language",
         "close video menu",
+        "hide video menu",
+        "close signs",
+        "hide signs",
+        "close lessa menu",
         "cerrar lenguaje de senas",
         "ocultar lenguaje de senas",
         "cerrar lengua de senas",
         "ocultar lengua de senas",
-        "cerrar menu de videos"
+        "cerrar menu de videos",
+        "ocultar menu de videos",
+        "cerrar menu de lessa"
       ])
     ) {
       return {
@@ -1648,10 +2436,18 @@
         "add this to favorites",
         "favorite this",
         "save favorite",
+        "save this place",
+        "save this destination",
+        "keep this place",
+        "add place to favorites",
         "agregar a favoritos",
         "anadir a favoritos",
         "guardar favorito",
-        "guardar en favoritos"
+        "guardar en favoritos",
+        "guardar este lugar",
+        "guardar este destino",
+        "agrega esto a favoritos",
+        "anade esto a favoritos"
       ])
     ) {
       return {
@@ -1670,11 +2466,21 @@
         "book now",
         "reserve this",
         "reserve trip",
+        "book the trip",
+        "book the tour",
+        "reserve the tour",
+        "make a booking",
+        "start booking",
+        "start reservation",
         "reservar viaje",
         "reservar tour",
         "reservar ahora",
         "hacer reserva",
-        "book tour"
+        "book tour",
+        "empezar reserva",
+        "iniciar reserva",
+        "reservar este viaje",
+        "reservar este tour"
       ])
     ) {
       return {
@@ -1686,7 +2492,19 @@
       };
     }
 
-    if (includesAny(command, ["save plan", "save my plan", "guardar plan", "guardar mi plan"])) {
+    if (
+      includesAny(command, [
+        "save plan",
+        "save my plan",
+        "save this plan",
+        "keep my plan",
+        "guardar plan",
+        "guardar mi plan",
+        "guardar este plan",
+        "guardar itinerario",
+        "guardar mi itinerario"
+      ])
+    ) {
       return {
         action: "save_plan",
         target: "none",
@@ -1701,8 +2519,12 @@
         "log out",
         "logout",
         "sign out",
+        "close session",
+        "exit account",
         "cerrar sesion",
-        "salir de la cuenta"
+        "salir de la cuenta",
+        "cerrar mi cuenta",
+        "salir"
       ])
     ) {
       return {
@@ -1720,9 +2542,9 @@
     }
 
     const searchMatch =
-      command.match(/(?:search|find|look for|show me)\s+(?:destinations?\s+)?(?:for\s+|with\s+|about\s+)?(.+)/) ||
-      command.match(/(?:find|show me)\s+(.+)\s+destinations?/) ||
-      command.match(/(?:buscar|busca|encontrar|encuentra|mostrar|muestrame|ver)\s+(?:destinos?\s+|lugares?\s+)?(?:de\s+|con\s+|sobre\s+)?(.+)/) ||
+      command.match(/(?:search|find|look for|show me|look up|search for)\s+(?:destinations?\s+|places?\s+)?(?:for\s+|with\s+|about\s+)?(.+)/) ||
+      command.match(/(?:find|show me|look for)\s+(.+)\s+(?:destinations?|places?)/) ||
+      command.match(/(?:buscar|busca|encontrar|encuentra|mostrar|muestrame|ver|buscame|encuentrame)\s+(?:destinos?\s+|lugares?\s+)?(?:de\s+|con\s+|sobre\s+)?(.+)/) ||
       command.match(/(?:buscar|mostrar|muestrame)\s+(.+)\s+(?:destinos?|lugares?)/);
 
     if (searchMatch && searchMatch[1]) {
@@ -1767,13 +2589,18 @@
     for (const [phrase, filterValue] of Object.entries(DESTINATION_FILTERS)) {
       if (
         command.includes(`filter ${phrase}`) ||
+        command.includes(`only ${phrase}`) ||
         command.includes(`filtrar ${phrase}`) ||
+        command.includes(`solo ${phrase}`) ||
         command.includes(`show ${phrase}`) ||
         command.includes(`mostrar ${phrase}`) ||
         command.includes(`ver ${phrase}`) ||
         command.includes(`${phrase} destinations`) ||
+        command.includes(`${phrase} places`) ||
         command.includes(`destinos ${phrase}`) ||
         command.includes(`lugares ${phrase}`) ||
+        command.includes(`destinos de ${phrase}`) ||
+        command.includes(`lugares de ${phrase}`) ||
         command.includes(`sort by ${phrase}`)
       ) {
         return {
@@ -1792,11 +2619,15 @@
         command.includes(`show me ${phrase}`) ||
         command.includes(`open ${phrase}`) ||
         command.includes(`go to ${phrase}`) ||
+        command.includes(`read ${phrase}`) ||
+        command.includes(`tell me ${phrase}`) ||
         command.includes(`mostrar ${phrase}`) ||
         command.includes(`muestrame ${phrase}`) ||
         command.includes(`abrir ${phrase}`) ||
         command.includes(`abre ${phrase}`) ||
         command.includes(`ir a ${phrase}`) ||
+        command.includes(`leer ${phrase}`) ||
+        command.includes(`dime ${phrase}`) ||
         command.includes(`ver ${phrase}`)
       ) {
         return {
@@ -1815,10 +2646,15 @@
       command.includes("make a plan") ||
       command.includes("create a trip") ||
       command.includes("trip plan") ||
+      command.includes("build my trip") ||
+      command.includes("help me plan") ||
+      command.includes("plan this trip") ||
       command.includes("planear") ||
       command.includes("planificar") ||
       command.includes("crear viaje") ||
-      command.includes("hacer plan")
+      command.includes("hacer plan") ||
+      command.includes("armar viaje") ||
+      command.includes("ayudame a planear")
     ) {
       return {
         action: "fill_planner",
@@ -1829,7 +2665,7 @@
       };
     }
 
-    const checklistMatch = command.match(/(?:check|mark|add|marcar|agregar|anadir)\s+(?:the\s+|el\s+|la\s+)?(.+)/);
+    const checklistMatch = command.match(/(?:check|mark|add|select|marcar|agregar|anadir|seleccionar)\s+(?:the\s+|el\s+|la\s+)?(.+)/);
     if (checklistMatch && (command.includes("check") || command.includes("marcar"))) {
       return {
         action: "checklist",
@@ -1840,7 +2676,7 @@
       };
     }
 
-    const clickMatch = command.match(/(?:click|press|open|abre|abrir|tocar|presiona|selecciona)\s+(?:the\s+|el\s+|la\s+|los\s+|las\s+)?(.+)/);
+    const clickMatch = command.match(/(?:click|press|tap|choose|select|open|abre|abrir|tocar|presiona|selecciona|elige|escoge)\s+(?:the\s+|el\s+|la\s+|los\s+|las\s+)?(.+)/);
     if (clickMatch && clickMatch[1]) {
       const requested = clickMatch[1].trim();
       if (requested.length > 2) {
@@ -1904,6 +2740,7 @@
       "high_contrast",
       "dark_mode",
       "text_size",
+      "language",
       "search_destinations",
       "filter_destinations",
       "open_tab",
@@ -1935,6 +2772,8 @@
       "off",
       "increase",
       "decrease",
+      "en",
+      "es",
       "all",
       "nature",
       "beach",
@@ -1998,7 +2837,11 @@
       return;
     }
 
-    setStatus("Understanding your request with Ollama…");
+    setStatus(
+      getLanguageCode() === "es"
+        ? "Entendiendo tu solicitud con Ollama..."
+        : "Understanding your request with Ollama..."
+    );
 
     try {
       const ollamaAction = await askOllama(transcript);
@@ -2008,8 +2851,13 @@
 
       const errorMessage =
         error.name === "AbortError"
-          ? "Ollama took too long to respond. Keep the assistant server open and try again."
-          : error.message || "I could not reach the local assistant server. Run start-assistant-server.bat and open the local site it provides.";
+          ? getLanguageCode() === "es"
+            ? "Ollama tardo demasiado en responder. Manten abierto el servidor local del asistente e intenta otra vez."
+            : "Ollama took too long to respond. Keep the assistant server open and try again."
+          : error.message ||
+            (getLanguageCode() === "es"
+              ? "No pude conectarme al servidor local del asistente. Ejecuta start-assistant-server.bat y abre el sitio local que proporciona."
+              : "I could not reach the local assistant server. Run start-assistant-server.bat and open the local site it provides.");
 
       speak(errorMessage);
     }
@@ -2085,6 +2933,10 @@
         changeTextSize(command.value);
         break;
 
+      case "language":
+        setSiteLanguage(command.value);
+        break;
+
       case "search_destinations":
         searchDestinations(command.query, command.reply);
         break;
@@ -2138,7 +2990,7 @@
         break;
 
       case "repeat_help":
-        speak(command.reply || HELP_MESSAGE);
+        speak(command.reply || getHelpMessage());
         break;
 
       case "read_menu":
@@ -2164,7 +3016,9 @@
       default:
         speak(
           command.reply ||
-            "I did not understand. Say what can I say to hear the commands."
+            (getLanguageCode() === "es"
+              ? "No entendi. Di que puedo decir para escuchar los comandos."
+              : "I did not understand. Say what can I say to hear the commands.")
         );
         break;
     }
