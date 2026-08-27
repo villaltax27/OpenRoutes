@@ -61,6 +61,14 @@ const destinations = {
         description: "Crater lagoon view at the summit"
       },
       {
+        type: "video",
+        src: "videos/destinations/Gustavo - Santa ana volcano.mp4",
+        title: "Santa Ana Volcano Sign Language Guide",
+        alt: "Sign language video guide for Santa Ana Volcano",
+        poster: "https://www.paradisecatchers.com/wp-content/uploads/2023/04/Santa-Ana-Volcano-Crater3.jpg",
+        description: "Video explanation in sign language about Santa Ana Volcano"
+      },
+      {
         type: "image",
         src: "https://theworldtravelguy.com/wp-content/uploads/2023/07/DSCF3609-2.jpg",
         alt: "Hikers on the Santa Ana Volcano trail",
@@ -114,7 +122,7 @@ const destinations = {
       { category: "Mobility", title: "Walking Distance", text: "Expect a long uphill walk from the access area to the crater viewpoint.", status: "Limited", icon: "fa-person-hiking", evidence: "Best for travelers comfortable with moderate hiking." },
       { category: "Arrival", title: "Parking", text: "Parking is available near the park access area.", status: "Available", icon: "fa-square-parking", evidence: "Visitors still need to continue on foot after parking." },
       { category: "Facilities", title: "Restrooms", text: "Basic restrooms are available near access points, not along the trail.", status: "Limited", icon: "fa-restroom", evidence: "Use facilities before beginning the hike." },
-      { category: "Communication", title: "Sign Language Video", text: "A sign language video can be added to the gallery when available for this destination.", status: "Ask First", icon: "fa-hands", evidence: "Only destinations with uploaded videos display this support." },
+      { category: "Communication", title: "Sign Language Video", text: "A sign language video guide is available in the destination gallery.", status: "Available", icon: "fa-hands", evidence: "The Santa Ana Volcano carousel includes an uploaded sign language video." },
       { category: "Communication", title: "Voice Assistant", text: "The voice assistant can read page content and help users navigate with spoken commands.", status: "Available", icon: "fa-microphone-lines", evidence: "Enable the assistant prompt or say read page." },
       { category: "Support", title: "Guided Assistance", text: "Guides are recommended for safer hiking and orientation.", status: "Available", icon: "fa-hands-helping", evidence: "Guided entry helps manage route timing and safety." },
       { category: "Sensory", title: "Crowds and Noise", text: "Crowds can increase on weekends and holidays.", status: "Ask First", icon: "fa-users", evidence: "Visit early and confirm expected visitor flow." }
@@ -563,6 +571,14 @@ const destinations = {
         description: "Protected forest and mountain scenery"
       },
       {
+        type: "video",
+        src: "videos/destinations/Rachael - Impossible park.mp4",
+        title: "El Imposible Sign Language Guide",
+        alt: "Sign language video guide for El Imposible National Park",
+        poster: "https://guanacos.com/wp-content/uploads/2024/01/GUANACOS-PARQUE-NACIONAL-EL-IMPOSIBLE-2-1024x555.jpg",
+        description: "Video explanation in sign language about El Imposible National Park"
+      },
+      {
         type: "image",
         src: "https://i0.wp.com/www.explorelsalvador.com/wp-content/uploads/2017/11/El-Imposible-%C2%A9-Explore-El-Salvador.jpg?fit=5075%2C3397&ssl=1",
         alt: "Hikers in El Imposible National Park forest",
@@ -616,7 +632,7 @@ const destinations = {
       { category: "Mobility", title: "Trail Difficulty", text: "Hiking difficulty can be moderate to difficult depending on the selected trail.", status: "Limited", icon: "fa-person-hiking", evidence: "Choose routes according to stamina, weather and guide advice." },
       { category: "Arrival", title: "Parking", text: "Parking is available near access areas, depending on the selected sector.", status: "Available", icon: "fa-square-parking", evidence: "Confirm the exact access point before traveling." },
       { category: "Facilities", title: "Restrooms", text: "Basic facilities are limited and may not be close to all trails.", status: "Limited", icon: "fa-restroom", evidence: "Prepare before entering longer routes." },
-      { category: "Communication", title: "Sign Language Video", text: "A sign language video can be added to the gallery when available for this destination.", status: "Ask First", icon: "fa-hands", evidence: "Only destinations with uploaded videos display this support." },
+      { category: "Communication", title: "Sign Language Video", text: "A sign language video guide is available in the destination gallery.", status: "Available", icon: "fa-hands", evidence: "The El Imposible carousel includes an uploaded sign language video." },
       { category: "Communication", title: "Voice Assistant", text: "The voice assistant can read page content and help users navigate with spoken commands.", status: "Available", icon: "fa-microphone-lines", evidence: "Enable the assistant prompt or say read page." },
       { category: "Support", title: "Guided Assistance", text: "Guides are strongly recommended for route safety and orientation.", status: "Available", icon: "fa-hands-helping", evidence: "Natural protected areas require careful route planning." },
       { category: "Safety", title: "Emergency Planning", text: "Visitors should confirm permits, trail conditions and emergency support before arrival.", status: "Ask First", icon: "fa-kit-medical", evidence: "Signal, weather and route conditions can vary." }
@@ -1278,6 +1294,15 @@ function saveFavoriteItem(item) {
   localStorage.setItem(FAVORITES_KEY, JSON.stringify(filtered));
 }
 
+function getFavoriteImage() {
+  const galleryImage = data.gallery?.find((item) => {
+    if (typeof item === "string") return true;
+    return item?.type === "image" && item.src;
+  });
+
+  return typeof galleryImage === "string" ? galleryImage : galleryImage?.src || data.heroImage;
+}
+
 function setupFavoriteButton() {
   document.getElementById("addDestinationFavorite")?.addEventListener("click", () => {
     saveFavoriteItem({
@@ -1286,7 +1311,7 @@ function setupFavoriteButton() {
       title: data.name,
       subtitle: data.location,
       description: data.summary,
-      image: data.gallery?.[0] || data.heroImage,
+      image: getFavoriteImage(),
       link: `destination-detail.html?place=${place}`
     });
     window.location.href = "favorites.html";
