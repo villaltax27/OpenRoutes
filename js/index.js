@@ -59,6 +59,26 @@
         item.addEventListener("focus", () => speakText(text));
         item.addEventListener("blur", stopSpeaking);
     });
+
+    document.querySelectorAll(".destination-card").forEach((card) => {
+        const link = card.querySelector('a[href*="destination-detail.html"]');
+        if (!link) return;
+
+        card.classList.add("is-clickable");
+        card.setAttribute("role", "link");
+        card.setAttribute("aria-label", link.textContent.trim() ? `Open ${card.querySelector("h3")?.textContent?.trim() || "destination"} details` : "Open destination details");
+
+        card.addEventListener("click", (event) => {
+            if (event.target.closest("a, button, input, select, textarea, label")) return;
+            window.location.href = link.href;
+        });
+
+        card.addEventListener("keydown", (event) => {
+            if (event.key !== "Enter" && event.key !== " ") return;
+            event.preventDefault();
+            link.click();
+        });
+    });
 });
 // script.js - Intersection Observer para animaciones al hacer scroll
 document.addEventListener('DOMContentLoaded', () => {
