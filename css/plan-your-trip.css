@@ -146,7 +146,7 @@ a { color: inherit; }
     gap: 40px;
     background:
         linear-gradient(90deg, rgba(255,255,255,.76) 0%, rgba(255,255,255,.52) 38%, rgba(255,255,255,.10) 76%),
-        url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=80");
+        url("https://www.travelanddestinations.com/wp-content/uploads/2021/10/El-Salvador-landscapes.jpg");
     background-size: cover;
     background-position: center;
     position: relative;
@@ -765,7 +765,7 @@ body.dark-mode .auth-register { background: #69bf24 !important; color: #fff !imp
 body.dark-mode .planner-hero {
     background:
         linear-gradient(90deg, rgba(7,18,36,.86) 0%, rgba(11,31,55,.70) 46%, rgba(11,31,55,.18) 100%),
-        url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=80") !important;
+        url("https://www.travelanddestinations.com/wp-content/uploads/2021/10/El-Salvador-landscapes.jpg") !important;
     background-size: cover !important;
     background-position: center !important;
 }

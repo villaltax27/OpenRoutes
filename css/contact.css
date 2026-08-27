@@ -194,7 +194,7 @@ input:checked + .slider::before {
     overflow: hidden;
     background:
         linear-gradient(90deg, rgba(255,255,255,0.76) 0%, rgba(255,255,255,0.52) 32%, rgba(255,255,255,0.08) 62%),
-        url('https://images.unsplash.com/photo-1526951521990-620dc14c214b?q=80&w=1800&auto=format&fit=crop');
+        url("https://www.compassion.com/_next/image/?q=75&url=https%3A%2F%2Fimages.ctfassets.net%2Fv1fsq8y1pr0o%2F7muF6CYHtjiVXNLEajvwXG%2F8c94f19a2429bc9b1a7c539699663c3f%2F1209ES-0298.jpg%3Fw%3D1920%26q%3D75%26fm%3Dwebp&w=3840");
     background-size: cover;
     background-position: center;
 }
@@ -750,7 +750,7 @@ body.high-contrast .social-icons a {
         padding: 64px 6% 120px;
         background:
             linear-gradient(90deg, rgba(255,255,255,0.68), rgba(255,255,255,0.38), rgba(255,255,255,0.12)),
-            url('https://images.unsplash.com/photo-1526951521990-620dc14c214b?q=80&w=1800&auto=format&fit=crop');
+            url("https://www.compassion.com/_next/image/?q=75&url=https%3A%2F%2Fimages.ctfassets.net%2Fv1fsq8y1pr0o%2F7muF6CYHtjiVXNLEajvwXG%2F8c94f19a2429bc9b1a7c539699663c3f%2F1209ES-0298.jpg%3Fw%3D1920%26q%3D75%26fm%3Dwebp&w=3840");
         background-size: cover;
         background-position: center;
     }
