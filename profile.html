@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Open Routes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/settings.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/video-menu.css">
+    <link rel="stylesheet" href="css/responsive-fixes.css">
+</head>
+<body>
+    <header class="navbar">
+        <a class="logo" href="index.html" aria-label="Open Routes Home">
+            <img src="img/logo-openroutes.png" alt="Open Routes">
+        </a>
+
+        <nav class="nav-links" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="destinations.html">Destinations</a>
+            <a href="plan-your-trip.html">Plan Your Trip</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+
+        <div class="auth-actions">
+            <a class="auth-link" href="login.html">Login</a>
+            <a class="auth-link auth-register" href="registrer.html">Register</a>
+        </div>
+    </header>
+
+    <aside class="nav-video-menu" id="navVideoMenu" aria-label="Sign language navigation menu" aria-hidden="true">
+        <div class="nav-video-menu__header">
+            <div>
+                <span class="nav-video-menu__eyebrow">Sign language</span>
+                <h2>Explore Open Routes</h2>
+            </div>
+            <button class="nav-video-menu__close" type="button" id="closeVideoMenu" aria-label="Close sign language menu" title="Close sign language menu">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div class="nav-video-menu__list">
+            <a class="nav-video-item" href="index.html">
+                <div class="nav-video-item__media">
+                    <video muted loop playsinline preload="metadata" aria-label="Home sign language guide">
+                        <source src="videos/menu/Home.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="nav-video-item__text">
+                    <span>01</span>
+                    <strong>Home</strong>
+                    <small>Start here</small>
+                </div>
+            </a>
+
+            <a class="nav-video-item" href="destinations.html">
+                <div class="nav-video-item__media">
+                    <video muted loop playsinline preload="metadata" aria-label="Destinations sign language guide">
+                        <source src="videos/menu/Destinations.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="nav-video-item__text">
+                    <span>02</span>
+                    <strong>Destinations</strong>
+                    <small>Discover places</small>
+                </div>
+            </a>
+
+            <a class="nav-video-item" href="plan-your-trip.html">
+                <div class="nav-video-item__media">
+                    <video muted loop playsinline preload="metadata" aria-label="Plan Your Trip sign language guide">
+                        <source src="videos/menu/Plan%20your%20trip.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="nav-video-item__text">
+                    <span>03</span>
+                    <strong>Plan Your Trip</strong>
+                    <small>Plan your journey</small>
+                </div>
+            </a>
+
+            <a class="nav-video-item" href="about.html">
+                <div class="nav-video-item__media">
+                    <video muted loop playsinline preload="metadata" aria-label="About Us sign language guide">
+                        <source src="videos/menu/About%20us.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="nav-video-item__text">
+                    <span>04</span>
+                    <strong>About Us</strong>
+                    <small>Meet Open Routes</small>
+                </div>
+            </a>
+
+            <a class="nav-video-item" href="contact.html">
+                <div class="nav-video-item__media">
+                    <video muted loop playsinline preload="metadata" aria-label="Contact sign language guide">
+                        <source src="videos/menu/Conatct.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="nav-video-item__text">
+                    <span>05</span>
+                    <strong>Contact</strong>
+                    <small>Get in touch</small>
+                </div>
+            </a>
+        </div>
+    </aside>
+
+    <button class="nav-video-toggle" id="openVideoMenu" type="button" aria-label="Open sign language menu" aria-controls="navVideoMenu" aria-expanded="false" title="Open sign language menu">
+        <i class="fa-solid fa-hands"></i>
+    </button>
+
+    <main class="profile-page">
+        <section class="profile-hero" data-read="My Profile shows your Open Routes traveler summary, saved activity, bookings and quick actions.">
+            <div class="profile-hero-copy">
+                <span class="eyebrow">Traveler Profile</span>
+                <h1>My Profile</h1>
+                <p>Review your traveler identity, recent activity and saved Open Routes planning details in one clean place.</p>
+            </div>
+            <article class="profile-card-main">
+                <div class="profile-avatar-large" id="profileAvatar">U</div>
+                <div>
+                    <span class="profile-label" id="profileType">Accessible Explorer</span>
+                    <h2 id="profileName">Open Routes User</h2>
+                    <p id="profileEmail">user@openroutes.sv</p>
+                </div>
+            </article>
+        </section>
+
+        <section class="profile-shell" aria-label="Profile overview">
+            <div class="profile-summary-grid">
+                <article class="summary-card">
+                    <i class="fa-solid fa-heart"></i>
+                    <span id="profileFavoriteCount">0</span>
+                    <p>Saved favorites</p>
+                </article>
+                <article class="summary-card">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <span id="profileBookingCount">0</span>
+                    <p>Bookings</p>
+                </article>
+                <article class="summary-card">
+                    <i class="fa-solid fa-route"></i>
+                    <span id="profilePlanState">Draft</span>
+                    <p>Trip plan</p>
+                </article>
+                <article class="summary-card">
+                    <i class="fa-solid fa-language"></i>
+                    <span id="profileGuideCount">0</span>
+                    <p>Saved guides</p>
+                </article>
+            </div>
+
+            <div class="profile-layout">
+                <section class="profile-panel">
+                    <div class="panel-heading">
+                        <div>
+                            <span class="section-kicker">Overview</span>
+                            <h2>Traveler card</h2>
+                        </div>
+                        <a class="profile-action-link" href="settings.html">Edit settings</a>
+                    </div>
+                    <div class="traveler-card">
+                        <div class="traveler-card-row">
+                            <span><i class="fa-solid fa-user"></i> Display name</span>
+                            <strong id="profileDisplayName">Open Routes User</strong>
+                        </div>
+                        <div class="traveler-card-row">
+                            <span><i class="fa-solid fa-compass"></i> Travel style</span>
+                            <strong id="profileTravelStyle">Not selected</strong>
+                        </div>
+                        <div class="traveler-card-row">
+                            <span><i class="fa-solid fa-shoe-prints"></i> Preferred difficulty</span>
+                            <strong id="profileDifficulty">Not selected</strong>
+                        </div>
+                        <div class="traveler-card-row">
+                            <span><i class="fa-solid fa-star"></i> Main interests</span>
+                            <strong id="profileInterests">No interests saved</strong>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="profile-panel">
+                    <div class="panel-heading">
+                        <div>
+                            <span class="section-kicker">Activity</span>
+                            <h2>Recent activity</h2>
+                        </div>
+                        <a class="profile-action-link" href="favorites.html">Open favorites</a>
+                    </div>
+                    <div class="activity-list" id="profileActivityList"></div>
+                </section>
+            </div>
+
+            <div class="profile-layout profile-layout-secondary">
+                <section class="profile-panel">
+                    <div class="panel-heading">
+                        <div>
+                            <span class="section-kicker">Bookings</span>
+                            <h2>Trip status</h2>
+                        </div>
+                        <a class="profile-action-link" href="index.html#popularTours">View tours</a>
+                    </div>
+                    <article class="booking-preview" id="profileBookingPreview">
+                        <i class="fa-solid fa-suitcase-rolling"></i>
+                        <div>
+                            <h3>No booking yet</h3>
+                            <p>When you book a tour, your latest confirmation will appear here.</p>
+                        </div>
+                    </article>
+                </section>
+
+                <section class="profile-panel">
+                    <div class="panel-heading">
+                        <div>
+                            <span class="section-kicker">Guide note</span>
+                            <h2>Public note for guides</h2>
+                        </div>
+                    </div>
+                    <label class="guide-note-field">
+                        <span>Short note</span>
+                        <textarea id="guideNote" rows="5" maxlength="180" placeholder="Example: I prefer slower routes and clear meeting points."></textarea>
+                    </label>
+                    <div class="note-actions">
+                        <small id="guideNoteCount">0/180</small>
+                        <button class="save-btn" type="button" id="saveGuideNote"><i class="fa-solid fa-floppy-disk"></i> Save note</button>
+                    </div>
+                </section>
+            </div>
+
+            <section class="quick-profile-actions">
+                <a href="plan-your-trip.html"><i class="fa-solid fa-map-location-dot"></i><span>Plan a trip</span></a>
+                <a href="destinations.html"><i class="fa-solid fa-mountain-sun"></i><span>Explore destinations</span></a>
+                <a href="interpreters.html"><i class="fa-solid fa-hands-helping"></i><span>Find a guide</span></a>
+                <a href="contact.html"><i class="fa-solid fa-headset"></i><span>Contact support</span></a>
+            </section>
+        </section>
+    </main>
+
+    <div class="accessibility-dropdown floating-accessibility">
+        <button class="btn-accessible-mode" id="btnDropdownToggle" aria-expanded="false" aria-haspopup="true" aria-label="Accessible Mode" title="Accessible Mode">
+            <i class="fa-solid fa-universal-access"></i>
+        </button>
+        <div class="dropdown-menu" id="accessibilityMenu">
+            <label class="menu-item">
+                <span><i class="fa-solid fa-circle-half-stroke"></i> High Contrast</span>
+                <input type="checkbox" id="chkContrast">
+                <span class="slider"></span>
+            </label>
+            <label class="menu-item">
+                <span><i class="fa-solid fa-moon"></i> Dark Mode</span>
+                <input type="checkbox" id="chkDarkMode">
+                <span class="slider"></span>
+            </label>
+            <div class="menu-item text-size-control">
+                <div class="text-size-header">
+                    <span><i class="fa-solid fa-text-height"></i> Text Size</span>
+                    <strong id="textSizeValue">100%</strong>
+                </div>
+                <div class="text-size-actions">
+                    <button type="button" id="textSizeMinus" aria-label="Decrease text size">-</button>
+                    <input type="range" id="textSizeRange" min="90" max="130" step="5" value="100" aria-label="Text size">
+                    <button type="button" id="textSizePlus" aria-label="Increase text size">+</button>
+                </div>
+                <input type="checkbox" id="chkTextSize" hidden>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer" id="contact">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="img/logo-openroutes-white.png" alt="Open Routes" class="footer-logo-img">
+                <p>Travel without limits, explore with freedom.</p>
+            </div>
+
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="destinations.html">Destinations</a></li>
+                    <li><a href="plan-your-trip.html">Plan Your Trip</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fa-solid fa-envelope"></i> info@openroutes.sv</p>
+                <p><i class="fa-solid fa-phone"></i> +503 1234 5678</p>
+            </div>
+
+            <div class="newsletter">
+                <h3>Newsletter</h3>
+                <p>Subscribe to receive travel tips and accessible updates.</p>
+                <form>
+                    <input type="email" placeholder="Your email" aria-label="Your email">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <p class="copy">&copy; 2026 Open Routes. All rights reserved.</p>
+    </footer>
+
+    <script src="js/profile.js"></script>
+    <script src="js/text-size-control.js"></script>
+    <script src="js/dark-mode.js"></script>
+    <script src="js/auth-state.js"></script>
+    <script src="js/video-menu.js"></script>
+    <script src="js/voice-assistant.js"></script>
+    <script src="js/language.js"></script>
+</body>
+</html>

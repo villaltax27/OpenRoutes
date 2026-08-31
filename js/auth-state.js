@@ -25,7 +25,7 @@
                     <i class="fa-solid fa-chevron-down"></i>
                 </button>
                 <div class="account-dropdown">
-                    <a href="#" class="account-item"><i class="fa-regular fa-user"></i> My Profile</a>
+                    <a href="profile.html" class="account-item"><i class="fa-regular fa-user"></i> My Profile</a>
                     <a href="favorites.html" class="account-item"><i class="fa-regular fa-heart"></i> My Favorites</a>
                     <a href="settings.html" class="account-item"><i class="fa-solid fa-gear"></i> Settings</a>
                     <a href="faq.html" class="account-item"><i class="fa-regular fa-circle-question"></i> Help & FAQ</a>

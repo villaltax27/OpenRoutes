@@ -617,7 +617,7 @@ body:not(.high-contrast) .tour-hero {
 body:not(.high-contrast) .profile-hero {
     background:
         linear-gradient(120deg, rgba(255,255,255,.76), rgba(238,246,255,.50), rgba(238,246,255,.12)),
-        url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1600&q=80') !important;
+        url('https://commons.wikimedia.org/wiki/Special:FilePath/Lago_Ilopango_desde_Cojutepeque_2011.jpg') !important;
     background-size: cover !important;
     background-position: center !important;
 }
@@ -657,7 +657,7 @@ body.dark-mode:not(.high-contrast) .tour-hero {
 body.dark-mode:not(.high-contrast) .profile-hero {
     background:
         linear-gradient(120deg, rgba(7,18,36,.84), rgba(11,31,55,.60), rgba(11,31,55,.16)),
-        url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1600&q=80') !important;
+        url('https://commons.wikimedia.org/wiki/Special:FilePath/Lago_Ilopango_desde_Cojutepeque_2011.jpg') !important;
     background-size: cover !important;
     background-position: center !important;
 }
