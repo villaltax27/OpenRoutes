@@ -21,6 +21,7 @@
     popular_tours: "index.html#popularTours",
     about: "about.html",
     contact: "contact.html",
+    profile: "profile.html",
     favorites: "favorites.html",
     interpreters: "interpreters.html",
     steven: "Steven_information.html",
@@ -57,12 +58,12 @@
   const NAVIGATION_MESSAGES = Object.freeze({
     en:
       "Main pages: Home, Destinations, Plan Your Trip, About Us, and Contact. " +
-      "Account pages: Login, Register, Favorites, Settings, and FAQ. " +
+      "Account pages: Login, Register, My Profile, Favorites, Settings, and FAQ. " +
       "Destination pages: Lake Coatepeque, El Tunco Beach, Suchitoto, Santa Ana Volcano, Historic Center and El Imposible. " +
       "Tour pages: Santa Ana Volcano, Lake Coatepeque, El Tunco, Suchitoto, Cerro Verde and Ruta de las Flores.",
     es:
       "Paginas principales: Inicio, Destinos, Planifica tu viaje, Sobre nosotros y Contacto. " +
-      "Paginas de cuenta: Iniciar sesion, Registrarse, Favoritos, Configuracion y Preguntas frecuentes. " +
+      "Paginas de cuenta: Iniciar sesion, Registrarse, Mi perfil, Favoritos, Configuracion y Preguntas frecuentes. " +
       "Paginas de destino: Lago de Coatepeque, playa El Tunco, Suchitoto, volcan de Santa Ana, Centro Historico y El Imposible. " +
       "Paginas de tours: volcan de Santa Ana, lago de Coatepeque, El Tunco, Suchitoto, Cerro Verde y Ruta de las Flores."
   });
@@ -76,6 +77,7 @@
       "tour-detail.html": "This is a tour detail page. It shows the package information, price, date selection, number of travelers, accessibility requests and booking summary.",
       "about.html": "This is the About Us page. It explains the Open Routes project, the team's mission and the people behind the accessible tourism website.",
       "contact.html": "This is the contact page. Visitors can send a message, find support information and contact Open Routes for travel or accessibility questions.",
+      "profile.html": "This is the My Profile page. It shows the user's traveler summary, saved activity, latest booking, favorites count and quick links for planning.",
       "favorites.html": "This is the favorites page. It shows destinations, guides or interpreters saved by the user while planning a trip.",
       "interpreters.html": "This is the interpreters and guides page. Visitors can find people who support language, sign language and accessible travel planning.",
       "Steven_information.html": "This is Steven's interpreter profile page. It shows information about Steven, his support services and options to contact or save him.",
@@ -93,6 +95,7 @@
       "tour-detail.html": "Esta es una pagina de detalle de tour. Muestra informacion del paquete, precio, fecha, numero de viajeros, solicitudes de accesibilidad y resumen de reserva.",
       "about.html": "Esta es la pagina About Us. Explica el proyecto Open Routes, la mision del equipo y las personas detras del sitio de turismo accesible.",
       "contact.html": "Esta es la pagina de contacto. Los visitantes pueden enviar un mensaje, encontrar soporte y contactar a Open Routes por dudas de viaje o accesibilidad.",
+      "profile.html": "Esta es la pagina Mi perfil. Muestra el resumen del viajero, actividad guardada, ultima reserva, cantidad de favoritos y accesos rapidos para planificar.",
       "favorites.html": "Esta es la pagina de favoritos. Muestra destinos, guias o interpretes guardados por el usuario mientras planea su viaje.",
       "interpreters.html": "Esta es la pagina de interpretes y guias. Los visitantes pueden encontrar personas que apoyan con idioma, lengua de senas y planificacion accesible.",
       "Steven_information.html": "Esta es la pagina del perfil del interprete Steven. Muestra informacion sobre Steven, sus servicios de apoyo y opciones para contactarlo o guardarlo.",
@@ -1711,6 +1714,22 @@
           "mis favoritos",
           "lugares guardados",
           "viajes guardados"
+        ]
+      },
+      {
+        target: "profile",
+        label: "My Profile",
+        aliases: [
+          "profile",
+          "my profile",
+          "user profile",
+          "traveler profile",
+          "open profile",
+          "perfil",
+          "mi perfil",
+          "perfil de usuario",
+          "perfil de viajero",
+          "abrir perfil"
         ]
       },
       {
