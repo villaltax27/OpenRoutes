@@ -31,12 +31,18 @@
     videos.forEach((video) => {
       if (!open) {
         video.pause();
-        video.currentTime = 0;
+        if (video.readyState > 0) {
+          video.currentTime = 0;
+        }
         return;
       }
 
       video.muted = true;
       video.setAttribute("muted", "");
+      video.preload = "metadata";
+      if (video.readyState === 0) {
+        video.load();
+      }
       const playPromise = video.play();
       if (playPromise) playPromise.catch(() => {});
     });
