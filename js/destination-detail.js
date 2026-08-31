@@ -383,7 +383,7 @@ const destinations = {
       },
       {
         type: "image",
-        src: "https://www.gotravelly.com/blog/wp-content/uploads/2021/08/Suchitoto.jpg",
+        src: "https://strapi-imaginary.weroad.it/resource/coverMobile/217476/luftaufnahme-kolonialkirche-stadt-see-berge-sonnenuntergang.jpg",
         alt: "Suchitoto town square and white church",
         title: "Central Plaza",
         description: "Town square and church facade"
@@ -492,7 +492,7 @@ const destinations = {
       },
       {
         type: "image",
-        src: "https://3.bp.blogspot.com/-RUhU3wUDuK8/VxhHCOd0oPI/AAAAAAAAAgU/-2dB3U3zLJA3wjL3NGQ57AipaFrm7b96QCLcB/s1600/palacio%2Bnacional.jpg",
+        src: "https://centrohistorico.gob.sv/wp-content/uploads/2025/07/DJI_0002.jpg",
         alt: "National Palace in San Salvador",
         title: "National Palace",
         description: "Historic civic architecture in the city center"

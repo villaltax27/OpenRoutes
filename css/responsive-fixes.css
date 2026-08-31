@@ -593,7 +593,7 @@ body.dark-mode .account-avatar {
 body:not(.high-contrast) .favorites-hero {
     background:
         linear-gradient(90deg, rgba(255,255,255,.76), rgba(255,255,255,.52) 40%, rgba(255,255,255,.10)),
-        url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=80') !important;
+        url('https://commons.wikimedia.org/wiki/Special:FilePath/Conchagua%2C_Golfo_de_Fonseca.jpg') !important;
     background-size: cover !important;
     background-position: center !important;
 }
@@ -633,7 +633,7 @@ body:not(.high-contrast) .auth-page {
 body.dark-mode:not(.high-contrast) .favorites-hero {
     background:
         linear-gradient(90deg, rgba(7,18,36,.84), rgba(11,31,55,.62) 42%, rgba(11,31,55,.16)),
-        url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=80') !important;
+        url('https://commons.wikimedia.org/wiki/Special:FilePath/Conchagua%2C_Golfo_de_Fonseca.jpg') !important;
     background-size: cover !important;
     background-position: center !important;
 }
@@ -690,7 +690,7 @@ body.dark-mode:not(.high-contrast) .auth-page {
     body:not(.high-contrast) .favorites-hero {
         background:
             linear-gradient(90deg, rgba(255,255,255,.66), rgba(255,255,255,.36), rgba(255,255,255,.10)),
-            url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=80') !important;
+            url('https://commons.wikimedia.org/wiki/Special:FilePath/Conchagua%2C_Golfo_de_Fonseca.jpg') !important;
         background-size: cover !important;
     }
 
@@ -711,7 +711,7 @@ body.dark-mode:not(.high-contrast) .auth-page {
     body.dark-mode:not(.high-contrast) .favorites-hero {
         background:
             linear-gradient(90deg, rgba(7,18,36,.78), rgba(11,31,55,.50), rgba(11,31,55,.12)),
-            url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=80') !important;
+            url('https://commons.wikimedia.org/wiki/Special:FilePath/Conchagua%2C_Golfo_de_Fonseca.jpg') !important;
         background-size: cover !important;
     }
 

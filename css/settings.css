@@ -47,7 +47,7 @@ button, input, select { font: inherit; }
     padding: 58px 9% 34px;
     background:
         linear-gradient(90deg, rgba(255,255,255,.76), rgba(255,255,255,.46)),
-        url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=80");
+        url("https://commons.wikimedia.org/wiki/Special:FilePath/Boquer%C3%B3n_crater.jpg");
     background-size: cover;
     background-position: center;
 }
