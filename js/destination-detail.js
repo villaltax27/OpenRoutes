@@ -937,7 +937,7 @@ function renderGallery(images) {
           if (media.type === "video") {
             return `
               <article class="gallery-slide video-slide" aria-label="Sign language video ${index + 1} of ${galleryImages.length}: ${media.title}">
-                <video controls muted preload="metadata" playsinline ${media.poster ? `poster="${media.poster}"` : ""} aria-label="${media.alt}">
+                <video controls muted preload="none" playsinline ${media.poster ? `poster="${media.poster}"` : ""} aria-label="${media.alt}">
                   <source src="${media.src}" type="${media.mime || "video/mp4"}">
                   Your browser does not support the video tag.
                 </video>
@@ -953,7 +953,7 @@ function renderGallery(images) {
 
           return `
             <article class="gallery-slide" aria-label="Photo ${index + 1} of ${galleryImages.length}: ${media.title}">
-              <img src="${media.src}" alt="${media.alt}" loading="lazy">
+              <img src="${media.src}" alt="${media.alt}" loading="lazy" decoding="async">
               <div class="gallery-caption">
                 <div>
                   <strong>${media.title}</strong>
