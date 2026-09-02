@@ -59,7 +59,7 @@ body {
     min-width: 42px !important;
     border-radius: 50% !important;
     overflow: hidden !important;
-    background: linear-gradient(135deg, var(--primary-blue, #0b4f9f), var(--green, #69bf24)) !important;
+    background: var(--green, #69bf24) !important;
     color: #ffffff !important;
     display: grid !important;
     place-items: center !important;
@@ -72,6 +72,17 @@ body {
     width: 100% !important;
     height: 100% !important;
     object-fit: cover !important;
+}
+
+.account-avatar-placeholder {
+    background: #d1d5db !important;
+    color: #ffffff !important;
+}
+
+.account-avatar-placeholder i {
+    color: #ffffff !important;
+    font-size: 1.05rem !important;
+    transform: none !important;
 }
 
 .account-greeting {
@@ -160,8 +171,12 @@ body.dark-mode .account-item i {
 }
 
 body.dark-mode .account-avatar {
-    background: linear-gradient(135deg, #0b74ff, #69bf24) !important;
+    background: #69bf24 !important;
     color: #ffffff !important;
+}
+
+body.dark-mode .account-avatar-placeholder {
+    background: #6b7280 !important;
 }
 
 @media (max-width: 760px) {

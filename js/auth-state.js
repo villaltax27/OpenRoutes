@@ -15,12 +15,13 @@
         const displayName = getFirstName(user.name || user.email || "User");
         const avatar = user.photo
             ? `<img src="${user.photo}" alt="${displayName}">`
-            : `<span>${getInitials(displayName)}</span>`;
+            : `<i class="fa-solid fa-user" aria-hidden="true"></i>`;
+        const avatarClass = user.photo ? "account-avatar" : "account-avatar account-avatar-placeholder";
 
         container.innerHTML = `
             <div class="account-menu">
                 <button class="account-toggle" type="button" aria-expanded="false" aria-haspopup="true">
-                    <span class="account-avatar">${avatar}</span>
+                    <span class="${avatarClass}" aria-label="${user.photo ? displayName : "Default profile picture"}">${avatar}</span>
                     <span class="account-greeting">Hi, ${displayName}</span>
                     <i class="fa-solid fa-chevron-down"></i>
                 </button>

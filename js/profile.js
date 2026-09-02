@@ -60,10 +60,13 @@ function renderAvatar(photo, name) {
 
     if (photo) {
         avatar.innerHTML = `<img src="${photo}" alt="${name}">`;
+        avatar.classList.remove("is-placeholder");
         return;
     }
 
-    avatar.textContent = getInitials(name);
+    avatar.classList.add("is-placeholder");
+    avatar.innerHTML = `<i class="fa-solid fa-user" aria-hidden="true"></i>`;
+    avatar.setAttribute("aria-label", "Default profile picture");
 }
 
 function formatInterests(interests) {

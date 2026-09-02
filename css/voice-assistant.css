@@ -35,7 +35,7 @@
   display: grid;
   place-items: center;
   margin-bottom: 20px;
-  background: linear-gradient(135deg, #0f72d9, #69bf24);
+  background: #0f72d9;
   color: #ffffff;
   font-size: 1.45rem;
 }
