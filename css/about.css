@@ -429,6 +429,16 @@ input:checked + .slider::before {
     gap: 28px;
 }
 
+@media (min-width: 1181px) {
+    .team-grid .member:nth-child(5) {
+        grid-column: 2;
+    }
+
+    .team-grid .member:nth-child(6) {
+        grid-column: 3;
+    }
+}
+
 .member {
     padding: 28px 22px;
     text-align: center;
