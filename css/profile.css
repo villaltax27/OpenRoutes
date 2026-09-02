@@ -48,7 +48,7 @@
     border-radius: 50%;
     display: grid;
     place-items: center;
-    background: linear-gradient(135deg, var(--bright-blue), var(--green));
+    background: var(--green);
     color: #fff;
     font-size: 2rem;
     font-weight: 800;
@@ -60,6 +60,16 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.profile-avatar-large.is-placeholder {
+    background: #d1d5db;
+    color: #ffffff;
+}
+
+.profile-avatar-large.is-placeholder i {
+    color: #ffffff;
+    font-size: 2.15rem;
 }
 
 .profile-label {
