@@ -145,7 +145,7 @@ a { color: inherit; }
     align-items: center;
     gap: 40px;
     background:
-        linear-gradient(90deg, rgba(255,255,255,.76) 0%, rgba(255,255,255,.52) 38%, rgba(255,255,255,.10) 76%),
+        linear-gradient(90deg, rgba(255,255,255,.90) 0%, rgba(255,255,255,.76) 42%, rgba(255,255,255,.30) 76%, rgba(255,255,255,.10) 100%),
         url("https://www.travelanddestinations.com/wp-content/uploads/2021/10/El-Salvador-landscapes.jpg");
     background-size: cover;
     background-position: center;
@@ -187,6 +187,7 @@ a { color: inherit; }
     color: #17345c;
     max-width: 600px;
     margin-bottom: 30px;
+    text-shadow: 0 1px 14px rgba(255, 255, 255, .78);
 }
 .hero-actions,
 .result-actions,
