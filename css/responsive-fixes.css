@@ -747,3 +747,1140 @@ body.dark-mode:not(.high-contrast) .auth-page {
         background-size: cover !important;
     }
 }
+
+/* Final high contrast pass: keep media visible and make text/buttons readable. */
+body.high-contrast {
+    background: #000 !important;
+    color: #fff !important;
+}
+
+body.high-contrast img,
+body.high-contrast video,
+body.high-contrast iframe {
+    filter: none !important;
+    opacity: 1 !important;
+}
+
+body.high-contrast.or-page-index .hero {
+    background:
+        linear-gradient(90deg, rgba(0,0,0,.82) 0%, rgba(0,0,0,.66) 42%, rgba(0,0,0,.32) 100%),
+        url('https://elsalvador.travel/system/wp-content/uploads/2020/01/centro-2.jpg') !important;
+}
+
+body.high-contrast.or-page-destinations .hero {
+    background:
+        linear-gradient(90deg, rgba(0,0,0,.82) 0%, rgba(0,0,0,.64) 42%, rgba(0,0,0,.30) 100%),
+        url('https://pueblosbonitos.net/wp-content/uploads/2023/08/Pueblos-en-El-Salvador-con-Playa-Pueblos-en-El-Salvador-con-Playa-para-el-Verano.jpg') !important;
+}
+
+body.high-contrast.or-page-about .hero {
+    background:
+        linear-gradient(90deg, rgba(0,0,0,.78) 0%, rgba(0,0,0,.56) 44%, rgba(0,0,0,.22) 100%),
+        url('../img/foto grupal.jpg') !important;
+}
+
+body.high-contrast.or-page-contact .hero {
+    background:
+        linear-gradient(90deg, rgba(0,0,0,.82) 0%, rgba(0,0,0,.64) 44%, rgba(0,0,0,.30) 100%),
+        url("https://www.compassion.com/_next/image/?q=75&url=https%3A%2F%2Fimages.ctfassets.net%2Fv1fsq8y1pr0o%2F7muF6CYHtjiVXNLEajvwXG%2F8c94f19a2429bc9b1a7c539699663c3f%2F1209ES-0298.jpg%3Fw%3D1920%26q%3D75%26fm%3Dwebp&w=3840") !important;
+}
+
+body.high-contrast .planner-hero {
+    background:
+        linear-gradient(90deg, rgba(0,0,0,.82) 0%, rgba(0,0,0,.64) 42%, rgba(0,0,0,.30) 100%),
+        url("https://www.travelanddestinations.com/wp-content/uploads/2021/10/El-Salvador-landscapes.jpg") !important;
+}
+
+body.high-contrast .favorites-hero {
+    background:
+        linear-gradient(90deg, rgba(0,0,0,.82), rgba(0,0,0,.62) 44%, rgba(0,0,0,.30)),
+        url('https://commons.wikimedia.org/wiki/Special:FilePath/Conchagua%2C_Golfo_de_Fonseca.jpg') !important;
+}
+
+body.high-contrast .faq-hero {
+    background:
+        linear-gradient(90deg, rgba(0,0,0,.82), rgba(0,0,0,.62) 48%, rgba(0,0,0,.30)),
+        url("https://commons.wikimedia.org/wiki/Special:FilePath/ES_Tazumal_06_2011_2216.jpg") !important;
+}
+
+body.high-contrast .settings-hero {
+    background:
+        linear-gradient(90deg, rgba(0,0,0,.82), rgba(0,0,0,.64) 48%, rgba(0,0,0,.30)),
+        url("https://commons.wikimedia.org/wiki/Special:FilePath/Boquer%C3%B3n_crater.jpg") !important;
+}
+
+body.high-contrast .statement-hero {
+    background:
+        linear-gradient(90deg, rgba(0,0,0,.82), rgba(0,0,0,.64) 52%, rgba(0,0,0,.30)),
+        url("https://commons.wikimedia.org/wiki/Special:FilePath/Joya_Ceren_banner.jpg") !important;
+}
+
+body.high-contrast .interpreters-hero {
+    background:
+        linear-gradient(90deg, rgba(0,0,0,.82), rgba(0,0,0,.62) 42%, rgba(0,0,0,.30)),
+        url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1800&q=80') !important;
+}
+
+body.high-contrast .profile-hero {
+    background:
+        linear-gradient(90deg, rgba(0,0,0,.82), rgba(0,0,0,.62) 48%, rgba(0,0,0,.30)),
+        url('https://commons.wikimedia.org/wiki/Special:FilePath/Lago_Ilopango_desde_Cojutepeque_2011.jpg') !important;
+}
+
+body.high-contrast .tour-hero,
+body.high-contrast .place-hero {
+    background-image:
+        linear-gradient(90deg, rgba(0,0,0,.84) 0%, rgba(0,0,0,.64) 46%, rgba(0,0,0,.34) 100%),
+        var(--hero-image) !important;
+}
+
+body.high-contrast .auth-page {
+    background:
+        linear-gradient(120deg, rgba(0,0,0,.86), rgba(0,0,0,.68), rgba(0,0,0,.42)),
+        url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=80') !important;
+}
+
+body.high-contrast .hero,
+body.high-contrast .planner-hero,
+body.high-contrast .favorites-hero,
+body.high-contrast .faq-hero,
+body.high-contrast .settings-hero,
+body.high-contrast .statement-hero,
+body.high-contrast .interpreters-hero,
+body.high-contrast .profile-hero,
+body.high-contrast .tour-hero,
+body.high-contrast .place-hero,
+body.high-contrast .auth-page {
+    background-color: #000 !important;
+    background-size: cover !important;
+    background-position: center !important;
+    color: #fff !important;
+}
+
+body.high-contrast .hero::after,
+body.high-contrast .planner-hero::after,
+body.high-contrast .favorites-hero::after,
+body.high-contrast .interpreters-hero::after,
+body.high-contrast .tour-hero::after {
+    background: #000 !important;
+    border-top-color: #ff0 !important;
+}
+
+body.high-contrast .navbar,
+body.high-contrast .footer,
+body.high-contrast .dropdown-menu,
+body.high-contrast .account-dropdown,
+body.high-contrast .accessibility-dropdown .dropdown-menu,
+body.high-contrast .nav-video-menu,
+body.high-contrast .orva-panel,
+body.high-contrast .orva-prompt,
+body.high-contrast .hero-note,
+body.high-contrast .hero-status,
+body.high-contrast .faq-hero-card,
+body.high-contrast .faq-group,
+body.high-contrast .destination-card,
+body.high-contrast .tour-card,
+body.high-contrast .tools-strip,
+body.high-contrast .favorite-card,
+body.high-contrast .favorites-toolbar,
+body.high-contrast .empty-state,
+body.high-contrast .settings-nav,
+body.high-contrast .settings-content,
+body.high-contrast .setting-row,
+body.high-contrast .statement-status,
+body.high-contrast .statement-nav,
+body.high-contrast .statement-card,
+body.high-contrast .tool-list article,
+body.high-contrast .profile-card-main,
+body.high-contrast .summary-card,
+body.high-contrast .profile-panel,
+body.high-contrast .quick-profile-actions,
+body.high-contrast .traveler-card-row,
+body.high-contrast .activity-item,
+body.high-contrast .booking-preview,
+body.high-contrast .place-hero-card,
+body.high-contrast .destination-page,
+body.high-contrast .side-card,
+body.high-contrast .info-card,
+body.high-contrast .route-meta-grid article,
+body.high-contrast .practical-list li,
+body.high-contrast .accessibility-item,
+body.high-contrast .local-context-card,
+body.high-contrast .local-route-card,
+body.high-contrast .guide-card,
+body.high-contrast .tip-card,
+body.high-contrast .planner-card,
+body.high-contrast .result-card,
+body.high-contrast .board-card,
+body.high-contrast .checklist-card,
+body.high-contrast .planner-route-preview,
+body.high-contrast .choice-chip,
+body.high-contrast .support-grid label,
+body.high-contrast .time-options label,
+body.high-contrast .checklist-grid label,
+body.high-contrast .useful-card,
+body.high-contrast .traveler-help-card,
+body.high-contrast .useful-accordion,
+body.high-contrast .contact-card,
+body.high-contrast .contact-form,
+body.high-contrast .contact-info-card,
+body.high-contrast .contact-method,
+body.high-contrast .member-card,
+body.high-contrast .value-card,
+body.high-contrast .mission-card,
+body.high-contrast .auth-card {
+    background: #111 !important;
+    border-color: #ff0 !important;
+    box-shadow: none !important;
+    color: #fff !important;
+}
+
+body.high-contrast h1,
+body.high-contrast h2,
+body.high-contrast h3,
+body.high-contrast h4,
+body.high-contrast .section-title,
+body.high-contrast .hero-content h1,
+body.high-contrast .hero-copy h1,
+body.high-contrast .profile-hero h1,
+body.high-contrast .place-title,
+body.high-contrast .tour-title,
+body.high-contrast .eyebrow,
+body.high-contrast .badge,
+body.high-contrast .tour-badge,
+body.high-contrast .favorite-type,
+body.high-contrast .nav-video-menu__eyebrow {
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    background-clip: initial !important;
+    -webkit-text-fill-color: #ff0 !important;
+    color: #ff0 !important;
+}
+
+body.high-contrast p,
+body.high-contrast li,
+body.high-contrast label,
+body.high-contrast small,
+body.high-contrast span,
+body.high-contrast strong,
+body.high-contrast .subtitle,
+body.high-contrast .lead,
+body.high-contrast .hero-content p,
+body.high-contrast .hero-copy p,
+body.high-contrast .profile-hero p,
+body.high-contrast .place-hero-card p,
+body.high-contrast .hero-note span,
+body.high-contrast .faq-hero-card p,
+body.high-contrast .destination-card p,
+body.high-contrast .tour-card p,
+body.high-contrast .favorite-body p,
+body.high-contrast .setting-row p,
+body.high-contrast .statement-card p {
+    color: #fff !important;
+}
+
+body.high-contrast a,
+body.high-contrast .nav-links a,
+body.high-contrast .account-toggle,
+body.high-contrast .account-item,
+body.high-contrast .breadcrumb a,
+body.high-contrast .tour-btn,
+body.high-contrast .view-more,
+body.high-contrast .footer a {
+    color: #ff0 !important;
+}
+
+body.high-contrast .nav-links a:hover,
+body.high-contrast .nav-links a.active,
+body.high-contrast .account-item:hover {
+    border-color: #ff0 !important;
+    color: #ff0 !important;
+}
+
+body.high-contrast .btn,
+body.high-contrast .btn-green,
+body.high-contrast .btn-yellow,
+body.high-contrast .hero-button,
+body.high-contrast .btn-accessible-mode,
+body.high-contrast .floating-accessibility .btn-accessible-mode,
+body.high-contrast .filter-tabs button.active,
+body.high-contrast .settings-tab.active,
+body.high-contrast .preference-chip.active,
+body.high-contrast .choice-chip.active,
+body.high-contrast .favorite-actions a,
+body.high-contrast .empty-actions a,
+body.high-contrast .booking-form button,
+body.high-contrast .contact-submit,
+body.high-contrast .interpreter-link-btn,
+body.high-contrast .location-directions-btn,
+body.high-contrast .view,
+body.high-contrast .orva-prompt-primary,
+body.high-contrast .hero-note i,
+body.high-contrast .social-icons a,
+body.high-contrast .card-icon,
+body.high-contrast .useful-icon,
+body.high-contrast .traveler-help-icon,
+body.high-contrast .modal-icon,
+body.high-contrast .faq-group-title i {
+    background: #ff0 !important;
+    border-color: #ff0 !important;
+    color: #000 !important;
+}
+
+body.high-contrast .btn *,
+body.high-contrast .btn-green *,
+body.high-contrast .btn-yellow *,
+body.high-contrast .hero-button *,
+body.high-contrast .btn-accessible-mode *,
+body.high-contrast .favorite-actions a *,
+body.high-contrast .booking-form button *,
+body.high-contrast .contact-submit *,
+body.high-contrast .interpreter-link-btn *,
+body.high-contrast .location-directions-btn *,
+body.high-contrast .orva-prompt-primary *,
+body.high-contrast .card-icon *,
+body.high-contrast .hero-note i *,
+body.high-contrast .social-icons a * {
+    color: #000 !important;
+}
+
+body.high-contrast input,
+body.high-contrast textarea,
+body.high-contrast select {
+    background: #000 !important;
+    border: 2px solid #ff0 !important;
+    color: #fff !important;
+}
+
+body.high-contrast input::placeholder,
+body.high-contrast textarea::placeholder {
+    color: #e5e7eb !important;
+}
+
+body.high-contrast .slider {
+    background: #333 !important;
+    border: 1px solid #ff0 !important;
+}
+
+body.high-contrast input:checked + .slider {
+    background: #ff0 !important;
+}
+
+body.high-contrast input:checked + .slider::before {
+    background: #000 !important;
+}
+
+body.high-contrast .account-avatar,
+body.high-contrast .user-avatar,
+body.high-contrast .profile-avatar,
+body.high-contrast .profile-avatar-lg {
+    background: #e5e7eb !important;
+    border: 2px solid #ff0 !important;
+    color: #071d3d !important;
+    box-shadow: none !important;
+}
+
+body.high-contrast .gallery-carousel,
+body.high-contrast .place-gallery,
+body.high-contrast .destination-card img,
+body.high-contrast .favorite-card img,
+body.high-contrast .interpreter-card img,
+body.high-contrast .member-card img {
+    background: #000 !important;
+    border-color: #ff0 !important;
+}
+
+body.high-contrast .floating-accessibility,
+body.high-contrast .accessibility-dropdown,
+body.high-contrast .orva-panel,
+body.high-contrast .orva-prompt {
+    z-index: 1100 !important;
+}
+
+@media (max-width: 760px) {
+    body.high-contrast .hero,
+    body.high-contrast .planner-hero,
+    body.high-contrast .favorites-hero,
+    body.high-contrast .faq-hero,
+    body.high-contrast .settings-hero,
+    body.high-contrast .statement-hero,
+    body.high-contrast .interpreters-hero,
+    body.high-contrast .profile-hero,
+    body.high-contrast .tour-hero,
+    body.high-contrast .place-hero {
+        background-position: center !important;
+    }
+}
+
+/* Keep desktop hero composition stable when high contrast is active. */
+body.high-contrast.or-page-index .hero,
+body.high-contrast.or-page-destinations .hero,
+body.high-contrast.or-page-about .hero,
+body.high-contrast.or-page-contact .hero,
+body.high-contrast.or-page-plan-your-trip .planner-hero,
+body.high-contrast.or-page-favorites .favorites-hero,
+body.high-contrast.or-page-faq .faq-hero,
+body.high-contrast.or-page-settings .settings-hero,
+body.high-contrast.or-page-profile .profile-hero,
+body.high-contrast.or-page-accessibility-statement .statement-hero,
+body.high-contrast.or-page-interpreters .interpreters-hero {
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+}
+
+body.high-contrast.or-page-about .hero {
+    background:
+        linear-gradient(90deg, rgba(0,0,0,.58) 0%, rgba(0,0,0,.32) 38%, rgba(0,0,0,.08) 72%),
+        url('../img/foto grupal.jpg') !important;
+    background-position: center center !important;
+}
+
+body.high-contrast.or-page-about .hero-content h1,
+body.high-contrast.or-page-about .hero-content p,
+body.high-contrast.or-page-about .hero-buttons {
+    text-shadow: 0 2px 8px rgba(0,0,0,.85) !important;
+}
+
+@media (min-width: 761px) {
+    body.high-contrast.or-page-index .hero,
+    body.high-contrast.or-page-destinations .hero {
+        min-height: 610px !important;
+    }
+
+    body.high-contrast.or-page-about .hero {
+        min-height: 540px !important;
+        padding: 78px 9% 112px !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    body.high-contrast.or-page-contact .hero {
+        min-height: 420px !important;
+        padding: 78px 9% 112px !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    body.high-contrast.or-page-plan-your-trip .planner-hero {
+        min-height: 520px !important;
+        padding: 72px 8% 92px !important;
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) minmax(280px, 390px) !important;
+    }
+}
+
+/* Fix high contrast readability in the Home middle sections. */
+body.high-contrast.or-page-index main,
+body.high-contrast.or-page-index .destinations-section,
+body.high-contrast.or-page-index .premium-section,
+body.high-contrast.or-page-index .featured-section,
+body.high-contrast.or-page-index .inspiration-section,
+body.high-contrast.or-page-index .popular-tours-section {
+    background: #000 !important;
+    background-image: none !important;
+}
+
+body.high-contrast.or-page-index .feature-item,
+body.high-contrast.or-page-index .testimonial-card-premium,
+body.high-contrast.or-page-index .featured-card,
+body.high-contrast.or-page-index .tour-card,
+body.high-contrast.or-page-index .destination-card {
+    background: #111 !important;
+    border: 2px solid #ff0 !important;
+    box-shadow: none !important;
+    color: #fff !important;
+}
+
+body.high-contrast.or-page-index .feature-title,
+body.high-contrast.or-page-index .testimonial-info-premium h4,
+body.high-contrast.or-page-index .featured-card h3,
+body.high-contrast.or-page-index .tour-card h3,
+body.high-contrast.or-page-index .destination-card h3 {
+    color: #ff0 !important;
+    -webkit-text-fill-color: #ff0 !important;
+}
+
+body.high-contrast.or-page-index .feature-description,
+body.high-contrast.or-page-index .feature-description strong,
+body.high-contrast.or-page-index .testimonial-info-premium p,
+body.high-contrast.or-page-index .testimonial-topline span,
+body.high-contrast.or-page-index .featured-card p,
+body.high-contrast.or-page-index .tour-desc,
+body.high-contrast.or-page-index .tour-meta,
+body.high-contrast.or-page-index .tour-meta span,
+body.high-contrast.or-page-index .destination-card p {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+body.high-contrast.or-page-index .gradient-number,
+body.high-contrast.or-page-index .feature-number {
+    background: none !important;
+    color: #ff0 !important;
+    -webkit-text-fill-color: #ff0 !important;
+    -webkit-text-stroke: 0 !important;
+    opacity: 1 !important;
+}
+
+body.high-contrast.or-page-index .rating-premium,
+body.high-contrast.or-page-index .tour-price,
+body.high-contrast.or-page-index .card-body a,
+body.high-contrast.or-page-index .featured-link {
+    color: #ff0 !important;
+    -webkit-text-fill-color: #ff0 !important;
+}
+
+body.high-contrast.or-page-index .avatar-premium {
+    background: #e5e7eb !important;
+    color: #071d3d !important;
+    border: 2px solid #ff0 !important;
+}
+
+/* The About hero uses a group photo, so avoid the aggressive cropped background look. */
+body.high-contrast.or-page-about .hero {
+    background:
+        linear-gradient(90deg, rgba(0,0,0,.42), rgba(0,0,0,.24)),
+        url('../img/foto grupal.jpg') !important;
+    background-color: #000 !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+}
+
+@media (min-width: 761px) {
+    body.high-contrast.or-page-about .hero {
+        min-height: 560px !important;
+    }
+}
+
+@media (max-width: 760px) {
+    body.high-contrast.or-page-about .hero {
+        background-size: cover !important;
+        background-position: center top !important;
+    }
+}
+
+/* Destination detail tabs need their own high contrast pass because most content is rendered by JS. */
+body.high-contrast.or-page-destination-detail .destination-page,
+body.high-contrast.or-page-destination-detail .detail-content,
+body.high-contrast.or-page-destination-detail .tab-area,
+body.high-contrast.or-page-destination-detail .tab-panel,
+body.high-contrast.or-page-destination-detail .destination-reviews-section,
+body.high-contrast.or-page-destination-detail .detail-popular-tours {
+    background: #000 !important;
+    background-image: none !important;
+    color: #fff !important;
+}
+
+body.high-contrast.or-page-destination-detail .tab-panel.active {
+    display: block !important;
+}
+
+body.high-contrast.or-page-destination-detail .tab-panel:not(.active) {
+    display: none !important;
+}
+
+body.high-contrast.or-page-destination-detail .detail-tabs {
+    background: #000 !important;
+    border-bottom: 2px solid #ff0 !important;
+    scrollbar-color: #ff0 #111 !important;
+}
+
+body.high-contrast.or-page-destination-detail .tab-btn {
+    background: #111 !important;
+    border: 1px solid #ff0 !important;
+    border-bottom: 3px solid #ff0 !important;
+    color: #fff !important;
+}
+
+body.high-contrast.or-page-destination-detail .tab-btn i {
+    color: #ff0 !important;
+}
+
+body.high-contrast.or-page-destination-detail .tab-btn.active,
+body.high-contrast.or-page-destination-detail .tab-btn:hover {
+    background: #ff0 !important;
+    color: #000 !important;
+}
+
+body.high-contrast.or-page-destination-detail .tab-btn.active i,
+body.high-contrast.or-page-destination-detail .tab-btn:hover i {
+    color: #000 !important;
+}
+
+body.high-contrast.or-page-destination-detail .lead-text,
+body.high-contrast.or-page-destination-detail #overviewText,
+body.high-contrast.or-page-destination-detail #locationText,
+body.high-contrast.or-page-destination-detail #summary {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+body.high-contrast.or-page-destination-detail .feature-item,
+body.high-contrast.or-page-destination-detail .practical-card,
+body.high-contrast.or-page-destination-detail .stack-item,
+body.high-contrast.or-page-destination-detail .access-row,
+body.high-contrast.or-page-destination-detail .access-check-item,
+body.high-contrast.or-page-destination-detail .verification-note,
+body.high-contrast.or-page-destination-detail .guides-panel,
+body.high-contrast.or-page-destination-detail .location-map-card,
+body.high-contrast.or-page-destination-detail .location-fact-card,
+body.high-contrast.or-page-destination-detail .route-visual,
+body.high-contrast.or-page-destination-detail .route-meta-grid article,
+body.high-contrast.or-page-destination-detail .local-context-card,
+body.high-contrast.or-page-destination-detail .local-route-card,
+body.high-contrast.or-page-destination-detail .local-route-heading,
+body.high-contrast.or-page-destination-detail .local-route-options div,
+body.high-contrast.or-page-destination-detail .destination-review-card,
+body.high-contrast.or-page-destination-detail .detail-popular-tours .tour-card,
+body.high-contrast.or-page-destination-detail .detail-popular-tours .tour-content {
+    background: #111 !important;
+    background-image: none !important;
+    border: 2px solid #ff0 !important;
+    box-shadow: none !important;
+    color: #fff !important;
+}
+
+body.high-contrast.or-page-destination-detail .access-check-item.available,
+body.high-contrast.or-page-destination-detail .access-check-item.limited,
+body.high-contrast.or-page-destination-detail .access-check-item.ask,
+body.high-contrast.or-page-destination-detail .access-check-item.no {
+    border-left: 6px solid #ff0 !important;
+}
+
+body.high-contrast.or-page-destination-detail .tab-panel h2,
+body.high-contrast.or-page-destination-detail .tab-panel h3,
+body.high-contrast.or-page-destination-detail .tab-panel h4,
+body.high-contrast.or-page-destination-detail .feature-item h3,
+body.high-contrast.or-page-destination-detail .practical-card h3,
+body.high-contrast.or-page-destination-detail .access-category > h3,
+body.high-contrast.or-page-destination-detail .access-check-item h4,
+body.high-contrast.or-page-destination-detail .guides-panel h2,
+body.high-contrast.or-page-destination-detail .location-fact-card h3,
+body.high-contrast.or-page-destination-detail .route-visual h3,
+body.high-contrast.or-page-destination-detail .route-meta-grid strong,
+body.high-contrast.or-page-destination-detail .local-context-card h3,
+body.high-contrast.or-page-destination-detail .local-route-card h3,
+body.high-contrast.or-page-destination-detail .destination-review-card h3,
+body.high-contrast.or-page-destination-detail .detail-popular-tours h2,
+body.high-contrast.or-page-destination-detail .detail-popular-tours h3 {
+    color: #ff0 !important;
+    -webkit-text-fill-color: #ff0 !important;
+}
+
+body.high-contrast.or-page-destination-detail .tab-panel p,
+body.high-contrast.or-page-destination-detail .tab-panel li,
+body.high-contrast.or-page-destination-detail .tab-panel small,
+body.high-contrast.or-page-destination-detail .tab-panel span:not(.badge):not(.legend-pill):not(.feature-icon):not(.practical-icon):not(.access-check-icon):not(.location-fact-icon):not(.route-visual-icon),
+body.high-contrast.or-page-destination-detail .feature-item p,
+body.high-contrast.or-page-destination-detail .practical-card p,
+body.high-contrast.or-page-destination-detail .stack-item span,
+body.high-contrast.or-page-destination-detail .access-row p,
+body.high-contrast.or-page-destination-detail .access-check-item p,
+body.high-contrast.or-page-destination-detail .access-check-item small,
+body.high-contrast.or-page-destination-detail .verification-note,
+body.high-contrast.or-page-destination-detail .guides-panel p,
+body.high-contrast.or-page-destination-detail .location-fact-card p,
+body.high-contrast.or-page-destination-detail .route-stop p,
+body.high-contrast.or-page-destination-detail .route-meta-grid p,
+body.high-contrast.or-page-destination-detail .local-context-card p,
+body.high-contrast.or-page-destination-detail .local-route-card p,
+body.high-contrast.or-page-destination-detail .destination-review-card p,
+body.high-contrast.or-page-destination-detail .destination-review-card time,
+body.high-contrast.or-page-destination-detail .detail-popular-tours .section-subtitle,
+body.high-contrast.or-page-destination-detail .detail-popular-tours .tour-desc,
+body.high-contrast.or-page-destination-detail .detail-popular-tours .tour-duration,
+body.high-contrast.or-page-destination-detail .detail-popular-tours .tour-duration span {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+body.high-contrast.or-page-destination-detail .feature-icon,
+body.high-contrast.or-page-destination-detail .practical-icon,
+body.high-contrast.or-page-destination-detail .access-check-icon,
+body.high-contrast.or-page-destination-detail .location-fact-icon,
+body.high-contrast.or-page-destination-detail .route-visual-icon,
+body.high-contrast.or-page-destination-detail .route-stop span,
+body.high-contrast.or-page-destination-detail .local-context-card > span,
+body.high-contrast.or-page-destination-detail .local-route-heading > span,
+body.high-contrast.or-page-destination-detail .local-route-options strong,
+body.high-contrast.or-page-destination-detail .review-avatar,
+body.high-contrast.or-page-destination-detail .legend-pill,
+body.high-contrast.or-page-destination-detail .badge {
+    background: #ff0 !important;
+    border-color: #ff0 !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+body.high-contrast.or-page-destination-detail .feature-icon i,
+body.high-contrast.or-page-destination-detail .practical-icon i,
+body.high-contrast.or-page-destination-detail .access-check-icon i,
+body.high-contrast.or-page-destination-detail .location-fact-icon i,
+body.high-contrast.or-page-destination-detail .route-visual-icon i,
+body.high-contrast.or-page-destination-detail .local-context-card > span i,
+body.high-contrast.or-page-destination-detail .local-route-heading > span i,
+body.high-contrast.or-page-destination-detail .verification-note i {
+    color: #000 !important;
+}
+
+body.high-contrast.or-page-destination-detail .gallery-carousel {
+    background: #111 !important;
+    border: 2px solid #ff0 !important;
+    box-shadow: none !important;
+}
+
+body.high-contrast.or-page-destination-detail .gallery-caption {
+    background: rgba(0, 0, 0, .86) !important;
+    color: #fff !important;
+}
+
+body.high-contrast.or-page-destination-detail .gallery-caption strong {
+    color: #ff0 !important;
+}
+
+body.high-contrast.or-page-destination-detail .gallery-caption span {
+    color: #fff !important;
+}
+
+body.high-contrast.or-page-destination-detail .carousel-btn,
+body.high-contrast.or-page-destination-detail .gallery-dot.active,
+body.high-contrast.or-page-destination-detail .location-directions-btn,
+body.high-contrast.or-page-destination-detail .interpreter-link-btn,
+body.high-contrast.or-page-destination-detail .support-btn,
+body.high-contrast.or-page-destination-detail .detail-popular-tours .tour-btn {
+    background: #ff0 !important;
+    border-color: #ff0 !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+body.high-contrast.or-page-destination-detail .carousel-btn i,
+body.high-contrast.or-page-destination-detail .location-directions-btn i,
+body.high-contrast.or-page-destination-detail .interpreter-link-btn i,
+body.high-contrast.or-page-destination-detail .support-btn i {
+    color: #000 !important;
+}
+
+/* Interpreters high contrast: keep photos and cards visible. */
+body.high-contrast.or-page-interpreters .interpreters-section,
+body.high-contrast.or-page-interpreters .interpreter-grid {
+    background: #000 !important;
+    background-image: none !important;
+}
+
+body.high-contrast.or-page-interpreters .interpreter-tools,
+body.high-contrast.or-page-interpreters .interpreter-card,
+body.high-contrast.or-page-interpreters .card-body,
+body.high-contrast.or-page-interpreters .modal-content {
+    background: #111 !important;
+    background-image: none !important;
+    border-color: #ff0 !important;
+    color: #fff !important;
+}
+
+body.high-contrast.or-page-interpreters .interpreter-card {
+    border: 2px solid #ff0 !important;
+    box-shadow: none !important;
+    overflow: hidden !important;
+}
+
+body.high-contrast.or-page-interpreters .interpreter-card img {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    filter: none !important;
+    width: 100% !important;
+    height: 210px !important;
+    object-fit: cover !important;
+    background: #222 !important;
+    border-bottom: 2px solid #ff0 !important;
+}
+
+body.high-contrast.or-page-interpreters .interpreter-tools h2,
+body.high-contrast.or-page-interpreters .card-body h3,
+body.high-contrast.or-page-interpreters .modal-content h2 {
+    color: #ff0 !important;
+    -webkit-text-fill-color: #ff0 !important;
+}
+
+body.high-contrast.or-page-interpreters .interpreter-tools p,
+body.high-contrast.or-page-interpreters .card-body p,
+body.high-contrast.or-page-interpreters .modal-content p {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+body.high-contrast.or-page-interpreters .badge,
+body.high-contrast.or-page-interpreters .fav,
+body.high-contrast.or-page-interpreters .view,
+body.high-contrast.or-page-interpreters .close-modal,
+body.high-contrast.or-page-interpreters .modal-icon {
+    background: #ff0 !important;
+    border-color: #ff0 !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+body.high-contrast.or-page-interpreters .fav i,
+body.high-contrast.or-page-interpreters .close-modal i,
+body.high-contrast.or-page-interpreters .modal-icon i {
+    color: #000 !important;
+}
+
+body.high-contrast.or-page-interpreters .search-box,
+body.high-contrast.or-page-interpreters .search-box input,
+body.high-contrast.or-page-interpreters .tool-controls select {
+    background: #000 !important;
+    border-color: #ff0 !important;
+    color: #fff !important;
+}
+
+body.high-contrast.or-page-interpreters .search-box input::placeholder {
+    color: #fff !important;
+    opacity: .85 !important;
+}
+
+body.high-contrast a:focus-visible,
+body.high-contrast button:focus-visible,
+body.high-contrast input:focus-visible,
+body.high-contrast select:focus-visible,
+body.high-contrast textarea:focus-visible,
+body.high-contrast [tabindex]:focus-visible {
+    outline: 4px solid #00e5ff !important;
+    outline-offset: 3px !important;
+    box-shadow: 0 0 0 2px #000, 0 0 0 6px #00e5ff !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+    }
+}
+
+/* Final accessibility contrast polish for normal mode buttons and links. */
+body:not(.high-contrast) .btn-green,
+body:not(.high-contrast) a.btn-green,
+body:not(.high-contrast) button.btn-green,
+body:not(.high-contrast) .hero-button,
+body:not(.high-contrast) .view,
+body:not(.high-contrast) .save-btn,
+body:not(.high-contrast) .tour-btn,
+body:not(.high-contrast) .confirm-booking-btn,
+body:not(.high-contrast) .contact-submit {
+    color: #071d3d !important;
+    -webkit-text-fill-color: #071d3d !important;
+}
+
+body:not(.high-contrast) .destination-card .card-body a,
+body:not(.high-contrast) .featured-link,
+body:not(.high-contrast) .view-all-link,
+body:not(.high-contrast) .empty-link,
+body:not(.high-contrast) .statement-contact a {
+    color: #236d00 !important;
+    -webkit-text-fill-color: #236d00 !important;
+    font-weight: 800 !important;
+}
+
+body:not(.high-contrast) .filter-btn.active,
+body:not(.high-contrast) .support-btn {
+    color: #071d3d !important;
+    -webkit-text-fill-color: #071d3d !important;
+}
+
+/* Final high contrast content pass: keep every non-hero section readable. */
+body.high-contrast main > section:not(.hero):not(.destinations-hero):not(.plan-hero):not(.contact-hero):not(.favorites-hero):not(.faq-hero):not(.settings-hero):not(.profile-hero):not(.statement-hero):not(.interpreters-hero):not(.tour-hero):not(.detail-hero),
+body.high-contrast .filters-section,
+body.high-contrast .destinations-section,
+body.high-contrast .faq-shell,
+body.high-contrast .settings-content,
+body.high-contrast .profile-content,
+body.high-contrast .contact-content,
+body.high-contrast .about-content,
+body.high-contrast .popular-tours,
+body.high-contrast .trip-result,
+body.high-contrast .planner-form {
+    background: #000 !important;
+    background-image: none !important;
+    color: #fff !important;
+}
+
+body.high-contrast .filter-panel,
+body.high-contrast .filter-row,
+body.high-contrast .filter-group,
+body.high-contrast .filter-btn,
+body.high-contrast .faq-group,
+body.high-contrast details,
+body.high-contrast .settings-card,
+body.high-contrast .settings-panel,
+body.high-contrast .setting-row,
+body.high-contrast .profile-panel,
+body.high-contrast .profile-stat,
+body.high-contrast .profile-card,
+body.high-contrast .profile-action-link,
+body.high-contrast .contact-info,
+body.high-contrast .contact-card,
+body.high-contrast .contact-form,
+body.high-contrast .story-card,
+body.high-contrast .mission-card,
+body.high-contrast .value-card,
+body.high-contrast .result-card,
+body.high-contrast .result-panel,
+body.high-contrast .plan-summary,
+body.high-contrast .travel-tip,
+body.high-contrast .timeline-item,
+body.high-contrast .booking-card,
+body.high-contrast .booking-summary,
+body.high-contrast .payment-fieldset {
+    background: #111 !important;
+    background-image: none !important;
+    border: 2px solid #ff0 !important;
+    box-shadow: none !important;
+    color: #fff !important;
+}
+
+body.high-contrast main h2,
+body.high-contrast main h3,
+body.high-contrast main h4,
+body.high-contrast main summary,
+body.high-contrast .section-title,
+body.high-contrast .section-title-left,
+body.high-contrast .settings-nav button,
+body.high-contrast .filter-title,
+body.high-contrast .result-label,
+body.high-contrast .payment-fieldset legend {
+    color: #ff0 !important;
+    -webkit-text-fill-color: #ff0 !important;
+}
+
+body.high-contrast main p,
+body.high-contrast main li,
+body.high-contrast main small,
+body.high-contrast main label,
+body.high-contrast main span:not(.feature-icon):not(.practical-icon):not(.access-check-icon):not(.location-fact-icon):not(.route-visual-icon):not(.badge):not(.legend-pill):not(.icon-circle),
+body.high-contrast .faq-intro p,
+body.high-contrast .settings-card p,
+body.high-contrast .profile-panel p,
+body.high-contrast .contact-card p,
+body.high-contrast .story-card p,
+body.high-contrast .mission-card p,
+body.high-contrast .result-card li,
+body.high-contrast .payment-note {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+body.high-contrast .filter-btn,
+body.high-contrast .outline-btn,
+body.high-contrast .secondary-btn,
+body.high-contrast .profile-action-link,
+body.high-contrast .empty-link,
+body.high-contrast .settings-nav button,
+body.high-contrast .faq-quick-link {
+    background: #111 !important;
+    border: 2px solid #ff0 !important;
+    color: #ff0 !important;
+    -webkit-text-fill-color: #ff0 !important;
+}
+
+body.high-contrast .filter-btn.active,
+body.high-contrast .filter-btn:hover,
+body.high-contrast .outline-btn:hover,
+body.high-contrast .secondary-btn:hover,
+body.high-contrast .profile-action-link:hover,
+body.high-contrast .empty-link:hover,
+body.high-contrast .settings-nav button.active,
+body.high-contrast .faq-quick-link:hover {
+    background: #ff0 !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+body.high-contrast input,
+body.high-contrast select,
+body.high-contrast textarea {
+    background: #000 !important;
+    border: 2px solid #ff0 !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+body.high-contrast input::placeholder,
+body.high-contrast textarea::placeholder {
+    color: #fff !important;
+    opacity: .85 !important;
+}
+
+/* Small contrast fixes found during the full-page visual pass. */
+body:not(.high-contrast) .interpreter-card .view {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+body:not(.high-contrast) .review-destination,
+body:not(.high-contrast) .result-label,
+body:not(.high-contrast) .booking-card h2 {
+    color: #236d00 !important;
+    -webkit-text-fill-color: #236d00 !important;
+}
+
+body:not(.high-contrast) .testimonial-card-premium p,
+body:not(.high-contrast) .next-actions h2,
+body:not(.high-contrast) .next-actions p,
+body:not(.high-contrast) .booking-card h3 {
+    color: #09244a !important;
+    -webkit-text-fill-color: #09244a !important;
+}
+
+body:not(.high-contrast) .empty-actions a,
+body:not(.high-contrast) .faq-hero a,
+body:not(.high-contrast) .statement-contact a,
+body:not(.high-contrast) .confirm-booking-btn,
+body:not(.high-contrast) .booking-form button[type="submit"] {
+    background: #69bf24 !important;
+    color: #071d3d !important;
+    -webkit-text-fill-color: #071d3d !important;
+}
+
+body:not(.high-contrast) .support-btn,
+body:not(.high-contrast) .tab-btn.active {
+    color: #071d3d !important;
+    -webkit-text-fill-color: #071d3d !important;
+}
+
+body.high-contrast.or-page-plan-your-trip .mini-itinerary,
+body.high-contrast.or-page-plan-your-trip .planner-route-preview,
+body.high-contrast.or-page-plan-your-trip #routeSteps,
+body.high-contrast.or-page-plan-your-trip .next-actions,
+body.high-contrast.or-page-favorites .filter-tabs,
+body.high-contrast.or-page-favorites .empty-actions,
+body.high-contrast.or-page-profile .quick-profile-actions {
+    background: #000 !important;
+    background-image: none !important;
+    color: #fff !important;
+}
+
+body.high-contrast.or-page-plan-your-trip .mini-itinerary h3,
+body.high-contrast.or-page-plan-your-trip .next-actions h2 {
+    color: #ff0 !important;
+    -webkit-text-fill-color: #ff0 !important;
+}
+
+body.high-contrast.or-page-plan-your-trip #routeSteps li,
+body.high-contrast.or-page-plan-your-trip .next-actions p {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+body.high-contrast.or-page-favorites .filter-tabs button,
+body.high-contrast.or-page-favorites .empty-actions a,
+body.high-contrast.or-page-profile .quick-profile-actions a {
+    background: #111 !important;
+    border: 2px solid #ff0 !important;
+    color: #ff0 !important;
+    -webkit-text-fill-color: #ff0 !important;
+}
+
+body.high-contrast.or-page-favorites .filter-tabs button.active,
+body.high-contrast.or-page-favorites .filter-tabs button:hover,
+body.high-contrast.or-page-favorites .empty-actions a:hover,
+body.high-contrast.or-page-profile .quick-profile-actions a:hover {
+    background: #ff0 !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+/* Pre-delivery accessibility guardrails. */
+body:not(.high-contrast) .auth-register,
+body:not(.high-contrast) .newsletter button,
+body:not(.high-contrast) .filter-btn.active,
+body:not(.high-contrast) .filter-tabs button.active,
+body:not(.high-contrast) .btn-green,
+body:not(.high-contrast) .hero-button,
+body:not(.high-contrast) .tour-btn,
+body:not(.high-contrast) .view-more,
+body:not(.high-contrast) .view {
+    color: #071d3d !important;
+    -webkit-text-fill-color: #071d3d !important;
+}
+
+body:not(.high-contrast) .eyebrow,
+body:not(.high-contrast) .favorite-type,
+body:not(.high-contrast) .result-label,
+body:not(.high-contrast) .review-destination,
+body:not(.high-contrast) .statement-status strong,
+body:not(.high-contrast) .profile-panel .eyebrow,
+body:not(.high-contrast) .faq-group-label {
+    color: #236d00 !important;
+    -webkit-text-fill-color: #236d00 !important;
+}
+
+body.high-contrast.or-page-destination-detail .content-grid,
+body.high-contrast.or-page-destination-detail .main-column,
+body.high-contrast.or-page-destination-detail .side-column,
+body.high-contrast.or-page-destination-detail .tab-area,
+body.high-contrast.or-page-destination-detail .tab-panel,
+body.high-contrast.or-page-destination-detail .access-category,
+body.high-contrast.or-page-destination-detail .location-panel,
+body.high-contrast.or-page-destination-detail .guides-panel,
+body.high-contrast.or-page-destination-detail .tips-list,
+body.high-contrast.or-page-destination-detail .review-list {
+    background: #000 !important;
+    background-image: none !important;
+    color: #fff !important;
+}
+
+body.high-contrast.or-page-destination-detail .tab-panel.active {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+body.high-contrast.or-page-destination-detail .tab-panel.active *,
+body.high-contrast.or-page-interpreters .interpreter-card *,
+body.high-contrast.or-page-interpreters .interpreter-tools * {
+    visibility: visible !important;
+}
+
+body.high-contrast.or-page-destination-detail .place-hero img,
+body.high-contrast.or-page-destination-detail .gallery-carousel img,
+body.high-contrast.or-page-destination-detail .place-gallery img,
+body.high-contrast.or-page-destination-detail .tour-card img,
+body.high-contrast.or-page-interpreters .interpreter-card img,
+body.high-contrast.or-page-interpreters .interpreters-hero img {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    filter: none !important;
+    mix-blend-mode: normal !important;
+}
+
+body.high-contrast.or-page-interpreters .interpreter-card::before,
+body.high-contrast.or-page-interpreters .interpreter-card::after,
+body.high-contrast.or-page-interpreters .interpreter-card img::before,
+body.high-contrast.or-page-interpreters .interpreter-card img::after {
+    display: none !important;
+}
+
+body.high-contrast.or-page-destination-detail .accessibility-card,
+body.high-contrast.or-page-destination-detail .side-card,
+body.high-contrast.or-page-destination-detail .access-info-card,
+body.high-contrast.or-page-destination-detail .guide-card,
+body.high-contrast.or-page-destination-detail .tip-card,
+body.high-contrast.or-page-destination-detail .location-map-card,
+body.high-contrast.or-page-destination-detail .destination-review-card,
+body.high-contrast.or-page-interpreters .interpreter-card,
+body.high-contrast.or-page-interpreters .card-body,
+body.high-contrast.or-page-interpreters .interpreter-tools {
+    background: #111 !important;
+    background-image: none !important;
+    border: 2px solid #ff0 !important;
+    box-shadow: none !important;
+    color: #fff !important;
+}

@@ -11,6 +11,7 @@
     resumeKey: "openRoutesVoiceAssistantResume",
     pendingActionKey: "openRoutesVoiceAssistantPendingAction",
     promptChoiceKey: "openRoutesVoiceAssistantPromptChoice",
+    highContrastKey: "openRoutesHighContrast",
     requestTimeoutMs: 120000
   });
 
@@ -460,6 +461,35 @@
     });
   }
 
+  function syncHighContrastControl(enabled) {
+    document.body.classList.toggle("high-contrast", enabled);
+
+    document.querySelectorAll("#chkContrast").forEach((checkbox) => {
+      checkbox.checked = enabled;
+    });
+  }
+
+  function applySavedHighContrast() {
+    syncHighContrastControl(localStorage.getItem(CONFIG.highContrastKey) === "true");
+  }
+
+  function setupHighContrastPersistence() {
+    applySavedHighContrast();
+
+    document.querySelectorAll("#chkContrast").forEach((checkbox) => {
+      if (checkbox.dataset.orvaContrastBound === "true") {
+        return;
+      }
+
+      checkbox.dataset.orvaContrastBound = "true";
+      checkbox.addEventListener("change", () => {
+        const enabled = checkbox.checked;
+        localStorage.setItem(CONFIG.highContrastKey, String(enabled));
+        syncHighContrastControl(enabled);
+      });
+    });
+  }
+
   function updateControls() {
     if (assistantCheckbox) {
       assistantCheckbox.checked = active;
@@ -526,6 +556,15 @@
 
   function getCurrentPathName() {
     return window.location.pathname.split("/").pop() || "index.html";
+  }
+
+  function applyPageStateClass() {
+    const pageName = getCurrentPathName()
+      .replace(/\.html$/i, "")
+      .replace(/[^a-z0-9]+/gi, "-")
+      .replace(/^-+|-+$/g, "") || "index";
+
+    document.body.classList.add(`or-page-${pageName.toLowerCase()}`);
   }
 
   function joinForSpeech(items) {
@@ -1960,6 +1999,11 @@
     if (!checkbox) {
       speak("That accessibility control is not available on this page.");
       return;
+    }
+
+    if (id === "chkContrast") {
+      localStorage.setItem(CONFIG.highContrastKey, String(enabled));
+      syncHighContrastControl(enabled);
     }
 
     checkbox.checked = enabled;
@@ -4002,9 +4046,11 @@
 
   function initialize() {
     injectStylesheet();
+    applyPageStateClass();
     createStatusPanel();
     createAssistantPrompt();
     addAccessibilityMenuControl();
+    setupHighContrastPersistence();
     setupRecognition();
     updateControls();
 
