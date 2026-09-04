@@ -49,11 +49,11 @@
     en:
       "You can say: go to home, go to destinations, go to Lake Coatepeque, go to popular tours, " +
       "turn on dark mode, increase text, add this to favorites, book this trip, open the sign language menu, " +
-      "read this page, read accessibility, read location, read menu, or stop listening.",
+      "read this page, read destinations, open accessibility, read location, read menu, open the first destination, or stop listening.",
     es:
       "Puedes decir: ir a inicio, ir a destinos, ir al lago de Coatepeque, ir a tours populares, " +
       "activar modo oscuro, aumentar texto, agregar esto a favoritos, reservar este viaje, abrir el menu de lengua de senas, " +
-      "leer esta pagina, leer accesibilidad, leer ubicacion, leer menu o detener asistente."
+      "leer esta pagina, leer destinos, abrir accesibilidad, leer ubicacion, leer menu, abrir el primer destino o detener asistente."
   });
 
   const NAVIGATION_MESSAGES = Object.freeze({
@@ -194,16 +194,35 @@
     practica: "practical",
     accessibility: "accessibility",
     access: "accessibility",
+    accessible: "accessibility",
+    "accessibility tab": "accessibility",
+    "accessible information": "accessibility",
+    "access info": "accessibility",
     accesibilidad: "accessibility",
+    "pestana de accesibilidad": "accessibility",
+    "informacion de accesibilidad": "accessibility",
     things: "things",
     "things to do": "things",
+    "local experience": "things",
+    "local experiences": "things",
+    "what to do": "things",
     activities: "things",
     actividades: "things",
+    "experiencia local": "things",
+    "experiencias locales": "things",
+    "que hacer": "things",
     cultura: "things",
     gastronomia: "things",
     recomendaciones: "things",
     location: "location",
+    "where is it": "location",
+    "where is this": "location",
+    "where is this place": "location",
+    "how to get there": "location",
     ubicacion: "location",
+    "donde queda": "location",
+    "donde esta": "location",
+    "como llegar": "location",
     mapa: "location",
     map: "location",
     guides: "guides",
@@ -1327,6 +1346,11 @@
       const text = getCleanReadableText(target);
 
       if (!text) {
+        if (sectionKey === "accessibility") {
+          speak(getAccessibilityExplanationMessage());
+          return;
+        }
+
         speak(
           getLanguageCode() === "es"
             ? "No pude encontrar texto para leer en esa seccion."
@@ -2835,17 +2859,33 @@
         phrases: [
           "read destinations",
           "read the destinations",
+          "read places",
+          "read the places",
+          "read cards",
+          "read destination cards",
+          "read available destinations",
+          "list places",
           "read destination list",
           "list destinations",
           "tell me the destinations",
           "what destinations are here",
+          "what destinations do you have",
           "what places are here",
+          "what places can i visit",
+          "tell me the places",
           "leer destinos",
           "leer los destinos",
+          "leer lugares",
+          "leer los lugares",
+          "leer tarjetas",
+          "leer tarjetas de destinos",
           "lista de destinos",
+          "lista de lugares",
           "dime los destinos",
+          "dime los lugares",
           "que destinos hay",
-          "que lugares hay"
+          "que lugares hay",
+          "que lugares puedo visitar"
         ]
       },
       {
@@ -2874,11 +2914,14 @@
           "list filters",
           "filter options",
           "what filters are available",
+          "read filter options",
+          "what can i filter",
           "leer filtros",
           "leer los filtros",
           "lista de filtros",
           "opciones de filtro",
-          "que filtros hay"
+          "que filtros hay",
+          "que puedo filtrar"
         ]
       },
       {
@@ -2890,12 +2933,20 @@
           "what options do i have",
           "what can i choose",
           "what can i do here",
+          "read sections",
+          "read tabs",
+          "what sections are here",
+          "what tabs are here",
           "leer opciones",
           "leer las opciones",
+          "leer secciones",
+          "leer pestanas",
           "lista de opciones",
           "que opciones tengo",
           "que puedo elegir",
-          "que puedo hacer aqui"
+          "que puedo hacer aqui",
+          "que secciones hay",
+          "que pestanas hay"
         ]
       },
       {
@@ -3596,21 +3647,29 @@
         command.includes(`show ${phrase}`) ||
         command.includes(`show me ${phrase}`) ||
         command.includes(`open ${phrase}`) ||
+        command.includes(`open the ${phrase}`) ||
         command.includes(`go to ${phrase}`) ||
+        command.includes(`go to the ${phrase}`) ||
         command.includes(`mostrar ${phrase}`) ||
         command.includes(`muestrame ${phrase}`) ||
         command.includes(`abrir ${phrase}`) ||
         command.includes(`abre ${phrase}`) ||
+        command.includes(`abre la ${phrase}`) ||
+        command.includes(`abre el ${phrase}`) ||
         command.includes(`ir a ${phrase}`) ||
         command.includes(`ver ${phrase}`);
 
       if (readSectionRequest || showSectionRequest) {
+        const shouldReadAfterOpening =
+          readSectionRequest ||
+          (showSectionRequest && ["destination-detail.html", "settings.html"].includes(getCurrentPathName()));
+
         return {
-          action: readSectionRequest ? "read_section" : "open_tab",
+          action: shouldReadAfterOpening ? "read_section" : "open_tab",
           target: "none",
           value: tabValue,
           query: "",
-          reply: readSectionRequest ? "" : `Showing ${phrase}.`
+          reply: shouldReadAfterOpening ? "" : `Showing ${phrase}.`
         };
       }
     }

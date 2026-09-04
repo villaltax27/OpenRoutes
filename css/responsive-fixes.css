@@ -776,7 +776,7 @@ body.high-contrast.or-page-destinations .hero {
 body.high-contrast.or-page-about .hero {
     background:
         linear-gradient(90deg, rgba(0,0,0,.78) 0%, rgba(0,0,0,.56) 44%, rgba(0,0,0,.22) 100%),
-        url('../img/foto grupal.jpg') !important;
+        url('../img/optimized/team-group.jpg') !important;
 }
 
 body.high-contrast.or-page-contact .hero {
@@ -1132,7 +1132,7 @@ body.high-contrast.or-page-interpreters .interpreters-hero {
 body.high-contrast.or-page-about .hero {
     background:
         linear-gradient(90deg, rgba(0,0,0,.58) 0%, rgba(0,0,0,.32) 38%, rgba(0,0,0,.08) 72%),
-        url('../img/foto grupal.jpg') !important;
+        url('../img/optimized/team-group.jpg') !important;
     background-position: center center !important;
 }
 
@@ -1241,7 +1241,7 @@ body.high-contrast.or-page-index .avatar-premium {
 body.high-contrast.or-page-about .hero {
     background:
         linear-gradient(90deg, rgba(0,0,0,.42), rgba(0,0,0,.24)),
-        url('../img/foto grupal.jpg') !important;
+        url('../img/optimized/team-group.jpg') !important;
     background-color: #000 !important;
     background-size: cover !important;
     background-repeat: no-repeat !important;
@@ -1405,11 +1405,17 @@ body.high-contrast.or-page-destination-detail .route-stop span,
 body.high-contrast.or-page-destination-detail .local-context-card > span,
 body.high-contrast.or-page-destination-detail .local-route-heading > span,
 body.high-contrast.or-page-destination-detail .local-route-options strong,
-body.high-contrast.or-page-destination-detail .review-avatar,
 body.high-contrast.or-page-destination-detail .legend-pill,
 body.high-contrast.or-page-destination-detail .badge {
     background: #ff0 !important;
     border-color: #ff0 !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+body.high-contrast.or-page-destination-detail .review-avatar {
+    background: #d9d9d9 !important;
+    border-color: #fff !important;
     color: #000 !important;
     -webkit-text-fill-color: #000 !important;
 }
