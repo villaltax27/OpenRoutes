@@ -274,14 +274,14 @@ const destinations = {
       },
       {
         type: "image",
-        src: "https://elsalvadorinfo.net/wp-content/uploads/2023/09/El-Tunco-Beach-El-Salvador-1.jpg",
+        src: "https://estaticos-cdn.prensaiberica.es/clip/2bf28967-e93d-42a9-86b2-965afb5bd605_source-aspect-ratio_default_0.jpg",
         alt: "Surfing at El Tunco beach",
         title: "Surf Experience",
         description: "Waves and surf lessons by the coast"
       },
       {
         type: "image",
-        src: "https://elsalvadorinfo.net/wp-content/uploads/2023/09/El-Tunco-Beach-El-Salvador-1.jpg",
+        src: "https://www.adventurouskate.com/wp-content/uploads/2015/04/DSC_0326.jpg",
         alt: "El Tunco shoreline and beach bars",
         title: "Beach Walk",
         description: "Rocky shoreline and ocean views"
@@ -357,11 +357,11 @@ const destinations = {
       accessNote: "Start at the central plaza and choose shorter walking sections because several streets are cobblestone.",
       stops: ["San Salvador", "Cuscatlan route", "Suchitoto plaza", "Lake Suchitlan viewpoint"]
     },
-    heroImage: "https://svelsalvador.com/wp-content/uploads/2023/10/Suchitoto-Como-llegar-Donde-queda-Que-hacer-Videos.jpg",
+    heroImage: "https://assets.laprensagrafica.com/export/sites/prensagrafica/img/2021/05/08/fdpt24042021dpcapor045.jpg_1853007781.jpg",
     gallery: [
       {
         type: "image",
-        src: "https://svelsalvador.com/wp-content/uploads/2023/10/Suchitoto-Como-llegar-Donde-queda-Que-hacer-Videos.jpg",
+        src: "https://assets.laprensagrafica.com/export/sites/prensagrafica/img/2021/05/08/fdpt24042021dpcapor045.jpg_1853007781.jpg",
         alt: "Suchitoto church and historic town",
         title: "Suchitoto",
         description: "Colonial streets and cultural landmarks"
@@ -369,14 +369,14 @@ const destinations = {
       {
         type: "video",
         src: "videos/destinations/Abner  - Suchitoto.mp4",
-        poster: "https://svelsalvador.com/wp-content/uploads/2023/10/Suchitoto-Como-llegar-Donde-queda-Que-hacer-Videos.jpg",
+        poster: "https://assets.laprensagrafica.com/export/sites/prensagrafica/img/2021/05/08/fdpt24042021dpcapor045.jpg_1853007781.jpg",
         alt: "Sign language video guide for Suchitoto",
         title: "Sign Language Guide",
         description: "Video explanation in sign language about Suchitoto"
       },
       {
         type: "image",
-        src: "https://tse3.mm.bing.net/th/id/OIP.hW0UJVspMfddhoJFwtLlfQHaEK",
+        src: "https://mediaim.expedia.com/localexpert/2074180/65de6547-6f22-4272-8773-02caea3d4f16.jpg?impolicy=resizecrop&rh=565&rw=1005",
         alt: "Suchitoto colonial architecture",
         title: "Colonial Town",
         description: "Historic architecture and local culture"
@@ -390,7 +390,7 @@ const destinations = {
       },
       {
         type: "image",
-        src: "https://tuncolife.com/wp-content/uploads/2021/11/suchitoto-lake-day-tour-to-suchitoto-trip-cascadas-las-tercios-colonial-town-1.jpg",
+        src: "https://images.moondeveloper.com/attractions/2025/01/25/679457035d47c.jpg",
         alt: "Lake Suchitlan near Suchitoto",
         title: "Lake Suchitlan",
         description: "Peaceful lake views near town"
