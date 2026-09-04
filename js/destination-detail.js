@@ -4,14 +4,14 @@ const place = params.get("place") || "santa ana";
 const sharedGallery = [
   {
     type: "image",
-    src: "https://cdn-pro.elsalvador.com/wp-content/uploads/2019/06/Lago-Coatepeque_03.jpg",
+    src: "https://commons.wikimedia.org/wiki/Special:FilePath/Lago_de_Coatepeque.jpg",
     alt: "Lake Coatepeque surrounded by green mountains",
     title: "Open Routes destination photo",
     description: "Accessible travel inspiration in El Salvador"
   },
   {
     type: "image",
-    src: "https://bonvoyageguatemala.com/en/wp-content/uploads/2018/09/shutterstock-372639865-1600x1000.jpg",
+    src: "https://elsalvadorinfo.net/wp-content/uploads/2023/09/El-Tunco-Beach-El-Salvador-1.jpg",
     alt: "El Tunco beach at sunset",
     title: "Open Routes destination photo",
     description: "Accessible travel inspiration in El Salvador"
@@ -84,7 +84,7 @@ const destinations = {
       },
       {
         type: "image",
-        src: "https://thf.bing.com/th/id/R.16a9d0ceaafc7d36fe72237465acccdb?rik=HUFWnO8PTnlkBg&pid=ImgRaw&r=0",
+        src: "https://commons.wikimedia.org/wiki/Special:FilePath/Cerro_verde.jpg",
         alt: "Santa Ana Volcano landscape view",
         title: "Volcano Landscape",
         description: "Mountain views around Los Volcanes National Park"
@@ -153,11 +153,11 @@ const destinations = {
       accessNote: "Choose a restaurant or viewpoint with close parking, ramps and restroom access before leaving.",
       stops: ["San Salvador", "Santa Ana", "Lake viewpoint", "Restaurant or dock"]
     },
-    heroImage: "https://cdn-pro.elsalvador.com/wp-content/uploads/2019/06/Lago-Coatepeque_03.jpg",
+    heroImage: "https://commons.wikimedia.org/wiki/Special:FilePath/Lago_de_Coatepeque.jpg",
     gallery: [
       {
         type: "image",
-        src: "https://cdn-pro.elsalvador.com/wp-content/uploads/2019/06/Lago-Coatepeque_03.jpg",
+        src: "https://commons.wikimedia.org/wiki/Special:FilePath/Lago_de_Coatepeque.jpg",
         alt: "Lake Coatepeque surrounded by green mountains",
         title: "Lake Coatepeque",
         description: "Blue crater lake surrounded by volcanic hills"
@@ -165,28 +165,28 @@ const destinations = {
       {
         type: "video",
         src: "videos/destinations/Hazel (Lake coatepeque).mp4",
-        poster: "https://cdn-pro.elsalvador.com/wp-content/uploads/2019/06/Lago-Coatepeque_03.jpg",
+        poster: "https://commons.wikimedia.org/wiki/Special:FilePath/Lago_de_Coatepeque.jpg",
         alt: "Sign language video guide for Lake Coatepeque",
         title: "Sign Language Guide",
         description: "Video explanation in sign language about Lake Coatepeque"
       },
       {
         type: "image",
-        src: "https://images.trvl-media.com/place/53/f552d646-78fa-4ba5-b304-98c376d4de33.jpg",
+        src: "https://commons.wikimedia.org/wiki/Special:FilePath/Lago_de_Coatepeque-El_Salvador.JPG",
         alt: "Aerial view of Lake Coatepeque",
         title: "Aerial View",
         description: "Wide view of the lake and shoreline"
       },
       {
         type: "image",
-        src: "https://www.latinroutes.co.uk/media/aobp4yjn/coatepeque-lake-in-el-salvador-central-america.jpeg",
+        src: "https://commons.wikimedia.org/wiki/Special:FilePath/Lake_Coatepeque_(1204884_-_lrg).jpg",
         alt: "Lake Coatepeque volcanic panorama",
         title: "Volcanic Panorama",
         description: "Clear water and green volcanic slopes"
       },
       {
         type: "image",
-        src: "https://mediaim.expedia.com/localexpert/1344277/0e2be726-588a-4d49-9a8b-545327b5399c.jpg",
+        src: "https://commons.wikimedia.org/wiki/Special:FilePath/Lago_de_coatepeque_desde_mirador_en_carretera_hacia_el_cerro_verde_-_panoramio.jpg",
         alt: "Coatepeque lake viewpoint",
         title: "Lake Viewpoint",
         description: "Scenic overlook for visitors"
@@ -255,11 +255,11 @@ const destinations = {
       accessNote: "Town streets are easier than the beach; confirm restaurant entrances and parking before sunset hours.",
       stops: ["San Salvador", "La Libertad", "El Tunco entrance", "Beach restaurants"]
     },
-    heroImage: "https://bonvoyageguatemala.com/en/wp-content/uploads/2018/09/shutterstock-372639865-1600x1000.jpg",
+    heroImage: "https://elsalvadorinfo.net/wp-content/uploads/2023/09/El-Tunco-Beach-El-Salvador-1.jpg",
     gallery: [
       {
         type: "image",
-        src: "https://bonvoyageguatemala.com/en/wp-content/uploads/2018/09/shutterstock-372639865-1600x1000.jpg",
+        src: "https://elsalvadorinfo.net/wp-content/uploads/2023/09/El-Tunco-Beach-El-Salvador-1.jpg",
         alt: "El Tunco beach at sunset",
         title: "El Tunco Beach",
         description: "Pacific coast sunset and surf atmosphere"
@@ -267,21 +267,21 @@ const destinations = {
       {
         type: "video",
         src: "videos/destinations/Xavier- El tunco.mp4",
-        poster: "https://bonvoyageguatemala.com/en/wp-content/uploads/2018/09/shutterstock-372639865-1600x1000.jpg",
+        poster: "https://elsalvadorinfo.net/wp-content/uploads/2023/09/El-Tunco-Beach-El-Salvador-1.jpg",
         alt: "Sign language video guide for El Tunco Beach",
         title: "Sign Language Guide",
         description: "Video explanation in sign language about El Tunco Beach"
       },
       {
         type: "image",
-        src: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/22/8a/19/69/surf.jpg?w=1200&h=900&s=1",
+        src: "https://elsalvadorinfo.net/wp-content/uploads/2023/09/El-Tunco-Beach-El-Salvador-1.jpg",
         alt: "Surfing at El Tunco beach",
         title: "Surf Experience",
         description: "Waves and surf lessons by the coast"
       },
       {
         type: "image",
-        src: "https://onewaytickettoparadise.com/wp-content/uploads/2018/01/DSC_6125-600x400.jpg",
+        src: "https://elsalvadorinfo.net/wp-content/uploads/2023/09/El-Tunco-Beach-El-Salvador-1.jpg",
         alt: "El Tunco shoreline and beach bars",
         title: "Beach Walk",
         description: "Rocky shoreline and ocean views"
@@ -376,7 +376,7 @@ const destinations = {
       },
       {
         type: "image",
-        src: "https://media.tacdn.com/media/attractions-splice-spp-674x446/0f/6f/7a/f0.jpg",
+        src: "https://tse3.mm.bing.net/th/id/OIP.hW0UJVspMfddhoJFwtLlfQHaEK",
         alt: "Suchitoto colonial architecture",
         title: "Colonial Town",
         description: "Historic architecture and local culture"

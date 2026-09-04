@@ -81,3 +81,54 @@ function getInitials(name) {
     return String(name).trim().slice(0, 1).toUpperCase() || "U";
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+    const fallbackImages = [
+        {
+            keys: ["coatepeque", "lake", "lago"],
+            src: "https://commons.wikimedia.org/wiki/Special:FilePath/Lago_de_Coatepeque.jpg"
+        },
+        {
+            keys: ["tunco", "beach", "surf"],
+            src: "https://elsalvadorinfo.net/wp-content/uploads/2023/09/El-Tunco-Beach-El-Salvador-1.jpg"
+        },
+        {
+            keys: ["suchitoto", "historic", "culture", "church"],
+            src: "https://tse3.mm.bing.net/th/id/OIP.hW0UJVspMfddhoJFwtLlfQHaEK"
+        },
+        {
+            keys: ["volcano", "santa ana", "crater", "cerro verde"],
+            src: "https://commons.wikimedia.org/wiki/Special:FilePath/Cerro_verde.jpg"
+        },
+        {
+            keys: ["ruta", "flowers", "flores", "tour"],
+            src: "https://commons.wikimedia.org/wiki/Special:FilePath/Ruta_de_las_Flores_banner.jpg"
+        },
+        {
+            keys: ["impossible", "imposible", "forest", "nature"],
+            src: "https://guanacos.com/wp-content/uploads/2024/01/GUANACOS-PARQUE-NACIONAL-EL-IMPOSIBLE-2-1024x555.jpg"
+        }
+    ];
+
+    const defaultFallback = "https://commons.wikimedia.org/wiki/Special:FilePath/Conchagua%2C_Golfo_de_Fonseca.jpg";
+
+    function findFallback(img) {
+        const text = [
+            img.alt,
+            img.closest("article, .tour-card, .destination-card")?.textContent,
+            img.src
+        ].join(" ").toLowerCase();
+
+        return fallbackImages.find((item) => item.keys.some((key) => text.includes(key)))?.src || defaultFallback;
+    }
+
+    function useFallback(img) {
+        if (img.dataset.fallbackApplied === "true") return;
+        img.dataset.fallbackApplied = "true";
+        img.src = findFallback(img);
+    }
+
+    document.querySelectorAll("img").forEach((img) => {
+        img.addEventListener("error", () => useFallback(img), { once: true });
+    });
+});
+

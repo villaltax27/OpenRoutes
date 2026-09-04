@@ -1799,8 +1799,9 @@ body.dark-mode .badge {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #0b74ff, #69bf24);
-    color: #ffffff;
+    background: #e9eef5;
+    border: 1px solid #d8e1ee;
+    color: #0b2d57;
     font-weight: 900;
     letter-spacing: .02em;
     flex: 0 0 auto;

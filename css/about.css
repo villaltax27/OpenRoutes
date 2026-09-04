@@ -192,7 +192,7 @@ input:checked + .slider::before {
     overflow: hidden;
     background:
         linear-gradient(90deg, rgba(255,255,255,0.62) 0%, rgba(255,255,255,0.34) 36%, rgba(255,255,255,0.06) 66%),
-        url('../img/foto grupal.jpg');
+        url('../img/optimized/team-group.jpg');
     background-size: cover;
     background-position: center;
 }
@@ -442,8 +442,8 @@ input:checked + .slider::before {
 .member {
     padding: 28px 22px;
     text-align: center;
-    opacity: 0;
-    transform: translateY(38px);
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .member.show {
@@ -690,7 +690,7 @@ body.high-contrast .social-icons a {
         padding: 64px 6% 120px;
         background:
             linear-gradient(90deg, rgba(255,255,255,0.62), rgba(255,255,255,0.28), rgba(255,255,255,0.04)),
-            url('../img/foto grupal.jpg');
+            url('../img/optimized/team-group.jpg');
         background-size: cover;
         background-position: center;
     }
