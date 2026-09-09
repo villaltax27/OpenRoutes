@@ -49,11 +49,11 @@
     en:
       "You can say: go to home, go to destinations, go to Lake Coatepeque, go to popular tours, " +
       "turn on dark mode, increase text, add this to favorites, book this trip, open the sign language menu, " +
-      "read this page, read destinations, open accessibility, read location, read menu, open the first destination, or stop listening.",
+      "read this page, read destinations, read accessibility tools, read location, read menu, open the first destination, or stop listening.",
     es:
       "Puedes decir: ir a inicio, ir a destinos, ir al lago de Coatepeque, ir a tours populares, " +
       "activar modo oscuro, aumentar texto, agregar esto a favoritos, reservar este viaje, abrir el menu de lengua de senas, " +
-      "leer esta pagina, leer destinos, abrir accesibilidad, leer ubicacion, leer menu, abrir el primer destino o detener asistente."
+      "leer esta pagina, leer destinos, leer herramientas de accesibilidad, leer ubicacion, leer menu, abrir el primer destino o detener asistente."
   });
 
   const NAVIGATION_MESSAGES = Object.freeze({
@@ -196,11 +196,16 @@
     access: "accessibility",
     accessible: "accessibility",
     "accessibility tab": "accessibility",
+    "accessibility section": "accessibility",
+    "accessibility information": "accessibility",
+    "accessibility details": "accessibility",
     "accessible information": "accessibility",
     "access info": "accessibility",
     accesibilidad: "accessibility",
+    "seccion de accesibilidad": "accessibility",
     "pestana de accesibilidad": "accessibility",
     "informacion de accesibilidad": "accessibility",
+    "detalles de accesibilidad": "accessibility",
     things: "things",
     "things to do": "things",
     "local experience": "things",
@@ -538,7 +543,20 @@
   }
 
   function includesAny(command, phrases) {
-    return phrases.some((phrase) => command.includes(phrase));
+    return phrases.some((phrase) => {
+      const normalizedPhrase = normalizeText(phrase);
+      if (!normalizedPhrase) return false;
+
+      const variants = [normalizedPhrase];
+
+      // Speech recognition often changes the infinitive "leer" into "lee".
+      // Both forms must work whenever the assistant suggests a reading command.
+      if (normalizedPhrase.startsWith("leer ")) {
+        variants.push(`lee ${normalizedPhrase.slice(5)}`);
+      }
+
+      return variants.some((variant) => command.includes(variant));
+    });
   }
 
   function getAssistantLanguage() {
@@ -547,6 +565,12 @@
 
   function getLanguageCode() {
     return localStorage.getItem("openRoutesLanguageV3") === "es" ? "es" : "en";
+  }
+
+  function syncRecognitionLanguage() {
+    if (recognition) {
+      recognition.lang = getAssistantLanguage();
+    }
   }
 
   function getHelpMessage() {
@@ -625,13 +649,13 @@
     if (language === "es") {
       if (pathName === "destinations.html") {
         const destinations = destinationCards.length ? destinationCards.map((item) => item.title) : STATIC_DESTINATION_LIST;
-        return `${summary} En esta pagina hay ${destinations.length} destinos: ${joinForSpeech(destinations)}. Puedes decir leer destinos para escuchar la lista con detalles, leer filtros para conocer las opciones, filtrar por accesibilidad, o ir a un destino como ir al lago de Coatepeque.`;
+        return `${summary} En esta pagina hay ${destinations.length} destinos: ${joinForSpeech(destinations)}. Puedes decir leer destinos para escuchar la lista con detalles, leer filtros para conocer las opciones, filtrar silla de ruedas, filtrar poca caminata, o ir a un destino como ir al lago de Coatepeque.`;
       }
 
       if (pathName === "index.html") {
         const destinations = destinationCards.map((item) => item.title);
         const tours = tourCards.map((item) => item.title);
-        return `${summary} En Home puedes revisar destinos populares${destinations.length ? ` como ${joinForSpeech(destinations)}` : ""}, tours populares${tours.length ? ` como ${joinForSpeech(tours.slice(0, 4))}` : ""}, resenas y herramientas accesibles. Puedes decir leer destinos, leer tours, ir a destinos o abrir un tour.`;
+        return `${summary} En Home puedes revisar destinos populares${destinations.length ? ` como ${joinForSpeech(destinations)}` : ""}, tours populares${tours.length ? ` como ${joinForSpeech(tours.slice(0, 4))}` : ""}, resenas y herramientas accesibles. Puedes decir leer destinos, leer tours, ir a destinos o abrir el primer tour.`;
       }
 
       if (pathName === "destination-detail.html") {
@@ -639,7 +663,7 @@
       }
 
       if (pathName === "plan-your-trip.html") {
-        return `${summary} Aqui puedes elegir estilo de viaje, tiempo disponible, necesidades de accesibilidad y tipo de apoyo. Puedes decir leer opciones, elegir naturaleza, elegir playa, elegir cultura, marcar una necesidad, guardar plan o ir a destinos.`;
+        return `${summary} Aqui puedes elegir estilo de viaje, tiempo disponible, necesidades de accesibilidad y tipo de apoyo. Puedes decir leer opciones, elegir naturaleza, elegir playa, elegir cultura, marcar silla de ruedas, marcar interprete, guardar plan o ir a destinos.`;
       }
 
       if (pathName === "tour-detail.html") {
@@ -655,7 +679,7 @@
       }
 
       if (pathName === "contact.html") {
-        return `${summary} Aqui puedes revisar informacion de contacto y enviar un mensaje. Puedes decir leer contacto, ir a preguntas frecuentes o ir a accesibilidad.`;
+        return `${summary} Aqui puedes revisar informacion de contacto y enviar un mensaje. Puedes decir leer contacto, ir a preguntas frecuentes o ir a la declaracion de accesibilidad.`;
       }
 
       if (pathName === "profile.html") {
@@ -679,13 +703,13 @@
 
     if (pathName === "destinations.html") {
       const destinations = destinationCards.length ? destinationCards.map((item) => item.title) : STATIC_DESTINATION_LIST;
-      return `${summary} This page has ${destinations.length} destinations: ${joinForSpeech(destinations)}. You can say read destinations to hear the list with details, read filters to hear filter options, filter by accessibility, or go to a destination like go to Lake Coatepeque.`;
+      return `${summary} This page has ${destinations.length} destinations: ${joinForSpeech(destinations)}. You can say read destinations to hear the list with details, read filters to hear filter options, filter by wheelchair or low walking, or go to a destination like go to Lake Coatepeque.`;
     }
 
     if (pathName === "index.html") {
       const destinations = destinationCards.map((item) => item.title);
       const tours = tourCards.map((item) => item.title);
-      return `${summary} On Home, you can review popular destinations${destinations.length ? ` like ${joinForSpeech(destinations)}` : ""}, popular tours${tours.length ? ` like ${joinForSpeech(tours.slice(0, 4))}` : ""}, reviews and accessibility tools. You can say read destinations, read tours, go to destinations or open a tour.`;
+      return `${summary} On Home, you can review popular destinations${destinations.length ? ` like ${joinForSpeech(destinations)}` : ""}, popular tours${tours.length ? ` like ${joinForSpeech(tours.slice(0, 4))}` : ""}, reviews and accessibility tools. You can say read destinations, read tours, go to destinations or open the first tour.`;
     }
 
     if (pathName === "destination-detail.html") {
@@ -709,7 +733,7 @@
     }
 
     if (pathName === "contact.html") {
-      return `${summary} Here you can review contact information and send a message. You can say read contact, go to FAQ or go to accessibility statement.`;
+      return `${summary} Here you can review contact information and send a message. You can say read contact, go to FAQ or go to the accessibility statement.`;
     }
 
     if (pathName === "profile.html") {
@@ -1079,7 +1103,7 @@
     }
 
     recognition = new SpeechRecognition();
-    recognition.lang = getAssistantLanguage();
+    syncRecognitionLanguage();
     recognition.continuous = false;
     recognition.interimResults = false;
     recognition.maxAlternatives = 1;
@@ -1499,8 +1523,8 @@
   function readAccessibilityTools() {
     const text =
       getLanguageCode() === "es"
-        ? "Las herramientas accesibles del sitio incluyen alto contraste, modo oscuro, tamano de texto ajustable, cambio de idioma, menu de lengua de senas, videos en lengua de senas por destino y asistente de voz. Puedes decir activar alto contraste, aumentar texto, cambiar a ingles, abrir menu de senas o leer accesibilidad."
-        : "The site's accessibility tools include high contrast, dark mode, adjustable text size, language switching, sign language navigation menu, sign language videos by destination and the voice assistant. You can say turn on high contrast, increase text, change to Spanish, open sign language menu or read accessibility.";
+        ? "Las herramientas accesibles del sitio incluyen alto contraste, modo oscuro, tamano de texto ajustable, cambio de idioma, menu de lengua de senas, videos en lengua de senas por destino y asistente de voz. Puedes decir activar alto contraste, aumentar texto, cambiar a ingles o abrir menu de senas."
+        : "The site's accessibility tools include high contrast, dark mode, adjustable text size, language switching, sign language navigation menu, sign language videos by destination and the voice assistant. You can say turn on high contrast, increase text, change to Spanish or open sign language menu.";
     speakGuidedText(text, "Reading accessibility tools");
   }
 
@@ -1554,7 +1578,7 @@
         readQuestions();
         break;
       case "team":
-        readCardCollection(language === "es" ? "integrantes del equipo" : "team members", ".member", []);
+        readCardCollection(language === "es" ? "integrantes del equipo" : "team members", ".member, .member-card, .team-member", []);
         break;
       case "guides":
         if (getCurrentPathName() === "interpreters.html") {
@@ -2092,6 +2116,7 @@
     }
 
     localStorage.setItem("openRoutesLanguageV3", language);
+    syncRecognitionLanguage();
 
     const languageSelect = document.querySelector("[data-language-select]");
     if (languageSelect) {
@@ -2175,13 +2200,25 @@
         aliases: [
           "santa ana volcano",
           "santa ana",
+          "santa anna volcano",
+          "santa anna",
+          "santana volcano",
+          "santana",
           "volcano",
           "volcan",
           "volcan santa ana",
           "volcan de santa ana",
+          "volcan santa anna",
+          "volcan de santa anna",
+          "volcan santana",
+          "volcan de santana",
+          "santa ana volcan",
+          "volcan de santa ana detail",
           "santa ana volcano detail",
           "santa ana information",
-          "informacion de santa ana"
+          "informacion de santa ana",
+          "informacion del volcan de santa ana",
+          "detalle del volcan de santa ana"
         ]
       },
       {
@@ -2193,6 +2230,12 @@
           "coatepeque",
           "coatepec",
           "coatepeq",
+          "coatapeque",
+          "coatepeke",
+          "coatepeque lake",
+          "lake coatapeque",
+          "lago coatapeque",
+          "lago de coatapeque",
           "lago de coatepeque",
           "lago coatepeque",
           "the lake",
@@ -2212,11 +2255,19 @@
           "el tunco",
           "tunco",
           "playa el tunco",
+          "playa del tunco",
           "the beach",
           "tunco beach",
+          "el tumco",
+          "tumco",
+          "playa el tumco",
+          "playa del tumco",
+          "tumco beach",
           "el tunco information",
           "informacion del tunco",
+          "informacion del tumco",
           "informacion de el tunco",
+          "informacion de el tumco",
           "detalle del tunco"
         ]
       },
@@ -2226,10 +2277,16 @@
         aliases: [
           "suchitoto",
           "suchi toto",
+          "suchi todo",
+          "sushi toto",
+          "suchitoto town",
+          "pueblo de suchitoto",
+          "pueblo suchitoto",
           "suchitoto information",
           "suchitoto detail",
           "informacion de suchitoto",
-          "detalle de suchitoto"
+          "detalle de suchitoto",
+          "informacion del pueblo de suchitoto"
         ]
       },
       {
@@ -2238,14 +2295,21 @@
         aliases: [
           "historic center",
           "historical center",
+          "historical centre",
           "centro historico",
           "centro historico de san salvador",
+          "centro historico san salvador",
           "centro de san salvador",
+          "centro de la ciudad",
+          "centro de la ciudad de san salvador",
           "centro historico de san salvador",
           "san salvador historic center",
+          "san salvador center",
+          "san salvador historical center",
           "historic center information",
           "informacion del centro historico",
-          "detalle del centro historico"
+          "detalle del centro historico",
+          "informacion del centro historico de san salvador"
         ]
       },
       {
@@ -2258,8 +2322,17 @@
           "parque nacional el imposible",
           "imposible park",
           "imposible",
+          "el impossible",
+          "el impossible national park",
+          "parque el impossible",
+          "parque nacional el impossible",
+          "impossible park",
+          "impossible national park",
+          "impossible",
           "informacion de el imposible",
-          "informacion del imposible"
+          "informacion del imposible",
+          "informacion de el impossible",
+          "informacion del impossible"
         ]
       },
       {
@@ -2541,7 +2614,7 @@
     ];
 
     const hasNavigationIntent =
-      /(^|\s)(go|open|take|navigate|come|bring|show|visit|switch|change|move|send|lead|enter|ir|abre|abrir|entra|entrar|muestra|mostrar|ver|visitar|cambia|lleva|llevame|manda|mandame|dirigete)(\s|$)/.test(command) ||
+      /(^|\s)(go|open|take|navigate|come|bring|show|visit|switch|change|move|send|lead|enter|ir|ve|abre|abrir|entra|entrar|muestra|mostrar|ver|visitar|cambia|lleva|llevame|manda|mandame|dirigete|volver)(\s|$)/.test(command) ||
       command.includes("take me to") ||
       command.includes("go to") ||
       command.includes("send me to") ||
@@ -2550,6 +2623,7 @@
       command.includes("i want to open") ||
       command.includes("i want to see") ||
       command.includes("ir a") ||
+      command.includes("ve a") ||
       command.includes("quiero ir") ||
       command.includes("quiero abrir") ||
       command.includes("quiero ver") ||
@@ -2562,13 +2636,14 @@
       command.includes("llevame a") ||
       command.includes("mandame a") ||
       command.includes("entrar a") ||
+      command.includes("volver a") ||
       command.includes("switch to") ||
       command.includes("change to") ||
       command.startsWith("yes ");
 
     const directNavigationTarget = command
       .replace(
-        /^(please\s+)?(can you\s+|could you\s+)?(go|go to|open|open the|navigate|navigate to|visit|visit the|show|show me|take me to|send me to|bring me to|move to|switch to|enter|enter to|ir|ir a|abre|abrir|entra|entrar|muestra|mostrar|ver|visitar|llevame a|mandame a)\s+/,
+        /^(please\s+)?(can you\s+|could you\s+)?(go|go to|open|open the|navigate|navigate to|visit|visit the|show|show me|take me to|send me to|bring me to|move to|switch to|enter|enter to|ir|ir a|ve a|abre|abrir|entra|entrar|muestra|mostrar|ver|visitar|llevame a|mandame a|volver a)\s+/,
         ""
       )
       .replace(/^(the|to|page|pagina|la|el|los|las)\s+/, "")
@@ -3080,6 +3155,7 @@
     if (
       includesAny(command, [
         "read this page",
+        "read this whole page",
         "read the page",
         "read page",
         "read aloud",
@@ -3088,13 +3164,22 @@
         "start reading",
         "voice guide",
         "tell me what it says",
+        "what does this page say",
         "leer pagina",
+        "leer la pagina",
+        "lee esta pagina",
         "lee la pagina",
         "leer esta pagina",
+        "leeme esta pagina",
+        "leeme la pagina",
+        "lee pagina",
         "leer contenido",
+        "lee contenido",
         "lee el contenido",
         "empieza a leer",
+        "comienza a leer",
         "dime que dice",
+        "que dice esta pagina",
         "guia de audio",
         "audio guide"
       ])
@@ -3107,7 +3192,13 @@
       };
     }
 
-    if (command.includes("go back") || command.includes("regresar") || command.includes("volver") || command === "back") {
+    if (
+      command.includes("go back") ||
+      command.includes("regresar") ||
+      command === "volver" ||
+      command.includes("volver atras") ||
+      command === "back"
+    ) {
       return {
         action: "go_back",
         target: "none",
@@ -3271,19 +3362,37 @@
     if (
       includesAny(command, [
         "change to spanish",
+        "change language to spanish",
+        "change the language to spanish",
         "switch to spanish",
+        "switch language to spanish",
         "spanish language",
+        "set language to spanish",
         "set spanish",
         "put spanish",
+        "put it in spanish",
+        "make it spanish",
         "translate to spanish",
         "show in spanish",
+        "spanish please",
+        "in spanish please",
         "espanol",
         "cambiar a espanol",
+        "cambia a espanol",
+        "cambiar el idioma a espanol",
+        "cambia el idioma a espanol",
+        "idioma espanol",
         "poner espanol",
+        "ponerlo en espanol",
+        "ponlo en espanol",
+        "pon la pagina en espanol",
         "activar espanol",
         "traducir a espanol",
         "mostrar en espanol",
-        "pagina en espanol"
+        "pagina en espanol",
+        "pasar a espanol",
+        "quiero espanol",
+        "en espanol por favor"
       ])
     ) {
       return {
@@ -3298,19 +3407,37 @@
     if (
       includesAny(command, [
         "change to english",
+        "change language to english",
+        "change the language to english",
         "switch to english",
+        "switch language to english",
         "english language",
+        "set language to english",
         "set english",
         "put english",
+        "put it in english",
+        "make it english",
         "translate to english",
         "show in english",
+        "english please",
+        "in english please",
         "ingles",
         "cambiar a ingles",
+        "cambia a ingles",
+        "cambiar el idioma a ingles",
+        "cambia el idioma a ingles",
+        "idioma ingles",
         "poner ingles",
+        "ponerlo en ingles",
+        "ponlo en ingles",
+        "pon la pagina en ingles",
         "activar ingles",
         "traducir a ingles",
         "mostrar en ingles",
-        "pagina en ingles"
+        "pagina en ingles",
+        "pasar a ingles",
+        "quiero ingles",
+        "en ingles por favor"
       ])
     ) {
       return {
@@ -3609,8 +3736,10 @@
     for (const [phrase, filterValue] of Object.entries(DESTINATION_FILTERS)) {
       if (
         command.includes(`filter ${phrase}`) ||
+        command.includes(`filter by ${phrase}`) ||
         command.includes(`only ${phrase}`) ||
         command.includes(`filtrar ${phrase}`) ||
+        command.includes(`filtrar por ${phrase}`) ||
         command.includes(`solo ${phrase}`) ||
         command.includes(`show ${phrase}`) ||
         command.includes(`mostrar ${phrase}`) ||
@@ -3694,6 +3823,24 @@
         action: "fill_planner",
         target: "none",
         value: "none",
+        query: command,
+        reply: "Updating the trip planner."
+      };
+    }
+
+    const plannerPhrase = Object.keys(PLANNER_VALUES).find((phrase) =>
+      ["choose", "select", "check", "mark", "elige", "escoge", "selecciona", "marca", "marcar"].some((verb) =>
+        command.includes(`${verb} ${phrase}`) ||
+        command.includes(`${verb} una ${phrase}`) ||
+        command.includes(`${verb} un ${phrase}`)
+      )
+    );
+
+    if (plannerPhrase) {
+      return {
+        action: "fill_planner",
+        target: "none",
+        value: plannerPhrase,
         query: command,
         reply: "Updating the trip planner."
       };
@@ -4111,6 +4258,7 @@
     addAccessibilityMenuControl();
     setupHighContrastPersistence();
     setupRecognition();
+    window.addEventListener("openroutes:languagechange", syncRecognitionLanguage);
     updateControls();
 
     const shouldResume =
