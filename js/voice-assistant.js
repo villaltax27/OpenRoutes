@@ -349,6 +349,8 @@
   let speaking = false;
   let processing = false;
   let suppressRecognitionRestart = false;
+  let speechSequence = 0;
+  let programmaticScrollUntil = 0;
   let previousReaderState = null;
   let assistantCheckbox = null;
   let assistantPrompt = null;
@@ -958,6 +960,8 @@
       return;
     }
 
+    const speechId = ++speechSequence;
+
     stopRecognitionOnly();
     synth.cancel();
 
@@ -976,6 +980,10 @@
     setStatus(`${localizeStatusPrefix(statusPrefix)}: ${cleanText}`);
 
     utterance.onend = () => {
+      if (speechId !== speechSequence) {
+        return;
+      }
+
       speaking = false;
 
       if (typeof afterSpeak === "function") {
@@ -988,6 +996,10 @@
     };
 
     utterance.onerror = (event) => {
+      if (speechId !== speechSequence) {
+        return;
+      }
+
       speaking = false;
       console.error("Speech synthesis error:", event.error);
       setStatus("I could not speak that response.");
@@ -1224,6 +1236,7 @@
   function stopAssistant(message = "Voice assistant stopped.") {
     active = false;
     processing = false;
+    speechSequence += 1;
     sessionStorage.removeItem(CONFIG.resumeKey);
     stopRecognitionOnly();
 
@@ -1730,6 +1743,8 @@
   }
 
   function stopReading() {
+    speechSequence += 1;
+
     if (synth) {
       synth.cancel();
     }
@@ -1789,7 +1804,64 @@
   }
 
   function scrollToElement(element) {
+    markProgrammaticScroll();
     element?.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+
+  function markProgrammaticScroll() {
+    programmaticScrollUntil = Date.now() + 1000;
+  }
+
+  function interruptSpeechForPageMovement() {
+    if (!active || !speaking) {
+      return;
+    }
+
+    // Cancel every queued speech chunk so manual navigation immediately returns control to the user.
+    speechSequence += 1;
+    stopRecognitionOnly();
+
+    if (synth) {
+      synth.cancel();
+    }
+
+    speaking = false;
+    setStatus(
+      getLanguageCode() === "es"
+        ? "Lectura interrumpida. Escuchando..."
+        : "Reading interrupted. Listening..."
+    );
+    window.setTimeout(startListening, 120);
+  }
+
+  function setupPageMovementInterruption() {
+    const interruptForDirectMovement = () => interruptSpeechForPageMovement();
+
+    window.addEventListener("wheel", interruptForDirectMovement, { passive: true });
+    window.addEventListener("touchmove", interruptForDirectMovement, { passive: true });
+
+    window.addEventListener("keydown", (event) => {
+      const target = event.target;
+      const isTyping =
+        target instanceof HTMLInputElement ||
+        target instanceof HTMLTextAreaElement ||
+        target instanceof HTMLSelectElement ||
+        target?.isContentEditable;
+
+      if (!isTyping && ["ArrowDown", "ArrowUp", "PageDown", "PageUp", "Home", "End", " "].includes(event.key)) {
+        interruptSpeechForPageMovement();
+      }
+    });
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (Date.now() > programmaticScrollUntil) {
+          interruptSpeechForPageMovement();
+        }
+      },
+      { passive: true }
+    );
   }
 
   function getResultsSummary() {
@@ -4077,6 +4149,7 @@
           bottom: { top: document.documentElement.scrollHeight }
         };
 
+        markProgrammaticScroll();
         window.scrollBy({
           ...scrollOptions[command.value],
           behavior: "smooth"
@@ -4258,6 +4331,7 @@
     addAccessibilityMenuControl();
     setupHighContrastPersistence();
     setupRecognition();
+    setupPageMovementInterruption();
     window.addEventListener("openroutes:languagechange", syncRecognitionLanguage);
     updateControls();
 
