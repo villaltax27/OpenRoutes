@@ -282,6 +282,39 @@
         </div>
         <div class="title-line" aria-hidden="true"></div>
         <div class="destination-reviews-grid" id="destinationReviews"></div>
+        <form class="destination-review-form" id="destinationReviewForm">
+            <div class="review-form-heading">
+                <span class="review-form-icon" aria-hidden="true"><i class="fa-solid fa-pen"></i></span>
+                <div>
+                    <h3 id="reviewFormTitle">Share your experience</h3>
+                    <p id="reviewFormDescription">Your feedback can help future visitors plan with confidence.</p>
+                </div>
+            </div>
+            <div class="review-form-fields">
+                <label for="reviewName">
+                    <span id="reviewNameLabel">Your name</span>
+                    <input id="reviewName" name="reviewName" type="text" maxlength="50" autocomplete="name" required>
+                </label>
+                <label for="reviewRating">
+                    <span id="reviewRatingLabel">Rating</span>
+                    <select id="reviewRating" name="reviewRating" required>
+                        <option value="5">5 - Excellent</option>
+                        <option value="4">4 - Very good</option>
+                        <option value="3">3 - Good</option>
+                        <option value="2">2 - Fair</option>
+                        <option value="1">1 - Needs improvement</option>
+                    </select>
+                </label>
+            </div>
+            <label class="review-comment-field" for="reviewComment">
+                <span id="reviewCommentLabel">Your review</span>
+                <textarea id="reviewComment" name="reviewComment" rows="4" maxlength="500" required></textarea>
+            </label>
+            <div class="review-form-footer">
+                <button class="review-submit-btn" id="reviewSubmitButton" type="submit"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i> <span id="reviewSubmitLabel">Post review</span></button>
+            </div>
+            <p class="review-form-status" id="reviewFormStatus" aria-live="polite"></p>
+        </form>
     </div>
 </section>
 

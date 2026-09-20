@@ -1,5 +1,5 @@
 const params = new URLSearchParams(window.location.search);
-const place = params.get("place") || "santa ana";
+const place = params.get("place") || "coatepeque";
 
 const sharedGallery = [
   {
@@ -770,7 +770,127 @@ const locationMapsLinkEl = document.getElementById("locationMapsLink");
 const routeVisualEl = document.getElementById("routeVisual");
 const practicalInfoEl = document.getElementById("practicalInfo");
 const destinationReviewsEl = document.getElementById("destinationReviews");
+const destinationReviewForm = document.getElementById("destinationReviewForm");
+const reviewNameInput = document.getElementById("reviewName");
+const reviewRatingInput = document.getElementById("reviewRating");
+const reviewCommentInput = document.getElementById("reviewComment");
+const reviewFormStatus = document.getElementById("reviewFormStatus");
 const crumbEl = document.getElementById("crumb");
+
+const REVIEW_STORAGE_KEY = "openRoutesDestinationReviewsV1";
+const reviewFormCopy = {
+  en: {
+    title: "Share your experience",
+    description: "Your feedback can help future visitors plan with confidence.",
+    name: "Your name",
+    rating: "Rating",
+    comment: "Your review",
+    options: ["5 - Excellent", "4 - Very good", "3 - Good", "2 - Fair", "1 - Needs improvement"],
+    submit: "Post review",
+    success: "Thank you. Your review was added.",
+    storageError: "Your review could not be saved."
+  },
+  es: {
+    title: "Comparte tu experiencia",
+    description: "Tu comentario puede ayudar a futuros visitantes a planificar con confianza.",
+    name: "Tu nombre",
+    rating: "Calificación",
+    comment: "Tu reseña",
+    options: ["5 - Excelente", "4 - Muy bueno", "3 - Bueno", "2 - Regular", "1 - Necesita mejorar"],
+    submit: "Publicar reseña",
+    success: "Gracias. Tu reseña se agregó.",
+    storageError: "No se pudo guardar tu reseña."
+  }
+};
+
+function getReviewLanguage() {
+  return localStorage.getItem("openRoutesLanguageV3") === "es" ? "es" : "en";
+}
+
+function getReviewCopy() {
+  return reviewFormCopy[getReviewLanguage()];
+}
+
+function escapeReviewHtml(value) {
+  return String(value || "").replace(/[&<>"']/g, (character) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    "\"": "&quot;",
+    "'": "&#039;"
+  }[character]));
+}
+
+function getSavedReviews() {
+  try {
+    const storedReviews = JSON.parse(localStorage.getItem(REVIEW_STORAGE_KEY) || "{}");
+    return storedReviews && typeof storedReviews === "object" ? storedReviews : {};
+  } catch (error) {
+    return {};
+  }
+}
+
+function getSavedReviewsForPlace(placeKey) {
+  const savedReviews = getSavedReviews()[placeKey];
+  return Array.isArray(savedReviews) ? savedReviews : [];
+}
+
+function saveReviewForPlace(placeKey, review) {
+  try {
+    const savedReviews = getSavedReviews();
+    savedReviews[placeKey] = [review, ...getSavedReviewsForPlace(placeKey)];
+    localStorage.setItem(REVIEW_STORAGE_KEY, JSON.stringify(savedReviews));
+    return true;
+  } catch (error) {
+    return false;
+  }
+}
+
+function getReviewsForCurrentPlace() {
+  return [
+    ...getSavedReviewsForPlace(place),
+    ...(destinationReviews[place] || destinationReviews.coatepeque)
+  ];
+}
+
+function createReviewInitials(name) {
+  const initials = name.trim().split(/\s+/).filter(Boolean).slice(0, 2).map((part) => part.charAt(0)).join("");
+  return initials.toUpperCase() || "OR";
+}
+
+function formatReviewDate(review) {
+  if (!review.createdAt) return review.date;
+
+  try {
+    return new Intl.DateTimeFormat(getReviewLanguage() === "es" ? "es-SV" : "en-US", {
+      month: "long",
+      year: "numeric"
+    }).format(new Date(review.createdAt));
+  } catch (error) {
+    return review.date;
+  }
+}
+
+function updateReviewFormLanguage() {
+  const copy = getReviewCopy();
+  const setText = (id, value) => {
+    const element = document.getElementById(id);
+    if (element) element.textContent = value;
+  };
+
+  setText("reviewFormTitle", copy.title);
+  setText("reviewFormDescription", copy.description);
+  setText("reviewNameLabel", copy.name);
+  setText("reviewRatingLabel", copy.rating);
+  setText("reviewCommentLabel", copy.comment);
+  setText("reviewSubmitLabel", copy.submit);
+
+  if (reviewRatingInput) {
+    Array.from(reviewRatingInput.options).forEach((option, index) => {
+      option.textContent = copy.options[index];
+    });
+  }
+}
 
 function renderStackList(container, items, iconClass) {
   if (!container) return;
@@ -1138,24 +1258,58 @@ function renderReviews(items) {
   destinationReviewsEl.innerHTML = "";
 
   items.forEach((review) => {
+    const rating = Math.min(5, Math.max(1, Number(review.rating) || 1));
     const article = document.createElement("article");
     article.className = "destination-review-card";
     article.innerHTML = `
       <div class="review-card-header">
-        <span class="review-avatar" aria-hidden="true">${review.initials}</span>
+        <span class="review-avatar" aria-hidden="true">${escapeReviewHtml(review.initials)}</span>
         <div>
-          <h3>${review.name}</h3>
-          <p>${review.destination}</p>
+          <h3>${escapeReviewHtml(review.name)}</h3>
+          <p>${escapeReviewHtml(review.destination)}</p>
         </div>
       </div>
-      <div class="review-rating" aria-label="${review.rating} out of 5 stars">
-        <span>${review.rating.toFixed(1)}</span>
-        ${renderStars(review.rating)}
+      <div class="review-rating" aria-label="${getReviewLanguage() === "es" ? `${rating} de 5 estrellas` : `${rating} out of 5 stars`}">
+        <span>${rating.toFixed(1)}</span>
+        ${renderStars(rating)}
       </div>
-      <p class="review-comment">"${review.comment}"</p>
-      <time>${review.date}</time>
+      <p class="review-comment">"${escapeReviewHtml(review.comment)}"</p>
+      <time>${escapeReviewHtml(formatReviewDate(review))}</time>
     `;
     destinationReviewsEl.appendChild(article);
+  });
+}
+
+function setupReviewForm() {
+  if (!destinationReviewForm || !reviewNameInput || !reviewRatingInput || !reviewCommentInput) return;
+
+  destinationReviewForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    if (!destinationReviewForm.checkValidity()) {
+      destinationReviewForm.reportValidity();
+      return;
+    }
+
+    const review = {
+      name: reviewNameInput.value.trim(),
+      initials: createReviewInitials(reviewNameInput.value),
+      destination: data.name,
+      rating: Number(reviewRatingInput.value),
+      comment: reviewCommentInput.value.trim(),
+      date: new Date().toLocaleDateString(),
+      createdAt: new Date().toISOString()
+    };
+
+    const copy = getReviewCopy();
+    if (!saveReviewForPlace(place, review)) {
+      if (reviewFormStatus) reviewFormStatus.textContent = copy.storageError;
+      return;
+    }
+
+    destinationReviewForm.reset();
+    renderReviews(getReviewsForCurrentPlace());
+    if (reviewFormStatus) reviewFormStatus.textContent = copy.success;
   });
 }
 function getAccessibilityStatusClass(status) {
@@ -1332,7 +1486,7 @@ function renderDestination() {
 
   renderHighlights(data.highlights);
   renderPracticalInfo(data.practicalInfo || []);
-  renderReviews(destinationReviews[place] || destinationReviews.coatepeque);
+  renderReviews(getReviewsForCurrentPlace());
   renderLocalExperience(data.localExperience);
   renderStackList(tipsEl, data.tips, "fa-lightbulb");
   renderAccessibilitySummary(data.accessDetails);
@@ -1340,6 +1494,12 @@ function renderDestination() {
 }
 
 renderDestination();
+updateReviewFormLanguage();
+setupReviewForm();
+window.addEventListener("openroutes:languagechange", () => {
+  updateReviewFormLanguage();
+  renderReviews(getReviewsForCurrentPlace());
+});
 setupTabs();
 setupAccessibilityMenu();
 setupShareButton();
