@@ -2,17 +2,11 @@
   "use strict";
 
   const CONFIG = Object.freeze({
-    endpoint:
-      window.location.hostname === "127.0.0.1" ||
-      window.location.hostname === "localhost"
-        ? "/api/assistant"
-        : "http://127.0.0.1:5510/api/assistant",
     language: localStorage.getItem("openRoutesLanguageV3") === "es" ? "es-SV" : "en-US",
     resumeKey: "openRoutesVoiceAssistantResume",
     pendingActionKey: "openRoutesVoiceAssistantPendingAction",
     promptChoiceKey: "openRoutesVoiceAssistantPromptChoice",
-    highContrastKey: "openRoutesHighContrast",
-    requestTimeoutMs: 120000
+    highContrastKey: "openRoutesHighContrast"
   });
 
   const ROUTES = Object.freeze({
@@ -54,6 +48,73 @@
       "Puedes decir: ir a inicio, ir a destinos, ir al lago de Coatepeque, ir a tours populares, " +
       "activar modo oscuro, aumentar texto, agregar esto a favoritos, reservar este viaje, abrir el menu de lengua de senas, " +
       "leer esta pagina, leer destinos, leer herramientas de accesibilidad, leer ubicacion, leer menu, abrir el primer destino o detener asistente."
+  });
+
+  const PAGE_HELP_MESSAGES = Object.freeze({
+    "index.html": {
+      en: "read destinations, read tours, open the first destination, open the first tour, or go to destinations",
+      es: "leer destinos, leer tours, abrir el primer destino, abrir el primer tour o ir a destinos"
+    },
+    "destinations.html": {
+      en: "read destinations, read filters, filter by wheelchair, filter by low walking, open the first destination, or go to Lake Coatepeque",
+      es: "leer destinos, leer filtros, filtrar silla de ruedas, filtrar poca caminata, abrir el primer destino o ir al lago de Coatepeque"
+    },
+    "destination-detail.html": {
+      en: "read overview, read practical info, read accessibility, read local experiences, read location, read guides, read tips, read reviews, read tours, add this to favorites, or open the first tour",
+      es: "leer resumen, leer informacion practica, leer accesibilidad, leer experiencias locales, leer ubicacion, leer guias, leer consejos, leer resenas, leer tours, agregar esto a favoritos o abrir el primer tour"
+    },
+    "plan-your-trip.html": {
+      en: "read options, choose nature, choose beach, choose culture, check wheelchair, check interpreter, save plan, or go to destinations",
+      es: "leer opciones, elegir naturaleza, elegir playa, elegir cultura, marcar silla de ruedas, marcar interprete, guardar plan o ir a destinos"
+    },
+    "tour-detail.html": {
+      en: "read booking, book this trip, go to popular tours, or go to destinations",
+      es: "leer reserva, reservar este viaje, ir a tours populares o ir a destinos"
+    },
+    "about.html": {
+      en: "read our story, read mission, read vision, read values, read team, or go to contact",
+      es: "leer nuestra historia, leer mision, leer vision, leer valores, leer equipo o ir a contacto"
+    },
+    "contact.html": {
+      en: "read contact, go to FAQ, or go to the accessibility statement",
+      es: "leer contacto, ir a preguntas frecuentes o ir a la declaracion de accesibilidad"
+    },
+    "profile.html": {
+      en: "read profile, open favorites, open settings, or go to Plan Your Trip",
+      es: "leer perfil, abrir favoritos, abrir configuracion o ir a Planifica tu viaje"
+    },
+    "favorites.html": {
+      en: "read favorites, open destinations, or open guides",
+      es: "leer favoritos, abrir destinos o abrir guias"
+    },
+    "settings.html": {
+      en: "read security, read travel, read language, read notifications, read privacy, or change to Spanish",
+      es: "leer seguridad, leer viaje, leer idioma, leer notificaciones, leer privacidad o cambiar a ingles"
+    },
+    "faq.html": {
+      en: "read questions, read booking questions, read accessibility questions, read account questions, read video and guide questions, open contact, or open the accessibility statement",
+      es: "leer preguntas, leer preguntas de reservas, leer preguntas de accesibilidad, leer preguntas de cuenta, leer preguntas de videos y guias, abrir contacto o abrir la declaracion de accesibilidad"
+    },
+    "interpreters.html": {
+      en: "read guides, search Steven, filter guides by Spanish, filter guides by English, or open Steven",
+      es: "leer guias, buscar Steven, filtrar guias en espanol, filtrar guias en ingles o abrir Steven"
+    },
+    "Steven_information.html": {
+      en: "read this page, open guides, open favorites, or go to contact",
+      es: "leer esta pagina, abrir guias, abrir favoritos o ir a contacto"
+    },
+    "login.html": {
+      en: "read this page, open register, or go to home",
+      es: "leer esta pagina, abrir registro o ir a inicio"
+    },
+    "registrer.html": {
+      en: "read this page, open login, or go to home",
+      es: "leer esta pagina, abrir inicio de sesion o ir a inicio"
+    },
+    "accessibility-statement.html": {
+      en: "read this page, read accessibility tools, open contact, or go to FAQ",
+      es: "leer esta pagina, leer herramientas de accesibilidad, abrir contacto o ir a preguntas frecuentes"
+    }
   });
 
   const NAVIGATION_MESSAGES = Object.freeze({
@@ -238,15 +299,29 @@
     interpretes: "guides",
     tips: "tips",
     consejos: "tips",
+    story: "story",
+    "our story": "story",
+    historia: "story",
+    "nuestra historia": "story",
+    mission: "mission",
+    mision: "mission",
+    vision: "vision",
+    values: "values",
+    valores: "values",
     security: "security",
     seguridad: "security",
     "login security": "security",
     travel: "travel",
+    viaje: "travel",
     "travel preferences": "travel",
+    "preferencias de viaje": "travel",
     language: "language",
+    idioma: "language",
     region: "language",
     notifications: "notifications",
-    privacy: "privacy"
+    notificaciones: "notifications",
+    privacy: "privacy",
+    privacidad: "privacy"
   });
 
   const DESTINATION_FILTERS = Object.freeze({
@@ -336,6 +411,17 @@
     transporte: "transport",
     "private transport": "transport",
     "transporte privado": "transport"
+  });
+
+  const CHECKLIST_ITEM_ALIASES = Object.freeze({
+    id: ["id", "identification", "identificacion", "passport", "pasaporte"],
+    needs: ["accessibility needs", "accessibility list", "necesidades de accesibilidad", "lista de accesibilidad"],
+    meds: ["meds", "medication", "medicine", "medicina", "medicamento", "medicamentos"],
+    water: ["water", "water bottle", "agua", "botella de agua"],
+    sun: ["sunscreen", "sunblock", "protector solar", "bloqueador"],
+    phone: ["phone charger", "charger", "cargador", "cargador de telefono", "cargador del telefono"],
+    cash: ["cash", "small bills", "efectivo", "billetes pequenos"],
+    contacts: ["emergency contacts", "contacts", "contactos de emergencia", "contactos"]
   });
 
   const SpeechRecognition =
@@ -539,6 +625,7 @@
       .replace(/[\u0300-\u036f]/g, "")
       .replace(/\bwhat'?s\b/g, "what is")
       .replace(/\bwhats\b/g, "what is")
+      .replace(/\b(?:lee|leeme)\b/g, "leer")
       .replace(/[.,!?;:]/g, " ")
       .replace(/\s+/g, " ")
       .trim();
@@ -576,7 +663,20 @@
   }
 
   function getHelpMessage() {
-    return HELP_MESSAGES[getLanguageCode()] || HELP_MESSAGES.en;
+    const language = getLanguageCode();
+    const pageHelp = PAGE_HELP_MESSAGES[getCurrentPathName()]?.[language];
+    const common =
+      language === "es"
+        ? "Tambien puedes decir leer esta pagina, leer menu, que puedo decir, activar alto contraste, activar modo oscuro, aumentar texto, cambiar a ingles o detener asistente."
+        : "You can also say read this page, read menu, what can I say, turn on high contrast, turn on dark mode, increase text, change to Spanish, or stop listening.";
+
+    if (!pageHelp) {
+      return HELP_MESSAGES[language] || HELP_MESSAGES.en;
+    }
+
+    return language === "es"
+      ? `En esta pagina puedes decir: ${pageHelp}. ${common}`
+      : `On this page you can say: ${pageHelp}. ${common}`;
   }
 
   function getNavigationMessage() {
@@ -592,11 +692,9 @@
   }
 
   function getLocalFallbackMessage() {
-    return LOCAL_FALLBACK_MESSAGES[getLanguageCode()] || LOCAL_FALLBACK_MESSAGES.en;
-  }
-
-  function canUseLocalAssistantServer() {
-    return window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost";
+    return getLanguageCode() === "es"
+      ? `No entendi ese comando. ${getHelpMessage()}`
+      : `I did not understand that command. ${getHelpMessage()}`;
   }
 
   function getCurrentPathName() {
@@ -661,7 +759,7 @@
       }
 
       if (pathName === "destination-detail.html") {
-        return `${summary} Esta pagina esta organizada por secciones: ${joinForSpeech(sectionNames)}. Puedes decir leer accesibilidad, leer informacion practica, leer ubicacion, leer guias, leer consejos, leer resenas o leer tours. Tambien puedes decir agregar a favoritos o reservar este viaje.`;
+        return `${summary} Esta pagina esta organizada por secciones: ${joinForSpeech(sectionNames)}. Puedes decir leer resumen, leer accesibilidad, leer informacion practica, leer experiencias locales, leer ubicacion, leer guias, leer consejos, leer resenas o leer tours. Tambien puedes decir agregar a favoritos o abrir el primer tour.`;
       }
 
       if (pathName === "plan-your-trip.html") {
@@ -669,15 +767,15 @@
       }
 
       if (pathName === "tour-detail.html") {
-        return `${summary} Aqui puedes revisar el paquete, seleccionar fecha, numero de personas, necesidades de accesibilidad, apoyo de guia o interprete, pago y resumen. Puedes decir leer reserva, reservar este viaje o volver a tours populares.`;
+        return `${summary} Aqui puedes revisar el paquete, seleccionar fecha, numero de personas, necesidades de accesibilidad, apoyo de guia o interprete, pago y resumen. Puedes decir leer reserva, reservar este viaje o ir a tours populares.`;
       }
 
       if (pathName === "faq.html") {
-        return `${summary} Las preguntas estan agrupadas por reservas, accesibilidad, cuenta, videos y guias. Puedes decir leer preguntas o leer accesibilidad.`;
+        return `${summary} Las preguntas estan agrupadas por reservas, accesibilidad, cuenta, videos y guias. Puedes decir leer preguntas, leer preguntas de reservas, leer preguntas de accesibilidad, leer preguntas de cuenta, leer preguntas de videos y guias, abrir contacto o abrir la declaracion de accesibilidad.`;
       }
 
       if (pathName === "about.html") {
-        return `${summary} Puedes conocer la mision, vision, valores y equipo. Puedes decir leer equipo o leer esta pagina.`;
+        return `${summary} Puedes conocer la historia, mision, vision, valores y equipo. Puedes decir leer nuestra historia, leer mision, leer vision, leer valores, leer equipo o leer esta pagina.`;
       }
 
       if (pathName === "contact.html") {
@@ -697,7 +795,7 @@
       }
 
       if (pathName === "interpreters.html") {
-        return `${summary} Puedes revisar interpretes y guias disponibles, buscar por nombre o filtrar por idioma. Puedes decir leer guias, buscar Steven o agregar a favoritos.`;
+        return `${summary} Puedes revisar interpretes y guias disponibles, buscar por nombre o filtrar por idioma. Puedes decir leer guias, buscar Steven, filtrar guias en espanol, filtrar guias en ingles o abrir Steven.`;
       }
 
       return `${summary} Puedes decir leer menu para escuchar las paginas, leer esta pagina para una orientacion corta, o que puedo decir para escuchar comandos.`;
@@ -715,23 +813,23 @@
     }
 
     if (pathName === "destination-detail.html") {
-      return `${summary} This page is organized into sections: ${joinForSpeech(sectionNames)}. You can say read accessibility, read practical info, read location, read guides, read tips, read reviews or read tours. You can also say add to favorites or book this trip.`;
+      return `${summary} This page is organized into sections: ${joinForSpeech(sectionNames)}. You can say read overview, read accessibility, read practical info, read local experiences, read location, read guides, read tips, read reviews or read tours. You can also say add to favorites or open the first tour.`;
     }
 
     if (pathName === "plan-your-trip.html") {
-      return `${summary} Here you can choose travel style, available time, accessibility needs and support options. You can say read options, choose nature, choose beach, choose culture, check a support need, save plan or go to destinations.`;
+      return `${summary} Here you can choose travel style, available time, accessibility needs and support options. You can say read options, choose nature, choose beach, choose culture, check wheelchair, check interpreter, save plan or go to destinations.`;
     }
 
     if (pathName === "tour-detail.html") {
-      return `${summary} Here you can review the package, select date, number of travelers, accessibility needs, guide or interpreter support, payment and summary. You can say read booking, book this trip or go back to popular tours.`;
+      return `${summary} Here you can review the package, select date, number of travelers, accessibility needs, guide or interpreter support, payment and summary. You can say read booking, book this trip or go to popular tours.`;
     }
 
     if (pathName === "faq.html") {
-      return `${summary} Questions are grouped by bookings, accessibility, account, videos and guides. You can say read questions or read accessibility.`;
+      return `${summary} Questions are grouped by bookings, accessibility, account, videos and guides. You can say read questions, read booking questions, read accessibility questions, read account questions, read video and guide questions, open contact or open the accessibility statement.`;
     }
 
     if (pathName === "about.html") {
-      return `${summary} You can learn about the mission, vision, values and team. You can say read team or read this page.`;
+      return `${summary} You can learn about the story, mission, vision, values and team. You can say read our story, read mission, read vision, read values, read team or read this page.`;
     }
 
     if (pathName === "contact.html") {
@@ -751,7 +849,7 @@
     }
 
     if (pathName === "interpreters.html") {
-      return `${summary} You can review available interpreters and guides, search by name or filter by language. You can say read guides, search Steven or add to favorites.`;
+      return `${summary} You can review available interpreters and guides, search by name or filter by language. You can say read guides, search Steven, filter guides by Spanish, filter guides by English or open Steven.`;
     }
 
     return `${summary} You can say read menu to hear the pages, read this page for a short orientation, or what can I say to hear commands.`;
@@ -777,6 +875,30 @@
       "Settings": "Configuracion",
       "Help and FAQ": "Ayuda y preguntas frecuentes",
       "Accessibility Statement": "Declaracion de accesibilidad",
+      "story": "historia",
+      "our story": "nuestra historia",
+      "mission": "mision",
+      "vision": "vision",
+      "values": "valores",
+      "overview": "resumen",
+      "practical": "informacion practica",
+      "things": "experiencias locales",
+      "location": "ubicacion",
+      "guides": "guias",
+      "tips": "consejos",
+      "reviews": "resenas",
+      "tours": "tours",
+      "team": "equipo",
+      "filters": "filtros",
+      "options": "opciones",
+      "planner options": "opciones del planificador",
+      "accessibility tools": "herramientas de accesibilidad",
+      "questions": "preguntas",
+      "guided content": "contenido guiado",
+      "accessibility questions": "preguntas de accesibilidad",
+      "booking questions": "preguntas de reservas",
+      "account questions": "preguntas de cuenta",
+      "video and guide questions": "preguntas de videos y guias",
       "Santa Ana Volcano": "volcan de Santa Ana",
       "Santa Ana Volcano Tour": "tour del volcan de Santa Ana",
       "Lake Coatepeque": "lago de Coatepeque",
@@ -836,6 +958,8 @@
       "Listening… Speak now.": "Escuchando... Habla ahora.",
       "I did not hear anything. Listening again…": "No escuche nada. Estoy escuchando otra vez...",
       "No microphone was found.": "No se encontro ningun microfono.",
+      "Voice recognition is not supported. Use a current version of Chrome or Edge.": "El reconocimiento de voz no esta disponible. Usa una version actual de Chrome o Edge.",
+      "Microphone permission was denied. Allow microphone access and try again.": "Se rechazo el permiso del microfono. Permite el acceso e intentalo de nuevo.",
       "Reading stopped. Listening…": "Lectura detenida. Escuchando...",
       "Opening destinations to search.": "Abriendo destinos para buscar.",
       "Opening destinations to apply the filter.": "Abriendo destinos para aplicar el filtro.",
@@ -890,6 +1014,15 @@
     match = text.match(/^Reading this page in (\d+) parts\.$/);
     if (match) return `Leyendo esta pagina en ${match[1]} partes.`;
 
+    match = text.match(/^Reading a short page overview in (\d+) parts\.$/);
+    if (match) return `Leyendo un resumen corto de la pagina en ${match[1]} partes.`;
+
+    match = text.match(/^Reading section in (\d+) parts\.$/);
+    if (match) return `Leyendo la seccion en ${match[1]} partes.`;
+
+    match = text.match(/^Reading (.+) in (\d+) parts\.$/);
+    if (match) return `Leyendo ${localizeAssistantLabel(match[1])} en ${match[2]} partes.`;
+
     match = text.match(/^You said: (.+)$/);
     if (match) return `Dijiste: ${match[1]}`;
 
@@ -904,7 +1037,12 @@
       return prefix;
     }
 
-    return prefix === "Assistant" ? "Asistente" : prefix;
+    if (prefix === "Assistant") return "Asistente";
+
+    const readingMatch = prefix.match(/^Reading (\d+) of (\d+)$/);
+    if (readingMatch) return `Lectura ${readingMatch[1]} de ${readingMatch[2]}`;
+
+    return prefix;
   }
 
   function selectVoice(language) {
@@ -1345,6 +1483,56 @@
     speakChunks(chunks);
   }
 
+  function findFaqGroup(category) {
+    const wanted = normalizeText(category);
+    return Array.from(document.querySelectorAll(".faq-group")).find((group) => {
+      const heading = normalizeText(group.querySelector("h2, h3")?.textContent || "");
+      if (wanted === "accessibility") return heading.includes("accessibility") || heading.includes("accesibilidad");
+      if (wanted === "booking") return heading.includes("booking") || heading.includes("reserva");
+      if (wanted === "account") return heading.includes("account") || heading.includes("cuenta");
+      if (wanted === "videos_guides") {
+        return (heading.includes("video") && heading.includes("guide")) ||
+          (heading.includes("video") && heading.includes("guia"));
+      }
+      return heading.includes(wanted);
+    }) || null;
+  }
+
+  function getSpecialSectionTarget(sectionKey) {
+    const pathName = getCurrentPathName();
+
+    if (pathName === "about.html") {
+      const aboutTargets = {
+        story: ".about-section",
+        mission: ".mission-vision .info-card:nth-of-type(1)",
+        vision: ".mission-vision .info-card:nth-of-type(2)",
+        values: ".mission-vision .info-card:nth-of-type(3)",
+        team: ".team-section"
+      };
+      return aboutTargets[sectionKey] ? document.querySelector(aboutTargets[sectionKey]) : null;
+    }
+
+    if (pathName === "faq.html" && ["accessibility", "booking"].includes(sectionKey)) {
+      return findFaqGroup(sectionKey);
+    }
+
+    const sharedTargets = {
+      booking: "#bookingBox",
+      profile: ".profile-page",
+      contact: "#contact-main",
+      favorites: "#favoritesGrid, .favorites-page",
+      questions: ".faq-shell",
+      team: ".team-grid",
+      reviews: "#destinationReviews, .testimonials-premium",
+      tours: "#popularTours, #destinationTours",
+      destinations: ".destinations-section, .popular-destinations-section",
+      filters: ".filters-section",
+      options: "#tripPlanner, .settings-layout"
+    };
+
+    return sharedTargets[sectionKey] ? document.querySelector(sharedTargets[sectionKey]) : null;
+  }
+
   function readSpecificSection(value, reply = "") {
     const normalizedValue = normalizeText(value);
     const sectionKey = TAB_ALIASES[normalizedValue] || normalizedValue;
@@ -1358,21 +1546,8 @@
     }
 
     window.setTimeout(() => {
-      const specialTargets = {
-        booking: "#bookingBox",
-        profile: ".profile-page",
-        contact: "#contact-main",
-        favorites: "#favoritesGrid, .favorites-page",
-        questions: ".faq-shell",
-        team: ".team-grid",
-        reviews: "#destinationReviews, .testimonials-premium",
-        tours: "#popularTours, #destinationTours",
-        destinations: ".destinations-section, .popular-destinations-section",
-        filters: ".filters-section",
-        options: "#tripPlanner, .settings-layout"
-      };
       const target =
-        (specialTargets[sectionKey] ? document.querySelector(specialTargets[sectionKey]) : null) ||
+        getSpecialSectionTarget(sectionKey) ||
         document.querySelector(`.tab-panel[data-panel="${CSS.escape(sectionKey)}"]`) ||
         document.querySelector(`.settings-panel[data-panel="${CSS.escape(sectionKey)}"]`) ||
         document.getElementById(sectionKey) ||
@@ -1399,7 +1574,7 @@
       const intro =
         reply ||
         (getLanguageCode() === "es"
-          ? `Leyendo ${normalizedValue}.`
+          ? `Leyendo ${localizeAssistantLabel(sectionKey)}.`
           : `Reading ${normalizedValue}.`);
       const chunks = splitIntoSpeechChunks(`${intro} ${text}`, 520);
       setStatus(`Reading section in ${chunks.length} parts.`);
@@ -1449,10 +1624,33 @@
         return parts.join(". ");
       })
       .join(". ");
-    const next =
-      language === "es"
-        ? " Para abrir uno, di ir a y el nombre. Tambien puedes pedirme leer filtros, leer menu o explicar esta pagina."
-        : " To open one, say go to and the name. You can also ask me to read filters, read menu or explain this page.";
+    let next;
+    if (selector === ".interpreter-card") {
+      next =
+        language === "es"
+          ? " Puedes decir buscar Steven, filtrar guias en espanol, filtrar guias en ingles o abrir Steven."
+          : " You can say search Steven, filter guides by Spanish, filter guides by English, or open Steven.";
+    } else if (selector.includes("destination-card") && getCurrentPathName() === "destinations.html") {
+      next =
+        language === "es"
+          ? " Para abrir uno, di ir a y el nombre. Tambien puedes decir leer filtros, leer menu o explicar esta pagina."
+          : " To open one, say go to and the name. You can also say read filters, read menu, or explain this page.";
+    } else if (selector.includes("destination-card")) {
+      next =
+        language === "es"
+          ? " Para abrir uno, di ir a y el nombre. Tambien puedes decir leer tours, leer menu o explicar esta pagina."
+          : " To open one, say go to and the name. You can also say read tours, read menu, or explain this page.";
+    } else if (selector.includes("tour-card")) {
+      next =
+        language === "es"
+          ? " Para abrir uno, di abrir y el nombre del tour. Tambien puedes decir leer menu o explicar esta pagina."
+          : " To open one, say open and the tour name. You can also say read menu or explain this page.";
+    } else {
+      next =
+        language === "es"
+          ? " Puedes decir leer menu, explicar esta pagina o preguntar que puedo decir."
+          : " You can say read menu, explain this page, or ask what can I say.";
+    }
 
     speakGuidedText(`${intro} ${details}. ${next}`, `Reading ${type}`);
   }
@@ -1498,12 +1696,22 @@
       return;
     }
 
-    if (pathName === "destination-detail.html" || pathName === "settings.html") {
+    if (pathName === "destination-detail.html") {
       const sections = getAvailableReadableSections().map((section) => section.label);
       const text =
         language === "es"
           ? `Puedes elegir estas secciones: ${joinForSpeech(sections)}. Di leer y el nombre de la seccion, por ejemplo leer accesibilidad o leer ubicacion.`
           : `You can choose these sections: ${joinForSpeech(sections)}. Say read and the section name, for example read accessibility or read location.`;
+      speakGuidedText(text, "Reading options");
+      return;
+    }
+
+    if (pathName === "settings.html") {
+      const sections = getAvailableReadableSections().map((section) => section.label);
+      const text =
+        language === "es"
+          ? `Puedes elegir estas secciones: ${joinForSpeech(sections)}. Di leer y el nombre, por ejemplo leer seguridad, leer viaje, leer idioma, leer notificaciones o leer privacidad.`
+          : `You can choose these sections: ${joinForSpeech(sections)}. Say read and the name, for example read security, read travel, read language, read notifications, or read privacy.`;
       speakGuidedText(text, "Reading options");
       return;
     }
@@ -1534,10 +1742,11 @@
   }
 
   function readAccessibilityTools() {
+    const hasSignLanguageMenu = Boolean(document.getElementById("navVideoMenu"));
     const text =
       getLanguageCode() === "es"
-        ? "Las herramientas accesibles del sitio incluyen alto contraste, modo oscuro, tamano de texto ajustable, cambio de idioma, menu de lengua de senas, videos en lengua de senas por destino y asistente de voz. Puedes decir activar alto contraste, aumentar texto, cambiar a ingles o abrir menu de senas."
-        : "The site's accessibility tools include high contrast, dark mode, adjustable text size, language switching, sign language navigation menu, sign language videos by destination and the voice assistant. You can say turn on high contrast, increase text, change to Spanish or open sign language menu.";
+        ? `Las herramientas accesibles del sitio incluyen alto contraste, modo oscuro, tamano de texto ajustable, cambio de idioma, videos en lengua de senas por destino y asistente de voz.${hasSignLanguageMenu ? " Esta pagina tambien tiene el menu de lengua de senas." : ""} Puedes decir activar alto contraste, aumentar texto o cambiar a ingles${hasSignLanguageMenu ? ", o abrir menu de senas" : ""}.`
+        : `The site's accessibility tools include high contrast, dark mode, adjustable text size, language switching, sign language videos by destination, and the voice assistant.${hasSignLanguageMenu ? " This page also has the sign language navigation menu." : ""} You can say turn on high contrast, increase text, or change to Spanish${hasSignLanguageMenu ? ", or open sign language menu" : ""}.`;
     speakGuidedText(text, "Reading accessibility tools");
   }
 
@@ -1568,6 +1777,54 @@
     speakGuidedText(`${questions.join(". ")}. ${next}`, "Reading questions");
   }
 
+  function readFaqGroup(category) {
+    const target = findFaqGroup(category);
+    const text = getCleanReadableText(target, 2200);
+
+    if (!text) {
+      speak(
+        getLanguageCode() === "es"
+          ? "No encontre esa categoria de preguntas en esta pagina."
+          : "I could not find that question category on this page."
+      );
+      return;
+    }
+
+    const labels = {
+      accessibility: "accessibility questions",
+      booking: "booking questions",
+      account: "account questions",
+      videos_guides: "video and guide questions"
+    };
+    const label = labels[category] || "questions";
+    speakGuidedText(text, `Reading ${label}`);
+  }
+
+  function readTeam() {
+    const members = Array.from(document.querySelectorAll(".team-grid .member, .team-member, .member-card"))
+      .slice(0, 12)
+      .map((member, index) => {
+        const name = member.querySelector("h2, h3, h4")?.textContent?.replace(/\s+/g, " ").trim();
+        const role = member.querySelector("p")?.textContent?.replace(/\s+/g, " ").trim();
+        return name ? `${index + 1}. ${name}${role ? `, ${role}` : ""}` : "";
+      })
+      .filter(Boolean);
+
+    if (!members.length) {
+      speak(
+        getLanguageCode() === "es"
+          ? "No encontre la seccion del equipo en esta pagina."
+          : "I could not find the team section on this page."
+      );
+      return;
+    }
+
+    const intro = getLanguageCode() === "es"
+      ? `El equipo de Open Routes tiene ${members.length} integrantes.`
+      : `The Open Routes team has ${members.length} members.`;
+    speakGuidedText(`${intro} ${members.join(". ")}.`, "Reading team");
+  }
+
   function readCurrentCollection(type) {
     const language = getLanguageCode();
 
@@ -1590,8 +1847,17 @@
       case "questions":
         readQuestions();
         break;
+      case "faq_accessibility":
+        readFaqGroup("accessibility");
+        break;
+      case "faq_account":
+        readFaqGroup("account");
+        break;
+      case "faq_videos_guides":
+        readFaqGroup("videos_guides");
+        break;
       case "team":
-        readCardCollection(language === "es" ? "integrantes del equipo" : "team members", ".member, .member-card, .team-member", []);
+        readTeam();
         break;
       case "guides":
         if (getCurrentPathName() === "interpreters.html") {
@@ -1607,7 +1873,11 @@
         readCardCollection(language === "es" ? "favoritos" : "favorites", ".favorite-card", []);
         break;
       case "booking":
-        readSpecificSection("booking");
+        if (getCurrentPathName() === "faq.html") {
+          readFaqGroup("booking");
+        } else {
+          readSpecificSection("booking");
+        }
         break;
       case "profile":
         readSpecificSection("profile");
@@ -1868,6 +2138,71 @@
     return document.getElementById("resultsCount")?.textContent?.trim() || "";
   }
 
+  function searchInterpreters(query, reply) {
+    const cleanQuery = String(query || "").trim();
+    const searchInput = document.getElementById("searchInput");
+
+    if (!searchInput || getCurrentPathName() !== "interpreters.html") {
+      queueActionAndNavigate(
+        { action: "search_interpreters", target: "none", value: "none", query: cleanQuery, reply },
+        "interpreters",
+        getLanguageCode() === "es" ? "Abriendo guias e interpretes para buscar." : "Opening guides and interpreters to search."
+      );
+      return;
+    }
+
+    searchInput.value = cleanQuery;
+    searchInput.dispatchEvent(new Event("input", { bubbles: true }));
+    const visibleCards = Array.from(document.querySelectorAll(".interpreter-card")).filter(isVisible);
+    scrollToElement(document.getElementById("interpretersList") || searchInput);
+
+    const resultMessage = getLanguageCode() === "es"
+      ? visibleCards.length
+        ? `Encontre ${visibleCards.length} resultado${visibleCards.length === 1 ? "" : "s"} para ${cleanQuery}.`
+        : `No encontre guias o interpretes para ${cleanQuery}.`
+      : visibleCards.length
+        ? `I found ${visibleCards.length} result${visibleCards.length === 1 ? "" : "s"} for ${cleanQuery}.`
+        : `I could not find guides or interpreters for ${cleanQuery}.`;
+    speak(reply || resultMessage);
+  }
+
+  function filterInterpreters(value, reply) {
+    const languageAliases = {
+      espanol: "spanish",
+      spanish: "spanish",
+      ingles: "english",
+      english: "english",
+      frances: "french",
+      french: "french",
+      todos: "all",
+      all: "all"
+    };
+    const filterValue = languageAliases[normalizeText(value)] || "all";
+    const filterSelect = document.getElementById("filterLang");
+
+    if (!filterSelect || getCurrentPathName() !== "interpreters.html") {
+      queueActionAndNavigate(
+        { action: "filter_interpreters", target: "none", value: filterValue, query: "", reply },
+        "interpreters",
+        getLanguageCode() === "es" ? "Abriendo guias e interpretes para aplicar el filtro." : "Opening guides and interpreters to apply the filter."
+      );
+      return;
+    }
+
+    filterSelect.value = filterValue;
+    filterSelect.dispatchEvent(new Event("change", { bubbles: true }));
+    const visibleCards = Array.from(document.querySelectorAll(".interpreter-card")).filter(isVisible);
+    scrollToElement(document.getElementById("interpretersList") || filterSelect);
+
+    const spokenLanguage = getLanguageCode() === "es"
+      ? ({ spanish: "espanol", english: "ingles", french: "frances", all: "todos los idiomas" }[filterValue])
+      : ({ spanish: "Spanish", english: "English", french: "French", all: "all languages" }[filterValue]);
+    const resultMessage = getLanguageCode() === "es"
+      ? `Mostrando ${visibleCards.length} guias e interpretes para ${spokenLanguage}.`
+      : `Showing ${visibleCards.length} guides and interpreters for ${spokenLanguage}.`;
+    speak(reply || resultMessage);
+  }
+
   function searchDestinations(query, reply) {
     const cleanQuery = String(query || "").trim();
     const searchInput = document.getElementById("destinationSearch");
@@ -1935,7 +2270,10 @@
       return;
     }
 
-    const target = document.getElementById(tab) || document.querySelector(`[data-panel="${CSS.escape(tab)}"]`);
+    const target =
+      getSpecialSectionTarget(tab) ||
+      document.getElementById(tab) ||
+      document.querySelector(`[data-panel="${CSS.escape(tab)}"]`);
     if (target) {
       scrollToElement(target);
       speak(reply || `Showing ${tab.replaceAll("-", " ")}.`);
@@ -2046,9 +2384,16 @@
     }
 
     const desired = normalizeText(query || value || "");
+    const requestedItem = Object.entries(CHECKLIST_ITEM_ALIASES).find(([, aliases]) =>
+      aliases.some((alias) => desired === alias || desired.includes(alias))
+    )?.[0];
     const item = checklistItems.find((checkbox) => {
       const label = checkbox.closest("label");
-      return desired && normalizeText(`${checkbox.dataset.checkItem || ""} ${label?.textContent || ""}`).includes(desired);
+      const itemKey = normalizeText(checkbox.dataset.checkItem || "");
+      const searchableText = normalizeText(
+        `${itemKey} ${label?.textContent || ""} ${(CHECKLIST_ITEM_ALIASES[itemKey] || []).join(" ")}`
+      );
+      return desired && (requestedItem ? itemKey === requestedItem : searchableText.includes(desired));
     });
 
     if (!item) {
@@ -3127,12 +3472,19 @@
         phrases: [
           "read team",
           "read the team",
+          "read our team",
+          "read about the team",
           "list team",
           "who is on the team",
+          "tell me about the team",
           "leer equipo",
           "leer el equipo",
+          "leer nuestro equipo",
+          "leer al equipo",
+          "leeme el equipo",
           "lista del equipo",
-          "quienes estan en el equipo"
+          "quienes estan en el equipo",
+          "dime quienes estan en el equipo"
         ]
       },
       {
@@ -3211,6 +3563,90 @@
         ]
       }
     ];
+
+    if (
+      getCurrentPathName() === "faq.html" &&
+      includesAny(command, [
+        "read accessibility",
+        "read accessibility questions",
+        "read the accessibility questions",
+        "read questions about accessibility",
+        "leer accesibilidad",
+        "leer preguntas de accesibilidad",
+        "leer las preguntas de accesibilidad",
+        "leer preguntas sobre accesibilidad"
+      ])
+    ) {
+      return {
+        action: "read_collection",
+        target: "none",
+        value: "faq_accessibility",
+        query: "",
+        reply: ""
+      };
+    }
+
+    if (
+      getCurrentPathName() === "faq.html" &&
+      includesAny(command, [
+        "read booking questions",
+        "read questions about booking",
+        "read bookings",
+        "leer preguntas de reservas",
+        "leer preguntas sobre reservas",
+        "leer reservas"
+      ])
+    ) {
+      return {
+        action: "read_collection",
+        target: "none",
+        value: "booking",
+        query: "",
+        reply: ""
+      };
+    }
+
+    if (
+      getCurrentPathName() === "faq.html" &&
+      includesAny(command, [
+        "read account questions",
+        "read questions about accounts",
+        "read account features",
+        "leer preguntas de cuenta",
+        "leer preguntas sobre la cuenta",
+        "leer funciones de la cuenta"
+      ])
+    ) {
+      return {
+        action: "read_collection",
+        target: "none",
+        value: "faq_account",
+        query: "",
+        reply: ""
+      };
+    }
+
+    if (
+      getCurrentPathName() === "faq.html" &&
+      includesAny(command, [
+        "read video and guide questions",
+        "read videos and guides",
+        "read guide questions",
+        "read guides",
+        "leer preguntas de videos y guias",
+        "leer videos y guias",
+        "leer preguntas de guias",
+        "leer guias"
+      ])
+    ) {
+      return {
+        action: "read_collection",
+        target: "none",
+        value: "faq_videos_guides",
+        query: "",
+        reply: ""
+      };
+    }
 
     for (const item of collectionCommands) {
       if (includesAny(command, item.phrases)) {
@@ -3431,7 +3867,11 @@
       };
     }
 
+    const isInterpreterFilterCommand =
+      /(?:filter|show|only|filtrar|mostrar|solo).*(?:guide|interpreter|guia|interprete)/.test(command);
+
     if (
+      !isInterpreterFilterCommand &&
       includesAny(command, [
         "change to spanish",
         "change language to spanish",
@@ -3477,6 +3917,7 @@
     }
 
     if (
+      !isInterpreterFilterCommand &&
       includesAny(command, [
         "change to english",
         "change language to english",
@@ -3620,6 +4061,10 @@
         "ocultar lenguaje de senas",
         "cerrar lengua de senas",
         "ocultar lengua de senas",
+        "cerrar menu de lengua de senas",
+        "ocultar menu de lengua de senas",
+        "cerrar menu de lenguaje de senas",
+        "ocultar menu de lenguaje de senas",
         "cerrar menu de videos",
         "ocultar menu de videos",
         "cerrar menu de lessa"
@@ -3650,6 +4095,8 @@
         "guardar en favoritos",
         "guardar este lugar",
         "guardar este destino",
+        "agregar esto a favoritos",
+        "anadir esto a favoritos",
         "agrega esto a favoritos",
         "anade esto a favoritos"
       ])
@@ -3740,6 +4187,20 @@
       };
     }
 
+    const interpreterFilterMatch = command.match(
+      /(?:filter|filter by|show|show me|only|filtrar|filtrar por|mostrar|muestrame|solo)\s+(?:guides?\s+|interpreters?\s+|guias?\s+|interpretes?\s+)?(?:by\s+|in\s+|who speak\s+|en\s+|que hablen\s+)?(spanish|english|french|all|espanol|ingles|frances|todos)/
+    );
+
+    if (interpreterFilterMatch) {
+      return {
+        action: "filter_interpreters",
+        target: "none",
+        value: interpreterFilterMatch[1],
+        query: "",
+        reply: ""
+      };
+    }
+
     const indexedItemMatch = command.match(
       /(?:go to|open|choose|select|tap|click|abre|abrir|ir a|elige|selecciona|toca)\s+(?:the\s+|el\s+|la\s+)?(first|one|second|two|third|three|fourth|four|fifth|five|sixth|six|primer|primero|primera|uno|una|segundo|segunda|dos|tercer|tercero|tercera|tres|cuarto|cuarta|cuatro|quinto|quinta|cinco|sexto|sexta|seis)\s+(destination|place|tour|package|card|destino|lugar|paquete|tarjeta)/
     );
@@ -3758,6 +4219,29 @@
     const navigationAction = getNavigationAction(command);
     if (navigationAction) {
       return navigationAction;
+    }
+
+    const interpreterSearchMatch = command.match(
+      /(?:search|search for|find|look for|buscar|busca|encontrar|encuentra|buscame)\s+(?:for\s+|a\s+)?(?:an?\s+)?(?:interpreter|guide|interprete|guia)?\s*(.+)/
+    );
+    const interpreterNames = ["steven", "hazel", "krisia", "xavier", "gustavo", "abner", "rachel", "rachael", "angela"];
+
+    if (
+      interpreterSearchMatch?.[1] &&
+      (getCurrentPathName() === "interpreters.html" || interpreterNames.some((name) => command.includes(name)))
+    ) {
+      const searchQuery = interpreterSearchMatch[1]
+        .replace(/\b(interpreter|guide|interprete|guia)\b/g, "")
+        .trim();
+      if (searchQuery) {
+        return {
+          action: "search_interpreters",
+          target: "none",
+          value: "none",
+          query: searchQuery,
+          reply: ""
+        };
+      }
     }
 
     const searchMatch =
@@ -3901,7 +4385,20 @@
     }
 
     const plannerPhrase = Object.keys(PLANNER_VALUES).find((phrase) =>
-      ["choose", "select", "check", "mark", "elige", "escoge", "selecciona", "marca", "marcar"].some((verb) =>
+      [
+        "choose",
+        "select",
+        "check",
+        "mark",
+        "elige",
+        "elegir",
+        "escoge",
+        "escoger",
+        "selecciona",
+        "seleccionar",
+        "marca",
+        "marcar"
+      ].some((verb) =>
         command.includes(`${verb} ${phrase}`) ||
         command.includes(`${verb} una ${phrase}`) ||
         command.includes(`${verb} un ${phrase}`)
@@ -3946,41 +4443,6 @@
     return null;
   }
 
-  async function askOllama(transcript) {
-    const controller = new AbortController();
-    const timeout = window.setTimeout(
-      () => controller.abort(),
-      CONFIG.requestTimeoutMs
-    );
-
-    try {
-      const response = await fetch(CONFIG.endpoint, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          message: transcript,
-          currentPage: getPageName(),
-          pageContext: getPageContext()
-        }),
-        signal: controller.signal
-      });
-
-      const data = await response.json().catch(() => ({}));
-
-      if (!response.ok) {
-        throw new Error(
-          data.error || `Assistant server returned HTTP ${response.status}`
-        );
-      }
-
-      return validateAction(data);
-    } finally {
-      window.clearTimeout(timeout);
-    }
-  }
-
   function validateAction(data) {
     const allowedActions = new Set([
       "navigate",
@@ -3996,6 +4458,8 @@
       "dark_mode",
       "text_size",
       "language",
+      "search_interpreters",
+      "filter_interpreters",
       "search_destinations",
       "filter_destinations",
       "open_tab",
@@ -4048,6 +4512,9 @@
       "easy-access",
       "az",
       "recommended",
+      "spanish",
+      "english",
+      "french",
       "overview",
       "practical",
       "accessibility",
@@ -4055,6 +4522,10 @@
       "location",
       "guides",
       "tips",
+      "story",
+      "mission",
+      "vision",
+      "values",
       "security",
       "travel",
       "language",
@@ -4066,6 +4537,9 @@
       "options",
       "accessibility_tools",
       "questions",
+      "faq_accessibility",
+      "faq_account",
+      "faq_videos_guides",
       "team",
       "reviews",
       "favorites",
@@ -4105,34 +4579,7 @@
       return;
     }
 
-    if (!canUseLocalAssistantServer()) {
-      speak(getLocalFallbackMessage());
-      return;
-    }
-
-    setStatus(
-      getLanguageCode() === "es"
-        ? "Entendiendo tu solicitud con Ollama..."
-        : "Understanding your request with Ollama..."
-    );
-
-    try {
-      const ollamaAction = await askOllama(transcript);
-      executeAction(ollamaAction);
-    } catch (error) {
-      console.error("Ollama assistant error:", error);
-
-      const errorMessage =
-        error.name === "AbortError"
-          ? getLanguageCode() === "es"
-            ? "Ollama tardo demasiado en responder. Manten abierto el servidor local del asistente e intenta otra vez."
-            : "Ollama took too long to respond. Keep the assistant server open and try again."
-          : getLanguageCode() === "es"
-            ? "No pude procesar eso con el asistente local. Todavia puedes usar comandos como leer menu, abrir destinos, explicar esta pagina, activar modo oscuro o aumentar texto."
-            : "I could not process that with the local assistant. You can still use commands like read menu, open destinations, explain this page, turn on dark mode or increase text.";
-
-      speak(errorMessage);
-    }
+    speak(getLocalFallbackMessage());
   }
 
   function executeAction(command) {
@@ -4216,6 +4663,14 @@
 
       case "language":
         setSiteLanguage(command.value);
+        break;
+
+      case "search_interpreters":
+        searchInterpreters(command.query, command.reply);
+        break;
+
+      case "filter_interpreters":
+        filterInterpreters(command.value !== "none" ? command.value : command.query, command.reply);
         break;
 
       case "search_destinations":
@@ -4347,6 +4802,13 @@
 
     window.setTimeout(runPendingAction, shouldResume ? 1000 : 450);
   }
+
+  window.OpenRoutesVoiceAssistant = Object.freeze({
+    interpretCommand: parseLocalCommand,
+    getHelpMessage,
+    getPageGuideText,
+    runCommand: processVoiceCommand
+  });
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", initialize);
